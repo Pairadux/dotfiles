@@ -73,9 +73,8 @@ ZSH_THEME="eastwood"
 plugins=(
 	git
 	jump
-	copypath
 	aliases
-	pyenv
+	# pyenv
 	zsh-autosuggestions
 )
 
