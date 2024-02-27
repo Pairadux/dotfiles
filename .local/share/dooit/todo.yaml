@@ -110,13 +110,6 @@
             due: none
             effort: ''
             recurrence: ''
-        - - uuid: todo_a39ffa69-4c66-4736-9ed5-45a428c69685
-            status: PENDING
-            urgency: 2
-            description: Update skills
-            due: none
-            effort: ''
-            recurrence: ''
         - - uuid: todo_5966ad51-201f-47bf-b8e0-026f371a7f71
             status: PENDING
             urgency: 1
@@ -128,6 +121,13 @@
             status: PENDING
             urgency: 2
             description: Gather testimonials
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_a39ffa69-4c66-4736-9ed5-45a428c69685
+            status: COMPLETED
+            urgency: 2
+            description: Update skills
             due: none
             effort: ''
             recurrence: ''
