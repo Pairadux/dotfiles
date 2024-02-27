@@ -12,14 +12,7 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_1cbfc156-81fc-4094-b1e5-b1c9194d42fa
-            status: COMPLETED
-            urgency: 1
-            description: Make header + body `min-h-screen`
-            due: none
-            effort: ''
-            recurrence: ''
-        - - uuid: todo_9bfa0197-8097-4894-b42b-70474f155c8b
+      - - - uuid: todo_9bfa0197-8097-4894-b42b-70474f155c8b
             status: PENDING
             urgency: 2
             description: Make more responsive
@@ -47,20 +40,6 @@
             due: none
             effort: ''
             recurrence: ''
-        - - uuid: todo_5d434f47-8f6d-4379-9b52-1d0f3326fec5
-            status: COMPLETED
-            urgency: 4
-            description: Fix Mobile Navmenu
-            due: none
-            effort: ''
-            recurrence: ''
-          - - - uuid: todo_3e2eb0a7-e602-416b-bcfe-886c57ea53f9
-                status: COMPLETED
-                urgency: 1
-                description: Update Logo
-                due: none
-                effort: ''
-                recurrence: ''
         - - uuid: todo_84740595-b301-4fc3-86fa-07b850332641
             status: PENDING
             urgency: 2
@@ -86,6 +65,27 @@
                 status: PENDING
                 urgency: 1
                 description: Update Social Links
+                due: none
+                effort: ''
+                recurrence: ''
+        - - uuid: todo_1cbfc156-81fc-4094-b1e5-b1c9194d42fa
+            status: COMPLETED
+            urgency: 1
+            description: Make header + body `min-h-screen`
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_5d434f47-8f6d-4379-9b52-1d0f3326fec5
+            status: COMPLETED
+            urgency: 4
+            description: Fix Mobile Navmenu
+            due: none
+            effort: ''
+            recurrence: ''
+          - - - uuid: todo_3e2eb0a7-e602-416b-bcfe-886c57ea53f9
+                status: COMPLETED
+                urgency: 1
+                description: Update Logo
                 due: none
                 effort: ''
                 recurrence: ''
@@ -138,17 +138,17 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_4001fce4-bd6b-455c-8b34-e66a49024c18
-            status: PENDING
-            urgency: 3
-            description: Add previous layout
-            due: none
-            effort: ''
-            recurrence: ''
-        - - uuid: todo_95b727d7-0de4-4f31-880a-dbc69421482c
+      - - - uuid: todo_95b727d7-0de4-4f31-880a-dbc69421482c
             status: PENDING
             urgency: 2
             description: Make new resume with tips from career center
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_4001fce4-bd6b-455c-8b34-e66a49024c18
+            status: COMPLETED
+            urgency: 3
+            description: Add previous layout
             due: none
             effort: ''
             recurrence: ''
@@ -160,9 +160,16 @@
         effort: ''
         recurrence: ''
       - - - uuid: todo_4fc9b194-dbee-4e3d-970f-e9cfe5a9e78a
-            status: PENDING
+            status: COMPLETED
             urgency: 3
             description: Add previous layout
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_145527a1-7054-46bb-886c-33a6669c8146
+            status: PENDING
+            urgency: 1
+            description: Make javascript scroll function work again
             due: none
             effort: ''
             recurrence: ''
