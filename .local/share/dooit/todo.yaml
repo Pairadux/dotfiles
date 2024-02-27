@@ -12,7 +12,14 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_9bfa0197-8097-4894-b42b-70474f155c8b
+      - - - uuid: todo_1cbfc156-81fc-4094-b1e5-b1c9194d42fa
+            status: PENDING
+            urgency: 1
+            description: Make header + body `min-h-screen`
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_9bfa0197-8097-4894-b42b-70474f155c8b
             status: PENDING
             urgency: 2
             description: Make more responsive
