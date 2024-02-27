@@ -41,14 +41,14 @@
             effort: ''
             recurrence: ''
         - - uuid: todo_5d434f47-8f6d-4379-9b52-1d0f3326fec5
-            status: PENDING
+            status: COMPLETED
             urgency: 4
             description: Fix Mobile Navmenu
             due: none
             effort: ''
             recurrence: ''
           - - - uuid: todo_3e2eb0a7-e602-416b-bcfe-886c57ea53f9
-                status: PENDING
+                status: COMPLETED
                 urgency: 1
                 description: Update Logo
                 due: none
@@ -62,14 +62,14 @@
             effort: ''
             recurrence: ''
           - - - uuid: todo_f98a1b00-22ca-4073-97ee-13729742b245
-                status: PENDING
+                status: COMPLETED
                 urgency: 1
                 description: Update Year
                 due: none
                 effort: ''
                 recurrence: ''
               - - - uuid: todo_8945c7e2-6873-4d25-a605-9b2b8596ab46
-                    status: PENDING
+                    status: COMPLETED
                     urgency: 1
                     description: Look into using simple Javascript script for this
                     due: none
