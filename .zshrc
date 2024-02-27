@@ -107,3 +107,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias doocommit="dooitcommit.sh"
+alias doopull="dooitpull.sh"
