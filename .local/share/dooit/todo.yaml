@@ -13,7 +13,7 @@
         effort: ''
         recurrence: ''
       - - - uuid: todo_1cbfc156-81fc-4094-b1e5-b1c9194d42fa
-            status: PENDING
+            status: COMPLETED
             urgency: 1
             description: Make header + body `min-h-screen`
             due: none
