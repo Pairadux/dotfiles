@@ -96,7 +96,14 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_84f973fa-73ed-42d6-beee-93d6bd8c102c
+      - - - uuid: todo_311f650b-913e-437a-b240-57b25c75b1ea
+            status: PENDING
+            urgency: 1
+            description: Add tooltips to skills
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_84f973fa-73ed-42d6-beee-93d6bd8c102c
             status: PENDING
             urgency: 2
             description: Update small self-bio
