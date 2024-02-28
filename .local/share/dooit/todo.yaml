@@ -96,14 +96,7 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_311f650b-913e-437a-b240-57b25c75b1ea
-            status: PENDING
-            urgency: 1
-            description: Add tooltips to skills
-            due: none
-            effort: ''
-            recurrence: ''
-        - - uuid: todo_84f973fa-73ed-42d6-beee-93d6bd8c102c
+      - - - uuid: todo_84f973fa-73ed-42d6-beee-93d6bd8c102c
             status: PENDING
             urgency: 2
             description: Update small self-bio
@@ -131,6 +124,13 @@
             due: none
             effort: ''
             recurrence: ''
+        - - uuid: todo_311f650b-913e-437a-b240-57b25c75b1ea
+            status: COMPLETED
+            urgency: 1
+            description: Add tooltips to skills
+            due: none
+            effort: ''
+            recurrence: ''
         - - uuid: todo_a39ffa69-4c66-4736-9ed5-45a428c69685
             status: COMPLETED
             urgency: 2
@@ -145,8 +145,15 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_95b727d7-0de4-4f31-880a-dbc69421482c
+      - - - uuid: todo_3454bc3f-d420-46bb-8782-bdad755fb3e9
             status: PENDING
+            urgency: 1
+            description: Update resume to be more 'tech centric'
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_95b727d7-0de4-4f31-880a-dbc69421482c
+            status: COMPLETED
             urgency: 2
             description: Make new resume with tips from career center
             due: none
