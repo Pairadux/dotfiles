@@ -12,7 +12,14 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_9bfa0197-8097-4894-b42b-70474f155c8b
+      - - - uuid: todo_4a54e660-a0cc-49d0-9c7d-32a235045e69
+            status: PENDING
+            urgency: 1
+            description: Ensure text color is consistent across all pages
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_9bfa0197-8097-4894-b42b-70474f155c8b
             status: PENDING
             urgency: 2
             description: Make more responsive
