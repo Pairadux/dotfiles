@@ -19,6 +19,13 @@
             due: none
             effort: ''
             recurrence: ''
+          - - - uuid: todo_9472c30c-966b-47aa-93e8-ee9276fdae8b
+                status: PENDING
+                urgency: 1
+                description: Create style rules for standardized text size and color
+                due: none
+                effort: ''
+                recurrence: ''
         - - uuid: todo_9bfa0197-8097-4894-b42b-70474f155c8b
             status: PENDING
             urgency: 2
@@ -44,6 +51,14 @@
             status: PENDING
             urgency: 3
             description: Minimize images across site
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_c8ad8c27-571f-4e7c-a9ca-460d06908a75
+            status: PENDING
+            urgency: 1
+            description: Update tailwind config to make default colors neutral-950
+              and neutral-50
             due: none
             effort: ''
             recurrence: ''
