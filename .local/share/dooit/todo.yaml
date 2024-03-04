@@ -13,28 +13,28 @@
         effort: ''
         recurrence: ''
       - - - uuid: todo_4a54e660-a0cc-49d0-9c7d-32a235045e69
-            status: PENDING
+            status: COMPLETED
             urgency: 1
             description: Ensure text color is consistent across all pages
             due: none
             effort: ''
             recurrence: ''
           - - - uuid: todo_9472c30c-966b-47aa-93e8-ee9276fdae8b
-                status: PENDING
+                status: COMPLETED
                 urgency: 1
                 description: Create style rules for standardized text size and color
                 due: none
                 effort: ''
                 recurrence: ''
         - - uuid: todo_9bfa0197-8097-4894-b42b-70474f155c8b
-            status: PENDING
+            status: COMPLETED
             urgency: 2
             description: Make more responsive
             due: none
             effort: ''
             recurrence: ''
           - - - uuid: todo_83d7fe02-1d6f-4583-8ee1-bb887a23fbb4
-                status: PENDING
+                status: COMPLETED
                 urgency: 1
                 description: Make font sizes optimal for all screen sizes
                 due: none
@@ -55,7 +55,7 @@
             effort: ''
             recurrence: ''
         - - uuid: todo_c8ad8c27-571f-4e7c-a9ca-460d06908a75
-            status: PENDING
+            status: COMPLETED
             urgency: 1
             description: Update tailwind config to make default colors neutral-950
               and neutral-50
@@ -161,14 +161,14 @@
             effort: ''
             recurrence: ''
     - - uuid: todo_89c1844b-872c-4a96-affb-58741fcb3c5f
-        status: PENDING
+        status: COMPLETED
         urgency: 2
         description: Resume Page
         due: none
         effort: ''
         recurrence: ''
       - - - uuid: todo_3454bc3f-d420-46bb-8782-bdad755fb3e9
-            status: PENDING
+            status: COMPLETED
             urgency: 1
             description: Update resume to be more 'tech centric'
             due: none
