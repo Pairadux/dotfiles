@@ -12,35 +12,7 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_4a54e660-a0cc-49d0-9c7d-32a235045e69
-            status: COMPLETED
-            urgency: 1
-            description: Ensure text color is consistent across all pages
-            due: none
-            effort: ''
-            recurrence: ''
-          - - - uuid: todo_9472c30c-966b-47aa-93e8-ee9276fdae8b
-                status: COMPLETED
-                urgency: 1
-                description: Create style rules for standardized text size and color
-                due: none
-                effort: ''
-                recurrence: ''
-        - - uuid: todo_9bfa0197-8097-4894-b42b-70474f155c8b
-            status: COMPLETED
-            urgency: 2
-            description: Make more responsive
-            due: none
-            effort: ''
-            recurrence: ''
-          - - - uuid: todo_83d7fe02-1d6f-4583-8ee1-bb887a23fbb4
-                status: COMPLETED
-                urgency: 1
-                description: Make font sizes optimal for all screen sizes
-                due: none
-                effort: ''
-                recurrence: ''
-        - - uuid: todo_7b5041a4-7591-47e2-8d2b-24d1ec23cfcf
+      - - - uuid: todo_7b5041a4-7591-47e2-8d2b-24d1ec23cfcf
             status: PENDING
             urgency: 1
             description: Add a little more color
@@ -51,14 +23,6 @@
             status: PENDING
             urgency: 3
             description: Minimize images across site
-            due: none
-            effort: ''
-            recurrence: ''
-        - - uuid: todo_c8ad8c27-571f-4e7c-a9ca-460d06908a75
-            status: COMPLETED
-            urgency: 1
-            description: Update tailwind config to make default colors neutral-950
-              and neutral-50
             due: none
             effort: ''
             recurrence: ''
@@ -90,6 +54,42 @@
                 due: none
                 effort: ''
                 recurrence: ''
+        - - uuid: todo_4a54e660-a0cc-49d0-9c7d-32a235045e69
+            status: COMPLETED
+            urgency: 1
+            description: Ensure text color is consistent across all pages
+            due: none
+            effort: ''
+            recurrence: ''
+          - - - uuid: todo_9472c30c-966b-47aa-93e8-ee9276fdae8b
+                status: COMPLETED
+                urgency: 1
+                description: Create style rules for standardized text size and color
+                due: none
+                effort: ''
+                recurrence: ''
+        - - uuid: todo_9bfa0197-8097-4894-b42b-70474f155c8b
+            status: COMPLETED
+            urgency: 2
+            description: Make more responsive
+            due: none
+            effort: ''
+            recurrence: ''
+          - - - uuid: todo_83d7fe02-1d6f-4583-8ee1-bb887a23fbb4
+                status: COMPLETED
+                urgency: 1
+                description: Make font sizes optimal for all screen sizes
+                due: none
+                effort: ''
+                recurrence: ''
+        - - uuid: todo_c8ad8c27-571f-4e7c-a9ca-460d06908a75
+            status: COMPLETED
+            urgency: 1
+            description: Update tailwind config to make default colors neutral-950
+              and neutral-50
+            due: none
+            effort: ''
+            recurrence: ''
         - - uuid: todo_1cbfc156-81fc-4094-b1e5-b1c9194d42fa
             status: COMPLETED
             urgency: 1
@@ -118,7 +118,14 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_84f973fa-73ed-42d6-beee-93d6bd8c102c
+      - - - uuid: todo_b7b4bfd3-d0ae-489a-ac64-d1413251ab86
+            status: PENDING
+            urgency: 1
+            description: Make project item a component
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_84f973fa-73ed-42d6-beee-93d6bd8c102c
             status: PENDING
             urgency: 2
             description: Update small self-bio
