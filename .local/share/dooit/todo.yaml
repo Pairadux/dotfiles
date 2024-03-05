@@ -119,7 +119,7 @@
         effort: ''
         recurrence: ''
       - - - uuid: todo_b7b4bfd3-d0ae-489a-ac64-d1413251ab86
-            status: PENDING
+            status: COMPLETED
             urgency: 1
             description: Make project item a component
             due: none
@@ -168,13 +168,20 @@
             effort: ''
             recurrence: ''
     - - uuid: todo_89c1844b-872c-4a96-affb-58741fcb3c5f
-        status: COMPLETED
+        status: PENDING
         urgency: 2
         description: Resume Page
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_3454bc3f-d420-46bb-8782-bdad755fb3e9
+      - - - uuid: todo_79c3c0d2-34a9-4244-bb8c-a287a693015c
+            status: PENDING
+            urgency: 1
+            description: Add flooring job info
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_3454bc3f-d420-46bb-8782-bdad755fb3e9
             status: COMPLETED
             urgency: 1
             description: Update resume to be more 'tech centric'
