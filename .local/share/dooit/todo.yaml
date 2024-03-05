@@ -12,7 +12,14 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_7b5041a4-7591-47e2-8d2b-24d1ec23cfcf
+      - - - uuid: todo_50c93d40-e345-4200-a6df-307a75edb3eb
+            status: PENDING
+            urgency: 1
+            description: Add svelte:fragment and named slots to Heading component
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_7b5041a4-7591-47e2-8d2b-24d1ec23cfcf
             status: PENDING
             urgency: 1
             description: Add a little more color
