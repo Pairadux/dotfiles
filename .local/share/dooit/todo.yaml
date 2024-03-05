@@ -27,7 +27,7 @@
             effort: ''
             recurrence: ''
         - - uuid: todo_84740595-b301-4fc3-86fa-07b850332641
-            status: PENDING
+            status: COMPLETED
             urgency: 2
             description: Fix Footer
             due: none
@@ -48,7 +48,7 @@
                     effort: ''
                     recurrence: ''
             - - uuid: todo_d415e7fb-c320-4aa8-bff1-396930ed9b55
-                status: PENDING
+                status: COMPLETED
                 urgency: 1
                 description: Update Social Links
                 due: none
@@ -118,7 +118,14 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_b7b4bfd3-d0ae-489a-ac64-d1413251ab86
+      - - - uuid: todo_e87f4f17-a668-444b-a4a3-7ad604c4fec2
+            status: PENDING
+            urgency: 1
+            description: Update testimonial section description text
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_b7b4bfd3-d0ae-489a-ac64-d1413251ab86
             status: COMPLETED
             urgency: 1
             description: Make project item a component
