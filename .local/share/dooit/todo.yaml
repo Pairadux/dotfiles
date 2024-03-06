@@ -26,6 +26,20 @@
             due: none
             effort: ''
             recurrence: ''
+          - - - uuid: todo_0f14afa6-58d6-45a4-a2d4-ee4dcd217058
+                status: PENDING
+                urgency: 1
+                description: Maybe make blob shift between colors
+                due: none
+                effort: ''
+                recurrence: ''
+            - - uuid: todo_4f25f1ba-16bc-43c6-9ae6-77519c72c885
+                status: PENDING
+                urgency: 1
+                description: Make all instances of name Blue to stand out
+                due: none
+                effort: ''
+                recurrence: ''
         - - uuid: todo_1c20f1d9-ae41-4559-aaa1-b77aa889f3b8
             status: PENDING
             urgency: 3
@@ -125,7 +139,14 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_e87f4f17-a668-444b-a4a3-7ad604c4fec2
+      - - - uuid: todo_ee526f30-024a-4607-b6c0-c6a52c2185d6
+            status: PENDING
+            urgency: 1
+            description: Add additional blobs for more variety in morphing
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_e87f4f17-a668-444b-a4a3-7ad604c4fec2
             status: PENDING
             urgency: 1
             description: Update testimonial section description text
