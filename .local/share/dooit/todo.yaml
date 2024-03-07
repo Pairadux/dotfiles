@@ -203,7 +203,7 @@
         effort: ''
         recurrence: ''
       - - - uuid: todo_79c3c0d2-34a9-4244-bb8c-a287a693015c
-            status: PENDING
+            status: COMPLETED
             urgency: 1
             description: Add flooring job info
             due: none
@@ -227,6 +227,13 @@
             status: COMPLETED
             urgency: 3
             description: Add previous layout
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_9c34b473-b6e2-40f4-b3fe-fc34fb2e314e
+            status: PENDING
+            urgency: 1
+            description: Organize Skills
             due: none
             effort: ''
             recurrence: ''
