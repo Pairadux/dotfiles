@@ -12,14 +12,7 @@
         due: none
         effort: ''
         recurrence: ''
-      - - - uuid: todo_50c93d40-e345-4200-a6df-307a75edb3eb
-            status: PENDING
-            urgency: 1
-            description: Add svelte:fragment and named slots to Heading component
-            due: none
-            effort: ''
-            recurrence: ''
-        - - uuid: todo_7b5041a4-7591-47e2-8d2b-24d1ec23cfcf
+      - - - uuid: todo_7b5041a4-7591-47e2-8d2b-24d1ec23cfcf
             status: PENDING
             urgency: 1
             description: Add a little more color
@@ -153,24 +146,10 @@
             due: none
             effort: ''
             recurrence: ''
-        - - uuid: todo_b7b4bfd3-d0ae-489a-ac64-d1413251ab86
-            status: COMPLETED
-            urgency: 1
-            description: Make project item a component
-            due: none
-            effort: ''
-            recurrence: ''
         - - uuid: todo_84f973fa-73ed-42d6-beee-93d6bd8c102c
             status: PENDING
             urgency: 2
             description: Update small self-bio
-            due: none
-            effort: ''
-            recurrence: ''
-        - - uuid: todo_2fb23b8d-b602-49c3-9e67-bc507569db06
-            status: PENDING
-            urgency: 1
-            description: Add projects, even just temporarily
             due: none
             effort: ''
             recurrence: ''
@@ -185,6 +164,20 @@
             status: PENDING
             urgency: 2
             description: Gather testimonials
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_2fb23b8d-b602-49c3-9e67-bc507569db06
+            status: COMPLETED
+            urgency: 1
+            description: Add projects, even just temporarily
+            due: none
+            effort: ''
+            recurrence: ''
+        - - uuid: todo_b7b4bfd3-d0ae-489a-ac64-d1413251ab86
+            status: COMPLETED
+            urgency: 1
+            description: Make project item a component
             due: none
             effort: ''
             recurrence: ''
