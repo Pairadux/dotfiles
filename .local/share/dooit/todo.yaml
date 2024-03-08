@@ -325,27 +325,6 @@
           due: none
           effort: ''
           recurrence: ''
-      - - uuid: todo_6342c55b-82d9-444c-846d-7af310f78c5c
-          status: PENDING
-          urgency: 1
-          description: Add a little more color
-          due: none
-          effort: ''
-          recurrence: ''
-        - - - uuid: todo_e9a83980-07d6-41d0-bbe3-40abb8f5dc5e
-              status: PENDING
-              urgency: 1
-              description: Maybe make blob shift between colors
-              due: none
-              effort: ''
-              recurrence: ''
-          - - uuid: todo_499629b3-b658-4cac-8d5c-82f0c1b15678
-              status: PENDING
-              urgency: 1
-              description: Make all instances of name Blue to stand out
-              due: none
-              effort: ''
-              recurrence: ''
       - - uuid: todo_24cbf467-905c-4f46-812c-68bdfb301aed
           status: PENDING
           urgency: 3
@@ -550,24 +529,17 @@
           due: none
           effort: ''
           recurrence: ''
-  - - uuid: todo_62b9ee21-61dd-4e16-ab5f-e18bd280650b
+  - - uuid: todo_4bf74681-7db4-4a06-bf6f-1265cd867817
       status: PENDING
       urgency: 1
       description: Portfolio Page
       due: none
       effort: ''
       recurrence: ''
-    - - - uuid: todo_a7ab7bb0-aa4c-45da-8f8b-f9c33c8560fa
-          status: COMPLETED
-          urgency: 3
-          description: Add previous layout
-          due: none
-          effort: ''
-          recurrence: ''
-      - - uuid: todo_84e9efe3-26c9-4b7c-81bc-00a3c53a15fd
+    - - - uuid: todo_82576ae6-126d-471a-ae3d-a15b6b0a52e7
           status: PENDING
           urgency: 1
-          description: Make javascript scroll function work again
+          description: Add logic for full portfolio vs short portfolio
           due: none
           effort: ''
           recurrence: ''
@@ -586,7 +558,7 @@
           effort: ''
           recurrence: ''
       - - uuid: todo_e1ecafcd-4b7a-43d6-a067-ba03229e872f
-          status: PENDING
+          status: COMPLETED
           urgency: 3
           description: Create design
           due: none
