@@ -318,7 +318,14 @@
       due: none
       effort: ''
       recurrence: ''
-    - - - uuid: todo_6342c55b-82d9-444c-846d-7af310f78c5c
+    - - - uuid: todo_863c3212-970e-4f9a-9bb6-acd7c8628dbe
+          status: PENDING
+          urgency: 1
+          description: Make a dark theme for website
+          due: none
+          effort: ''
+          recurrence: ''
+      - - uuid: todo_6342c55b-82d9-444c-846d-7af310f78c5c
           status: PENDING
           urgency: 1
           description: Add a little more color
