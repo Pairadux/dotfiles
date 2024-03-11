@@ -424,7 +424,14 @@
       due: none
       effort: ''
       recurrence: ''
-    - - - uuid: todo_98c5a195-fc8b-4bcb-86ae-876861f71b29
+    - - - uuid: todo_2aec7c5f-6106-436c-87bd-8717f865668b
+          status: PENDING
+          urgency: 1
+          description: Fix call to action
+          due: none
+          effort: ''
+          recurrence: ''
+      - - uuid: todo_98c5a195-fc8b-4bcb-86ae-876861f71b29
           status: PENDING
           urgency: 1
           description: Add additional blobs for more variety in morphing
@@ -488,7 +495,7 @@
           effort: ''
           recurrence: ''
   - - uuid: todo_936292ce-5c40-45b0-96b7-9f79f65814d4
-      status: PENDING
+      status: COMPLETED
       urgency: 2
       description: Resume Page
       due: none
@@ -523,7 +530,7 @@
           effort: ''
           recurrence: ''
       - - uuid: todo_9b230ce6-b13e-42b1-91db-9ac75849c5fa
-          status: PENDING
+          status: COMPLETED
           urgency: 1
           description: Organize Skills
           due: none
@@ -558,28 +565,17 @@
           effort: ''
           recurrence: ''
       - - uuid: todo_e1ecafcd-4b7a-43d6-a067-ba03229e872f
-          status: COMPLETED
+          status: PENDING
           urgency: 3
           description: Create design
           due: none
           effort: ''
           recurrence: ''
       - - uuid: todo_7c7d794f-749a-4561-822d-a162ef822417
-          status: PENDING
+          status: COMPLETED
           urgency: 1
           description: Distinguish header with alternate style or something
           due: none
           effort: ''
           recurrence: ''
-  workspaces: []
-- uuid: workspace_474c34d8-8aba-4a13-8384-bccb9fcf8fe5
-  description: TEST WORKSPACE
-  todos:
-  - - uuid: todo_4ccbd38e-4f88-4071-871c-e77a7ff577ef
-      status: PENDING
-      urgency: 1
-      description: test task
-      due: none
-      effort: ''
-      recurrence: ''
   workspaces: []
