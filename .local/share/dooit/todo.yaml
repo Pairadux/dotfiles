@@ -291,7 +291,7 @@
   description: personal
   todos:
   - - uuid: todo_8e192605-668b-4852-9af4-a99d024c981c
-      status: PENDING
+      status: COMPLETED
       urgency: 1
       description: add issue to dooit, pasting a workspace and then trying to move
         does not work, but if you add something, it will crash, and then you are able
@@ -319,7 +319,7 @@
       effort: ''
       recurrence: ''
     - - - uuid: todo_863c3212-970e-4f9a-9bb6-acd7c8628dbe
-          status: PENDING
+          status: COMPLETED
           urgency: 1
           description: Make a dark theme for website
           due: none
@@ -565,7 +565,7 @@
           effort: ''
           recurrence: ''
       - - uuid: todo_e1ecafcd-4b7a-43d6-a067-ba03229e872f
-          status: PENDING
+          status: COMPLETED
           urgency: 3
           description: Create design
           due: none
