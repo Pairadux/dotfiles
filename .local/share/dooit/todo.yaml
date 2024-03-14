@@ -432,7 +432,7 @@
           effort: ''
           recurrence: ''
       - - uuid: todo_98c5a195-fc8b-4bcb-86ae-876861f71b29
-          status: PENDING
+          status: COMPLETED
           urgency: 1
           description: Add additional blobs for more variety in morphing
           due: none
@@ -537,14 +537,14 @@
           effort: ''
           recurrence: ''
   - - uuid: todo_4bf74681-7db4-4a06-bf6f-1265cd867817
-      status: PENDING
+      status: COMPLETED
       urgency: 1
       description: Portfolio Page
       due: none
       effort: ''
       recurrence: ''
     - - - uuid: todo_82576ae6-126d-471a-ae3d-a15b6b0a52e7
-          status: PENDING
+          status: COMPLETED
           urgency: 1
           description: Add logic for full portfolio vs short portfolio
           due: none
