@@ -10,6 +10,10 @@ M.ui = {
     nvdash = {
         load_on_startup = true,
     },
+
+    term = {
+        sizes = { sp = 0.3, vsp = 0.3 },
+    },
 }
 
 M.plugins = "plugins"
