@@ -102,6 +102,13 @@ return {
 							action = "Telescope find_files",
 							key = "f",
 						},
+                        {
+                            icon = "󱊈 ",
+                            icon_hl = "@property",
+                            desc = "Mason",
+                            action = "Mason",
+                            key = "m",
+                        }
 					},
                     mru = {
                         cwd_only=true,
