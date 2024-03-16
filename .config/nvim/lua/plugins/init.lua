@@ -170,6 +170,7 @@ return {
 							key = "m",
 						},
 					},
+                    project = { enable = false },
 					mru = {
 						cwd_only = true,
 					},
