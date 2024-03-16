@@ -25,6 +25,13 @@ return {
 		},
 	},
 
+	{
+		"nvim-treesitter/nvim-treesitter",
+        -- config = function()
+        --     require("nvchad.configs.treesitter")
+        -- end
+	},
+
 	-- In order to modify the `lspconfig` configuration:
 	{
 		"neovim/nvim-lspconfig",
@@ -68,7 +75,7 @@ return {
 			"rcarriga/nvim-notify",
 		},
 		config = function()
-            require("configs.noice")
+			require("configs.noice")
 		end,
 		init = function()
 			vim.g.lsp_handlers_enabled = false
@@ -100,7 +107,7 @@ return {
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
 		config = function()
-            require("configs.dashboard")
+			require("configs.dashboard")
 		end,
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
 	},
@@ -109,8 +116,8 @@ return {
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
 		dependencies = { "nvim-lua/plenary.nvim" },
-        config = function()
-            require("configs.harpoon")
-        end
+		config = function()
+			require("configs.harpoon")
+		end,
 	},
 }
