@@ -27,9 +27,9 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-        -- config = function()
-        --     require("nvchad.configs.treesitter")
-        -- end
+		opts = {
+			ensure_installed = { "lua", "vim", "vimdoc", "html", "css", "javascript", "rust", "svelte", "markdown", "markdown_inline", "query", "regex", "typescript", "c", "bash", "python", "json" },
+		},
 	},
 
 	-- In order to modify the `lspconfig` configuration:
