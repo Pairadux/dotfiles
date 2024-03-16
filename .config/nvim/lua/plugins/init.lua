@@ -46,6 +46,21 @@ return {
 	},
 
 	{
+		"MunifTanjim/nui.nvim",
+		lazy = false,
+	},
+
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {
+		},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+		},
+	},
+
+	{
 		"okuuva/auto-save.nvim",
 		cmd = "ASToggle", -- optional for lazy loading on command
 		event = { "InsertLeave", "TextChanged" }, -- optional for lazy loading on trigger events
@@ -74,7 +89,7 @@ return {
 				theme = "hyper",
 				config = {
 					header = {
-                        "",
+						"",
 						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
 						"⣿⣏⣛⡛⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠿⢛⣛⣿⣿",
 						"⣿⣿⡏⠛⠛⠻⠶⠶⣶⣤⣤⣤⣭⣭⣭⣭⣭⣭⣤⣤⣤⣶⠶⠶⠟⠛⠛⣹⣿⣿",
@@ -90,7 +105,7 @@ return {
 						"⣿⣿⠀⣿⣿⠀⠀⠀⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⠀⠀⠀⣿⣿⠀⣿⣿",
 						"⣿⣧⠀⣭⣭⠀⠀⠀⣭⣭⡄⣸⣿⣿⣿⣿⣿⣿⣇⢠⣭⣭⠀⠀⠀⣭⣭⠀⣼⣿",
 						"⣿⣿⣤⣿⣿⣶⣶⣶⣿⣿⣧⣿⣿⣿⣿⣿⣿⣿⣿⣼⣿⣿⣶⣶⣶⣿⣿⣤⣿⣿",
-                        "",
+						"",
 					},
 					shortcut = {
 						{ desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
@@ -102,18 +117,18 @@ return {
 							action = "Telescope find_files",
 							key = "f",
 						},
-                        {
-                            icon = "󱊈 ",
-                            icon_hl = "@property",
-                            desc = "Mason",
-                            action = "Mason",
-                            key = "m",
-                        }
+						{
+							icon = "󱊈 ",
+							icon_hl = "@property",
+							desc = "Mason",
+							action = "Mason",
+							key = "m",
+						},
 					},
-                    mru = {
-                        cwd_only=true,
-                    },
-                    footer = {},
+					mru = {
+						cwd_only = true,
+					},
+					footer = {},
 				},
 			})
 		end,
