@@ -28,8 +28,34 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
-			ensure_installed = { "lua", "vim", "vimdoc", "html", "css", "javascript", "rust", "svelte", "markdown", "markdown_inline", "query", "regex", "typescript", "c", "bash", "python", "json" },
+			ensure_installed = {
+				"lua",
+				"vim",
+				"vimdoc",
+				"html",
+				"css",
+				"javascript",
+				"rust",
+				"svelte",
+				"markdown",
+				"markdown_inline",
+				"query",
+				"regex",
+				"typescript",
+				"c",
+				"bash",
+				"python",
+				"json",
+			},
 		},
+	},
+
+	-- lsp stuff
+	{
+		"williamboman/mason.nvim",
+		opts = {
+            ensure_installed = { "lua-language-server",  "stylua", "rust-analyzer", "css-lsp", "html-lsp", "svelte-language-server", "tailwindcss-language-server", "typescript-language-server", "python-lsp-server" },
+        },
 	},
 
 	-- In order to modify the `lspconfig` configuration:
