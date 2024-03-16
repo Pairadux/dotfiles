@@ -19,6 +19,12 @@ require("noice").setup({
 	signature = {
 		enabled = false,
 	},
+    routes = {
+        {
+            view = "notify",
+            filter = { event = "msg_showmode" },
+        },
+    },
 	presets = {
 		-- you can enable a preset by setting it to true, or a table that will override the preset config
 		-- you can also add custom presets that you can enable/disable with enabled=true
