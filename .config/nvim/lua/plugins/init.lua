@@ -68,41 +68,11 @@ return {
 			"rcarriga/nvim-notify",
 		},
 		config = function()
-			require("noice").setup({
-				lsp = {
-					signature = {
-						enabled = false,
-					},
-					hover = {
-						enabled = false,
-					},
-					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-					override = {
-						["vim.lsp.util.convert_input_to_markdown_lines"] = false,
-						["vim.lsp.util.stylize_markdown"] = false,
-						["cmp.entry.get_documentation"] = false, -- requires hrsh7th/nvim-cmp
-					},
-				},
-				progress = {
-					enabled = false,
-				},
-				signature = {
-					enabled = false,
-				},
-				presets = {
-					-- you can enable a preset by setting it to true, or a table that will override the preset config
-					-- you can also add custom presets that you can enable/disable with enabled=true
-					bottom_search = true, -- use a classic bottom cmdline for search
-					command_palette = true, -- position the cmdline and popupmenu together
-					long_message_to_split = true, -- long messages will be sent to a split
-					inc_rename = false, -- enables an input dialog for inc-rename.nvim
-					lsp_doc_border = false, -- add a border to hover docs and signature help
-				},
-			})
+            require("configs.noice")
 		end,
-        init = function()
-            vim.g.lsp_handlers_enabled = false
-        end,
+		init = function()
+			vim.g.lsp_handlers_enabled = false
+		end,
 	},
 
 	{
@@ -130,54 +100,17 @@ return {
 		"nvimdev/dashboard-nvim",
 		event = "VimEnter",
 		config = function()
-			require("dashboard").setup({
-				theme = "hyper",
-				config = {
-					header = {
-						"",
-						"⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿",
-						"⣿⣏⣛⡛⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠿⢛⣛⣿⣿",
-						"⣿⣿⡏⠛⠛⠻⠶⠶⣶⣤⣤⣤⣭⣭⣭⣭⣭⣭⣤⣤⣤⣶⠶⠶⠟⠛⠛⣹⣿⣿",
-						"⣿⣿⣿⣤⣤⣤⣄⣀⣀⣀⣀⣀⣈⣉⣉⣉⣉⣁⣀⣀⣀⣀⣀⣀⣤⣤⣴⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⠉⠉⠉⣿⣿⣿⣿⣿⣿⠃⠘⣿⣿⣿⣿⣿⣿⠉⠉⠉⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⠛⣿⠀⠀⠀⣿⠛⠛⠛⠻⠿⠤⠤⠿⠟⠛⠛⠛⣿⠀⠀⠀⣿⠛⣿⣿⣿",
-						"⣿⣿⣿⣶⣿⠀⠀⠀⣿⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣶⣿⠀⠀⠀⣿⣶⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⣿⣿⣿⣿⣿",
-						"⣿⣿⣿⣿⣿⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⣿⣿⣿⣿⣿",
-						"⣿⣧⠀⣿⣿⠀⠀⠀⣿⣿⡄⣼⣿⣿⣿⣿⣿⣿⣧⢠⣿⣿⠀⠀⠀⣿⣿⠀⣼⣿",
-						"⣿⡟⠀⠛⠛⠀⠀⠀⠛⠛⠃⢻⣿⣿⣿⣿⣿⣿⡟⠘⠛⠛⠀⠀⠀⠛⠛⠀⢻⣿",
-						"⣿⣿⠀⣿⣿⠀⠀⠀⣿⣿⡇⣾⣿⣿⣿⣿⣿⣿⣷⢸⣿⣿⠀⠀⠀⣿⣿⠀⣿⣿",
-						"⣿⣿⠀⣿⣿⠀⠀⠀⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⠀⠀⠀⣿⣿⠀⣿⣿",
-						"⣿⣧⠀⣭⣭⠀⠀⠀⣭⣭⡄⣸⣿⣿⣿⣿⣿⣿⣇⢠⣭⣭⠀⠀⠀⣭⣭⠀⣼⣿",
-						"⣿⣿⣤⣿⣿⣶⣶⣶⣿⣿⣧⣿⣿⣿⣿⣿⣿⣿⣿⣼⣿⣿⣶⣶⣶⣿⣿⣤⣿⣿",
-						"",
-					},
-					shortcut = {
-						{ desc = "󰊳 Update", group = "@property", action = "Lazy update", key = "u" },
-						{
-							icon = " ",
-							icon_hl = "@variable",
-							desc = "Files",
-							group = "Label",
-							action = "Telescope find_files",
-							key = "f",
-						},
-						{
-							icon = "󱊈 ",
-							icon_hl = "@property",
-							desc = "Mason",
-							action = "Mason",
-							key = "m",
-						},
-					},
-                    project = { enable = false },
-					mru = {
-						cwd_only = true,
-					},
-					footer = {},
-				},
-			})
+            require("configs.dashboard")
 		end,
 		dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	},
+
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("configs.harpoon")
+        end
 	},
 }
