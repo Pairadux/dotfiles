@@ -1,7 +1,6 @@
 require "nvchad.options"
 
 -- add yours here!
-vim.wo.relativenumber = true
 
 vim.o.tabstop = 4
 vim.o.expandtab = true
