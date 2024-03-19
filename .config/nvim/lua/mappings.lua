@@ -24,3 +24,8 @@ map("n", "<C->", function() harpoon:list():select(4) end, { desc = "Quick Select
 -- Toggle previous & next buffers stored within Harpoon list
 map("n", "<C-S-P>", function() harpoon:list():prev() end, { desc = "Toggle Previous Buffer in Harpoon List"})
 map("n", "<C-S-N>", function() harpoon:list():next() end, { desc = "Toggle Next Buffer in Harpoon List"})
+
+-- map("n", "<C-h>", "<cmd> TmuxNavigateLeft<CR>", { "Window left"} )
+-- map("n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { "Window right"} )
+-- map("n", "<C-j>", "<cmd> TmuxNavigateDown<CR>", { "Window Down"} )
+-- map("n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { "Window Up"} )

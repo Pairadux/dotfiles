@@ -146,4 +146,9 @@ return {
 			require("configs.harpoon")
 		end,
 	},
+
+    {
+        "christoomey/vim-tmux-navigator",
+        lazy = false,
+    }
 }
