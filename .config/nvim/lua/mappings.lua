@@ -42,3 +42,6 @@ map("n", "<C->", function() harpoon:list():select(4) end, { desc = "Quick Select
 -- Toggle previous & next buffers stored within Harpoon list
 map("n", "<C-S-P>", function() harpoon:list():prev() end, { desc = "Toggle Previous Buffer in Harpoon List"})
 map("n", "<C-S-N>", function() harpoon:list():next() end, { desc = "Toggle Next Buffer in Harpoon List"})
+
+-- TODO-COMMENTS
+map("n", "<leader>tt", ":TodoTelescope", { desc = "Telescope Todo Comments" })
