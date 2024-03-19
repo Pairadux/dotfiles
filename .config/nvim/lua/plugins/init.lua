@@ -54,8 +54,18 @@ return {
 	{
 		"williamboman/mason.nvim",
 		opts = {
-            ensure_installed = { "lua-language-server",  "stylua", "rust-analyzer", "css-lsp", "html-lsp", "svelte-language-server", "tailwindcss-language-server", "typescript-language-server", "python-lsp-server" },
-        },
+			ensure_installed = {
+				"lua-language-server",
+				"stylua",
+				"rust-analyzer",
+				"css-lsp",
+				"html-lsp",
+				"svelte-language-server",
+				"tailwindcss-language-server",
+				"typescript-language-server",
+				"python-lsp-server",
+			},
+		},
 	},
 
 	-- In order to modify the `lspconfig` configuration:
@@ -147,8 +157,8 @@ return {
 		end,
 	},
 
-    -- {
-    --     "christoomey/vim-tmux-navigator",
-    --     lazy = false,
-    -- }
+	-- {
+	--     "christoomey/vim-tmux-navigator",
+	--     lazy = false,
+	-- }
 }
