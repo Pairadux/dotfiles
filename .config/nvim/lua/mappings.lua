@@ -44,4 +44,4 @@ map("n", "<C-S-P>", function() harpoon:list():prev() end, { desc = "Toggle Previ
 map("n", "<C-S-N>", function() harpoon:list():next() end, { desc = "Toggle Next Buffer in Harpoon List"})
 
 -- TODO-COMMENTS
-map("n", "<leader>tt", ":Telescope todo-comments", { desc = "Telescope Todo Comments" })
+map("n", "<leader>tt", "<cmd>Telescope todo-comments<CR>", { desc = "Telescope Todo Comments" })
