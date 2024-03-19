@@ -160,7 +160,7 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-        event = "BufEnter",
+		event = "BufEnter",
 		opts = {
 			-- your configuration comes here
 			-- or leave it empty to use the default settings
@@ -169,7 +169,7 @@ return {
 	},
 
 	{
-	    "christoomey/vim-tmux-navigator",
-	    lazy = false,
-	}
+		"christoomey/vim-tmux-navigator",
+		lazy = false,
+	},
 }
