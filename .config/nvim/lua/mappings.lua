@@ -45,3 +45,9 @@ map("n", "<C-S-N>", function() harpoon:list():next() end, { desc = "Toggle Next 
 
 -- TODO-COMMENTS
 map("n", "<leader>tt", "<cmd>Telescope todo-comments<CR>", { desc = "Telescope Todo Comments" })
+
+-- TMUX NAVIGATOR
+map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux Window Left" })
+map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux Window Right" })
+map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
+map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
