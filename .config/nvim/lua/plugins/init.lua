@@ -173,20 +173,37 @@ return {
 		version = "*",
 		lazy = true,
 		event = {
-		  -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-		  -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-		  "BufReadPre " .. vim.fn.expand "~" .. "/Documents/Brain 2.0/**.md",
-		  "BufNewFile " .. vim.fn.expand "~" .. "/Documents/Brain 2.0/**.md",
+			-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+			-- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+			"BufReadPre "
+				.. vim.fn.expand("~")
+				.. "/Documents/Brain 2.0/**.md",
+			"BufNewFile " .. vim.fn.expand("~") .. "/Documents/Brain 2.0/**.md",
 		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-            "hrsh7th/nvim-cmp",
-            "nvim-telescope/telescope.nvim",
-            "nvim-treesitter",
+			"hrsh7th/nvim-cmp",
+			"nvim-telescope/telescope.nvim",
+			"nvim-treesitter",
 		},
-        opts = function ()
-            require("configs.obsidian")
-        end
+		opts = {
+			workspaces = {
+				{
+					name = "Brain 2.0",
+					path = "~/Documents/Brain 2.0",
+				},
+			},
+			daily_notes = {
+				folder = "000 - Zettelkasten/050 - Daily Notes",
+				date_format = "%Y-%m-%d", -- CHANGE
+				template = nil, -- CHANGE
+			},
+			mappings = {},
+			preferred_link_style = "wiki",
+			templates = {
+				subdir = "900 - Templates",
+			},
+		},
 	},
 
 	{
