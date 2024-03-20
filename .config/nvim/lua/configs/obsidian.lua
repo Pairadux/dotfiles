@@ -1,5 +1,10 @@
 local options = {
-    dir = "~/Documents/Brain 2.0",
+    workspaces = {
+        {
+            name = "Brain 2.0",
+            path = "~/Documents/Brain 2.0/",
+        },
+    },
     daily_notes = {
         folder = "000 - Zettelkasten/050 - Daily Notes",
         date_format = "%Y-%m-%d", -- CHANGE
