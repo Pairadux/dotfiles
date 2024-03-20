@@ -51,3 +51,6 @@ map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux Window Left" })
 map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux Window Right" })
 map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
 map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
+
+-- OBSIDIAN
+map("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Open Obsidian Quickswitcher" })
