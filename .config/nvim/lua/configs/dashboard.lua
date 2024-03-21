@@ -43,7 +43,7 @@ require("dashboard").setup({
 		},
 		project = { enable = false },
 		mru = {
-			cwd_only = false,
+			cwd_only = true,
 		},
 		footer = {},
 	},
