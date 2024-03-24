@@ -35,3 +35,6 @@ source $ZSH/oh-my-zsh.sh
 alias doocommit="dooitcommit.sh"
 alias doopull="dooitpull.sh"
 alias c="clear"
+alias nv="nvim"
+
+eval "$(zoxide init zsh)"
