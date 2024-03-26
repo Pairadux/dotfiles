@@ -115,7 +115,7 @@ return {
             defaults = {
                 initial_mode = "normal",
             },
-            extensions_list = { "themes", "terms", "project" }
+            extensions_list = { "project" }
         }
 	},
 
