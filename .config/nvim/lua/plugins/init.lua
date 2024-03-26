@@ -105,18 +105,23 @@ return {
 		end,
 	},
 
-    {
-        "nvim-telescope/telescope-project.nvim",
-    },
+	{
+		"nvim-telescope/telescope-file-browser.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+	},
+
+	{
+		"nvim-telescope/telescope-project.nvim",
+	},
 
 	{
 		"nvim-telescope/telescope.nvim",
 		opts = {
-            defaults = {
-                initial_mode = "normal",
-            },
-            extensions_list = { "project" }
-        }
+			defaults = {
+				initial_mode = "normal",
+			},
+			extensions_list = { "project" },
+		},
 	},
 
 	{
@@ -224,7 +229,7 @@ return {
 
 	{
 		"christoomey/vim-tmux-navigator",
-        event = "VeryLazy",
+		event = "VeryLazy",
 	},
 
 	{
