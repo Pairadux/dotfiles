@@ -90,7 +90,7 @@ return {
 
 	{
 		"MunifTanjim/nui.nvim",
-		lazy = false,
+		event = "VeryLazy",
 	},
 
 	{
@@ -103,6 +103,17 @@ return {
 				stages = "fade",
 			})
 		end,
+	},
+
+    {
+        "nvim-telescope/telescope-project.nvim",
+    },
+
+	{
+		"nvim-telescope/telescope.nvim",
+		opts = {
+            extensions_list = { "themes", "terms", "project" }
+        }
 	},
 
 	{
@@ -210,7 +221,7 @@ return {
 
 	{
 		"christoomey/vim-tmux-navigator",
-		lazy = false,
+        event = "VeryLazy",
 	},
 
 	{
