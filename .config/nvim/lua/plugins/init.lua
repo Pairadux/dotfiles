@@ -98,7 +98,9 @@ return {
 		config = function()
 			require("notify").setup({
 				background_colour = "#000000",
+				fps = 60,
 				render = "minimal",
+				stages = "fade",
 			})
 		end,
 	},
@@ -219,5 +221,4 @@ return {
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
-
 }
