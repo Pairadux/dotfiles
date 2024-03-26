@@ -31,7 +31,7 @@ require("dashboard").setup({
 				icon = " ",
 				icon_hl = "@variable",
 				desc = "Projects",
-				action = "",
+				action = "Telescope project",
 				key = "p",
 			},
 			{

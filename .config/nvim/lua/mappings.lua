@@ -54,3 +54,6 @@ map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
 
 -- OBSIDIAN
 map("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Open Obsidian Quickswitcher" })
+
+-- Telescope
+map("n", "<leader>tp", "<cmd>Telescope project<CR>", { desc = "Telescope Projects" })
