@@ -1,13 +1,14 @@
 local M = {}
 
 M.ui = {
-	theme = "tokyonight",
 
 	transparency = "true",
 
-	statusline = {
-		theme = "vscode_colored",
-	},
+	statusline = { theme = "vscode_colored" },
+
+	theme = "tokyonight",
+
+    telescope = { style = "bordered" },
 
 	term = {
 		sizes = { sp = 0.3, vsp = 0.3 },

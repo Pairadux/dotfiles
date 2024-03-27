@@ -54,6 +54,9 @@ return {
 	{
 		"williamboman/mason.nvim",
 		opts = {
+            ui = {
+                border = "single",
+            },
 			ensure_installed = {
 				"lua-language-server",
 				"stylua",
@@ -106,22 +109,35 @@ return {
 	},
 
 	{
+		"nvim-telescope/telescope.nvim",
+		opts = {
+			defaults = {
+				initial_mode = "normal",
+                file_ignore_patterns = { ".git/" },
+			},
+            extensions = {
+                project = {
+                    base_dirs = {
+                        '~/Documents/repos/'
+                    },
+                    hidden_files = true,
+                    on_project_selected = function (prompt_bufnr)
+                        local project_actions = require("telescope._extensions.project.actions")
+                        project_actions.change_working_directory(prompt_bufnr, false)
+
+                    end
+                }
+            }
+		},
+	},
+
+	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
 	},
 
 	{
 		"nvim-telescope/telescope-project.nvim",
-	},
-
-	{
-		"nvim-telescope/telescope.nvim",
-		opts = {
-			defaults = {
-				initial_mode = "normal",
-			},
-			extensions_list = { "project" },
-		},
 	},
 
 	{
