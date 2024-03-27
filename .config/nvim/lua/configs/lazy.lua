@@ -4,7 +4,7 @@ return {
 
 	ui = {
 		border = "single",
-        backdrop = 60,
+        backdrop = 100,
 		icons = {
 			ft = "",
 			lazy = "󰂠 ",
