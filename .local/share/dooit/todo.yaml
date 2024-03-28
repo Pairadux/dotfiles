@@ -23,16 +23,27 @@
           effort: ''
           recurrence: ''
   - - uuid: todo_2b995ae5-53cf-4e5e-b1a8-6391d76b4b52
-      status: PENDING
+      status: COMPLETED
       urgency: 1
       description: Figure out how to add bg color to lazy, mason, etc...
       due: none
       effort: ''
       recurrence: ''
   - - uuid: todo_7acb4760-c3aa-4c1e-8ffa-d4df9f187890
-      status: PENDING
+      status: COMPLETED
       urgency: 1
       description: Figure out how to change bg color of noice mini notify
+      due: none
+      effort: ''
+      recurrence: ''
+  workspaces: []
+- uuid: workspace_14f99248-633b-468e-86b8-0368ade7dd0a
+  description: tokyo-night-tmux
+  todos:
+  - - uuid: todo_6cbb99fa-1c6c-4e53-a911-88b25153ad0b
+      status: PENDING
+      urgency: 1
+      description: add option for blinking previous window marker
       due: none
       effort: ''
       recurrence: ''
