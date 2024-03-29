@@ -2,7 +2,7 @@ local M = {}
 
 M.ui = {
 
-	transparency = "true",
+	-- transparency = "true",
 
 	statusline = { theme = "vscode_colored" },
 
