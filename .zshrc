@@ -36,5 +36,6 @@ alias doocommit="dooitcommit.sh"
 alias doopull="dooitpull.sh"
 alias c="clear"
 alias nv="nvim"
+alias bat="batcat"
 
 eval "$(zoxide init zsh)"
