@@ -54,9 +54,9 @@ return {
 	{
 		"williamboman/mason.nvim",
 		opts = {
-            ui = {
-                border = "single",
-            },
+			ui = {
+				border = "single",
+			},
 			ensure_installed = {
 				"lua-language-server",
 				"stylua",
@@ -113,21 +113,20 @@ return {
 		opts = {
 			defaults = {
 				initial_mode = "normal",
-                file_ignore_patterns = { ".git/" },
+				file_ignore_patterns = { ".git/" },
 			},
-            extensions = {
-                project = {
-                    base_dirs = {
-                        '~/Documents/repos/'
-                    },
-                    hidden_files = true,
-                    on_project_selected = function (prompt_bufnr)
-                        local project_actions = require("telescope._extensions.project.actions")
-                        project_actions.change_working_directory(prompt_bufnr, false)
-
-                    end
-                }
-            }
+			extensions = {
+				project = {
+					base_dirs = {
+						"~/Documents/repos/",
+					},
+					hidden_files = true,
+					on_project_selected = function(prompt_bufnr)
+						local project_actions = require("telescope._extensions.project.actions")
+						project_actions.change_working_directory(prompt_bufnr, false)
+					end,
+				},
+			},
 		},
 	},
 
@@ -256,4 +255,11 @@ return {
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
+
+	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
+
 }
