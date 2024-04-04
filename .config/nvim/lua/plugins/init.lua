@@ -46,7 +46,6 @@ return {
 				"bash",
 				"python",
 				"json",
-				"java",
 			},
 		},
 	},
