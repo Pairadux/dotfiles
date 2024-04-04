@@ -46,7 +46,7 @@ return {
 				"bash",
 				"python",
 				"json",
-                "java",
+				"java",
 			},
 		},
 	},
@@ -68,9 +68,9 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"python-lsp-server",
-                "jdtls",
-                "bash-language-server",
-                "marksman",
+				"jdtls",
+				"bash-language-server",
+				"marksman",
 			},
 		},
 	},
@@ -119,6 +119,11 @@ return {
 				initial_mode = "normal",
 				file_ignore_patterns = { ".git/" },
 			},
+			pickers = {
+				find_files = {
+					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+				},
+			},
 			extensions = {
 				project = {
 					base_dirs = {
@@ -128,6 +133,10 @@ return {
 					on_project_selected = function(prompt_bufnr)
 						local project_actions = require("telescope._extensions.project.actions")
 						project_actions.change_working_directory(prompt_bufnr, false)
+
+						vim.defer_fn(function()
+							require("telescope.builtin").find_files()
+						end, 50)
 					end,
 				},
 			},
@@ -263,8 +272,7 @@ return {
 	{
 		"m4xshen/hardtime.nvim",
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-        event = "VeryLazy",
+		event = "VeryLazy",
 		opts = {},
 	},
-
 }
