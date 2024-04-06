@@ -2,6 +2,10 @@ local M = {}
 
 M.ui = {
 
+    hl_add = {
+        DashboardHeader = { fg = "#eb6f92", bg = "NONE" },
+    },
+
 	-- transparency = "true",
 
 	statusline = { theme = "vscode_colored" },

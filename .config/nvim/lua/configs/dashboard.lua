@@ -30,7 +30,7 @@ require("dashboard").setup({
 				icon = " ",
 				icon_hl = "@variable",
 				desc = "Projects",
-				action = "",
+				action = "Telescope project",
 				key = "p",
 			},
 			{
@@ -45,6 +45,6 @@ require("dashboard").setup({
 		mru = {
 			cwd_only = true,
 		},
-		footer = {},
+		footer = {"", "", "🧪 Testing can only prove the presence of bugs, not their absence 🧪"},
 	},
 })
