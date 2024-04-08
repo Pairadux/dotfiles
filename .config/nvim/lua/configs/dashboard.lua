@@ -1,6 +1,6 @@
 require("dashboard").setup({
 	theme = "hyper",
-    change_to_vcs_root = true,
+    change_to_vcs_root = false,
 	config = {
 		header = {
 			"",

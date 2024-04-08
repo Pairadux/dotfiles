@@ -69,8 +69,10 @@ map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
 map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
 
 -- OBSIDIAN
-map("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Open Obsidian Quickswitcher" })
-map("n", "<leader>it", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Open Obsidian Quickswitcher" })
+map("n", "<leader>ooq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Open Obsidian Quickswitcher" })
+map("n", "<leader>ood", "<cmd>ObsidianToday<CR>", { desc = "Open Obsidian Daily Note" })
+map("n", "<leader>oit", "<cmd>ObsidianTemplate<CR>", { desc = "Insert Obsidian Template" })
+map("n", "<leader>or", "<cmd>ObsidianRename<CR>", { desc = "Rename Obsidian Note" })
 
 -- Telescope
 map("n", "<leader>tp", "<cmd>Telescope project<CR>", { desc = "Telescope Projects" })
