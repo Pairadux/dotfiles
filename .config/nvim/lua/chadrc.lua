@@ -6,7 +6,7 @@ M.ui = {
         DashboardHeader = { fg = "#eb6f92", bg = "NONE" },
     },
 
-	-- transparency = "true",
+	transparency = "true",
 
 	statusline = { theme = "vscode_colored" },
 
