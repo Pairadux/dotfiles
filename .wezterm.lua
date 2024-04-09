@@ -7,6 +7,7 @@ local config = wezterm.config_builder()
 -- This is where you actually apply your config choices
 
 -- For example, changing the color scheme:
+config.window_decorations = "RESIZE"
 config.color_scheme = 'Tokyo Night'
 config.hide_tab_bar_if_only_one_tab = true
 config.font_size = 12.0
@@ -16,6 +17,7 @@ config.window_padding = {
     top = 0,
     bottom = 0,
 }
+config.window_background_opacity = .75
 
 -- and finally, return the configuration to wezterm
 return config
