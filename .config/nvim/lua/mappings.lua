@@ -80,11 +80,7 @@ map("n", "<leader>or", "<cmd>ObsidianRename<CR>", { desc = "Rename Obsidian Note
 -- Telescope
 map("n", "<leader>tp", "<cmd>Telescope project<CR>", { desc = "Telescope Projects" })
 
--- Diagnostics
-map("n", "<leader>lf", function()
-	vim.diagnostic.open_float(nil, { border = "single" })
-end, { desc = "Lsp Floating Diagnostics" })
-
+-- Toggleable LazyGit Term
 map({ "n", "t" }, "<A-l>", function()
 	require("nvchad.term").toggle({ pos = "float", id = "lazygit", cmd ='lazygit' })
 end, { desc = "Terminal Toggle Lazygit" })
