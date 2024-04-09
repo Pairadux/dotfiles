@@ -16,6 +16,9 @@ end, { desc = "File Format with conform" })
 -- Exit insert mode
 map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 
+-- Insert Line Break Sequence
+map("n", "<leader>ib", "80i#<ESC>", { desc = "Insert 80 #'s (Line Break)" })
+
 -- TERMS
 -- Creating new toggleable terms
 map({ "n", "t" }, "<A-8>", function()
