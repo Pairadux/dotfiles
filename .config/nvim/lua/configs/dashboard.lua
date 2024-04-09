@@ -1,5 +1,6 @@
 require("dashboard").setup({
 	theme = "hyper",
+    shortcut_type = "number",
     change_to_vcs_root = false,
 	config = {
 		header = {
