@@ -16,6 +16,8 @@ DISABLE_MAGIC_FUNCTIONS="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+export GOPATH=$HOME/go
+
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
