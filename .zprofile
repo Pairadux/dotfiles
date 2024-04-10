@@ -11,4 +11,6 @@ export PATH=$PATH:$GOBIN
 #         for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 # }
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ "$(uname)" == "Darwin" ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
