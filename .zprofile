@@ -2,6 +2,8 @@
 # export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init --path)"
 
+export PATH=$PATH:$HOME/.local/bin
+
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
