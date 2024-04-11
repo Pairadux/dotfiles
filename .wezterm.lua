@@ -1,5 +1,5 @@
 -- Pull in the wezterm API
-local wezterm = require 'wezterm'
+local wezterm = require("wezterm")
 
 -- This will hold the configuration.
 local config = wezterm.config_builder()
@@ -8,16 +8,22 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.window_decorations = "RESIZE"
-config.color_scheme = 'Tokyo Night'
+config.color_scheme = "Tokyo Night"
 config.hide_tab_bar_if_only_one_tab = true
-config.font_size = 12.0
+
+if wezterm.target_triple == "aarch64-apple-darwin" then
+	config.font_size = 16.0
+else
+	config.window_background_opacity = 0.75
+	config.font_size = 12.0
+end
+
 config.window_padding = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0,
+	left = 0,
+	right = 0,
+	top = 0,
+	bottom = 0,
 }
-config.window_background_opacity = .75
 
 -- and finally, return the configuration to wezterm
 return config
