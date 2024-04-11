@@ -5,7 +5,15 @@ local on_init = configs.on_init
 local capabilities = configs.capabilities
 
 local lspconfig = require("lspconfig")
-local servers = { "html", "cssls", "tsserver", "clangd", "svelte", "tailwindcss", "marksman", "bashls" }
+local servers = {
+	"html",
+	"cssls",
+	"tsserver",
+	"clangd",
+	"svelte",
+	"marksman",
+	"bashls",
+}
 
 for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup({
@@ -16,13 +24,9 @@ for _, lsp in ipairs(servers) do
 end
 
 -- Without the loop, you would have to manually set up each LSP
---
--- lspconfig.html.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
---
--- lspconfig.cssls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
+
+lspconfig.tailwindcss.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	filetypes = { "html", "css", "svelte", "scss", "javascript", "typescript", "vue" },
+})
