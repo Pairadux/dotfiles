@@ -39,3 +39,8 @@ alias nv="nvim"
 alias bat="batcat"
 alias tc="taskcrab"
 alias lg="lazygit" 
+
+# run tmux, but only if we're not inside tmux (prevent endless loop)
+if [ -z $TMUX ]; then
+  TMUX= tmux -2 new
+fi
