@@ -36,11 +36,13 @@ alias doocommit="dooitcommit.sh"
 alias doopull="dooitpull.sh"
 alias c="clear"
 alias nv="nvim"
-alias bat="batcat"
 alias tc="taskcrab"
 alias lg="lazygit" 
+if [[ "$(uname)" == "Linux" ]]; then
+    alias bat="batcat"
+fi
 
 # run tmux, but only if we're not inside tmux (prevent endless loop)
 if [[ -z $TMUX && "$(uname)" == "Darwin" ]]; then
-    tmux
+    tmux a
 fi
