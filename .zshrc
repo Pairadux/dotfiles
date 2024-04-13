@@ -41,6 +41,6 @@ alias tc="taskcrab"
 alias lg="lazygit" 
 
 # run tmux, but only if we're not inside tmux (prevent endless loop)
-if [ -z $TMUX ]; then
-  TMUX= tmux -2 new
+if [[ -z $TMUX && "$(uname)" == "Darwin" ]]; then
+    tmux
 fi
