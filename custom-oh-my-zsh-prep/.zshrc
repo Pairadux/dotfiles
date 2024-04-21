@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-fpath=($DOTFILES/zsh/plugins $fpath)
+fpath=($HOME/zsh/plugins $fpath)
 
 # +------------+
 # | NAVIGATION |
@@ -16,7 +16,7 @@ setopt CORRECT              # Spelling correction
 setopt CDABLE_VARS          # Change directory to a path stored in a variable.
 setopt EXTENDED_GLOB        # Use extended globbing syntax.
 
-# source $DOTFILES/zsh/plugins/bd.zsh
+# source $HOME/zsh/plugins/bd.zsh
 
 # +---------+
 # | HISTORY |
@@ -43,18 +43,18 @@ setopt HIST_VERIFY               # Do not execute immediately upon history expan
 # | ALIASES |
 # +---------+
 
-source $DOTFILES/aliases/aliases
+source $HOME/aliases/aliases
 
 # +---------+
 # | SCRIPTS |
 # +---------+
 
-# source $DOTFILES/zsh/scripts.zsh
-# if [ -e "$DOTFILES_CLOUD/scripts.zsh" ]; then
-#     source $DOTFILES_CLOUD/scripts.zsh
+# source $HOME/zsh/scripts.zsh
+# if [ -e "$HOME_CLOUD/scripts.zsh" ]; then
+#     source $HOME_CLOUD/scripts.zsh
 # fi
 
-# source "$DOTFILES/zsh/plugins/fg_bg.sh"
+# source "$HOME/zsh/plugins/fg_bg.sh"
 # zle -N fg-bg
 # bindkey '^Z' fg-bg
 
@@ -71,14 +71,14 @@ source $DOTFILES/aliases/aliases
 # +--------------------+
 
 # Send notification when command line done
-# source $DOTFILES/zsh/plugins/notifyosd.zsh
+# source $HOME/zsh/plugins/notifyosd.zsh
 
 # +--------+
 # | PROMPT |
 # +--------+
 
-fpath=($DOTFILES/zsh/prompt $fpath)
-source $DOTFILES/zsh/prompt/prompt_purification_setup
+fpath=($HOME/zsh/prompt $fpath)
+autoload -Uz eastwood_setup; eastwood_setup
 
 # +-----------+
 # | PROFILING |
@@ -95,7 +95,7 @@ bindkey -v
 export KEYTIMEOUT=1
 
 # Change cursor
-source "$DOTFILES/zsh/plugins/cursor_mode"
+source "$HOME/zsh/plugins/cursor_mode"
 
 # Add Vi text-objects for brackets and quotes
 # autoload -Uz select-bracketed select-quoted
@@ -130,22 +130,22 @@ source "$DOTFILES/zsh/plugins/cursor_mode"
 # | COMPLETION |
 # +------------+
 
-source $DOTFILES/zsh/completion.zsh
-autoload -Uz $DOTFILES/zsh/plugins/kubectl-completion/zsh-kubectl-completion
+# source $HOME/zsh/completion.zsh
+# autoload -Uz $HOME/zsh/plugins/kubectl-completion/zsh-kubectl-completion
 
 # +-----+
 # | Git |
 # +-----+
 
 # Add command gitit to open Github repo in default browser from a local repo
-# source $DOTFILES/zsh/plugins/gitit.zsh
+# source $HOME/zsh/plugins/gitit.zsh
 
 # +-----+
 # | FZF |
 # +-----+
 
 # if [ $(command -v "fzf") ]; then
-#     source $DOTFILES/zsh/fzf.zsh
+#     source $HOME/zsh/fzf.zsh
 # fi
 
 # +---------+
@@ -178,7 +178,7 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd '^v' edit-command-line
 
-source "$DOTFILES/zsh/bindings.zsh"
+# source "$HOME/zsh/bindings.zsh"
 
 # +------+
 # | Node |
@@ -190,4 +190,4 @@ source "$DOTFILES/zsh/bindings.zsh"
 # | SYNTAX HIGHLIGHTING |
 # +---------------------+
 
-# source $DOTFILES/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source $HOME/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
