@@ -10,6 +10,7 @@ local config = wezterm.config_builder()
 config.window_decorations = "RESIZE"
 config.color_scheme = "Tokyo Night"
 config.hide_tab_bar_if_only_one_tab = true
+config.enable_wayland = false
 
 if wezterm.target_triple == "aarch64-apple-darwin" then
 	config.font_size = 16.0
