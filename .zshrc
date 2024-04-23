@@ -38,9 +38,6 @@ alias c="clear"
 alias nv="nvim"
 alias tc="taskcrab"
 alias lg="lazygit" 
-if [[ "$(uname)" == "Linux" ]]; then
-    alias bat="batcat"
-fi
 
 # run tmux, but only if we're not inside tmux (prevent endless loop)
 if [[ -z $TMUX && "$(uname)" == "Darwin" ]]; then
