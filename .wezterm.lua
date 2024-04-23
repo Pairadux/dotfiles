@@ -15,7 +15,7 @@ config.enable_wayland = false
 if wezterm.target_triple == "aarch64-apple-darwin" then
 	config.font_size = 16.0
 else
-	config.window_background_opacity = 0.75
+	config.window_background_opacity = 0.95
 	config.font_size = 12.0
 end
 
