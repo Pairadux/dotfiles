@@ -67,7 +67,7 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"python-lsp-server",
-				"jdtls",
+				-- "jdtls",
 				"bash-language-server",
 				"marksman",
 			},
