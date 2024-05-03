@@ -40,11 +40,8 @@ alias nv="nvim"
 alias tc="taskcrab"
 alias lg="lazygit" 
 
-# run tmux, but only if we're not inside tmux (prevent endless loop)
-# if [[ -z $TMUX && "$(uname)" == "Darwin" ]]; then
-#     tmux a
-# fi
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+eval "$(zellij setup --generate-auto-start zsh)"
