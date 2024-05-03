@@ -31,3 +31,19 @@ lspconfig.tailwindcss.setup({
 	capabilities = capabilities,
 	filetypes = { "html", "css", "svelte", "scss", "javascript", "typescript", "vue" },
 })
+
+-- lspconfig.jdtls.setup({
+--     settings = {
+--         java = {
+--             configuration = {
+--                 runtimes = {
+--                     {
+--                         name = "OpenJDK-22",
+--                         path = "/usr/bin/java",
+--                         default = true,
+--                     }
+--                 }
+--             }
+--         }
+--     }
+-- })

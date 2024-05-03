@@ -67,12 +67,34 @@ return {
 				"tailwindcss-language-server",
 				"typescript-language-server",
 				"python-lsp-server",
-				"jdtls",
+				-- "jdtls",
 				"bash-language-server",
 				"marksman",
 			},
 		},
 	},
+
+	-- {
+	-- 	"nvim-java/nvim-java",
+	-- 	dependencies = {
+	-- 		"nvim-java/lua-async-await",
+	-- 		"nvim-java/nvim-java-core",
+	-- 		"nvim-java/nvim-java-test",
+	-- 		"nvim-java/nvim-java-dap",
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		"neovim/nvim-lspconfig",
+	-- 		"mfussenegger/nvim-dap",
+	-- 		{
+	-- 			"williamboman/mason.nvim",
+	-- 			opts = {
+	-- 				registries = {
+	-- 					"github:nvim-java/mason-registry",
+	-- 					"github:mason-org/mason-registry",
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 
 	-- In order to modify the `lspconfig` configuration:
 	{
@@ -220,8 +242,8 @@ return {
 		"epwalsh/obsidian.nvim",
 		version = "*",
 		lazy = true,
-        cmd = { "ObsidianNew", "ObsidianSearch", "ObsidianToday", "ObsidianQuickSwitch" },
-        ft = "markdown",
+		cmd = { "ObsidianNew", "ObsidianSearch", "ObsidianToday", "ObsidianQuickSwitch" },
+		ft = "markdown",
 		-- event = {
 		-- 	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
 		-- 	-- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
