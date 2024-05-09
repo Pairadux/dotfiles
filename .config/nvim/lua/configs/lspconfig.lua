@@ -1,51 +1,24 @@
 local configs = require("nvchad.configs.lspconfig")
 
-local on_attach = configs.on_attach
-local on_init = configs.on_init
-local capabilities = configs.capabilities
-
-local lspconfig = require("lspconfig")
 local servers = {
-	"html",
-	"cssls",
-	"tsserver",
-	"clangd",
-	"svelte",
-	"marksman",
-	"bashls",
-    "rust_analyzer",
-    "clangd",
-    "pylsp",
+    html = {},
+    cssls = {},
+    tsserver = {},
+    clangd = {},
+    svelte = {},
+    marksman = {},
+    bashls = {},
+    rust_analyzer = {},
+    pyright = {},
+    tailwindcss = {
+        filetypes = { "html", "css", "svelte", "scss", "javascript", "typescript", "vue" }
+    }
 }
 
-for _, lsp in ipairs(servers) do
-	lspconfig[lsp].setup({
-		on_init = on_init,
-		on_attach = on_attach,
-		capabilities = capabilities,
-	})
+for name, opts in pairs(servers) do
+  opts.on_init = configs.on_init
+  opts.on_attach = configs.on_attach
+  opts.capabilities = configs.capabilities
+
+  require("lspconfig")[name].setup(opts)
 end
-
--- Without the loop, you would have to manually set up each LSP
-
-lspconfig.tailwindcss.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	filetypes = { "html", "css", "svelte", "scss", "javascript", "typescript", "vue" },
-})
-
--- lspconfig.jdtls.setup({
---     settings = {
---         java = {
---             configuration = {
---                 runtimes = {
---                     {
---                         name = "OpenJDK-22",
---                         path = "/usr/bin/java",
---                         default = true,
---                     }
---                 }
---             }
---         }
---     }
--- })
