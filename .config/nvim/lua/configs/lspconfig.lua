@@ -14,7 +14,8 @@ local servers = {
 	"marksman",
 	"bashls",
     "rust_analyzer",
-    "clanged",
+    "clangd",
+    "pylsp",
 }
 
 for _, lsp in ipairs(servers) do
