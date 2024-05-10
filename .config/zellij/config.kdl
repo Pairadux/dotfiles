@@ -2,7 +2,7 @@
 keybinds {
     normal clear-defaults=true {
         bind "F12" { SwitchToMode "locked"; }
-        bind "Ctrl b" { SwitchToMode "tmux"; }
+        bind "Ctrl @" { SwitchToMode "tmux"; }
     }
     locked {
         bind "F12" { SwitchToMode "Normal"; }
