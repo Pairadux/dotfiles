@@ -9,7 +9,7 @@ local options = {
 		html = { "prettier" },
 		svelte = { "prettier" },
 
-        python = { "black" },
+        python = { "ruff" },
 
 		sh = { "shfmt" },
 	},

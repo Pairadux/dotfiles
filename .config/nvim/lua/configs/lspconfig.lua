@@ -9,6 +9,7 @@ local servers = {
     marksman = {},
     bashls = {},
     rust_analyzer = {},
+    ruff_lsp = {},
     pyright = {},
     tailwindcss = {
         filetypes = { "html", "css", "svelte", "scss", "javascript", "typescript", "vue" }
