@@ -87,3 +87,7 @@ map("n", "<leader>tp", "<cmd>Telescope project<CR>", { desc = "Telescope Project
 map({ "n", "t" }, "<A-l>", function()
 	require("nvchad.term").toggle({ pos = "float", id = "lazygit", cmd ='lazygit' })
 end, { desc = "Terminal Toggle Lazygit" })
+
+
+-- Python Code Runner
+-- map()
