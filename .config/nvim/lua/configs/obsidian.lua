@@ -1,9 +1,13 @@
 require("obsidian").setup({
 	workspaces = {
+        -- {
+        --     name = "Brain-2.0",
+        --     path = "~/Documents/Brain 2.0/"
+        -- },
         {
             name = "Brain-2.0",
-            path = "~/Documents/Brain 2.0/"
-        },
+            path = "~/Brain 2.0/"
+        }
 	},
 	notes_subdir = "000 - Zettelkasten/010 - Fleeting",
 	daily_notes = {
