@@ -85,9 +85,24 @@ map("n", "<leader>tp", "<cmd>Telescope project<CR>", { desc = "Telescope Project
 
 -- Toggleable LazyGit Term
 map({ "n", "t" }, "<A-l>", function()
-	require("nvchad.term").toggle({ pos = "float", id = "lazygit", cmd ='lazygit' })
+	require("nvchad.term").toggle({ pos = "float", id = "lazygit", cmd = "lazygit" })
 end, { desc = "Terminal Toggle Lazygit" })
 
-
 -- Python Code Runner
--- map()
+map({ "n", "t" }, "<leader>rp", function()
+	require("nvchad.term").runner({
+		id = "coderun",
+		pos = "float",
+
+		cmd = function()
+			local file = vim.fn.expand("%")
+
+			local ft_cmds = {
+				python = "python3 " .. file,
+				cpp = "clear && g++ -o out " .. file .. " && ./out",
+			}
+
+			return ft_cmds[vim.bo.ft]
+		end,
+	})
+end, { desc = "Run Current Python File" })
