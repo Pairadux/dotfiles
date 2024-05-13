@@ -24,6 +24,7 @@ alias tc='taskcrab'
 alias lg='lazygit'
 alias tree='tree -C'
 alias tre='tree -CL 2'
+alias neofetch='cdc; neofetch'
 
 alias zshedit='cd ~/dotfiles/.config/zsh; nvim'
 alias nvimedit='cd ~/dotfiles/.config/nvim; nvim'
