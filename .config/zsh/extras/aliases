@@ -2,7 +2,7 @@ alias shutdown='sudo shutdown now'
 
 alias zshreload='source ~/.config/zsh/.zshrc'
 
-alias ls='ls --color=auto'
+# alias ls='ls --color=auto'
 alias ll='ls -lahF'
 alias l='ls -l'
 
