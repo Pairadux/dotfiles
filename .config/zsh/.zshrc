@@ -53,25 +53,19 @@ source $XDG_CONFIG_HOME/zsh/extras/aliases
 
 autoload -U compinit; compinit
 
+# +----------+
+# | Antidote |
+# +----------+
+
+source $ZDOTDIR/.antidote/antidote.zsh 
+
+antidote load
+
 # +--------+
 # | PROMPT |
 # +--------+
 
-fpath+=($XDG_CONFIG_HOME/zsh/pure)
-autoload -U promptinit; promptinit
-prompt pure
-
-# +------------+
-# | COMPLETION |
-# +------------+
-
-fpath=($XDG_CONFIG_HOME/zsh/extras/zsh-completions/src $fpath)
-
-# +-------------+
-# | SUGGESTIONS |
-# +-------------+
-
-source $XDG_CONFIG_HOME/zsh/extras/zsh-autosuggestions/zsh-autosuggestions.zsh
+autoload -Uz promptinit && promptinit && prompt pure
 
 # +---------+
 # | Startup |
@@ -91,9 +85,3 @@ bindkey -r '^p'
 bindkey -s '^p' 'fpdf\n'
 
 bindkey '^f' autosuggest-accept
-
-# +---------------------+
-# | SYNTAX HIGHLIGHTING |
-# +---------------------+
-
- source $XDG_CONFIG_HOME/zsh/extras/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
