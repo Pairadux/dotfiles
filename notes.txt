@@ -1,0 +1,4 @@
+Make sure that prior to stowing dots, that the following folders already exist, so that symlinking doesn't cause problems
+
+~/.config/tmux/plugins/
+~/.config/tmux/resurrect/
