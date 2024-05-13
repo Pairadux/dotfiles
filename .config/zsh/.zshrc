@@ -1,57 +1,35 @@
 #!/usr/bin/env zsh
 
-# export ZSH="$HOME/.oh-my-zsh"
-# ZSH_THEME="eastwood"
+# +------+
+# | OPTS |
+# +------+
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-#
-# Uncomment the following line to disable auto-setting terminal title.
-#
-# DISABLE_AUTO_TITLE="true"
-#
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=(
-# 	git
-# 	jump
-# 	aliases
-# 	zsh-autosuggestions
-#     zsh-syntax-highlighting
-#     poetry
-# )
-
-# source $ZSH/oh-my-zsh.sh
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-
-# +------------+
-# | NAVIGATION |
-# +------------+
-
-setopt AUTO_CD
-
-setopt CORRECT
+unsetopt correct_all
 setopt CDABLE_VARS
 setopt EXTENDED_GLOB
+export BLOCK_SIZE="'1"
+
+# +------+
+# | PATH |
+# +------+
+
+typeset -U path
+
+# +----------------+
+# | TAB COMPLETION |
+# +----------------+
+
+autoload -Uz compinit && compinit
+setopt complete_in_word         # cd /ho/sco/tm<TAB> expands to /home/scott/tmp
+setopt auto_menu                # show completion menu on succesive tab presses
+setopt autocd                   # cd to a folder just by typing it's name
+ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 
 # +---------+
 # | ALIASES |
 # +---------+
 
 source $XDG_CONFIG_HOME/zsh/extras/aliases
-
-autoload -U compinit; compinit
 
 # +----------+
 # | Antidote |
@@ -67,6 +45,12 @@ antidote load
 
 autoload -Uz promptinit && promptinit && prompt pure
 
+# +----------------+
+# | CUSTOM SCRIPTS |
+# +----------------+
+
+source $ZDOTDIR/extras/custom-scripts/jump.zsh
+
 # +---------+
 # | Startup |
 # +---------+
@@ -77,11 +61,12 @@ autoload -Uz promptinit && promptinit && prompt pure
 # | BINDING |
 # +---------+
 
+bindkey -e
+
 bindkey -r '^l'
 bindkey -r '^g'
-bindkey '^g' .clear-screen
-
 bindkey -r '^p'
-bindkey -s '^p' 'fpdf\n'
 
+bindkey '^g' .clear-screen
 bindkey '^f' autosuggest-accept
+bindkey ' ' magic-space
