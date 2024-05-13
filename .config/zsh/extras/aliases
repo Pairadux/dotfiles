@@ -28,6 +28,7 @@ alias tre='tree -CL 2'
 alias zshedit='cd ~/dotfiles/.config/zsh; nvim'
 alias nvimedit='cd ~/dotfiles/.config/nvim; nvim'
 alias confedit='cd ~/dotfiles/.config; nvim'
+alias hypredit='cd ~/dotfiles/.config/hypr; nvim'
 
 alias down='cd ~/Downloads/'
 alias docs='cd ~/Documents/'
