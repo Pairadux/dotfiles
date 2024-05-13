@@ -14,6 +14,9 @@ alias gc='git commit'
 alias gl='git pull'
 
 alias c='clear'
+alias cdc='cd; clear'
+alias ...='cd ../..'
+
 alias doocommit='dooitcommit.sh'
 alias doopull='dooitpull.sh'
 alias nv='nvim'
