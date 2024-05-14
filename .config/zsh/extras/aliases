@@ -30,6 +30,7 @@ alias zshedit='cd ~/dotfiles/.config/zsh; nvim'
 alias nvimedit='cd ~/dotfiles/.config/nvim; nvim'
 alias confedit='cd ~/dotfiles/.config; nvim'
 alias hypredit='cd ~/dotfiles/.config/hypr; nvim'
+alias waybaredit='cd ~/dotfiles/.config/waybar; nvim'
 
 alias down='cd ~/Downloads/'
 alias docs='cd ~/Documents/'
