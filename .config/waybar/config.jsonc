@@ -1,24 +1,25 @@
 {
     "layer": "top",
+    "output": "DP-1",
     "position": "top",
     "height": 30,
     "margin": "20 20 0 20",
     "spacing": 4,
     "fixed-center": true,
-    "output": "DP-1",
     "modules-left": [
         // "hyprland/window"
         "hyprland/workspaces",
+        "temperature",
+        "memory",
+        "cpu",
     ],
     "modules-center": [
         // "hyprland/workspaces"
-        "clock"
+        "custom/center",
     ],
     "modules-right": [
         "pulseaudio",
-        "cpu",
-        "memory",
-        "temperature",
+        "clock",
         "tray"
     ],
     // "hyprland/window": {
@@ -34,6 +35,7 @@
             "2": [],
             "3": [],
             "4": [],
+            "5": [],
         },
         "format": "{icon}",
         "on-click": "activate",
@@ -43,9 +45,9 @@
             "3": "3",
             "4": "4",
             "5": "5",
-            "urgent": "u",
-            "active": "^",
-            "default": "d",
+            "urgent": "󰈸",
+            "active": "󰣇",
+            "default": "",
         },
         "sort-by-number": true
     },
@@ -81,19 +83,22 @@
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%a, %d %b, %I:%M %p}"
+        "format": "{:%a, %b %d, %I:%M %p}"
+    },
+    "custom/center": {
+        "format": "",
     },
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% 󰍛"
     },
     "temperature": {
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""]
     },
     "power-profiles-daemon": {
       "format": "{icon}",
@@ -108,7 +113,7 @@
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": "󰝟 {format_source}",
         "format-source": "{volume}% ",
         "format-source-muted": "",
         "format-icons": {

@@ -1,9 +1,9 @@
 * {
     border: none;
     border-radius: 0;
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Liberation Mono;
+    font-family: JetBrains Mono;
     min-height: 20px;
+    font-size: 16px;
 }
 
 window#waybar {
@@ -26,12 +26,10 @@ window#waybar.hidden {
     color: #7c818c;
     background: transparent;
     padding: 5px;
-    font-size: 18px;
 }
 
 #workspaces button.persistent {
     color: #7c818c;
-    font-size: 12px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -48,24 +46,6 @@ window#waybar.hidden {
     color: white;
 }
 
-#language {
-    padding-left: 16px;
-    padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#keyboard-state {
-    margin-right: 8px;
-    padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
 #custom-pacman {
     padding-left: 16px;
     padding-right: 8px;
@@ -75,13 +55,13 @@ window#waybar.hidden {
     background: #383c4a;
 }
 
-#custom-mail {
-    margin-right: 8px;
+#custom-center {
+    padding-left: 16px;
     padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
-    transition: none;
     color: #ffffff;
     background: #383c4a;
+    border-radius: 10px;
+    font-size: 20px;
 }
 
 #mode {
@@ -94,6 +74,7 @@ window#waybar.hidden {
 }
 
 #clock {
+    margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 10px;
@@ -157,46 +138,6 @@ window#waybar.hidden {
 
 #temperature.critical {
     background-color: #eb4d4b;
-}
-
-#backlight {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#battery {
-    margin-right: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 10px;
-    transition: none;
-    color: #ffffff;
-    background: #383c4a;
-}
-
-#battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-#battery.warning:not(.charging) {
-    background-color: #ffbe61;
-    color: black;
-}
-
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
 }
 
 #tray {
