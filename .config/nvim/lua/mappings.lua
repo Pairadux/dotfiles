@@ -1,7 +1,6 @@
 require("nvchad.mappings")
 
--- add yours here
-
+-- Global Declarations
 local map = vim.keymap.set
 local harpoon = require("harpoon")
 
@@ -34,7 +33,7 @@ end, { desc = "Terminal Toggle Floating Term 3" })
 -- HARPOON
 -- Harpoon Main Options
 map("n", "<leader>a", function()
-	harpoon:list():append()
+	harpoon:list():add()
 end, { desc = "Add line under cursor to Harpoon" })
 map("n", "<C-e>", function()
 	harpoon.ui:toggle_quick_menu(harpoon:list())
