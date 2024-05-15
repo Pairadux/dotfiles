@@ -1,0 +1,21 @@
+# .zsh_plugins.txt
+
+zsh-users/zsh-completions
+
+# or lighter-weight ones like zsh-utils
+# belak/zsh-utils path:editor
+# belak/zsh-utils path:history
+# belak/zsh-utils path:prompt
+# belak/zsh-utils path:utility
+# belak/zsh-utils path:completion
+
+# prompts:
+#   with prompt plugins, remember to add this to your .zshrc:
+#   `autoload -Uz promptinit && promptinit && prompt pure`
+sindresorhus/pure     kind:fpath
+
+# popular fish-like plugins
+# mattmc3/zfunctions
+zsh-users/zsh-autosuggestions
+zdharma-continuum/fast-syntax-highlighting kind:defer
+zsh-users/zsh-history-substring-search

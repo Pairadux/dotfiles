@@ -1,38 +1,41 @@
 {
     "layer": "top",
+    "output": "DP-1",
     "position": "top",
     "height": 30,
+    "margin": "20 20 0 20",
     "spacing": 4,
+    "fixed-center": true,
     "modules-left": [
-        "hyprland/window"
+        // "hyprland/window"
+        "hyprland/workspaces",
+        "temperature",
+        "memory",
+        "cpu",
     ],
     "modules-center": [
-        "hyprland/workspaces"
+        // "hyprland/workspaces"
+        "custom/center",
     ],
     "modules-right": [
-        "mpd",
         "pulseaudio",
-        "network",
-        "cpu",
-        "memory",
-        "temperature",
         "clock",
         "tray"
     ],
-    "hyprland/window": {
-        "format": "👉 {}",
-        "rewrite": {
-            "(.*) — Mozilla Firefox": "🌎 $1",
-        },
-        "separate-outputs": true
-    },
+    // "hyprland/window": {
+    //     "format": "👉 {}",
+    //     "rewrite": {
+    //         "(.*) — Mozilla Firefox": "🌎 $1",
+    //     },
+    //     "separate-outputs": true
+    // },
     "hyprland/workspaces": {
         "persistent-workspaces": {
             "1": [],
             "2": [],
             "3": [],
             "4": [],
-            "5": []
+            "5": [],
         },
         "format": "{icon}",
         "on-click": "activate",
@@ -42,56 +45,60 @@
             "3": "3",
             "4": "4",
             "5": "5",
-            "urgent": "u",
-            "active": "^",
-            "default": "d",
+            "urgent": "󰈸",
+            "active": "󰣇",
+            "default": "",
         },
         "sort-by-number": true
     },
-    "mpd": {
-        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-        "format-disconnected": "Disconnected ",
-        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
-        "unknown-tag": "N/A",
-        "interval": 5,
-        "consume-icons": {
-            "on": " "
-        },
-        "random-icons": {
-            "off": "<span color=\"#f53c3c\"></span> ",
-            "on": " "
-        },
-        "repeat-icons": {
-            "on": " "
-        },
-        "single-icons": {
-            "on": "1 "
-        },
-        "state-icons": {
-            "paused": "",
-            "playing": ""
-        },
-        "tooltip-format": "MPD (connected)",
-        "tooltip-format-disconnected": "MPD (disconnected)"
-    },
+    // "mpd": {
+    //     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+    //     "format-disconnected": "Disconnected ",
+    //     "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+    //     "unknown-tag": "N/A",
+    //     "interval": 5,
+    //     "consume-icons": {
+    //         "on": " "
+    //     },
+    //     "random-icons": {
+    //         "off": "<span color=\"#f53c3c\"></span> ",
+    //         "on": " "
+    //     },
+    //     "repeat-icons": {
+    //         "on": " "
+    //     },
+    //     "single-icons": {
+    //         "on": "1 "
+    //     },
+    //     "state-icons": {
+    //         "paused": "",
+    //         "playing": ""
+    //     },
+    //     "tooltip-format": "MPD (connected)",
+    //     "tooltip-format-disconnected": "MPD (disconnected)"
+    // },
     "tray": {
+        "icon-size": 16,
         "spacing": 10
     },
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
+        "format": "{:%a, %b %d, %I:%M %p}"
+    },
+    "custom/center": {
+        "format": "",
     },
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% 󰍛"
     },
     "temperature": {
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": ["", "", ""]
     },
     "power-profiles-daemon": {
       "format": "{icon}",
@@ -104,25 +111,11 @@
         "power-saver": ""
       }
     },
-    "network": {
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-    },
     "pulseaudio": {
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
