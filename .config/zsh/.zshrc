@@ -29,7 +29,7 @@ ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 # | ALIASES |
 # +---------+
 
-source $XDG_CONFIG_HOME/zsh/extras/aliases
+source $ZDOTDIR/extras/aliases
 
 # +----------+
 # | Antidote |
@@ -55,7 +55,9 @@ source $ZDOTDIR/extras/custom-scripts/jump.zsh
 # | Startup |
 # +---------+
 
-# tmux startup script
+if [[ -z $TMUX && $TERM == "xterm-256color" ]]; then
+    tmux new -A -s pairadux;
+fi
 
 # +---------+
 # | BINDING |

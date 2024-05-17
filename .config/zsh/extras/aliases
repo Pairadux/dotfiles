@@ -1,10 +1,8 @@
-alias shutdown='sudo shutdown now'
-
 alias zshreload='source ~/.config/zsh/.zshrc'
 
-# alias ls='ls --color=auto'
-alias ll='ls -lahF'
-alias l='ls -l'
+alias ls='eza'
+alias ll='eza -lahF'
+alias l='eza -l'
 
 alias gss='git status -s'
 alias gsl='git status'
@@ -24,7 +22,8 @@ alias tc='taskcrab'
 alias lg='lazygit'
 alias tree='tree -C'
 alias tre='tree -CL 2'
-alias neofetch='cdc; neofetch'
+alias catnip='cdc; catnip'
+alias shutdown='shutdown now'
 
 alias zshedit='cd ~/dotfiles/.config/zsh; nvim'
 alias nvimedit='cd ~/dotfiles/.config/nvim; nvim'
