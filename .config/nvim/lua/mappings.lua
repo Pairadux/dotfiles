@@ -18,6 +18,9 @@ map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
 -- Insert Line Break Sequence
 map("n", "<leader>ib", "80i#<ESC>", { desc = "Insert 80 #'s (Line Break)" })
 
+-- Insert Config Section Title Box
+map("n", "<leader>it", "O# *-*<CR># | |<CR># *-*<ESC>", { desc = "Insert Config Section Title Box" })
+
 -- TERMS
 -- Creating new toggleable terms
 map({ "n", "t" }, "<A-8>", function()
@@ -105,3 +108,6 @@ map({ "n", "t" }, "<leader>rp", function()
 		end,
 	})
 end, { desc = "Run Current Python File" })
+
+-- Quick OO
+vim.api.nvim_set_keymap('n', 'OO', 'O<Esc>O', { noremap = true, silent = true })
