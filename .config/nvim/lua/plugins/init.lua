@@ -71,7 +71,7 @@ return {
 				"bash-language-server",
 				"marksman",
                 "pyright",
-                "ruff-lsp",
+                -- "ruff-lsp",
                 "ruff",
 			},
 		},
