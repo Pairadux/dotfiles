@@ -38,11 +38,12 @@ alias tc='taskcrab'
 alias lg='lazygit'
 alias catnip='cd; clear; catnip'
 alias shutdown='shutdown now'
+alias q='exit'
 
-# *-------------*
-# | BAT ALIASES |
-# *-------------*
-alias zshbat='bat ~/.config/zsh/.zshrc'
+# *-------------------*
+# | QUICK BAT ALIASES |
+# *-------------------*
+alias batzsh='bat ~/.config/zsh/.zshrc'
 
 # *--------------*
 # | TREE ALIASES |
