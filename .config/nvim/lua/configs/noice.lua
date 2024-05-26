@@ -21,7 +21,7 @@ require("noice").setup({
 	},
     routes = {
         {
-            view = "notify",
+            view = "cmdline",
             filter = { event = "msg_showmode" },
         },
     },
