@@ -32,7 +32,7 @@ alias confedit='cd ~/dotfiles/.config; nvim'
 alias hypredit='cd ~/dotfiles/.config/hypr; nvim'
 alias waybaredit='cd ~/dotfiles/.config/waybar; nvim'
 
-alias down='cd ~/Downloads; clear/'
+alias down='cd ~/Downloads; clear'
 alias docs='cd ~/Documents; clear'
 alias dots='cd ~/dotfiles; clear'
 alias conf='cd ~/.config; clear'
