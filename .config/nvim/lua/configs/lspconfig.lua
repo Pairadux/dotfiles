@@ -25,33 +25,34 @@ local servers = {
 	tailwindcss = {
 		filetypes = { "html", "css", "svelte", "scss", "javascript", "typescript", "vue" },
 	},
-    pylsp = {
-        settings = {
-            pylsp = {
-                plugins = {
-                    pycodestyle = {
-                        enabled = false
-                    },
-                    flake8 = {
-                        enabled = false
-                    },
-                    pyflakes = {
-                        enabled = false
-                    },
-                    pylint = {
-                        enabled = false
-                    },
-                    rope = {
-                        enabled = false
-                    },
-                    mccabe = {
-                        enabled = false
-                    },
-                }
-            }
-        }
-    },
-    ruff_lsp = {},
+    -- pylsp = {
+    --     settings = {
+    --         pylsp = {
+    --             plugins = {
+    --                 pycodestyle = {
+    --                     enabled = false
+    --                 },
+    --                 flake8 = {
+    --                     enabled = false
+    --                 },
+    --                 pyflakes = {
+    --                     enabled = false
+    --                 },
+    --                 pylint = {
+    --                     enabled = false
+    --                 },
+    --                 rope = {
+    --                     enabled = false
+    --                 },
+    --                 mccabe = {
+    --                     enabled = false
+    --                 },
+    --             }
+    --         }
+    --     }
+    -- },
+    -- ruff_lsp = {},
+    ruff = {},
 }
 
 for name, opts in pairs(servers) do

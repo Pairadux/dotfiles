@@ -20,6 +20,7 @@ typeset -U path
 # +----------------+
 
 autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 setopt complete_in_word         # cd /ho/sco/tm<TAB> expands to /home/scott/tmp
 setopt auto_menu                # show completion menu on succesive tab presses
 setopt autocd                   # cd to a folder just by typing it's name

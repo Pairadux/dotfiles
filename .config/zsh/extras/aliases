@@ -1,10 +1,19 @@
+# *------------------------*
+# | ZSH QUICK RELOAD ALIAS |
+# *------------------------*
 alias zshreload='source ~/.config/zsh/.zshrc'
 
+# *------------*
+# | LS ALIASES |
+# *------------*
 alias ls='eza'
 alias ll='eza -lahF'
 alias la='eza -a'
 alias l='eza -l'
 
+# *-------------*
+# | GIT ALIASES |
+# *-------------*
 alias gss='git status -s'
 alias gsl='git status'
 alias ga='git add'
@@ -12,27 +21,50 @@ alias gp='git push'
 alias gc='git commit'
 alias gl='git pull'
 
+# *-------------------*
+# | DIRECTORY ALIASES |
+# *-------------------*
 alias c='clear'
 alias cdc='cd; clear'
 alias ...='cd ../..'
 
+# *-----------------------*
+# | ASSORTED UTIL ALIASES |
+# *-----------------------*
 alias doocommit='dooitcommit.sh'
 alias doopull='dooitpull.sh'
 alias nv='nvim'
 alias tc='taskcrab'
 alias lg='lazygit'
+alias catnip='cd; clear; catnip'
+alias shutdown='shutdown now'
+alias q='exit'
+
+# *-------------------*
+# | QUICK BAT ALIASES |
+# *-------------------*
+alias batzsh='bat ~/.config/zsh/.zshrc'
+
+# *--------------*
+# | TREE ALIASES |
+# *--------------*
 alias tree='tree -C'
 alias tre='tree -CL 2'
-alias catnip='cdc; catnip'
-alias shutdown='shutdown now'
 
+# *--------------------*
+# | QUICK EDIT ALIASES |
+# *--------------------*
 alias zshedit='cd ~/dotfiles/.config/zsh; nvim'
 alias nvimedit='cd ~/dotfiles/.config/nvim; nvim'
 alias confedit='cd ~/dotfiles/.config; nvim'
 alias hypredit='cd ~/dotfiles/.config/hypr; nvim'
 alias waybaredit='cd ~/dotfiles/.config/waybar; nvim'
 
+# *------------------*
+# | QUICK CD ALIASES |
+# *------------------*
 alias down='cd ~/Downloads; clear'
 alias docs='cd ~/Documents; clear'
 alias dots='cd ~/dotfiles; clear'
 alias conf='cd ~/.config; clear'
+alias repo='cd ~/Documents/repos; clear'
