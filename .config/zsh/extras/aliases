@@ -39,6 +39,7 @@ alias lg='lazygit'
 alias catnip='cd; clear; catnip'
 alias shutdown='shutdown now'
 alias q='exit'
+alias grep='rg'
 
 # *-------------------*
 # | QUICK BAT ALIASES |
