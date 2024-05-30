@@ -1,10 +1,8 @@
 {
     "layer": "top",
-    "output": "DP-1",
+    "output": "DP-2",
     "position": "top",
-    // "height": 30,
     "margin": "10 10 0 10",
-    // "spacing": 4,
     "fixed-center": true,
     "reload_style_on_change": true,
     "modules-left": [
@@ -16,12 +14,12 @@
         "memory",
         "cpu",
         "custom/spotify",
-        "custom/r_end",
+        "custom/r_end"
     ],
     "modules-center": [
         "custom/l_end",
         "custom/center",
-        "custom/r_end",
+        "custom/r_end"
     ],
     "modules-right": [
         "custom/l_end",
@@ -32,22 +30,15 @@
         "custom/r_end",
         "custom/l_end",
         "tray",
-        "custom/r_end",
+        "custom/r_end"
     ],
-    // "hyprland/window": {
-    //     "format": "{}",
-    //     "rewrite": {
-    //         "(.*) - Mozilla Firefox": "🌎 $1",
-    //     },
-    //     "separate-outputs": true
-    // },
     "hyprland/workspaces": {
         "persistent-workspaces": {
             "1": [],
             "2": [],
             "3": [],
             "4": [],
-            "5": [],
+            "5": []
         },
         "format": "{icon}",
         "on-click": "activate",
@@ -59,7 +50,7 @@
             "5": "5",
             "urgent": "󰈸",
             "active": "󰣇",
-            "default": "",
+            "default": ""
         },
         "sort-by-number": true
     },
@@ -84,7 +75,7 @@
         "format": "{:%a, %b %d, %I:%M %p}"
     },
     "custom/center": {
-        "format": "",
+        "format": ""
     },
     "cpu": {
         "format": "{usage}% ",
@@ -127,5 +118,5 @@
         "format": "  ",
         "interval" : "once",
         "tooltip": false
-    },
+    }
 }
