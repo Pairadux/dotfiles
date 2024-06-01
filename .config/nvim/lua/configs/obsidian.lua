@@ -6,7 +6,7 @@ require("obsidian").setup({
         -- },
         {
             name = "Brain-2.0",
-            path = "~/Brain 2.0/"
+            path = "~/Documents/SyncFolder/Brain 2.0/"
         }
 	},
 	notes_subdir = "000 - Zettelkasten/010 - Fleeting",
