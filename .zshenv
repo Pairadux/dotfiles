@@ -20,4 +20,8 @@ export ZSH="$ZDOTDIR"
 export HISTFILE="$ZDOTDIR/.zhistory"
 export HISTSIZE=10000
 export SAVEHIST=10000
-. "$HOME/.cargo/env"
+
+# cargo
+if [[ "$(uname)" == "Darwin" ]]; then
+    . "$HOME/.cargo/env"
+fi
