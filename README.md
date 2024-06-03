@@ -5,7 +5,7 @@ I have attempted to make the best possible Mouseless Development Environment tha
 My Dotfiles are managed with [Gnu Stow](https://www.gnu.org/software/stow/) on mac & [XStow](https://github.com/majorkingleo/xstow) on Linux.
 *Though I plan on eventually switching to [DotBot](https://github.com/anishathalye/dotbot) or something similar for something more configurable*
 
-I am currently in love with Folke's Tokyo Night Color Scheme, [found here](https://github.com/folke/tokyonight.nvim), so most of my configurations, when applicable, will include a Tokyo Night theme.
+I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.com/folke/tokyonight.nvim), so most of my configurations, when applicable, will include a Tokyo Night theme.
 
 ## What's Included?
 
