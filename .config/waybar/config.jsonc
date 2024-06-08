@@ -59,7 +59,8 @@
     },
     "custom/power": {
         "format": "⏻",
-        "on-click": "shutdown"
+        "on-click": "shutdown",
+        "on-click-right": "reboot"
     },
     "custom/spotify": {
         "exec": "/usr/bin/python3 ~/.config/waybar/custom_modules/mediaplayer.py --player spotify",
