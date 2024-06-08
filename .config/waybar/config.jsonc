@@ -7,6 +7,9 @@
     "reload_style_on_change": true,
     "modules-left": [
         "custom/l_end",
+        "custom/power",
+        "custom/r_end",
+        "custom/l_end",
         "hyprland/workspaces",
         "custom/r_end",
         "custom/l_end",
@@ -53,6 +56,10 @@
             "default": ""
         },
         "sort-by-number": true
+    },
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "shutdown"
     },
     "custom/spotify": {
         "exec": "/usr/bin/python3 ~/.config/waybar/custom_modules/mediaplayer.py --player spotify",
