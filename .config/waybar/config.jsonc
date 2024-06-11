@@ -59,7 +59,7 @@
     },
     "custom/power": {
         "format": "⏻",
-        "on-click": "shutdown",
+        "on-click": "shutdown now",
         "on-click-right": "reboot"
     },
     "custom/spotify": {
