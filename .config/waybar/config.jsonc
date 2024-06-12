@@ -14,8 +14,10 @@
         "custom/r_end",
         "custom/l_end",
         "temperature",
-        "memory",
         "cpu",
+        "memory",
+        "custom/r_end",
+        "custom/l_end",
         "custom/spotify",
         "custom/r_end"
     ],
@@ -35,6 +37,11 @@
         "tray",
         "custom/r_end"
     ],
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "shutdown now",
+        "on-click-right": "reboot"
+    },
     "hyprland/workspaces": {
         "persistent-workspaces": {
             "1": [],
@@ -56,11 +63,6 @@
             "default": ""
         },
         "sort-by-number": true
-    },
-    "custom/power": {
-        "format": "⏻",
-        "on-click": "shutdown now",
-        "on-click-right": "reboot"
     },
     "custom/spotify": {
         "exec": "/usr/bin/python3 ~/.config/waybar/custom_modules/mediaplayer.py --player spotify",
@@ -87,10 +89,9 @@
     },
     "cpu": {
         "format": "{usage}% ",
-        "tooltip": false
     },
     "memory": {
-        "format": "{}% 󰍛"
+        "format": "{}% 󰍛",
     },
     "temperature": {
         "critical-threshold": 80,

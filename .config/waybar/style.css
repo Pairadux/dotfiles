@@ -78,7 +78,7 @@ window#waybar {
 }
 
 #temperature,
-#memory {
+#cpu {
     padding-right: 16px;
 }
 
