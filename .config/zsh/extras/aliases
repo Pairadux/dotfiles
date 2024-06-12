@@ -3,6 +3,11 @@
 # *------------------------*
 alias zshreload='source ~/.config/zsh/.zshrc'
 
+# *-------------------*
+# | ZSH ALIASES ALIAS |
+# *-------------------*
+alias aliases='bat ~/.config/zsh/extras/aliases'
+
 # *------------*
 # | LS ALIASES |
 # *------------*
