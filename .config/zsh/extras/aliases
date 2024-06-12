@@ -3,6 +3,11 @@
 # *------------------------*
 alias zshreload='source ~/.config/zsh/.zshrc'
 
+# *---------------------------*
+# | WAYBAR QUICK RELOAD ALIAS |
+# *---------------------------*
+alias waybarreload='killall -SIGUSR2 waybar'
+
 # *-------------------*
 # | SHADOWING ALIASES |
 # *-------------------*
