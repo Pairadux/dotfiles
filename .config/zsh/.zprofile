@@ -25,6 +25,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
     exec Hyprland
 fi
