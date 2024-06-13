@@ -67,6 +67,7 @@ window#waybar {
 #cpu,
 #temperature,
 #tray,
+#window,
 #custom-l_end,
 #custom-r_end {
     color: #7aa2f7;
@@ -95,6 +96,14 @@ window#waybar {
     background-color: #eb4d4b;
 }
 
+#custom-spotify {
+    margin: 4px 0px 4px 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 21px 21px 21px 21px;
+    margin-right: 9px;
+}
+    
 #custom-r_end {
     border-radius: 0px 21px 21px 0px;
     margin-right: 9px;
