@@ -53,6 +53,8 @@ local servers = {
     -- },
     -- ruff_lsp = {},
     ruff = {},
+    jqls = {},
+    jsonls = {},
 }
 
 for name, opts in pairs(servers) do
