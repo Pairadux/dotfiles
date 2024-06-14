@@ -1,0 +1,81 @@
+{
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "shutdown now",
+        "on-click-right": "reboot"
+    },
+    "hyprland/workspaces": {
+        "format": "{icon}{windows}",
+        "on-click": "activate",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "|3",
+            "4": "|4",
+            "5": "|5",
+            "6": "|6",
+            "7": "|7",
+            "8": "|8",
+            "9": "|9",
+            "urgent": "󰈸"
+            //"active": "󰣇"
+        },
+        "persistent-workspaces": {
+            "DP-2": [1],
+            "HDMI-A-1": [2]
+        },
+        "sort-by-number": true,
+        "format-window-separator": "",
+        "window-rewrite-default": " ",
+        "window-rewrite": {
+            "class<firefox>": " ",
+            "class<firefox> title<.*youtube.*>": " ",
+            "class<firefox> title<.*github.*>": " ",
+            "thunderbird": " ",
+            "ticktick": " ",
+            "wezterm": " "
+        }
+    },
+    "tray": {
+        "icon-size": 16,
+        "spacing": 10
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "headphone": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+    "clock": {
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%a, %b %d, %I:%M %p}"
+    },
+    "custom/center": {
+        "format": ""
+    },
+    "hyprland/window": {
+        "format": " {initialTitle}"
+
+    },
+    "custom/l_end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false
+    },
+    "custom/r_end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false
+    },
+    "custom/padd": {
+        "format": "  ",
+        "interval": "once",
+        "tooltip": false
+    }
+}

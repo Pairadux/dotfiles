@@ -31,6 +31,8 @@ window#waybar {
 #workspaces button.active {
     background: #bb9af7;
     color: #ffffff;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
