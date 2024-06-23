@@ -49,7 +49,7 @@ source $ZDOTDIR/extras/custom-scripts/jump.zsh
 # | Startup |
 # +---------+
 if [[ -z $TMUX && $TERM == "xterm-256color" ]]; then
-    tmux new -A -s pairadux;
+    tmux new -As pairadux;
 fi
 
 # +---------+
