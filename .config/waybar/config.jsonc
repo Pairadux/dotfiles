@@ -21,10 +21,10 @@
             //"cpu",
             //"memory",
             //"custom/r_end",
-            "custom/spotify",
             "custom/l_end",
             "pulseaudio",
-            "custom/r_end"
+            "custom/r_end",
+            "custom/spotify"
         ],
         "modules-center": [
             "custom/l_end",
