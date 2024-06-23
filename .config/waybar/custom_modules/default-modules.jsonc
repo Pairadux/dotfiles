@@ -35,7 +35,8 @@
             "class<firefox> title<.*github.*>": " ",
             "thunderbird": " ",
             "ticktick": " ",
-            "wezterm": " "
+            "wezterm": " ",
+            "spotify": " 󰓇"
         }
     },
     "tray": {
