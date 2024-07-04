@@ -46,6 +46,6 @@ require("dashboard").setup({
 		mru = {
 			cwd_only = true,
 		},
-		footer = {"", "", "🧪 Testing can only prove the presence of bugs, not their absence 🧪"},
+		footer = {"", "", "󰙨 Testing can only prove the presence of bugs, not their absence 󰙨"},
 	},
 })
