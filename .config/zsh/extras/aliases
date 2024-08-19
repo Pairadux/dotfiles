@@ -78,3 +78,9 @@ alias lg='lazygit'
 alias catnip='cd; clear; catnip'
 alias shutdown='shutdown now'
 alias q='exit'
+
+# *--------------*
+# | MISC ALIASES |
+# *--------------*
+alias clangdump='~/.local/share/nvim/mason/bin/clang-format --dump-config > .clang-format'
+
