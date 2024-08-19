@@ -43,6 +43,7 @@ return {
 				"regex",
 				"typescript",
 				"c",
+                "cpp",
 				"bash",
 				"python",
 				"json",
@@ -73,6 +74,8 @@ return {
                 "pyright",
                 -- "ruff-lsp",
                 "ruff",
+                "clangd",
+                "clang-format",
 			},
 		},
 	},
@@ -140,7 +143,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		opts = {
 			defaults = {
-				-- initial_mode = "normal",
+				initial_mode = "normal",
 				file_ignore_patterns = { ".git/" },
 			},
 			pickers = {

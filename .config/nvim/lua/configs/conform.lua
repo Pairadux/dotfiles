@@ -11,6 +11,9 @@ local options = {
 
         python = { "ruff" },
 
+        c = { "clang-format" },
+        cpp = { "clang-format" },
+
 		sh = { "shfmt" },
 	},
 
