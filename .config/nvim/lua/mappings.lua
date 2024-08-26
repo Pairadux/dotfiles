@@ -5,7 +5,7 @@ local map = vim.keymap.set
 local harpoon = require("harpoon")
 
 -- Enter Command Mode
-map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", ";", ":")
 
 -- Format with conform
 map("n", "<leader>fm", function()
@@ -13,7 +13,7 @@ map("n", "<leader>fm", function()
 end, { desc = "File Format with conform" })
 
 -- Exit insert mode
-map("i", "jk", "<ESC>", { desc = "Escape insert mode" })
+map("i", "jk", "<ESC>")
 
 -- Insert Line Break Sequence
 map("n", "<leader>ib", "80i#<ESC>", { desc = "Insert 80 #'s (Line Break)" })
@@ -90,24 +90,26 @@ map({ "n", "t" }, "<A-l>", function()
 	require("nvchad.term").toggle({ pos = "float", id = "lazygit", cmd = "lazygit" })
 end, { desc = "Terminal Toggle Lazygit" })
 
--- Python Code Runner
-map({ "n", "t" }, "<leader>rp", function()
+-- Code Runner
+map({ "n", "t" }, "<leader>rc", function()
 	require("nvchad.term").runner({
 		id = "coderun",
 		pos = "float",
 
 		cmd = function()
 			local file = vim.fn.expand("%")
+            local output_file = vim.fn.expand("%:r")
 
 			local ft_cmds = {
 				python = "python3 " .. file,
 				cpp = "clear && g++ -o out " .. file .. " && ./out",
+                c = "clear && gcc -o " .. output_file .. " " .. file .. " && " .. output_file,
 			}
 
 			return ft_cmds[vim.bo.ft]
 		end,
 	})
-end, { desc = "Run Current Python File" })
+end, { desc = "Run Current File" })
 
 -- Quick OO
 vim.api.nvim_set_keymap('n', 'OO', 'O<Esc>O', { noremap = true, silent = true })
