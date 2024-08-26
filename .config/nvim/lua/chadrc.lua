@@ -2,9 +2,9 @@ local M = {}
 
 M.ui = {
 
-    hl_add = {
-        DashboardHeader = { fg = "#f7768e", bg = "NONE" },
-    },
+	hl_add = {
+		DashboardHeader = { fg = "#f7768e", bg = "NONE" },
+	},
 
 	-- transparency = "true",
 
@@ -12,11 +12,16 @@ M.ui = {
 
 	theme = "tokyonight",
 
-    telescope = { style = "bordered" },
+	hl_override = {
+		Comment = { italic = true },
+		["@comment"] = { italic = true },
+	},
 
-    tabufline = {
-        order = { "treeOffset", "buffers", "tabs" },
-    },
+	telescope = { style = "bordered" },
+
+	tabufline = {
+		order = { "treeOffset", "buffers", "tabs" },
+	},
 
 	term = {
 		sizes = { sp = 0.3, vsp = 0.3 },
