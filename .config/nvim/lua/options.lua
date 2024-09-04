@@ -1,12 +1,17 @@
-require "nvchad.options"
+require("nvchad.options")
 
 -- add yours here!
 
-vim.o.tabstop = 4
-vim.o.expandtab = true
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
+local o = vim.o
+local opt = vim.opt
+local wo = vim.wo
 
-vim.opt.wrap = false
+o.tabstop = 4
+o.expandtab = true
+o.softtabstop = 4
+o.shiftwidth = 4
+o.cursorlineopt = "both"
 
-vim.wo.relativenumber = true
+opt.wrap = false
+
+wo.relativenumber = true

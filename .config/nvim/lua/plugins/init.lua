@@ -43,7 +43,7 @@ return {
 				"regex",
 				"typescript",
 				"c",
-                "cpp",
+				"cpp",
 				"bash",
 				"python",
 				"json",
@@ -71,11 +71,11 @@ return {
 				-- "jdtls",
 				"bash-language-server",
 				"marksman",
-                "pyright",
-                -- "ruff-lsp",
-                "ruff",
-                "clangd",
-                "clang-format",
+				"pyright",
+				-- "ruff-lsp",
+				"ruff",
+				"clangd",
+				"clang-format",
 			},
 		},
 	},
@@ -289,4 +289,7 @@ return {
 		event = "VeryLazy",
 		opts = {},
 	},
+
+	{ "echasnovski/mini.icons", version = false },
+
 }
