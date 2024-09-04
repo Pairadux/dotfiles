@@ -43,7 +43,7 @@ alias docs='cd ~/Documents; clear'
 alias dots='cd ~/dotfiles; clear'
 alias conf='cd ~/.config; clear'
 alias repo='cd ~/Documents/repos; clear'
-alias brain='cd ~/Documents/SyncFolder/Brain\ 2.0; clear'
+alias sync='cd ~/Documents/SyncFolder; clear'
 
 # *-------------*
 # | BAT ALIASES |
