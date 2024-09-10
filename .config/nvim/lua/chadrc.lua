@@ -24,7 +24,6 @@ M.ui = {
 	},
 
 	term = {
-		sizes = { sp = 0.3, vsp = 0.3 },
 		float = {
 			relative = "editor",
 			row = 0.1,
@@ -32,6 +31,26 @@ M.ui = {
 			width = 0.7,
 			height = 0.7,
 			border = "single",
+		},
+	},
+
+	mason = {
+		pkgs = {
+			"lua-language-server",
+			"stylua",
+			"rust-analyzer",
+			"css-lsp",
+			"html-lsp",
+			"svelte-language-server",
+			"tailwindcss-language-server",
+			"typescript-language-server",
+			"python-lsp-server",
+			"bash-language-server",
+			"marksman",
+			"pyright",
+			"ruff",
+			"clangd",
+			"clang-format",
 		},
 	},
 }
