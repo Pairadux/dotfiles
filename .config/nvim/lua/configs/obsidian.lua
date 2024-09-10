@@ -1,21 +1,30 @@
 require("obsidian").setup({
 	workspaces = {
-        -- {
-        --     name = "Brain-2.0",
-        --     path = "~/Documents/Brain 2.0/"
-        -- },
-        {
-            name = "Brain-2.0",
-            path = "~/Documents/SyncFolder/Brain 2.0/"
-        }
-	},
-	notes_subdir = "000 - Zettelkasten/010 - Fleeting",
-	daily_notes = {
-		folder = "000 - Zettelkasten/050 - Daily Notes",
-		date_format = "%m-%d-%Y",
-		template = "900 - Templates/daily-note-template.md",
+		{
+			name = "SyncFolder",
+			path = "~/Documents/SyncFolder/",
+		},
+		{
+			name = "Brain 2.0",
+			path = "~/Documents/SyncFolder/90-99 Brain 2.0 (o--)",
+
+			strict = true,
+			overrides = {
+				notes_subdir = "./",
+				new_notes_location = "notes_subdir",
+				daily_notes = {
+					folder = "000 - Zettelkasten/050 - Daily Notes",
+					date_format = "%m-%d-%Y",
+					template = "900 - Templates/daily-note-template.md",
+				},
+				templates = {
+					subdir = "900 - Templates",
+				},
+			},
+		},
 	},
 	mappings = {},
+    notes_subdir = "90-99 Brain 2.0 (o--)/",
 	new_notes_location = "notes_subdir",
 
 	note_id_func = function(title)
@@ -47,7 +56,7 @@ require("obsidian").setup({
 	end,
 
 	templates = {
-		subdir = "900 - Templates",
+		subdir = "00-09 System/05 Templates (ot-)",
 	},
 })
 -- TODO: Make wikilinks with aliases function correctly
