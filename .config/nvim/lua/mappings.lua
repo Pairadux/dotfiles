@@ -98,12 +98,11 @@ map({ "n", "t" }, "<leader>rc", function()
 
 		cmd = function()
 			local file = vim.fn.expand("%")
-            local output_file = vim.fn.expand("%:r")
 
 			local ft_cmds = {
 				python = "python3 " .. file,
 				cpp = "clear && g++ -o out " .. file .. " && ./out",
-                c = "clear && gcc -o " .. output_file .. " " .. file .. " && " .. output_file,
+                c = 'clear && gcc -o out "' .. file .. '" && ./out',
 			}
 
 			return ft_cmds[vim.bo.ft]
