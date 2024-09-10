@@ -143,7 +143,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		opts = {
 			defaults = {
-				initial_mode = "normal",
+				initial_mode = "insert",
 				file_ignore_patterns = { ".git/" },
 			},
 			pickers = {
