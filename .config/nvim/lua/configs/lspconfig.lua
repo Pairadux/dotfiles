@@ -4,54 +4,15 @@ local lspconfig = require("lspconfig")
 local servers = {
 	html = {},
 	cssls = {},
-	tsserver = {},
+	ts_ls = {},
 	clangd = {},
 	svelte = {},
 	marksman = {},
 	bashls = {},
 	rust_analyzer = {},
-	-- basedpyright = {
-	-- 	settings = {
-	-- 		pyright = {
-	-- 			disableOrganizeImports = true,
-	-- 		},
-	-- 		python = {
-	-- 			analysis = {
-	-- 				ignore = { "*" },
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
 	tailwindcss = {
 		filetypes = { "html", "css", "svelte", "scss", "javascript", "typescript", "vue" },
 	},
-    -- pylsp = {
-    --     settings = {
-    --         pylsp = {
-    --             plugins = {
-    --                 pycodestyle = {
-    --                     enabled = false
-    --                 },
-    --                 flake8 = {
-    --                     enabled = false
-    --                 },
-    --                 pyflakes = {
-    --                     enabled = false
-    --                 },
-    --                 pylint = {
-    --                     enabled = false
-    --                 },
-    --                 rope = {
-    --                     enabled = false
-    --                 },
-    --                 mccabe = {
-    --                     enabled = false
-    --                 },
-    --             }
-    --         }
-    --     }
-    -- },
-    -- ruff_lsp = {},
     ruff = {},
     jqls = {},
     jsonls = {},
