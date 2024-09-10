@@ -4,8 +4,11 @@ require("nvchad.mappings")
 local map = vim.keymap.set
 local harpoon = require("harpoon")
 
--- Enter Command Mode
-map("n", ";", ":")
+-- -- Enter Command Mode
+-- map("n", ";", ":")
+--
+-- -- Next ftFT
+-- map("n", ":", ";")
 
 -- Format with conform
 map("n", "<leader>fm", function()
