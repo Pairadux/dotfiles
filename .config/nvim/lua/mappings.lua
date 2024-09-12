@@ -84,6 +84,8 @@ map("n", "<leader>or", "<cmd>ObsidianRename<CR>", { desc = "Obsidian Rename Note
 map("n", "<leader>ocn", "<cmd>ObsidianNew<CR>", { desc = "Obsidian Create New Note" })
 map("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Obsidian Search" })
 map("n", "<leader>oen", "<cmd>ObsidianExtractNote<CR>", { desc = "Obsidian Extract Note" })
+map("n", "<leader>of", "<cmd>ObsidianFollowLink<CR>", { desc = "Obsidian Follow Link" })
+map("n", "<leader>ot", "<cmd>ObsidianTags<CR>", { desc = "Obsidian Tags" })
 
 -- Telescope
 map("n", "<leader>tp", "<cmd>Telescope project<CR>", { desc = "Telescope Projects" })
