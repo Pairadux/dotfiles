@@ -44,6 +44,7 @@ autoload -Uz promptinit && promptinit && prompt pure
 # | CUSTOM SCRIPTS |
 # +----------------+
 source $ZDOTDIR/extras/custom-scripts/jump.zsh
+source $ZDOTDIR/extras/custom-scripts/jd.zsh
 
 # +---------+
 # | Startup |

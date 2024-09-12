@@ -79,11 +79,6 @@ alias catnip='cd; clear; catnip'
 alias shutdown='shutdown now'
 alias q='exit'
 
-# *--------------------------*
-# | Johnny Decimal Navigator |
-# *--------------------------*
-alias jd='fd -t d "^${1}.*$" ~/Documents/SyncFolder -d 3 | head -n 1 | xargs -I {} cd "{}"'
-
 # *--------------*
 # | MISC ALIASES |
 # *--------------*
