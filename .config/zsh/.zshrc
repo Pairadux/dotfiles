@@ -40,6 +40,11 @@ antidote load
 # +--------+
 autoload -Uz promptinit && promptinit && prompt pure
 
+# *-----*
+# | FZF |
+# *-----*
+source <(fzf --zsh)
+
 # +----------------+
 # | CUSTOM SCRIPTS |
 # +----------------+
