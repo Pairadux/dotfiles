@@ -17,13 +17,12 @@ require("obsidian").setup({
 	},
 	notes_subdir = "90-99 Brain 2.0 (o--)/",
 
-	-- TODO: setup daily notes
-	-- daily_notes = {
-	-- 	folder = "000 - Zettelkasten/050 - Daily Notes",
-	-- 	date_format = "%m-%d-%Y",
-	-- default_tags = { "daily-notes" }
-	-- 	template = "900 - Templates/daily-note-template.md",
-	-- },
+	daily_notes = {
+		folder = "91 Zettelkasten/050 - Daily Notes",
+		date_format = "%Y-%m-%d",
+		default_tags = { "daily-note" },
+		template = "00-09 System/05 Templates (ot-)/daily-note-template.md",
+	},
 
 	new_notes_location = "current_dir",
 
