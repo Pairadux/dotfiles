@@ -12,32 +12,35 @@ require("obsidian").setup({
 			overrides = {
 				notes_subdir = "./",
 				new_notes_location = "notes_subdir",
-				daily_notes = {
-					folder = "000 - Zettelkasten/050 - Daily Notes",
-					date_format = "%m-%d-%Y",
-					template = "900 - Templates/daily-note-template.md",
-				},
-				templates = {
-					subdir = "900 - Templates",
-				},
 			},
 		},
 	},
-	mappings = {},
-    notes_subdir = "90-99 Brain 2.0 (o--)/",
-	new_notes_location = "notes_subdir",
+	notes_subdir = "90-99 Brain 2.0 (o--)/",
 
+	-- TODO: setup daily notes
+	-- daily_notes = {
+	-- 	folder = "000 - Zettelkasten/050 - Daily Notes",
+	-- 	date_format = "%m-%d-%Y",
+	-- default_tags = { "daily-notes" }
+	-- 	template = "900 - Templates/daily-note-template.md",
+	-- },
+
+	new_notes_location = "current_dir",
+
+	---@param title string|?
+	---@return string
 	note_id_func = function(title)
 		if title ~= nil then
 			return title
 		else
-			return tostring(os.date("%m-%d-%Y-%H-%M"))
+			return tostring(os.date("%Y-%m-%d-%H-%M"))
 		end
 	end,
 
 	preferred_link_style = "wiki",
 	disable_frontmatter = false,
 
+	---@return table
 	note_frontmatter_func = function(note)
 		-- Add the title of the note as an alias.
 		-- if note.title then
@@ -57,6 +60,9 @@ require("obsidian").setup({
 
 	templates = {
 		subdir = "00-09 System/05 Templates (ot-)",
+		date_format = "%Y-%m-%d",
+		time_format = "%H:%M",
+		-- A map for custom variables, the key should be the variable and the value a function
+		substitutions = {},
 	},
 })
--- TODO: Make wikilinks with aliases function correctly
