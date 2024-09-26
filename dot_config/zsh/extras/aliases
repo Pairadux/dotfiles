@@ -40,7 +40,6 @@ alias cdc='cd; clear'
 alias ...='cd ../..'
 alias down='cd ~/Downloads; clear'
 alias docs='cd ~/Documents; clear'
-alias dots='cd ~/dotfiles; clear'
 alias conf='cd ~/.config; clear'
 alias repo='cd ~/Documents/repos; clear'
 alias sync='cd ~/Documents/SyncFolder; clear'
@@ -61,11 +60,17 @@ alias tre='tree -CL 2'
 # *--------------------*
 # | QUICK EDIT ALIASES |
 # *--------------------*
-alias zshedit='cd ~/dotfiles/.config/zsh; nvim'
-alias nvimedit='cd ~/dotfiles/.config/nvim; nvim'
-alias confedit='cd ~/dotfiles/.config; nvim'
-alias hypredit='cd ~/dotfiles/.config/hypr; nvim'
-alias waybaredit='cd ~/dotfiles/.config/waybar; nvim'
+# TODO: update to chezmoi
+# alias zshedit='cd ~/dotfiles/.config/zsh; nvim'
+# alias nvimedit='cd ~/dotfiles/.config/nvim; nvim'
+# alias confedit='cd ~/dotfiles/.config; nvim'
+# alias hypredit='cd ~/dotfiles/.config/hypr; nvim'
+# alias waybaredit='cd ~/dotfiles/.config/waybar; nvim'
+
+# *-----------------*
+# | CHEZMOI ALIASES |
+# *-----------------*
+alias dots='chezmoi cd'
 
 # *-----------------------*
 # | ASSORTED UTIL ALIASES |
