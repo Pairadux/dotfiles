@@ -2,8 +2,7 @@
 
 I have attempted to make the best possible Mouseless Development Environment that I can for myself. 
 
-My Dotfiles are managed with [Gnu Stow](https://www.gnu.org/software/stow/) on mac & [XStow](https://github.com/majorkingleo/xstow) on Linux.
-*Though I plan on eventually switching to [DotBot](https://github.com/anishathalye/dotbot) or [ Chezmoi ](https://chezmoi.io)
+My Dotfiles are managed with [ Chezmoi ](https://chezmoi.io)
 
 I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.com/folke/tokyonight.nvim), so most of my configurations, when applicable, will include a Tokyo Night theme.
 
@@ -24,7 +23,8 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 
 ## Notes
 
-When installing these dotfiles, make sure that the ~/.config/tmux/{plugins, resurrect} directories exist **BEFORE** stowing dotfiles, otherwise you will be committing plugins and resurrect logs to your repo.
+<!-- When installing these dotfiles, make sure that the ~/.config/tmux/{plugins, resurrect} directories exist **BEFORE** stowing dotfiles, otherwise you will be committing plugins and resurrect logs to your repo. -->
+Should be irrelevant now that dotfiles are managed with Chezmoi
 
 ## NOTICE / WARNING
 
