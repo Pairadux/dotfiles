@@ -2,6 +2,7 @@
 # | ZSH QUICK RELOAD ALIAS |
 # *------------------------*
 alias zshreload='source ~/.config/zsh/.zshrc'
+alias ra='reload_aliases'
 
 # *---------------------------*
 # | WAYBAR QUICK RELOAD ALIAS |
