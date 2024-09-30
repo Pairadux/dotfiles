@@ -55,6 +55,7 @@ source <(fzf --zsh)
 # source $ZDOTDIR/extras/custom-scripts/jump.zsh
 source $ZDOTDIR/extras/custom-scripts/jd.zsh
 source $ZDOTDIR/extras/custom-scripts/reload_aliases.zsh
+source $ZDOTDIR/extras/custom-scripts/y.zsh
 
 # +---------+
 # | Startup |
