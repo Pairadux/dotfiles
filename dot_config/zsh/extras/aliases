@@ -42,7 +42,7 @@ alias ...='cd ../..'
 alias down='cd ~/Downloads; clear'
 alias docs='cd ~/Documents; clear'
 alias conf='cd ~/.config; clear'
-alias repo='cd ~/Documents/repos; clear'
+alias repo='cd ~/Documents/SyncFolder/40-49\ Tech\ Projects/41\ Mini\ Projects; clear'
 alias sync='cd ~/Documents/SyncFolder; clear'
 
 # *-------------*
@@ -57,11 +57,6 @@ alias aliases='bat ~/.config/zsh/extras/aliases'
 # *--------------*
 alias tree='tree -C'
 alias tre='tree -CL 2'
-
-# *--------------*
-# | YAZI ALIASES |
-# *--------------*
-alias y='yazi'
 
 # *--------------------*
 # | QUICK EDIT ALIASES |
