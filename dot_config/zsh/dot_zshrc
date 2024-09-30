@@ -16,7 +16,12 @@ typeset -U path
 # +----------------+
 # | TAB COMPLETION |
 # +----------------+
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+    compinit;
+else
+    compinit -C;
+fi;
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 setopt complete_in_word         # cd /ho/sco/tm<TAB> expands to /home/scott/tmp
 setopt auto_menu                # show completion menu on succesive tab presses
@@ -32,7 +37,6 @@ source $ZDOTDIR/extras/aliases
 # | Antidote |
 # +----------+
 source $ZDOTDIR/.antidote/antidote.zsh 
-
 antidote load
 
 # +--------+
@@ -48,8 +52,9 @@ source <(fzf --zsh)
 # +----------------+
 # | CUSTOM SCRIPTS |
 # +----------------+
-source $ZDOTDIR/extras/custom-scripts/jump.zsh
+# source $ZDOTDIR/extras/custom-scripts/jump.zsh
 source $ZDOTDIR/extras/custom-scripts/jd.zsh
+source $ZDOTDIR/extras/custom-scripts/reload_aliases.zsh
 
 # +---------+
 # | Startup |
