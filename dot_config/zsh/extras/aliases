@@ -58,6 +58,11 @@ alias aliases='bat ~/.config/zsh/extras/aliases'
 alias tree='tree -C'
 alias tre='tree -CL 2'
 
+# *--------------*
+# | YAZI ALIASES |
+# *--------------*
+alias y='yazi'
+
 # *--------------------*
 # | QUICK EDIT ALIASES |
 # *--------------------*
