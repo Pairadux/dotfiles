@@ -60,17 +60,16 @@ alias tre='tree -CL 2'
 # *--------------------*
 # | QUICK EDIT ALIASES |
 # *--------------------*
-# TODO: update to chezmoi
-# alias zshedit='cd ~/dotfiles/.config/zsh; nvim'
-# alias nvimedit='cd ~/dotfiles/.config/nvim; nvim'
-# alias confedit='cd ~/dotfiles/.config; nvim'
-# alias hypredit='cd ~/dotfiles/.config/hypr; nvim'
-# alias waybaredit='cd ~/dotfiles/.config/waybar; nvim'
+alias zshedit='chezmoi edit ~/.config/zsh/.zshrc'
+alias nvimedit='chezmoi edit ~/.config/nvim/init.lua'
+alias hypredit='chezmoi edit ~/.config/hypr/hyprland.conf'
+alias waybaredit='chezmoi edit ~/.config/waybar/config.jsonc'
 
 # *-----------------*
 # | CHEZMOI ALIASES |
 # *-----------------*
 alias dots='chezmoi cd'
+alias ca='chezmoi apply'
 
 # *-----------------------*
 # | ASSORTED UTIL ALIASES |
@@ -83,6 +82,11 @@ alias lg='lazygit'
 alias catnip='cd; clear; catnip'
 alias shutdown='shutdown now'
 alias q='exit'
+
+# *--------------------*
+# | PACINFO CHEATSHEET |
+# *--------------------*
+alias pacinfo='mdcat ~/Documents/SyncFolder/40-49\ Tech\ Projects/40\ Tech\ Admin/40.01\ Pacinfo.md'
 
 # *--------------*
 # | MISC ALIASES |
