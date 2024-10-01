@@ -49,6 +49,7 @@ return {
                 "regex",
                 "rust",
                 "svelte",
+                "toml",
 				"typescript",
 				"vim",
 				"vimdoc",
