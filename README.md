@@ -21,11 +21,6 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 - Wezterm basic configuration and themeing
 - Zellij temp config (was buggy so I switched back to Tmux, but wanted to leave config in case I try it again)
 
-## Notes
-
-<!-- When installing these dotfiles, make sure that the ~/.config/tmux/{plugins, resurrect} directories exist **BEFORE** stowing dotfiles, otherwise you will be committing plugins and resurrect logs to your repo. -->
-Should be irrelevant now that dotfiles are managed with Chezmoi
-
 ## NOTICE / WARNING
 
 **Should you choose to take inspiration from my Dotfiles, feel free, but I am not liable for anything not working on your system the same way that it works on mine.**
