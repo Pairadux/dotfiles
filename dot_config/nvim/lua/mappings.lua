@@ -10,6 +10,15 @@ local harpoon = require("harpoon")
 -- -- Next ftFT
 -- map("n", ":", ";")
 
+-- close nvim with q
+map("n", "q", function()
+    if vim.bo.modifiable then
+        vim.cmd("wq")
+    else
+        vim.cmd("q")
+    end
+end, { noremap = true, silent = true })
+
 -- Format with conform
 map("n", "<leader>fm", function()
 	require("conform").format()
