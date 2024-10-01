@@ -1,0 +1,45 @@
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
+[manager]
+linemode    = "none"
+show_hidden = true
+sort_by     = "natural"
+show_symlink = true
+
+[preview]
+wrap = "no"
+tab_size   = 4
+
+[opener]
+edit = [
+	{ run = '$EDITOR "$@"', desc = "$EDITOR", block = true },
+]
+play = [
+	{ run = 'mpv --force-window "$@"' },
+]
+
+# [open]
+# rules = [
+# 	{ name = "*/", use = [ "open", "edit", "reveal" ] },
+#
+# 	{ mime = "text/*",  use = [ "edit", "reveal" ] },
+# 	{ mime = "image/*", use = [ "open", "reveal" ] },
+# 	{ mime = "video/*", use = [ "play", "reveal" ] },
+# 	{ mime = "audio/*", use = [ "play", "reveal" ] },
+# 	{ mime = "inode/x-empty", use = [ "edit", "reveal" ] },
+#
+# 	{ mime = "application/json", use = [ "edit", "reveal" ] },
+# 	{ mime = "*/javascript",     use = [ "edit", "reveal" ] },
+#
+# 	{ mime = "application/zip",             use = [ "extract", "reveal", "archive" ] },
+# 	{ mime = "application/gzip",            use = [ "extract", "reveal", "archive" ] },
+# 	{ mime = "application/x-tar",           use = [ "extract", "reveal", "archive" ] },
+# 	{ mime = "application/x-bzip",          use = [ "extract", "reveal", "archive" ] },
+# 	{ mime = "application/x-bzip2",         use = [ "extract", "reveal", "archive" ] },
+# 	{ mime = "application/x-7z-compressed", use = [ "extract", "reveal", "archive" ] },
+# 	{ mime = "application/x-rar",           use = [ "extract", "reveal", "archive" ] },
+#
+# 	{ name = "*", use = [ "open", "reveal" ] },
+# ]
+
+[plugin]
