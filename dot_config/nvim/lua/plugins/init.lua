@@ -2,9 +2,8 @@ return {
 
 	{
 		"stevearc/conform.nvim",
-		config = function()
-			require("configs.conform")
-		end,
+		-- event = 'BufWritePre', -- uncomment for format on save
+		opts = require("configs.conform"),
 	},
 
 	{
@@ -29,27 +28,27 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		opts = {
 			ensure_installed = {
-                "bash",
+				"bash",
 				"c",
 				"cpp",
 				"css",
-                "gitignore",
-                "hocon",
+				"gitignore",
+				"hocon",
 				"html",
-                "ini",
+				"ini",
 				"javascript",
 				"json",
-                "jsonc",
+				"jsonc",
 				"lua",
 				"markdown",
 				"markdown_inline",
 				"python",
-                "query",
-                "rasi",
-                "regex",
-                "rust",
-                "svelte",
-                "toml",
+				"query",
+				"rasi",
+				"regex",
+				"rust",
+				"svelte",
+				"toml",
 				"typescript",
 				"vim",
 				"vimdoc",
@@ -66,28 +65,6 @@ return {
 			},
 		},
 	},
-
-	-- {
-	-- 	"nvim-java/nvim-java",
-	-- 	dependencies = {
-	-- 		"nvim-java/lua-async-await",
-	-- 		"nvim-java/nvim-java-core",
-	-- 		"nvim-java/nvim-java-test",
-	-- 		"nvim-java/nvim-java-dap",
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		"neovim/nvim-lspconfig",
-	-- 		"mfussenegger/nvim-dap",
-	-- 		{
-	-- 			"williamboman/mason.nvim",
-	-- 			opts = {
-	-- 				registries = {
-	-- 					"github:nvim-java/mason-registry",
-	-- 					"github:mason-org/mason-registry",
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
 
 	-- In order to modify the `lspconfig` configuration:
 	{
@@ -202,14 +179,14 @@ return {
 	-- 	ft = { "rust" },
 	-- },
 
-	{
-		"nvimdev/dashboard-nvim",
-		event = "VimEnter",
-		config = function()
-			require("configs.dashboard")
-		end,
-		dependencies = { { "nvim-tree/nvim-web-devicons" } },
-	},
+	-- {
+	-- 	"nvimdev/dashboard-nvim",
+	-- 	event = "VimEnter",
+	-- 	config = function()
+	-- 		require("configs.dashboard")
+	-- 	end,
+	-- 	dependencies = { { "nvim-tree/nvim-web-devicons" } },
+	-- },
 
 	{
 		"ThePrimeagen/harpoon",
@@ -278,5 +255,4 @@ return {
 	},
 
 	{ "echasnovski/mini.icons", version = false },
-
 }
