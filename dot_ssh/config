@@ -1,4 +1,0 @@
-Host "ArchLinux"
-    HostName 50.82.98.200
-    User austincgause
-    Port 22
