@@ -118,7 +118,7 @@ return {
 			extensions = {
 				project = {
 					base_dirs = {
-						"~/Documents/repos/",
+						"~/Dev/",
 					},
 					hidden_files = true,
 					on_project_selected = function(prompt_bufnr)
