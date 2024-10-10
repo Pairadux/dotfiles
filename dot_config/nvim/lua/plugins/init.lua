@@ -1,6 +1,11 @@
 return {
 
 	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+	},
+
+	{
 		"stevearc/conform.nvim",
 		-- event = 'BufWritePre', -- uncomment for format on save
 		opts = require("configs.conform"),
