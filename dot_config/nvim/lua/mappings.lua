@@ -19,6 +19,11 @@ map("n", "q", function()
     end
 end, { noremap = true, silent = true })
 
+-- Reload nvim
+map("n", "<leader>rn", function()
+    require("nvchad.utils").reload()
+end, { desc = "Reload nvim" })
+
 -- Format with conform
 map("n", "<leader>fm", function()
 	require("conform").format()
