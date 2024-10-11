@@ -55,8 +55,9 @@ M.nvdash = {
 		{ txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
 		{ txt = "  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
 		{ txt = "󰈭  Find Word", keys = "Spc f w", cmd = "Telescope live_grep" },
-		-- { txt = "󱥚  Themes", keys = "Spc t h", cmd = ":lua require('nvchad.themes').open()" },
-		-- { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
+		{ txt = "  Projects", keys = "Spc f p", cmd = "Telescope project" },
+		{ txt = "  Todo", keys = "Spc f t", cmd = "Telescope todo-comments" },
+
 
 		{ txt = "─", hl = "NvDashLazy", no_gap = true, rep = true },
 
