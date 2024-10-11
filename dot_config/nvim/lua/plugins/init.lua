@@ -3,9 +3,9 @@ return {
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-        opts = {
-            preset = "helix",
-        },
+		opts = {
+			preset = "helix",
+		},
 	},
 
 	{
@@ -34,34 +34,9 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		opts = {
-			ensure_installed = {
-				"bash",
-				"c",
-				"cpp",
-				"css",
-				"gitignore",
-				"hocon",
-				"html",
-				"ini",
-				"javascript",
-				"json",
-				"jsonc",
-				"lua",
-				"markdown",
-				"markdown_inline",
-				"python",
-				"query",
-				"rasi",
-				"regex",
-				"rust",
-				"svelte",
-				"toml",
-				"typescript",
-				"vim",
-				"vimdoc",
-			},
-		},
+		opts = function ()
+            require("configs.treesitter")
+		end,
 	},
 
 	-- lsp stuff
@@ -88,9 +63,7 @@ return {
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
 		config = function()
-			require("nvim-surround").setup({
-				-- Configuration here, or leave empty to use defaults
-			})
+			require("nvim-surround").setup({})
 		end,
 	},
 
@@ -113,33 +86,9 @@ return {
 
 	{
 		"nvim-telescope/telescope.nvim",
-		opts = {
-			defaults = {
-				initial_mode = "insert",
-				file_ignore_patterns = { ".git/" },
-			},
-			pickers = {
-				find_files = {
-					find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-				},
-			},
-			extensions = {
-				project = {
-					base_dirs = {
-						"~/Dev/",
-					},
-					hidden_files = true,
-					on_project_selected = function(prompt_bufnr)
-						local project_actions = require("telescope._extensions.project.actions")
-						project_actions.change_working_directory(prompt_bufnr, false)
-
-						vim.defer_fn(function()
-							require("telescope.builtin").find_files()
-						end, 50)
-					end,
-				},
-			},
-		},
+		opts = function()
+			require("configs.telescope")
+		end,
 	},
 
 	{
@@ -209,11 +158,7 @@ return {
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		event = "BufEnter",
-		opts = {
-			-- your configuration comes here
-			-- or leave it empty to use the default settings
-			-- refer to the configuration section below
-		},
+		opts = {},
 	},
 
 	{
@@ -222,14 +167,6 @@ return {
 		lazy = true,
 		cmd = { "ObsidianNew", "ObsidianSearch", "ObsidianToday", "ObsidianQuickSwitch" },
 		ft = "markdown",
-		-- event = {
-		-- 	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-		-- 	-- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-		-- 	"BufReadPre "
-		-- 		.. vim.fn.expand("~")
-		-- 		.. "/Documents/Brain 2.0/**.md",
-		-- 	"BufNewFile " .. vim.fn.expand("~") .. "/Documents/Brain 2.0/**.md",
-		-- },
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"hrsh7th/nvim-cmp",
