@@ -18,7 +18,7 @@ nomap("n", "<leader>h")
 
 -- close nvim with q, different action based on buffer type
 map("n", "q", function()
-	if vim.bo.modifiable then
+	if vim.bo.modifiable and vim.bo.buftype == "" then
 		vim.cmd("wq")
 	else
 		vim.cmd("q")
