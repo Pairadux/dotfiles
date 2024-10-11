@@ -34,8 +34,8 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		opts = function ()
-            require("configs.treesitter")
+		opts = function()
+			require("configs.treesitter")
 		end,
 	},
 
@@ -73,18 +73,6 @@ return {
 	},
 
 	{
-		"rcarriga/nvim-notify",
-		config = function()
-			require("notify").setup({
-				background_colour = "#000000",
-				fps = 60,
-				render = "minimal",
-				stages = "fade",
-			})
-		end,
-	},
-
-	{
 		"nvim-telescope/telescope.nvim",
 		opts = function()
 			require("configs.telescope")
@@ -105,7 +93,15 @@ return {
 		event = "VeryLazy",
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
+			{
+				"rcarriga/nvim-notify",
+                opts = {
+                    background_colour = "#000000",
+                    fps = 60,
+                    render = "minimal",
+                    stages = "fade",
+                }
+			},
 		},
 		config = function()
 			require("configs.noice")
@@ -130,6 +126,29 @@ return {
 		},
 	},
 
+	{
+		"folke/lazydev.nvim",
+		ft = "lua", -- only load on lua files
+		opts = {
+			library = {
+				-- See the configuration section for more details
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+			},
+		},
+	},
+	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+	{ -- optional completion source for require statements and module annotations
+		"hrsh7th/nvim-cmp",
+		opts = function(_, opts)
+			opts.sources = opts.sources or {}
+			table.insert(opts.sources, {
+				name = "lazydev",
+				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+			})
+		end,
+	},
+
 	-- {
 	-- 	"mrcjkb/rustaceanvim",
 	-- 	version = "^4", -- Recommended
@@ -143,6 +162,7 @@ return {
 	-- 		require("configs.dashboard")
 	-- 	end,
 	-- 	dependencies = { { "nvim-tree/nvim-web-devicons" } },
+    --
 	-- },
 
 	{
