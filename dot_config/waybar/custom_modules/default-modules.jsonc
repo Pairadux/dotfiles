@@ -33,6 +33,8 @@
             "class<firefox>": " ",
             "class<firefox> title<.*youtube.*>": " ",
             "class<firefox> title<.*github.*>": " ",
+            "class<firefox> title<.*chatgpt.*>": " ",
+            "class<libreoffice-writer": " ",
             "thunderbird": " ",
             "ticktick": " ",
             "wezterm": " ",
