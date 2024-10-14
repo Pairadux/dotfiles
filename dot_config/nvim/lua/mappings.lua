@@ -16,6 +16,9 @@ nomap("n", "<leader>e")
 nomap("n", "<leader>v")
 nomap("n", "<leader>h")
 
+-- Exit insert mode
+map("i", "jk", "<ESC>")
+
 -- close nvim with q, different action based on buffer type
 map("n", "q", function()
 	if vim.bo.modifiable and vim.bo.buftype == "" then
@@ -29,9 +32,6 @@ end, { noremap = true, silent = true })
 map("n", "<leader>rn", function()
 	require("nvchad.utils").reload()
 end, { desc = "Reload nvim" })
-
--- Exit insert mode
-map("i", "jk", "<ESC>")
 
 -- Insert Line Break Sequence
 map("n", "<leader>ib", "80i#<ESC>", { noremap = true, silent = true, desc = "Insert 80 #'s (Line Break)" })
