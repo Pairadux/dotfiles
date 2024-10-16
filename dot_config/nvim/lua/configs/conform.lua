@@ -1,4 +1,4 @@
-local options = {
+return{
 	lsp_fallback = true,
 
 	formatters_by_ft = {
@@ -25,5 +25,3 @@ local options = {
 	-- 	lsp_fallback = true,
 	-- },
 }
-
-require("conform").setup(options)
