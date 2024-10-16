@@ -102,12 +102,12 @@ return {
 			"MunifTanjim/nui.nvim",
 			{
 				"rcarriga/nvim-notify",
-                opts = {
-                    background_colour = "#000000",
-                    fps = 60,
-                    render = "minimal",
-                    stages = "fade",
-                }
+		              opts = {
+		                  -- background_colour = "#000000",
+		                  fps = 60,
+		                  render = "minimal",
+		                  stages = "fade",
+		              }
 			},
 		},
 		-- init = function()
