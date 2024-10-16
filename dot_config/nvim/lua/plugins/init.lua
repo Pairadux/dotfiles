@@ -1,5 +1,11 @@
 return {
 
+    -- {
+    --     "AustinCGause/custom-plugin",
+    --     opts = {}
+    --     dev = true,
+    -- },
+
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
