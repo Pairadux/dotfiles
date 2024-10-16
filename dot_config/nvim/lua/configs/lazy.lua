@@ -1,5 +1,13 @@
 return {
 	defaults = { lazy = true },
+
+    dev = {
+        path = "~/Dev/",
+        patterns = {
+            "Pairadux",
+        }
+    },
+
 	install = { colorscheme = { "nvchad" } },
 
 	ui = {
