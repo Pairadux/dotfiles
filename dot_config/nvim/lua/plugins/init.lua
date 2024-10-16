@@ -34,9 +34,7 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		opts = function()
-			require("configs.treesitter")
-		end,
+		opts = require("configs.treesitter")
 	},
 
 	-- lsp stuff
@@ -62,9 +60,7 @@ return {
 		"kylechui/nvim-surround",
 		version = "*", -- Use for stability; omit to use `main` branch for the latest features
 		event = "VeryLazy",
-		config = function()
-			require("nvim-surround").setup({})
-		end,
+        opts = {},
 	},
 
 	{
@@ -100,6 +96,8 @@ return {
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
+        cmd = { "Noice" },
+        opts = require("configs.noice"),
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			{
@@ -112,12 +110,9 @@ return {
                 }
 			},
 		},
-		config = function()
-			require("configs.noice")
-		end,
-		init = function()
-			vim.g.lsp_handlers_enabled = false
-		end,
+		-- init = function()
+		-- 	vim.g.lsp_handlers_enabled = false
+		-- end,
 	},
 
 	{
@@ -146,7 +141,9 @@ return {
 			},
 		},
 	},
+
 	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+
 	{ -- optional completion source for require statements and module annotations
 		"hrsh7th/nvim-cmp",
 		opts = function(_, opts)
@@ -202,9 +199,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"nvim-treesitter",
 		},
-		config = function()
-			require("configs.obsidian")
-		end,
+        opts = require("configs.obsidian")
 	},
 
 	{

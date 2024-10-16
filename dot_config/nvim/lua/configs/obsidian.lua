@@ -1,4 +1,4 @@
-require("obsidian").setup({
+return {
 	workspaces = {
 		{
 			name = "SyncFolder",
@@ -64,4 +64,4 @@ require("obsidian").setup({
 		-- A map for custom variables, the key should be the variable and the value a function
 		substitutions = {},
 	},
-})
+}
