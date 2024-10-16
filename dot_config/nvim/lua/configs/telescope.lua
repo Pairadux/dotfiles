@@ -23,5 +23,8 @@ return {
 				end, 50)
 			end,
 		},
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({}),
+		},
 	},
 }

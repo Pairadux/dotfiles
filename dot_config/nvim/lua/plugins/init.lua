@@ -74,19 +74,28 @@ return {
 
 	{
 		"nvim-telescope/telescope.nvim",
-		opts = function()
-			require("configs.telescope")
-		end,
+		opts = require("configs.telescope"),
+        config = function (_, opts)
+            require("telescope").setup(opts)
+            require("telescope").load_extension("project")
+            require("telescope").load_extension("ui-select")
+        end,
 	},
 
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-telescope/telescope.nvim" },
 	},
 
 	{
 		"nvim-telescope/telescope-project.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
 	},
+
+    {
+        "nvim-telescope/telescope-ui-select.nvim",
+		dependencies = { "nvim-telescope/telescope.nvim" },
+    },
 
 	{
 		"folke/noice.nvim",
