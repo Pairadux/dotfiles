@@ -1,6 +1,5 @@
 require("nvchad.mappings")
 
-
 -- Global Declarations
 local map = vim.keymap.set
 local nomap = vim.keymap.del
@@ -81,7 +80,6 @@ end, { desc = "Terminal Toggle Floating Term 3" })
 -- map("n", "<C-S-N>", function()
 -- 	harpoon:list():next()
 -- end, { desc = "Toggle Next Buffer in Harpoon List" })
-
 
 -- TMUX NAVIGATOR
 map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux Window Left" })
