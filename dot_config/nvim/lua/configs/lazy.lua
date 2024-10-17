@@ -2,7 +2,7 @@ return {
 	defaults = { lazy = true },
 
     dev = {
-        path = "~/Dev",
+        path = "~/Dev/plugins",
         patterns = {
             "Pairadux",
         }
