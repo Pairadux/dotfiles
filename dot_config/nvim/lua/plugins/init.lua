@@ -160,13 +160,13 @@ return {
 				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
 			})
 		end,
+    -- TODO: review additional notes on rustaceanvim
+    -- https://github.com/mrcjkb/rustaceanvim
+	{
+		"mrcjkb/rustaceanvim",
+		version = "^5", -- Recommended
+        lazy = false,
 	},
-
-	-- {
-	-- 	"mrcjkb/rustaceanvim",
-	-- 	version = "^4", -- Recommended
-	-- 	ft = { "rust" },
-	-- },
 
 	-- {
 	-- 	"nvimdev/dashboard-nvim",

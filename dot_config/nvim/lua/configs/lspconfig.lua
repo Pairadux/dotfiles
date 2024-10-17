@@ -9,7 +9,7 @@ local servers = {
 	svelte = {},
 	marksman = {},
 	bashls = {},
-	rust_analyzer = {},
+	-- rust_analyzer = {},
 	tailwindcss = {
 		filetypes = { "html", "css", "svelte", "scss", "javascript", "typescript", "vue" },
 	},
