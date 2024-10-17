@@ -1,24 +1,14 @@
 return {
 
-    -- {
-    --     "AustinCGause/custom-plugin",
-    --     opts = {}
-    --     dev = true,
-    -- },
+	-- ######################################## Custom Plugins ########################################
 
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		opts = {
-			preset = "helix",
-		},
-	},
+	-- {
+	--     "AustinCGause/custom-plugin",
+	--     opts = {}
+	--     dev = true,
+	-- },
 
-	{
-		"stevearc/conform.nvim",
-		-- event = 'BufWritePre', -- uncomment for format on save
-		opts = require("configs.conform"),
-	},
+	-- ######################################## Nvchad Plugins ########################################
 
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -39,11 +29,21 @@ return {
 	},
 
 	{
-		"nvim-treesitter/nvim-treesitter",
-		opts = require("configs.treesitter")
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		opts = {
+			preset = "helix",
+		},
 	},
 
-	-- lsp stuff
+	{
+		"stevearc/conform.nvim",
+		-- event = 'BufWritePre', -- uncomment for format on save
+		opts = require("configs.conform"),
+	},
+
+    -- TODO: add gitsigns
+
 	{
 		"williamboman/mason.nvim",
 		opts = {
@@ -53,7 +53,6 @@ return {
 		},
 	},
 
-	-- In order to modify the `lspconfig` configuration:
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -62,27 +61,47 @@ return {
 		end,
 	},
 
-	{
-		"kylechui/nvim-surround",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
-		event = "VeryLazy",
-        opts = {},
-	},
-
-	{
-		"MunifTanjim/nui.nvim",
-		event = "VeryLazy",
+	{ -- optional completion source for require statements and module annotations: lazydev
+		"hrsh7th/nvim-cmp",
+		opts = function(_, opts)
+			opts.sources = opts.sources or {}
+			table.insert(opts.sources, {
+				name = "lazydev",
+				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+			})
+		end,
 	},
 
 	{
 		"nvim-telescope/telescope.nvim",
 		opts = require("configs.telescope"),
-        config = function (_, opts)
-            require("telescope").setup(opts)
-            require("telescope").load_extension("project")
-            require("telescope").load_extension("ui-select")
-        end,
+		config = function(_, opts)
+			require("telescope").setup(opts)
+			require("telescope").load_extension("project")
+			require("telescope").load_extension("ui-select")
+		end,
 	},
+
+	{
+		"nvim-treesitter/nvim-treesitter",
+		opts = require("configs.treesitter"),
+	},
+
+    -- ######################################## My Plugins ########################################
+
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            "rcarriga/nvim-dap-ui",
+            "nvim-neotest/nvim-nio",
+            "williamboman/mason.nvim",
+            "jay-babu/mason-nvim-dap.nvim",
+        },
+        config = function()
+            require("configs.dap")
+        end,
+
+    },
 
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
@@ -94,26 +113,38 @@ return {
 		dependencies = { "nvim-telescope/telescope.nvim" },
 	},
 
-    {
-        "nvim-telescope/telescope-ui-select.nvim",
+	{
+		"nvim-telescope/telescope-ui-select.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
-    },
+	},
+
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		opts = {},
+	},
+
+	{
+		"MunifTanjim/nui.nvim",
+		event = "VeryLazy",
+	},
 
 	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
-        cmd = { "Noice" },
-        opts = require("configs.noice"),
+		cmd = { "Noice" },
+		opts = require("configs.noice"),
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			{
 				"rcarriga/nvim-notify",
-		              opts = {
-		                  -- background_colour = "#000000",
-		                  fps = 60,
-		                  render = "minimal",
-		                  stages = "fade",
-		              }
+				opts = {
+					-- background_colour = "#000000",
+					fps = 60,
+					render = "minimal",
+					stages = "fade",
+				},
 			},
 		},
 		-- init = function()
@@ -144,22 +175,14 @@ return {
 				-- See the configuration section for more details
 				-- Load luvit types when the `vim.uv` word is found
 				{ path = "luvit-meta/library", words = { "vim%.uv" } },
-                { path = "lazy.nvim", words = { "LazyVim" } }
+				{ path = "lazy.nvim", words = { "LazyVim" } },
+                "nvim-dap-ui",
 			},
 		},
 	},
 
 	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 
-	{ -- optional completion source for require statements and module annotations
-		"hrsh7th/nvim-cmp",
-		opts = function(_, opts)
-			opts.sources = opts.sources or {}
-			table.insert(opts.sources, {
-				name = "lazydev",
-				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-			})
-		end,
     -- TODO: review additional notes on rustaceanvim
     -- https://github.com/mrcjkb/rustaceanvim
 	{
@@ -167,25 +190,6 @@ return {
 		version = "^5", -- Recommended
         lazy = false,
 	},
-
-	-- {
-	-- 	"nvimdev/dashboard-nvim",
-	-- 	event = "VimEnter",
-	-- 	config = function()
-	-- 		require("configs.dashboard")
-	-- 	end,
-	-- 	dependencies = { { "nvim-tree/nvim-web-devicons" } },
-    --
-	-- },
-
-	-- {
-	-- 	"ThePrimeagen/harpoon",
-	-- 	branch = "harpoon2",
-	-- 	dependencies = { "nvim-lua/plenary.nvim" },
-	-- 	config = function()
-	-- 		require("configs.harpoon")
-	-- 	end,
-	-- },
 
 	{
 		"folke/todo-comments.nvim",
@@ -206,7 +210,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"nvim-treesitter",
 		},
-        opts = require("configs.obsidian")
+		opts = require("configs.obsidian"),
 	},
 
 	{
