@@ -10,7 +10,7 @@ return {
 			enabled = false,
 		},
 		signature = {
-			enabled = false,
+			enabled = true,
 		},
 	},
 	presets = {

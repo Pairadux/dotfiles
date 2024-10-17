@@ -87,6 +87,8 @@ M.term = {
 	},
 }
 
+M.lsp = { signature = false }
+
 M.mason = {
 	pkgs = {
 		"lua-language-server",
