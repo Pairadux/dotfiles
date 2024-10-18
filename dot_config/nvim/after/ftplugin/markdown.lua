@@ -1,3 +1,8 @@
-vim.opt_local.conceallevel = 1
+local ol = vim.opt_local
+local wo = vim.wo
 
-vim.wo.spell = true
+ol.conceallevel = 1
+
+wo.spell = true
+
+ol.formatoptions = ol.formatoptions + "nro"
