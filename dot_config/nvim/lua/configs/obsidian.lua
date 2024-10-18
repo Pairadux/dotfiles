@@ -1,4 +1,4 @@
-return {
+require("obsidian").setup({
 	workspaces = {
 		{
 			name = "SyncFolder",
@@ -6,22 +6,33 @@ return {
 		},
 		{
 			name = "Brain 2.0",
-			path = "~/Documents/SyncFolder/90-99 Brain 2.0 (o--)",
+			path = "~/Documents/SyncFolder/90-99 Brain 2.0 (o--)/",
 
 			strict = true,
 			overrides = {
-				notes_subdir = "./",
+				notes_subdir = "~/Documents/SyncFolder/90-99 Brain 2.0 (o--)/",
+				new_notes_location = "notes_subdir",
+			},
+		},
+		{
+			name = "Class Notes",
+			path = "~/Documents/SyncFolder/30-39 Academia/33 Class Notes/",
+
+			strict = true,
+			overrides = {
+				notes_subdir = "~/Documents/SyncFolder/90-99 Brain 2.0 (o--)/",
 				new_notes_location = "notes_subdir",
 			},
 		},
 	},
+
 	notes_subdir = "90-99 Brain 2.0 (o--)/",
 
 	daily_notes = {
 		folder = "91 Zettelkasten/050 - Daily Notes",
 		date_format = "%Y-%m-%d",
 		default_tags = { "daily-note" },
-		template = "00-09 System/05 Templates (ot-)/daily-note-template.md",
+		template = "00-09 System/05 Templates/daily-note-template.md",
 	},
 
 	new_notes_location = "current_dir",
@@ -58,10 +69,10 @@ return {
 	end,
 
 	templates = {
-		subdir = "00-09 System/05 Templates (ot-)",
+		subdir = "00-09 System/05 Templates",
 		date_format = "%Y-%m-%d",
 		time_format = "%H:%M",
 		-- A map for custom variables, the key should be the variable and the value a function
 		substitutions = {},
 	},
-}
+})

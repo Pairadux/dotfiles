@@ -42,7 +42,7 @@ return {
 		opts = require("configs.conform"),
 	},
 
-    -- TODO: add gitsigns
+	-- TODO: add gitsigns
 
 	{
 		"williamboman/mason.nvim",
@@ -87,21 +87,20 @@ return {
 		opts = require("configs.treesitter"),
 	},
 
-    -- ######################################## My Plugins ########################################
+	-- ######################################## My Plugins ########################################
 
-    {
-        "mfussenegger/nvim-dap",
-        dependencies = {
-            "rcarriga/nvim-dap-ui",
-            "nvim-neotest/nvim-nio",
-            "williamboman/mason.nvim",
-            "jay-babu/mason-nvim-dap.nvim",
-        },
-        config = function()
-            require("configs.dap")
-        end,
-
-    },
+	{
+		"mfussenegger/nvim-dap",
+		dependencies = {
+			"rcarriga/nvim-dap-ui",
+			"nvim-neotest/nvim-nio",
+			"williamboman/mason.nvim",
+			"jay-babu/mason-nvim-dap.nvim",
+		},
+		config = function()
+			require("configs.dap")
+		end,
+	},
 
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
@@ -176,19 +175,19 @@ return {
 				-- Load luvit types when the `vim.uv` word is found
 				{ path = "luvit-meta/library", words = { "vim%.uv" } },
 				{ path = "lazy.nvim", words = { "LazyVim" } },
-                "nvim-dap-ui",
+				"nvim-dap-ui",
 			},
 		},
 	},
 
 	{ "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 
-    -- TODO: review additional notes on rustaceanvim
-    -- https://github.com/mrcjkb/rustaceanvim
+	-- TODO: review additional notes on rustaceanvim
+	-- https://github.com/mrcjkb/rustaceanvim
 	{
 		"mrcjkb/rustaceanvim",
 		version = "^5", -- Recommended
-        lazy = false,
+		lazy = false,
 	},
 
 	{
@@ -210,7 +209,9 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"nvim-treesitter",
 		},
-		opts = require("configs.obsidian"),
+		config = function()
+			require("configs.obsidian")
+		end,
 	},
 
 	{
