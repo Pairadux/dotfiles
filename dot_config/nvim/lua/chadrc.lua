@@ -38,7 +38,7 @@ M.nvdash = {
 	load_on_startup = true,
 	header = {
 		"",
-		" ███▓██   ▄▄▄       ██▓ ██▀███   ▄▄▄      ▓█████▄  █    ██ ▒██   ██▒",
+		" ██████   ▄▄▄       ██▓ ██▀███   ▄▄▄      ▓█████▄  █    ██ ▒██   ██▒",
 		"▓██░  ██▒▒████▄    ▓██▒▓██ ▒ ██▒▒████▄    ▒██▀ ██▌ ██  ▓██▒▒▒ █ █ ▒░",
 		"▓██░ ██▓▒▒██  ▀█▄  ▒██▒▓██ ░▄█ ▒▒██  ▀█▄  ░██   █▌▓██  ▒██░░░  █   ░",
 		"▒██▄█▓▒ ▒░██▄▄▄▄██ ░██░▒██▀▀█▄  ░██▄▄▄▄██ ░▓█▄   ▌▓▓█  ░██░ ░ █ █ ▒ ",
@@ -59,7 +59,7 @@ M.nvdash = {
 		{ txt = "  Todo", keys = "Spc f t", cmd = "Telescope todo-comments" },
 
 
-		{ txt = "─", hl = "NvDashLazy", no_gap = true, rep = true },
+		{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
 
 		{
 			txt = function()
@@ -67,11 +67,11 @@ M.nvdash = {
 				local ms = math.floor(stats.startuptime) .. " ms"
 				return "  Loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms
 			end,
-			hl = "NvDashLazy",
+			hl = "NvDashFooter",
 			no_gap = true,
 		},
 
-		{ txt = "─", hl = "NvDashLazy", no_gap = true, rep = true },
+		{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
 	},
 }
 
