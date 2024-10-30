@@ -219,6 +219,14 @@ return {
 		event = "VeryLazy",
 	},
 
+    {
+        "tpope/vim-obsession",
+        event = "VeryLazy",
+        config = function()
+            vim.cmd("silent! helptags ALL")
+        end,
+    },
+
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
