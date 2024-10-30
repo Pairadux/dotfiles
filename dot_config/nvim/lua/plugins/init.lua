@@ -89,18 +89,18 @@ return {
 
 	-- ######################################## My Plugins ########################################
 
-	{
-		"mfussenegger/nvim-dap",
-		dependencies = {
-			"rcarriga/nvim-dap-ui",
-			"nvim-neotest/nvim-nio",
-			"williamboman/mason.nvim",
-			"jay-babu/mason-nvim-dap.nvim",
-		},
-		config = function()
-			require("configs.dap")
-		end,
-	},
+	-- {
+	-- 	"mfussenegger/nvim-dap",
+	-- 	dependencies = {
+	-- 		"rcarriga/nvim-dap-ui",
+	-- 		"nvim-neotest/nvim-nio",
+	-- 		"williamboman/mason.nvim",
+	-- 		"jay-babu/mason-nvim-dap.nvim",
+	-- 	},
+	-- 	config = function()
+	-- 		require("configs.dap")
+	-- 	end,
+	-- },
 
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
