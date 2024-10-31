@@ -1,0 +1,27 @@
+# Vim sessions
+Session.vim
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Vim/Neovim swap files
+*.swp
+*.swo
+
+# Backup files
+*.bak
+*.tmp
+
+# macOS Finder attributes
+.AppleDouble
+.LSOverride
+
+# Log files
+*.log
+
+# Temporary files from editors
+*.vscode/
+.idea/
+*.iml
+
