@@ -4,26 +4,6 @@ require("obsidian").setup({
 			name = "SyncFolder",
 			path = "~/Documents/SyncFolder/",
 		},
-		{
-			name = "Brain 2.0",
-			path = "~/Documents/SyncFolder/90-99 Brain 2.0 (o--)/",
-
-			strict = true,
-			overrides = {
-				notes_subdir = "~/Documents/SyncFolder/90-99 Brain 2.0 (o--)/",
-				new_notes_location = "notes_subdir",
-			},
-		},
-		{
-			name = "Class Notes",
-			path = "~/Documents/SyncFolder/30-39 Academia/33 Class Notes/",
-
-			strict = true,
-			overrides = {
-				notes_subdir = "~/Documents/SyncFolder/90-99 Brain 2.0 (o--)/",
-				new_notes_location = "notes_subdir",
-			},
-		},
 	},
 
 	notes_subdir = "90-99 Brain 2.0 (o--)/",
