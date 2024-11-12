@@ -2,7 +2,7 @@
 
 [manager]
 linemode    = "none"
-show_hidden = true
+show_hidden = false
 sort_by     = "natural"
 show_symlink = true
 
