@@ -4,11 +4,6 @@
 alias zshreload='source ~/.config/zsh/.zshrc'
 alias ra='reload_aliases'
 
-# *---------------------------*
-# | WAYBAR QUICK RELOAD ALIAS |
-# *---------------------------*
-alias waybarreload='killall -SIGUSR2 waybar'
-
 # *-------------------*
 # | SHADOWING ALIASES |
 # *-------------------*
@@ -83,14 +78,16 @@ alias lg='lazygit'
 alias catnip='cd && clear && catnip'
 alias shutdown='shutdown now'
 alias q='exit'
+alias waybarreload='killall -SIGUSR2 waybar'
 
 # *--------------------*
 # | PACINFO CHEATSHEET |
 # *--------------------*
-alias pacinfo='mdcat ~/Documents/SyncFolder/40-49\ Tech\ Projects/40\ Tech\ Admin/40.01\ Pacinfo.md'
+# FIXME: Update location
+# alias pacinfo='mdcat ~/Documents/SyncFolder/40-49\ Tech\ Projects/40\ Tech\ Admin/40.01\ Pacinfo.md'
 
 # *--------------*
 # | MISC ALIASES |
 # *--------------*
 alias clangdump='~/.local/share/nvim/mason/bin/clang-format --dump-config > .clang-format'
-
+alias jdex='cd "$HOME/Documents/SyncFolder/00-09   System/00 System Management/00.00 JDex" && nvim'
