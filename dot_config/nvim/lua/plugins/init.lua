@@ -17,10 +17,10 @@ return {
 				enable = true,
 				ignore = true,
 			},
-            filters = {
-                dotfiles = true,
-                git_ignored = true,
-            }
+			filters = {
+				dotfiles = true,
+				git_ignored = true,
+			},
 		},
 	},
 
@@ -129,22 +129,11 @@ return {
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		cmd = { "Noice" },
-		opts = require("configs.noice"),
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			{
-				"rcarriga/nvim-notify",
-				opts = {
-					-- background_colour = "#000000",
-					fps = 60,
-					render = "minimal",
-					stages = "fade",
-				},
-			},
+			"rcarriga/nvim-notify",
 		},
-		-- init = function()
-		-- 	vim.g.lsp_handlers_enabled = false
-		-- end,
+		opts = require("configs.noice"),
 	},
 
 	{
@@ -215,13 +204,13 @@ return {
 		event = "VeryLazy",
 	},
 
-    {
-        "tpope/vim-obsession",
-        event = "VeryLazy",
-        config = function()
-            vim.cmd("silent! helptags ALL")
-        end,
-    },
+	{
+		"tpope/vim-obsession",
+		event = "VeryLazy",
+		config = function()
+			vim.cmd("silent! helptags ALL")
+		end,
+	},
 
 	{
 		"iamcco/markdown-preview.nvim",
