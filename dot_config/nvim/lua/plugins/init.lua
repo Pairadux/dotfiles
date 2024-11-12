@@ -17,14 +17,10 @@ return {
 				enable = true,
 				ignore = true,
 			},
-			renderer = {
-				highlight_git = true,
-				icons = {
-					show = {
-						git = true,
-					},
-				},
-			},
+            filters = {
+                dotfiles = true,
+                git_ignored = true,
+            }
 		},
 	},
 
