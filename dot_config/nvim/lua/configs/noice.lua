@@ -6,9 +6,9 @@ return {
 			["vim.lsp.util.stylize_markdown"] = true,
 			["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
 		},
-		hover = {
-			enabled = false,
-		},
+		-- hover = {
+		-- 	enabled = false,
+		-- },
 		signature = {
 			enabled = true,
 		},
@@ -22,17 +22,28 @@ return {
 		inc_rename = false, -- enables an input dialog for inc-rename.nvim
 		lsp_doc_border = true, -- add a border to hover docs and signature help
 	},
-	views = {
-		notify = {
-			view = "notify",
-			opts = {
-				fps = 60,
-				render = "minimal",
-				stages = "fade",
-			},
-		},
-	},
+	-- views = {
+	--
+	-- },
 	routes = {
+		{
+			filter = {
+				event = "msg_show",
+				any = {
+					{ find = "%d+L, %d+B" },
+					{ find = "; after #%d+" },
+					{ find = "; before #%d+" },
+				},
+			},
+			view = "mini",
+		},
+		{
+			filter = {
+				event = "notify",
+                kind = "info",
+			},
+			view = "mini",
+		},
 		{
 			view = "cmdline",
 			filter = { event = "msg_showmode" },
