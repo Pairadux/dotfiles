@@ -121,17 +121,19 @@ return {
 	},
 
 	{
-		"MunifTanjim/nui.nvim",
-		event = "VeryLazy",
-	},
-
-	{
 		"folke/noice.nvim",
 		event = "VeryLazy",
 		cmd = { "Noice" },
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
+			{
+                "rcarriga/nvim-notify",
+                opts = {
+                    fps = 30,
+                    render = "minimal",
+                    stages = "fade",
+                }
+            },
 		},
 		opts = require("configs.noice"),
 	},
