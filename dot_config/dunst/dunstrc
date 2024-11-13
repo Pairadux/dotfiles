@@ -409,7 +409,7 @@
 #   script appname summary body icon urgency
 # where urgency can be "LOW", "NORMAL" or "CRITICAL".
 #
-# NOTE: It might be helpful to run dunst -print in a terminal in order
+# NOTE- It might be helpful to run dunst -print in a terminal in order
 # to find fitting options for rules.
 
 # Disable the transient hint so that idle_threshold cannot be bypassed from the
