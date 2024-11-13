@@ -1,4 +1,12 @@
-[[manager.prepend_keymap]]
-on   = [ "c", "m" ]
-run  = "plugin chmod"
-desc = "Chmod on selected files"
+[manager]
+append_keymap = [
+    
+    # plugin keybinds
+    { on = [ "c", "m" ], run = "plugin chmod", desc = "Chmod on selected files" },
+
+    # directory nav
+    { on = [ "g", "c" ], run = "cd ~/.local/share/chezmoi",                                                     desc = "cd config" },
+    { on = [ "g", "s" ], run = "cd ~/Documents/SyncFolder",                                                     desc = "cd syncfolder" },
+    { on = [ "g", "j" ], run = "cd '~/Documents/SyncFolder/00-09   System/00 System Management/00.00 JDex'",   desc = "cd JDex" },
+
+]
