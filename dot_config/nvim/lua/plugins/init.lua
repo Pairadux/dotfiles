@@ -127,13 +127,13 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 			{
-                "rcarriga/nvim-notify",
-                opts = {
-                    fps = 30,
-                    render = "minimal",
-                    stages = "fade",
-                }
-            },
+				"rcarriga/nvim-notify",
+				opts = {
+					fps = 30,
+					render = "minimal",
+					stages = "fade",
+				},
+			},
 		},
 		opts = require("configs.noice"),
 	},
