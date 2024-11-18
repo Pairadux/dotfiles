@@ -1,4 +1,4 @@
-require("obsidian").setup({
+return {
 	workspaces = {
 		{
 			name = "SyncFolder",
@@ -6,14 +6,14 @@ require("obsidian").setup({
 		},
 	},
 
-	notes_subdir = "90-99 Brain 2.0 (o--)/",
+	notes_subdir = "90-99   Brain 2.0",
 
-	daily_notes = {
-		folder = "91 Zettelkasten/050 - Daily Notes",
-		date_format = "%Y-%m-%d",
-		default_tags = { "daily-note" },
-		template = "00-09 System/05 Templates/daily-note-template.md",
-	},
+	-- daily_notes = {
+	-- 	folder = "",
+	-- 	date_format = "%Y-%m-%d",
+	-- 	default_tags = { "daily-note" },
+	-- 	template = "00-09 System/05 Templates/daily-note-template.md",
+	-- },
 
 	new_notes_location = "current_dir",
 
@@ -32,12 +32,19 @@ require("obsidian").setup({
 
 	---@return table
 	note_frontmatter_func = function(note)
-		-- Add the title of the note as an alias.
-		-- if note.title then
-		-- 	note:add_alias(note.title)
-		-- end
+		local jdIndex
 
-		local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+		if note.path then
+			local path_str = tostring(note.path)
+			local filename = path_str:match("([^/]+)%.md$")
+			if filename then
+				jdIndex = tonumber(filename:match("^%d%d%.%d%d"))
+			end
+		end
+
+		jdIndex = jdIndex or 0
+
+		local out = { jdIndex = jdIndex, tags = note.tags }
 
 		if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
 			for k, v in pairs(note.metadata) do
@@ -49,10 +56,11 @@ require("obsidian").setup({
 	end,
 
 	templates = {
-		subdir = "00-09 System/05 Templates",
+		subdir = "00-09   System/00 System Management/00.05 Templates",
+
 		date_format = "%Y-%m-%d",
 		time_format = "%H:%M",
 		-- A map for custom variables, the key should be the variable and the value a function
 		substitutions = {},
 	},
-})
+}
