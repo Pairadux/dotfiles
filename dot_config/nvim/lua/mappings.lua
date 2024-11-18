@@ -139,5 +139,8 @@ map({ "n", "t" }, "<leader>rc", function()
 	})
 end, { desc = "Run Current File" })
 
--- Quick OO
-vim.api.nvim_set_keymap("n", "OO", "O<Esc>O", { noremap = true, silent = true })
+-- Lazy Update
+map("n", "<leader>lu", "<cmd>Lazy update<CR>", { desc = "Lazy Update"})
+
+-- Mason Open
+map("n", "<leader>mo", "<cmd>Mason<CR>", { desc = "Mason Open"})

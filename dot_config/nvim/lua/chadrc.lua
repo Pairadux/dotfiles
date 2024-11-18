@@ -54,9 +54,10 @@ M.nvdash = {
 	buttons = {
 		{ txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
 		{ txt = "  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
-		{ txt = "󰈭  Find Word", keys = "Spc f w", cmd = "Telescope live_grep" },
 		{ txt = "  Projects", keys = "Spc f p", cmd = "Telescope project" },
 		{ txt = "  Todo", keys = "Spc f t", cmd = "Telescope todo-comments" },
+		{ txt = "󰒲  Lazy", keys = "Spc l u", cmd = "Lazy update" },
+		{ txt = "󰟾  Mason", keys = "Spc m o", cmd = "Mason" },
 
 
 		{ txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
