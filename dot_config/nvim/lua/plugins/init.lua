@@ -215,6 +215,21 @@ return {
 	},
 
 	{
+		"folke/twilight.nvim",
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		},
+	},
+
+	{
+		"folke/zen-mode.nvim",
+		cmd = { "ZenMode" },
+		opts = require("configs.zenmode")
+	},
+
+	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		ft = { "markdown" },
