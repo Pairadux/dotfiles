@@ -6,7 +6,7 @@ return {
 		},
 	},
 
-	notes_subdir = "90-99   Brain 2.0",
+	notes_subdir = "90-99 󰝨  Atomica",
 
 	-- daily_notes = {
 	-- 	folder = "",
