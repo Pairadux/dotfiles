@@ -33,12 +33,6 @@ ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 # +---------+
 source $ZDOTDIR/extras/aliases
 
-# +----------+
-# | Antidote |
-# +----------+
-source $ZDOTDIR/.antidote/antidote.zsh 
-antidote load
-
 # +--------+
 # | PROMPT |
 # +--------+
@@ -75,3 +69,9 @@ bindkey -r '^p'
 
 bindkey '^f' autosuggest-accept
 bindkey ' ' magic-space
+
+# +----------+
+# | Antidote |
+# +----------+
+source $ZDOTDIR/.antidote/antidote.zsh 
+antidote load
