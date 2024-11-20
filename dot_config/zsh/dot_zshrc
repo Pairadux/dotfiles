@@ -73,6 +73,5 @@ bindkey -r '^l'
 bindkey -r '^g'
 bindkey -r '^p'
 
-bindkey '^g' .clear-screen
 bindkey '^f' autosuggest-accept
 bindkey ' ' magic-space
