@@ -1,5 +1,17 @@
 #!/usr/bin/env zsh
 
+# +---------+
+# | BINDING |
+# +---------+
+bindkey -e
+
+bindkey -r '^l'
+bindkey -r '^g'
+bindkey -r '^p'
+
+bindkey '^f' autosuggest-accept
+bindkey ' ' magic-space
+
 # +------+
 # | OPTS |
 # +------+
@@ -33,15 +45,16 @@ ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 # +---------+
 source $ZDOTDIR/extras/aliases
 
+# +----------+
+# | Antidote |
+# +----------+
+source $ZDOTDIR/.antidote/antidote.zsh 
+antidote load
+
 # +--------+
 # | PROMPT |
 # +--------+
 autoload -Uz promptinit && promptinit && prompt pure
-
-# *-----*
-# | FZF |
-# *-----*
-source <(fzf --zsh)
 
 # +----------------+
 # | CUSTOM SCRIPTS |
@@ -58,20 +71,7 @@ if [[ -z $TMUX && $TERM == "xterm-256color" ]]; then
     tmux attach-session;
 fi
 
-# +---------+
-# | BINDING |
-# +---------+
-bindkey -e
-
-bindkey -r '^l'
-bindkey -r '^g'
-bindkey -r '^p'
-
-bindkey '^f' autosuggest-accept
-bindkey ' ' magic-space
-
-# +----------+
-# | Antidote |
-# +----------+
-source $ZDOTDIR/.antidote/antidote.zsh 
-antidote load
+# *-----*
+# | FZF |
+# *-----*
+source <(fzf --zsh)
