@@ -15,7 +15,7 @@ alias grep='rg'
 # | LS/EZA ALIASES |
 # *----------------*
 # alias ls='eza'
-alias ll='eza -lahF'
+alias ll='eza -lah'
 alias la='eza -a'
 alias l='eza -l'
 
