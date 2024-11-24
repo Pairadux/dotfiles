@@ -129,9 +129,10 @@ map({ "n", "t" }, "<leader>rc", function()
 			local file = vim.fn.expand("%")
 
 			local ft_cmds = {
-				python = "python3 " .. file,
-				cpp = "clear && g++ -o out " .. file .. " && ./out",
 				c = 'clear && gcc -o out "' .. file .. '" && ./out',
+				cpp = "clear && g++ -o out " .. file .. " && ./out",
+				python = "python3 " .. file,
+                rust = "cargo run"
 			}
 
 			return ft_cmds[vim.bo.ft]
