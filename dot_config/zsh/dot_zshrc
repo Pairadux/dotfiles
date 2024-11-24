@@ -9,9 +9,6 @@ bindkey -r '^l'
 bindkey -r '^g'
 bindkey -r '^p'
 
-bindkey '^f' autosuggest-accept
-bindkey ' ' magic-space
-
 # +------+
 # | OPTS |
 # +------+
@@ -45,6 +42,11 @@ ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
 # +---------+
 source $ZDOTDIR/extras/aliases
 
+# *-----*
+# | FZF |
+# *-----*
+source <(fzf --zsh)
+
 # +----------+
 # | Antidote |
 # +----------+
@@ -71,7 +73,8 @@ if [[ -z $TMUX && $TERM == "xterm-256color" ]]; then
     tmux attach-session;
 fi
 
-# *-----*
-# | FZF |
-# *-----*
-source <(fzf --zsh)
+# +--------------------+
+# | ADDITIONAL BINDING |
+# +--------------------+
+bindkey '^f' autosuggest-accept
+bindkey ' ' magic-space
