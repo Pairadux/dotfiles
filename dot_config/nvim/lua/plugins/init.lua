@@ -242,7 +242,9 @@ return {
 		"m4xshen/hardtime.nvim",
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+            disabled_filetypes = { "markdown", "text", "txt" },
+        },
 	},
 
 	{ "echasnovski/mini.icons", version = false },
