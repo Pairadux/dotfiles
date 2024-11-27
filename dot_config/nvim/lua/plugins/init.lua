@@ -232,7 +232,7 @@ return {
 	{
 		"folke/zen-mode.nvim",
 		cmd = { "ZenMode" },
-		opts = require("configs.zenmode")
+		opts = require("configs.zenmode"),
 	},
 
 	{
@@ -249,8 +249,8 @@ return {
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		event = "VeryLazy",
 		opts = {
-            disabled_filetypes = { "markdown", "text", "txt" },
-        },
+			disabled_filetypes = { "markdown", "text", "txt" },
+		},
 	},
 
 	{ "echasnovski/mini.icons", version = false },
