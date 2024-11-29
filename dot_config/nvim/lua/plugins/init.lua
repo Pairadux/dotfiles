@@ -3,7 +3,7 @@ return {
 	-- ######################################## Custom Plugins ########################################
 
 	-- {
-	--     "AustinCGause/custom-plugin",
+	--     "Pairadux/custom-plugin",
 	--     opts = {}
 	--     dev = true,
 	-- },
