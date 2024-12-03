@@ -185,6 +185,17 @@ return {
 	},
 
 	{
+		"sphamba/smear-cursor.nvim",
+        enabled = function()
+            return not vim.g.neovide
+        end,
+		event = "VeryLazy",
+		opts = {
+			legacy_computing_symbols_support = true,
+		},
+	},
+
+	{
 		"epwalsh/obsidian.nvim",
 		version = "*",
 		lazy = true,
