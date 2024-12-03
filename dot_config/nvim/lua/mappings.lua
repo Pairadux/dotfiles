@@ -20,13 +20,13 @@ map({ "n", "v" }, "<C-j>", "5j")
 map({ "n" , "v" }, "<C-k>", "5k")
 
 -- close nvim with q, different action based on buffer type
-map("n", "q", function()
-	if vim.bo.modifiable and vim.bo.buftype == "" then
-		vim.cmd("wq")
-	else
-		vim.cmd("q")
-	end
-end, { noremap = true, silent = true })
+-- map("n", "q", function()
+-- 	if vim.bo.modifiable and vim.bo.buftype == "" then
+-- 		vim.cmd("wq")
+-- 	else
+-- 		vim.cmd("q")
+-- 	end
+-- end, { noremap = true, silent = true })
 
 -- Reload nvim
 map("n", "<leader>rn", function()
