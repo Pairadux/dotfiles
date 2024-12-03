@@ -1,6 +1,6 @@
 # Dotflies
 
-I have attempted to make the best possible Mouseless Development Environment that I can for myself. 
+I have attempted to make the best possible Mouseless Development Environment that I can for myself. Most dotfiles are also compatibile with Mac from my testing, but the intigration could be different.
 
 My Dotfiles are managed with [ Chezmoi ](https://chezmoi.io)
 
@@ -8,18 +8,18 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 
 ## What's Included?
 
+- Almost fully mouseless Hyprland configuration and themeing
+- Waybar configuration and themeing
 - Fully custom ZSH environment utilizing antidote, pure prompt, zsh-completions, zsh-autosuggestions, fast-syntax-highlighting, zsh-history-substring-search, and custom scripts.
-- XStow configurations
+- Nvim config utilizing NVChad with a significant amount of personal tweaks and plugins
+- Tmux configurations utilizing TPM and various Tmux plugins. Custom mappings and leader keys.
+- Basiz Wezterm configuration and themeing
+- Rofi launcher customizations and themeing
 - Bat themeing
 - Catnip configuration and themeing
-- Hyprland configuraiton and themeing
-- Kitty temp config (considered using Kitty, haven't gotten fully rid of it because I am still on the fence about it)
-- Neovim config using NVChad Starter with a ton of personal tweaks and customizations
-- Rofi launcher customizations and themeing
-- Tmux configurations utilizing TPM and various Tmux plugins. Custom mappings and leader keys.
-- Waybar configuration and themeing
-- Wezterm basic configuration and themeing
 - Zellij temp config (was buggy so I switched back to Tmux, but wanted to leave config in case I try it again)
+- Kitty temp config (considered using Kitty, haven't gotten fully rid of it because I am still on the fence about it)
+- And some other small stuff
 
 ## NOTICE / WARNING
 
