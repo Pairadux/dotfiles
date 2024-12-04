@@ -73,7 +73,6 @@ return {
 		opts = require("configs.telescope"),
 		config = function(_, opts)
 			require("telescope").setup(opts)
-			require("telescope").load_extension("project")
 			require("telescope").load_extension("ui-select")
 		end,
 	},
@@ -100,11 +99,6 @@ return {
 
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
-	},
-
-	{
-		"nvim-telescope/telescope-project.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim" },
 	},
 
@@ -221,14 +215,6 @@ return {
 			"TmuxNavigateRight",
 			"TmuxNavigatePrevious",
 		},
-	},
-
-	{
-		"tpope/vim-obsession",
-		event = "VeryLazy",
-		config = function()
-			vim.cmd("silent! helptags ALL")
-		end,
 	},
 
 	{
