@@ -17,6 +17,8 @@ nomap("n", "<leader>h")
 -- Exit insert mode
 map("i", "jk", "<ESC>")
 
+-- Adjusted default zt behavior
+map({ "n", "v" }, "zt", "zt2<C-y>", { noremap = true, silent = true })
 
 -- Quicker navigation
 map({ "n", "v" }, "<C-j>", "5j", { noremap = true, silent = true })
