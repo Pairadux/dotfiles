@@ -207,6 +207,21 @@ return {
 	},
 
 	{
+		"rmagatti/auto-session",
+		lazy = false,
+		opts = {
+			auto_create = false,
+			allowed_dirs = {
+				"~/.local/share/chezmoi",
+				"~/Dev/taskcrab",
+				"~/Dev/plugins/*",
+				"~/Dev/CS-Homework/*",
+				"~/Dev/my-portfolio-sveltekit",
+			},
+		},
+	},
+
+	{
 		"christoomey/vim-tmux-navigator",
 		cmd = {
 			"TmuxNavigateLeft",

@@ -40,6 +40,12 @@ end, { desc = "Reload nvim" })
 -- end, { desc = "Debug: Set Breakpoint" })
 -- map("n", "<F7>", dapui.toggle, { desc = "Debug: See last session result" })
 
+-- AutoSession
+map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Session Save" })
+map("n", "<leader>sr", "<cmd>SessionRestore<CR>", { desc = "Session Restore" })
+map("n", "<leader>sd", "<cmd>SessionDelete<CR>", { desc = "Session Delete" })
+map("n", "<leader>sl", "<cmd>SessionSearch<CR>", { desc = "Session Load" })
+
 -- Insert Line Break Sequence
 map("n", "<leader>ib", "80i#<ESC>", { noremap = true, silent = true, desc = "Insert 80 #'s (Line Break)" })
 

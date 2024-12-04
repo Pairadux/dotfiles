@@ -11,6 +11,7 @@ o.expandtab = true
 o.softtabstop = 4
 o.shiftwidth = 4
 o.cursorlineopt = "both"
+o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 opt.wrap = false
 
