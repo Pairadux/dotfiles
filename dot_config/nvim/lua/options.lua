@@ -2,9 +2,12 @@ require("nvchad.options")
 
 -- add yours here!
 
+local g = vim.g
 local o = vim.o
 local opt = vim.opt
 local wo = vim.wo
+
+g.tmux_navigator_no_mappings = 1
 
 o.tabstop = 4
 o.expandtab = true

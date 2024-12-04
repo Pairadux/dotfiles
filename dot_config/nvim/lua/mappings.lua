@@ -103,8 +103,8 @@ end, { desc = "Terminal Toggle Floating Term 3" })
 -- TMUX NAVIGATOR
 map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux Window Left" })
 map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux Window Right" })
--- map("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
--- map("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
+map("n", "<C-S-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
+map("n", "<C-S-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
 
 -- OBSIDIAN
 map("n", "<leader>ooq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Obsidian Open Quick Switcher" })

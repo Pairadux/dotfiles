@@ -61,6 +61,21 @@ config.font_rules = {
 	},
 }
 
+config.enable_kitty_keyboard = true
+
+config.keys = {
+    {
+        key = "K",
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.DisableDefaultAssignment,
+    },
+    {
+        key = "J",
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.DisableDefaultAssignment,
+    },
+}
+
 wezterm.on('user-var-changed', function(window, pane, name, value)
     local overrides = window:get_config_overrides() or {}
     if name == "ZEN_MODE" then
