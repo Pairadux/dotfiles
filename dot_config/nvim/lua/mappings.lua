@@ -16,8 +16,11 @@ nomap("n", "<leader>h")
 
 -- Exit insert mode
 map("i", "jk", "<ESC>")
-map({ "n", "v" }, "<C-j>", "5j")
-map({ "n" , "v" }, "<C-k>", "5k")
+
+
+-- Quicker navigation
+map({ "n", "v" }, "<C-j>", "5j", { noremap = true, silent = true })
+map({ "n" , "v" }, "<C-k>", "5k", { noremap = true, silent = true })
 
 -- close nvim with q, different action based on buffer type
 map("n", "<C-q>", "ZZ", { noremap = true, silent = true })
