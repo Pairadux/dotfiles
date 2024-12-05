@@ -22,7 +22,7 @@ map({ "n", "v" }, "zt", "zt2<C-y>", { noremap = true, silent = true })
 
 -- Quicker navigation
 map({ "n", "v" }, "<C-j>", "5j", { noremap = true, silent = true })
-map({ "n" , "v" }, "<C-k>", "5k", { noremap = true, silent = true })
+map({ "n", "v" }, "<C-k>", "5k", { noremap = true, silent = true })
 
 -- close nvim with q, different action based on buffer type
 map("n", "<C-q>", "ZZ", { noremap = true, silent = true })
@@ -30,7 +30,7 @@ map("n", "<C-q>", "ZZ", { noremap = true, silent = true })
 -- Reload nvim
 map("n", "<leader>rn", function()
 	require("nvchad.utils").reload()
-end, { desc = "Reload nvim" })
+end, { desc = "Reload nvim", noremap = true, silent = true })
 
 -- -- DAP
 -- local dap = require("dap")
@@ -46,10 +46,10 @@ end, { desc = "Reload nvim" })
 -- map("n", "<F7>", dapui.toggle, { desc = "Debug: See last session result" })
 
 -- AutoSession
-map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Session Save" })
-map("n", "<leader>sr", "<cmd>SessionRestore<CR>", { desc = "Session Restore" })
-map("n", "<leader>sd", "<cmd>SessionDelete<CR>", { desc = "Session Delete" })
-map("n", "<leader>sl", "<cmd>SessionSearch<CR>", { desc = "Session Load" })
+map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "Session Save", noremap = true, silent = true })
+map("n", "<leader>sr", "<cmd>SessionRestore<CR>", { desc = "Session Restore", noremap = true, silent = true })
+map("n", "<leader>sd", "<cmd>SessionDelete<CR>", { desc = "Session Delete", noremap = true, silent = true })
+map("n", "<leader>sl", "<cmd>SessionSearch<CR>", { desc = "Session Load", noremap = true, silent = true })
 
 -- Insert Line Break Sequence
 map("n", "<leader>ib", "80i#<ESC>", { noremap = true, silent = true, desc = "Insert 80 #'s (Line Break)" })
@@ -107,18 +107,17 @@ map("n", "<C-S-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
 map("n", "<C-S-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
 
 -- OBSIDIAN
-map("n", "<leader>ooq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Obsidian Open Quick Switcher" })
-map("n", "<leader>ood", "<cmd>ObsidianToday<CR>", { desc = "Obsidian Open Daily Note" })
-map("n", "<leader>oit", "<cmd>ObsidianTemplate<CR>", { desc = "Obsidian Insert Template" })
-map("n", "<leader>or", "<cmd>ObsidianRename<CR>", { desc = "Obsidian Rename Note" })
-map("n", "<leader>ocn", "<cmd>ObsidianNew<CR>", { desc = "Obsidian Create New Note" })
-map("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Obsidian Search" })
-map("n", "<leader>of", "<cmd>ObsidianFollowLink<CR>", { desc = "Obsidian Follow Link" })
-map("n", "<leader>ot", "<cmd>ObsidianTags<CR>", { desc = "Obsidian Tags" })
-map("v", "<leader>oe", "<cmd>ObsidianExtractNote<CR>", { desc = "Obsidian Extract Note" })
+map( "n", "<leader>ooq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Obsidian Open Quick Switcher", noremap = true, silent = true })
+map("n", "<leader>ood", "<cmd>ObsidianToday<CR>", { desc = "Obsidian Open Daily Note", noremap = true, silent = true })
+map( "n", "<leader>oit", "<cmd>ObsidianTemplate<CR>", { desc = "Obsidian Insert Template", noremap = true, silent = true })
+map("n", "<leader>or", "<cmd>ObsidianRename<CR>", { desc = "Obsidian Rename Note", noremap = true, silent = true })
+map("n", "<leader>ocn", "<cmd>ObsidianNew<CR>", { desc = "Obsidian Create New Note", noremap = true, silent = true })
+map("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Obsidian Search", noremap = true, silent = true })
+map("n", "<leader>of", "<cmd>ObsidianFollowLink<CR>", { desc = "Obsidian Follow Link", noremap = true, silent = true })
+map("n", "<leader>ot", "<cmd>ObsidianTags<CR>", { desc = "Obsidian Tags", noremap = true, silent = true })
+map( "v", "<leader>oe", "<cmd>ObsidianExtractNote<CR>", { desc = "Obsidian Extract Note", noremap = true, silent = true })
 
 -- Telescope
-map("n", "<leader>fp", "<cmd>Telescope project<CR>", { desc = "Telescope projects" })
 map("n", "<leader>ft", "<cmd>Telescope todo-comments<CR>", { desc = "Telescope todo comments" })
 
 -- Toggleable LazyGit Term
@@ -139,16 +138,16 @@ map({ "n", "t" }, "<leader>rc", function()
 				c = 'clear && gcc -o out "' .. file .. '" && ./out',
 				cpp = "clear && g++ -o out " .. file .. " && ./out",
 				python = "python3 " .. file,
-                rust = "cargo run"
+				rust = "cargo run",
 			}
 
 			return ft_cmds[vim.bo.ft]
 		end,
 	})
-end, { desc = "Run Current File" })
+end, { desc = "Run Current File", noremap = true, silent = true })
 
 -- Lazy Update
-map("n", "<leader>lu", "<cmd>Lazy update<CR>", { desc = "Lazy Update"})
+map("n", "<leader>lu", "<cmd>Lazy update<CR>", { desc = "Lazy Update", noremap = true, silent = true })
 
 -- Mason Open
-map("n", "<leader>mo", "<cmd>Mason<CR>", { desc = "Mason Open"})
+map("n", "<leader>mo", "<cmd>Mason<CR>", { desc = "Mason Open", noremap = true, silent = true })
