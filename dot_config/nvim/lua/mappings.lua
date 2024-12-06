@@ -21,8 +21,8 @@ map("i", "jk", "<ESC>")
 map({ "n", "v" }, "zt", "zt2<C-y>", { noremap = true, silent = true })
 
 -- Adjusted default C-d & C-u behavior
--- map("n", "<C-d>", "Lzz", { noremap = true, silent = true, })
--- map("n", "<C-u>", "Hzz", { noremap = true, silent = true, })
+map("n", "<C-d>", "Lzz", { noremap = true, silent = true, })
+map("n", "<C-u>", "Hzz", { noremap = true, silent = true, })
 
 -- Quicker navigation
 map({ "n", "v" }, "<C-j>", "5j", { noremap = true, silent = true })
