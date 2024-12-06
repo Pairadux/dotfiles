@@ -191,6 +191,9 @@ return {
 
 	-- {
 	-- 	"karb94/neoscroll.nvim",
+		-- enabled = function()
+		-- 	return not vim.g.neovide
+		-- end,
 	-- 	event = "VeryLazy",
 	-- 	opts = {
 	-- 		mappings = {
