@@ -29,6 +29,10 @@ return {
 		event = "VeryLazy",
 		opts = {
 			preset = "helix",
+            keys = {
+                scroll_down = "<c-s-d>",
+                scroll_up = "<c-s-u>",
+            }
 		},
 	},
 
