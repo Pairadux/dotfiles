@@ -220,9 +220,7 @@ return {
 			"nvim-telescope/telescope.nvim",
 			"nvim-treesitter",
 		},
-		config = function()
-			require("configs.obsidian")
-		end,
+        opts = require("configs.obsidian"),
 	},
 
 	{
