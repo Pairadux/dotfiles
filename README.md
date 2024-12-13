@@ -13,7 +13,7 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 - Fully custom ZSH environment utilizing antidote, pure prompt, zsh-completions, zsh-autosuggestions, fast-syntax-highlighting, zsh-history-substring-search, and custom scripts.
 - Nvim config utilizing NVChad with a significant amount of personal tweaks and plugins
 - Tmux configurations utilizing TPM and various Tmux plugins. Custom mappings and leader keys.
-- Basiz Wezterm configuration and themeing
+- Basic Wezterm configuration and themeing
 - Rofi launcher customizations and themeing
 - Bat themeing
 - Catnip configuration and themeing
