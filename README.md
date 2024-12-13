@@ -18,7 +18,6 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 - Bat themeing
 - Catnip configuration and themeing
 - Zellij temp config (was buggy so I switched back to Tmux, but wanted to leave config in case I try it again)
-- Kitty temp config (considered using Kitty, haven't gotten fully rid of it because I am still on the fence about it)
 - And some other small stuff
 
 ## NOTICE / WARNING
