@@ -1,6 +1,6 @@
 # Dotflies
 
-I have attempted to make the best possible Mouseless Development Environment that I can for myself. Most dotfiles are also compatibile with Mac from my testing, but the intigration could be different.
+I have attempted to make the best possible Mouseless Development Environment that I can for myself. Most (non-linux specific) dotfiles are also compatibile with Mac from my testing, but the intigration could be different.
 
 My Dotfiles are managed with [ Chezmoi ](https://chezmoi.io)
 
