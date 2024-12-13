@@ -24,3 +24,5 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 ## NOTICE / WARNING
 
 **Should you choose to take inspiration from my Dotfiles, feel free, but I am not liable for anything not working on your system the same way that it works on mine.**
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Pairadux/dotfiles&type=Date)](https://star-history.com/#Pairadux/dotfiles&Date)
