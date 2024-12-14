@@ -11,7 +11,7 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 - Almost fully mouseless [Hyprland](https://hyprland.org/) configuration and theming
 - [Waybar](https://github.com/Alexays/Waybar) configuration and theming
 - Fully custom [ZSH](https://www.zsh.org/) environment utilizing [Antidote](https://antidote.sh/), [pure](https://github.com/sindresorhus/pure) prompt, zsh-completions, zsh-autosuggestions, fast-syntax-highlighting, zsh-history-substring-search, and custom scripts
-- [Nvim](https://neovim.io/] config utilizing [NVChad](https://nvchad.com/) with a significant amount of personal tweaks and plugins
+- [Nvim](https://neovim.io/) config utilizing [NVChad](https://nvchad.com/) with a significant amount of personal tweaks and plugins
 - [Tmux](https://github.com/tmux/tmux) configurations utilizing [TPM](https://github.com/tmux-plugins/tpm) and various Tmux plugins. Custom mappings and leader keys
 - Basic [Wezterm](https://wezfurlong.org/wezterm/index.html) configuration and theming
 - [Rofi](https://github.com/davatorium/rofi) launcher customizations and theming
