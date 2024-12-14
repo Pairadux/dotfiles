@@ -289,5 +289,20 @@ return {
 		},
 	},
 
+	{
+		"LintaoAmons/scratch.nvim",
+		event = "VeryLazy",
+		opts = {
+			file_picker = "telescope",
+			filetypes = {
+				"txt",
+				"md",
+				"lua",
+				"js",
+				"sh",
+			},
+		},
+	},
+
 	{ "echasnovski/mini.icons", version = false },
 }
