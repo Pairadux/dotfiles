@@ -2,7 +2,7 @@
 
 I have attempted to create the best possible Mouseless Development Environment for myself. Most (non-Linux-specific) dotfiles are also compatible with Mac based on my testing[^1], though some integrations may require additional setup.
 
-My Dotfiles are managed with [ Chezmoi ](https://chezmoi.io)
+My Dotfiles are managed with [ Chezmoi ](https://chezmoi.io), making them easy to install, update, and maintain across systems.
 
 I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.com/folke/tokyonight.nvim), so most of my configurations, when applicable, will include a Tokyo Night theme.
 
@@ -17,7 +17,7 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 - [Rofi](https://github.com/davatorium/rofi) launcher customizations and theming
 - [Bat](https://github.com/sharkdp/bat) theming
 - Catnip configuration and theming
-- [Zellij](https://zellij.dev/) temp config (was buggy so I switched back to Tmux, but wanted to leave config in case I try it again)
+- [Zellij](https://zellij.dev/) temporary configuration (was buggy so I switched back to Tmux, but wanted to leave config in case I try it again)
 - Other miscellaneous configurations and tweaks
 
 ## Getting Started:
@@ -32,7 +32,7 @@ Tool specific dependencies can be found in the tool's README.
 
 ## NOTICE:
 
-**Feel free to take inspiration from my Dotfiles, but I am not liable if they do not work on your system as they do on mine.**
+**Feel free to take inspiration from my Dotfiles, but I am not liable if they do not work on your system as they do on mine. If you encounter any issues or have suggestions, feel free to open an issue or pull request!**
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Pairadux/dotfiles&type=Date)](https://star-history.com/#Pairadux/dotfiles&Date)
 
