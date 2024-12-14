@@ -1,6 +1,6 @@
-# Dotflies
+# Dotfiles
 
-I have attempted to create the best possible Mouseless Development Environment for myself. Most (non-Linux-specific) dotfiles are also compatible with Mac based on my testing[^1], though integration may vary.
+I have attempted to create the best possible Mouseless Development Environment for myself. Most (non-Linux-specific) dotfiles are also compatible with Mac based on my testing[^1], though some integrations may require additional setup.
 
 My Dotfiles are managed with [ Chezmoi ](https://chezmoi.io)
 
@@ -10,7 +10,7 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 
 - Almost fully mouseless Hyprland configuration and theming
 - Waybar configuration and theming
-- Fully custom ZSH environment utilizing antidote, pure prompt, zsh-completions, zsh-autosuggestions, fast-syntax-highlighting, zsh-history-substring-search, and custom scripts
+- Fully custom ZSH environment utilizing Antidote, pure prompt, zsh-completions, zsh-autosuggestions, fast-syntax-highlighting, zsh-history-substring-search, and custom scripts
 - Nvim config utilizing NVChad with a significant amount of personal tweaks and plugins
 - Tmux configurations utilizing TPM and various Tmux plugins. Custom mappings and leader keys
 - Basic Wezterm configuration and theming
@@ -20,7 +20,17 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 - Zellij temp config (was buggy so I switched back to Tmux, but wanted to leave config in case I try it again)
 - Other miscellaneous configurations and tweaks
 
-## NOTICE / WARNING:
+## Getting Started:
+
+Please check the [NOTICE](#notice) section before continuing. 
+
+**FIXME**
+
+## Dependencies
+
+Tool specific dependencies can be found in the tool's README.
+
+## NOTICE:
 
 **Feel free to take inspiration from my Dotfiles, but I am not liable if they do not work on your system as they do on mine.**
 
