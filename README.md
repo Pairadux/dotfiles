@@ -26,6 +26,4 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Pairadux/dotfiles&type=Date)](https://star-history.com/#Pairadux/dotfiles&Date)
 
----
-
 [^1]: My linux desktop is my primary workstation, but I do also "daily-drive" a Macbook Air for school and on-the-go development.
