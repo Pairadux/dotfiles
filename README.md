@@ -1,6 +1,6 @@
 # Dotflies
 
-I have attempted to create the best possible Mouseless Development Environment for myself. Most (non-Linux-specific) dotfiles are also compatible with Mac based on my testing, though integration may vary.
+I have attempted to create the best possible Mouseless Development Environment for myself. Most (non-Linux-specific) dotfiles are also compatible with Mac based on my testing[^1], though integration may vary.
 
 My Dotfiles are managed with [ Chezmoi ](https://chezmoi.io)
 
@@ -25,3 +25,7 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 **Feel free to take inspiration from my Dotfiles, but I am not liable if they do not work on your system as they do on mine.**
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Pairadux/dotfiles&type=Date)](https://star-history.com/#Pairadux/dotfiles&Date)
+
+---
+
+[^1]: My linux desktop is my primary workstation, but I do also "daily-drive" a Macbook Air for school and on-the-go development.
