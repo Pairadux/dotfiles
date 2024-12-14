@@ -8,16 +8,16 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 
 ## What's Included:
 
-- Almost fully mouseless Hyprland configuration and theming
-- Waybar configuration and theming
-- Fully custom ZSH environment utilizing Antidote, pure prompt, zsh-completions, zsh-autosuggestions, fast-syntax-highlighting, zsh-history-substring-search, and custom scripts
-- Nvim config utilizing NVChad with a significant amount of personal tweaks and plugins
-- Tmux configurations utilizing TPM and various Tmux plugins. Custom mappings and leader keys
-- Basic Wezterm configuration and theming
-- Rofi launcher customizations and theming
-- Bat theming
+- Almost fully mouseless [Hyprland](https://hyprland.org/) configuration and theming
+- [Waybar](https://github.com/Alexays/Waybar) configuration and theming
+- Fully custom [ZSH](https://www.zsh.org/) environment utilizing [Antidote](https://antidote.sh/), [pure](https://github.com/sindresorhus/pure) prompt, zsh-completions, zsh-autosuggestions, fast-syntax-highlighting, zsh-history-substring-search, and custom scripts
+- [Nvim](https://neovim.io/] config utilizing [NVChad](https://nvchad.com/) with a significant amount of personal tweaks and plugins
+- [Tmux](https://github.com/tmux/tmux) configurations utilizing [TPM](https://github.com/tmux-plugins/tpm) and various Tmux plugins. Custom mappings and leader keys
+- Basic [Wezterm](https://wezfurlong.org/wezterm/index.html) configuration and theming
+- [Rofi](https://github.com/davatorium/rofi) launcher customizations and theming
+- [Bat](https://github.com/sharkdp/bat) theming
 - Catnip configuration and theming
-- Zellij temp config (was buggy so I switched back to Tmux, but wanted to leave config in case I try it again)
+- [Zellij](https://zellij.dev/) temp config (was buggy so I switched back to Tmux, but wanted to leave config in case I try it again)
 - Other miscellaneous configurations and tweaks
 
 ## Getting Started:
