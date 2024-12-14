@@ -11,11 +11,15 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 - Almost fully mouseless [Hyprland](https://hyprland.org/) configuration and theming
 - [Waybar](https://github.com/Alexays/Waybar) configuration and theming
 - Fully custom [ZSH](https://www.zsh.org/) environment utilizing [Antidote](https://antidote.sh/), [pure](https://github.com/sindresorhus/pure) prompt, zsh-completions, zsh-autosuggestions, fast-syntax-highlighting, zsh-history-substring-search, and custom scripts
+  - View the [README](./dot_config/zsh/README.md)
 - [Nvim](https://neovim.io/) config utilizing [NVChad](https://nvchad.com/) with a significant amount of personal tweaks and plugins
+  - View the [README](./dot_config/nvim/README.md)
 - [Tmux](https://github.com/tmux/tmux) configurations utilizing [TPM](https://github.com/tmux-plugins/tpm) and various Tmux plugins. Custom mappings and leader keys
+  - View the [README](./dot_config/tmux/README.md)
 - Basic [Wezterm](https://wezfurlong.org/wezterm/index.html) configuration and theming
 - [Rofi](https://github.com/davatorium/rofi) launcher customizations and theming
 - [Bat](https://github.com/sharkdp/bat) theming
+  - View the [README](./dot_config/bat/README.md)
 - Catnip configuration and theming
 - [Zellij](https://zellij.dev/) temporary configuration (was buggy so I switched back to Tmux, but wanted to leave config in case I try it again)
 - Other miscellaneous configurations and tweaks
