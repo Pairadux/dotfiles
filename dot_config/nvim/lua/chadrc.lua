@@ -5,6 +5,7 @@ M.base46 = {
 
 	theme = "tokyonight",
 
+---@diagnostic disable-next-line: missing-fields
 	hl_override = {
 		NvDashAscii = { fg = "#f7768e" },
 		Comment = { italic = true },
