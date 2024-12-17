@@ -110,4 +110,9 @@ M.mason = {
 	},
 }
 
+M.colorify = {
+    enabled = true,
+    mode = "bg",
+}
+
 return M
