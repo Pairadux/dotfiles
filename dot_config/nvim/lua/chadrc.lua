@@ -17,7 +17,7 @@ M.base46 = {
 M.ui = {
 	cmp = {
 		icons_left = true,
-		style = "flat_dark",
+        style = "default",
 		format_colors = {
 			tailwind = true,
 		},
