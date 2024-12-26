@@ -44,7 +44,7 @@ return {
 
 		jdIndex = jdIndex or 0
 
-		local out = { jdIndex = jdIndex, tags = note.tags }
+		local out = { tags = note.tags, jdIndex = jdIndex }
 
 		if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
 			for k, v in pairs(note.metadata) do
