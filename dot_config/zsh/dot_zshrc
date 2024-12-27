@@ -65,6 +65,7 @@ autoload -Uz promptinit && promptinit && prompt pure
 source $ZDOTDIR/extras/custom-scripts/jd.zsh
 source $ZDOTDIR/extras/custom-scripts/reload_aliases.zsh
 source $ZDOTDIR/extras/custom-scripts/y.zsh
+source $ZDOTDIR/extras/custom-scripts/vault_backup.zsh
 
 # +---------+
 # | Startup |
