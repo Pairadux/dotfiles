@@ -16,6 +16,125 @@ return {
 	-- },
 
 	new_notes_location = "current_dir",
+	mappings = {
+		["gf"] = {
+			action = function()
+				return require("obsidian").util.gf_passthrough()
+			end,
+			opts = { noremap = false, expr = true, buffer = true },
+		},
+		["<leader>ch"] = {
+			action = function()
+				return require("obsidian").util.toggle_checkbox()
+			end,
+			opts = { buffer = true },
+		},
+		["<cr>"] = {
+			action = function()
+				return require("obsidian").util.smart_action()
+			end,
+			opts = { buffer = true, expr = true },
+		},
+		["<leader>oq"] = {
+			action = function()
+				vim.cmd("ObsidianQuickSwitch")
+			end,
+			opts = {
+				desc = "[O]bsidian Open [Q]uick Switcher",
+                buffer = true,
+				noremap = true,
+				silent = true,
+			},
+		},
+		["<leader>od"] = {
+			action = function()
+				vim.cmd("ObsidianToday")
+			end,
+			opts = {
+				desc = "[O]bsidian Open [D]aily",
+                buffer = true,
+				noremap = true,
+				silent = true,
+			},
+		},
+		["<leader>oit"] = {
+			action = function()
+				vim.cmd("ObsidianTemplate")
+			end,
+			opts = {
+				desc = "[O]bsidian [I]nsert [T]emplate",
+                buffer = true,
+				noremap = true,
+				silent = true,
+			},
+		},
+		["<leader>or"] = {
+			action = function()
+				vim.cmd("ObsidianRename")
+			end,
+			opts = {
+				desc = "[O]bsidian [R]ename",
+                buffer = true,
+				noremap = true,
+				silent = true,
+			},
+		},
+		["<leader>on"] = {
+			action = function()
+				vim.cmd("ObsidianNew")
+			end,
+			opts = {
+				desc = "[O]bsidian Create [N]ew Note",
+                buffer = true,
+				noremap = true,
+				silent = true,
+			},
+		},
+		["<leader>os"] = {
+			action = function()
+				vim.cmd("ObsidianSearch")
+			end,
+			opts = {
+				desc = "[O]bsidian [S]earch",
+                buffer = true,
+				noremap = true,
+				silent = true,
+			},
+		},
+		["<leader>ot"] = {
+			action = function()
+				vim.cmd("ObsidianTags")
+			end,
+			opts = {
+				desc = "[O]bsidian [T]ags",
+                buffer = true,
+				noremap = true,
+				silent = true,
+			},
+		},
+		["<leader>ol"] = {
+			action = function()
+				vim.cmd("ObsidianLinks")
+			end,
+			opts = {
+				desc = "[O]bsidian [L]inks Picker",
+                buffer = true,
+				noremap = true,
+				silent = true,
+			},
+		},
+		["<leader>ont"] = {
+			action = function()
+				vim.cmd("ObsidianNewFromTemplate")
+			end,
+			opts = {
+				desc = "[O]bsidian [N]ew From [T]emplates",
+                buffer = true,
+				noremap = true,
+				silent = true,
+			},
+		},
+	},
 
 	---@param title string|?
 	---@return string
