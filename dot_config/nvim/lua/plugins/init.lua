@@ -284,6 +284,7 @@ return {
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		event = "VeryLazy",
 		opts = {
+            max_count = 4,
 			disabled_filetypes = { "markdown", "text", "txt" },
 		},
 	},
