@@ -40,9 +40,9 @@ map("n", "<C-s>", "<cmd>w<CR>", { desc = "General Save File" })
 map("n", "<C-c>", "<cmd>%y+<CR>", { desc = "General Copy Whole File" })
 
 -- LSP Formatting
-map("n", "<leader>ff", function()
+map("n", "<leader>gf", function()
 	require("conform").format({ lsp_fallback = true })
-end, { desc = "General [F]ormat [F]ile" })
+end, { desc = "[G]eneral [F]ormat File" })
 
 -- Global lsp mappings
 map("n", "<leader>dl", vim.diagnostic.setloclist, { desc = "LSP [D]iagnostic [L]oclist" })
