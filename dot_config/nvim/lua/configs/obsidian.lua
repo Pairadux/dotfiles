@@ -11,6 +11,12 @@ return {
 					time_format = "%H:%M",
 					substitutions = {},
 				},
+				daily_notes = {
+					folder = "00.06 Daily Notes",
+					date_format = "%Y-%m-%d",
+					default_tags = { "daily" },
+					template = "daily-note-template",
+				},
 			},
 		},
 		{
