@@ -5,7 +5,7 @@
         "on-click-right": "reboot"
     },
     "hyprland/workspaces": {
-        "format": "{icon}{windows}",
+        "format": "{icon} [ {windows} ]",
         "on-click": "activate",
         "format-icons": {
             "1": "一",
@@ -28,23 +28,24 @@
         },
         "show-special": true,
         "special-visible-only": true,
-        "format-window-separator": "",
-        "window-rewrite-default": " ",
+        "format-window-separator": ", ",
+        "window-rewrite-default": "𖣇",
         "window-rewrite": {
-            "class<firefox>": " ",
-            "class<firefox> title<.*youtube.*>": " ",
-            "class<firefox> title<.*github.*>": " ",
-            "class<firefox> title<.*chatgpt.*>": " ",
-            "class<zen.*>": " 󰰷",
-            "class<zen.*> title<.*youtube.*>": " ",
-            "class<zen.*> title<.*github.*>": " ",
-            "class<zen.*> title<.*chatgpt.*>": " ",
-            "class<libreoffice-writer": " ",
-            "thunderbird": " ",
-            "ticktick": " ",
-            "wezterm": " ",
-            "spotify": " 󰓇",
-            "chrome": " "
+            "class<firefox>": "",
+            "class<firefox> title<.*youtube.*>": "",
+            "class<firefox> title<.*github.*>": "",
+            "class<firefox> title<.*chatgpt.*>": "",
+            "class<zen.*>": "󰰷",
+            "class<zen.*> title<.*youtube.*>": "",
+            "class<zen.*> title<.*github.*>": "",
+            "class<zen.*> title<.*chatgpt.*>": "",
+            "class<libreoffice-writer": "",
+            "class<obsidian>": "ᛞ",
+            "thunderbird": "",
+            "ticktick": "",
+            "wezterm": "",
+            "spotify": "󰓇",
+            "chrome": ""
         }
     },
     "tray": {
