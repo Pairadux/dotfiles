@@ -17,6 +17,8 @@ return{
         markdown = { "prettier" },
 
 		sh = { "shfmt" },
+
+        yaml = { "prettier" },
 	},
 
 	-- format_on_save = {
