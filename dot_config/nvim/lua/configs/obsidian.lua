@@ -21,11 +21,11 @@ return {
 		},
 		{
 			name = "Atomica",
-			path = "~/Documents/SyncFolder/90-99 󰝨  Atomica/",
+			path = "~/Documents/SyncFolder/90-99 Atomica/",
 			overrides = {
 				notes_subdir = "",
 				templates = {
-					subdir = "templates",
+					subdir = "90.05 Templates",
 					date_format = "%Y-%m-%d",
 					time_format = "%H:%M",
 					substitutions = {},
