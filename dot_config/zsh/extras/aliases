@@ -41,7 +41,7 @@ alias down='cd ~/Downloads && clear'
 alias docs='cd ~/Documents && clear'
 alias conf='cd ~/.config && clear'
 alias dev='cd ~/Dev && clear'
-alias sync='cd ~/Documents/SyncFolder && clear'
+alias mysync='cd ~/MySync && clear'
 
 # *-------------*
 # | BAT ALIASES |
