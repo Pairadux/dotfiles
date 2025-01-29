@@ -39,14 +39,12 @@ alias ...='cd ../..'
 alias dots='cd ~/.local/share/chezmoi && clear'
 alias down='cd ~/Downloads && clear'
 alias docs='cd ~/Documents && clear'
-alias conf='cd ~/.config && clear'
 alias dev='cd ~/Dev && clear'
-alias mysync='cd ~/MySync && clear'
+alias mega='cd ~/MEGA && clear'
 
 # *-------------*
 # | BAT ALIASES |
 # *-------------*
-alias bat='bat '
 alias batzsh='bat ~/.config/zsh/.zshrc'
 alias aliases='bat ~/.config/zsh/extras/aliases'
 
@@ -55,14 +53,6 @@ alias aliases='bat ~/.config/zsh/extras/aliases'
 # *--------------*
 alias tree='tree -C'
 alias tre='tree -CL 2'
-
-# *--------------------*
-# | QUICK EDIT ALIASES |
-# *--------------------*
-alias zshedit='chezmoi edit ~/.config/zsh/.zshrc'
-alias nvimedit='chezmoi edit ~/.config/nvim/init.lua'
-alias hypredit='chezmoi edit ~/.config/hypr/hyprland.conf'
-alias waybaredit='chezmoi edit ~/.config/waybar/config.jsonc'
 
 # *-----------------*
 # | CHEZMOI ALIASES |
@@ -93,5 +83,5 @@ alias waybarreload='killall -SIGUSR2 waybar'
 # | MISC ALIASES |
 # *--------------*
 alias clangdump='~/.local/share/nvim/mason/bin/clang-format --dump-config > .clang-format'
-alias jdex='cd "$HOME/Documents/SyncFolder/00-09   System/00 System Management/00.00 JDex"'
+alias jdex='~/MEGA/00-09 System/00 System Management/00.00 JDex && clear'
 alias claer='clear'
