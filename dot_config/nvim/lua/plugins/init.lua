@@ -235,11 +235,8 @@ return {
 		opts = {
 			auto_create = false,
 			allowed_dirs = {
-				"~/.local/share/chezmoi",
 				"~/Dev/taskcrab",
-				"~/Dev/plugins/*",
-				"~/Dev/CS-Homework/*",
-				"~/Dev/my-portfolio-sveltekit",
+				"~/Dev/my-portfolio",
 			},
 		},
 	},
