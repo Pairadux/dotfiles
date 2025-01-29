@@ -83,5 +83,5 @@ alias waybarreload='killall -SIGUSR2 waybar'
 # | MISC ALIASES |
 # *--------------*
 alias clangdump='~/.local/share/nvim/mason/bin/clang-format --dump-config > .clang-format'
-alias jdex='~/MEGA/00-09 System/00 System Management/00.00 JDex && clear'
+alias jdex='~/MEGA/00-09\ System/00\ System\ Management/00.00\ JDex && clear'
 alias claer='clear'
