@@ -65,12 +65,17 @@ config.enable_kitty_keyboard = true
 
 config.keys = {
     {
+        key = "J",
+        mods = "CTRL|SHIFT",
+        action = wezterm.action.DisableDefaultAssignment,
+    },
+    {
         key = "K",
         mods = "CTRL|SHIFT",
         action = wezterm.action.DisableDefaultAssignment,
     },
     {
-        key = "J",
+        key = "L",
         mods = "CTRL|SHIFT",
         action = wezterm.action.DisableDefaultAssignment,
     },
