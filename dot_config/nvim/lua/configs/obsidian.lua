@@ -2,7 +2,7 @@ return {
 	workspaces = {
 		{
 			name = "JDex",
-			path = "~/Documents/SyncFolder/00-09   System/00 System Management/00.00 JDex/",
+			path = "~/MEGA/00-09 System/00 System Management/00.00 JDex/",
 			overrides = {
 				notes_subdir = "",
 				templates = {
@@ -21,7 +21,7 @@ return {
 		},
 		{
 			name = "Atomica",
-			path = "~/Documents/SyncFolder/90-99 Atomica/",
+			path = "~/MEGA/90-99 Atomica/",
 			overrides = {
 				notes_subdir = "",
 				templates = {
