@@ -84,6 +84,11 @@ config.keys = {
         mods = "CTRL|SHIFT",
         action = wezterm.action.DisableDefaultAssignment,
     },
+    {
+        key = "N",
+        mods = "SUPER",
+        action = wezterm.action.DisableDefaultAssignment,
+    },
 }
 
 wezterm.on('user-var-changed', function(window, pane, name, value)
