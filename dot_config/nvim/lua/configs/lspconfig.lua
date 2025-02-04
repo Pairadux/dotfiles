@@ -16,6 +16,13 @@ local servers = {
     ruff = {},
     jqls = {},
     jsonls = {},
+	gopls = {
+		settings = {
+			gopls = {
+				gofumpt = true,
+			},
+		},
+	},
 }
 
 for name, opts in pairs(servers) do
