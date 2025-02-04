@@ -38,6 +38,7 @@ return {
 
 	{
 		"stevearc/conform.nvim",
+		cmd = { "ConformInfo" },
 		-- event = 'BufWritePre', -- uncomment for format on save
 		opts = require("configs.conform"),
 	},
