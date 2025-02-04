@@ -105,8 +105,16 @@ M.mason = {
 		"marksman",
 		"pyright",
 		"ruff",
+		"ruff-analyzer",
 		"clangd",
 		"clang-format",
+        "gofumpt",
+        "go-pls",
+        "bash-language-server",
+        "jq-lsp",
+        "json-lsp",
+        "prettier",
+        "shfmt",
 	},
 }
 
