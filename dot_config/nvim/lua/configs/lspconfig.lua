@@ -13,9 +13,9 @@ local servers = {
 	tailwindcss = {
 		filetypes = { "html", "css", "svelte", "scss", "javascript", "typescript", "vue" },
 	},
-    ruff = {},
-    jqls = {},
-    jsonls = {},
+	ruff = {},
+	jqls = {},
+	jsonls = {},
 	gopls = {
 		settings = {
 			gopls = {
