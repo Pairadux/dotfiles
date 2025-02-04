@@ -108,7 +108,6 @@ M.mason = {
 		"ruff-analyzer",
 		"clangd",
 		"clang-format",
-        "gofumpt",
         "go-pls",
         "bash-language-server",
         "jq-lsp",
