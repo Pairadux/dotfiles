@@ -88,18 +88,21 @@ map("n", "<leader>rc", function()
 		pos = "float",
 
 		cmd = function()
+			local file = vim.fn.expand("%:p")
+			local ft = vim.bo.ft
 
 			local ft_cmds = {
-				c = 'clear && gcc -o out "' .. file .. '" && ./out',
-				cpp = "clear && g++ -o out " .. file .. " && ./out",
-				python = "python3 " .. file,
-				rust = "cargo run",
+				c       = string.format("clear && gcc -o out %q && ./out", file),
+				cpp     = string.format("clear && g++ -o out %q && ./out", file),
+				python  = string.format("python3 %q", file),
+				rust    = "cargo run",
+				go      = string.format("clear && go run %q", file),
 			}
 
-			return ft_cmds[vim.bo.ft]
+			return ft_cmds[ft]
 		end,
 	})
-end, { desc = "[R]un [C]urrent File", noremap = true, silent = true, expr = true })
+end, { desc = "[R]un [C]urrent File", noremap = true, silent = true })
 
 -- Whichkey
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "Whichkey All Keymaps" })
