@@ -1,6 +1,11 @@
 -- Global Declarations
 local map = vim.keymap.set
 
+-- LSP Formatting
+map("n", "<leader>gf", function()
+	require("conform").format({ lsp_fallback = true })
+end, { desc = "[G]eneral [F]ormat File" })
+
 -- Tabufline
 map("n", "<tab>", function()
   require("nvchad.tabufline").next()
@@ -71,6 +76,27 @@ map({ "n", "t" }, "<A-l>", function()
 	require("nvchad.term").toggle({ pos = "float", id = "lazygit", cmd = "lazygit" })
 end, { desc = "Terminal Toggle Lazygit" })
 
+-- Code Runner
+map("n", "<leader>rc", function()
+	require("nvchad.term").runner({
+		id = "coderun",
+		pos = "float",
+
+		cmd = function()
+			local file = vim.fn.expand("%")
+
+			local ft_cmds = {
+				c = 'clear && gcc -o out "' .. file .. '" && ./out',
+				cpp = "clear && g++ -o out " .. file .. " && ./out",
+				python = "python3 " .. file,
+				rust = "cargo run",
+			}
+
+			return ft_cmds[vim.bo.ft]
+		end,
+	})
+end, { desc = "[R]un [C]urrent File", noremap = true, silent = true, expr = true })
+
 -- Whichkey
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "Whichkey All Keymaps" })
 
@@ -90,6 +116,11 @@ map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux Window Right" })
 map("n", "<C-S-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
 map("n", "<C-S-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
 
+-- Reload nvim
+map("n", "<leader>rn", function()
+	require("nvchad.utils").reload()
+end, { desc = "[R]eload [N]vim", noremap = true, silent = true })
+
 -- -- DAP
 -- local dap = require("dap")
 -- local dapui = require("dapui")
@@ -103,3 +134,8 @@ map("n", "<C-S-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
 -- end, { desc = "Debug: Set Breakpoint" })
 -- map("n", "<F7>", dapui.toggle, { desc = "Debug: See last session result" })
 
+-- Lazy Update
+map("n", "<leader>lu", "<cmd>Lazy update<CR>", { desc = "[L]azy [U]pdate", noremap = true, silent = true })
+
+-- Mason Open
+map("n", "<leader>mo", "<cmd>Mason<CR>", { desc = "[M]ason [O]pen", noremap = true, silent = true })
