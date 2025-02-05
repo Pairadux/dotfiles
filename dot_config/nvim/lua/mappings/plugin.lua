@@ -8,23 +8,23 @@ end, { desc = "[G]eneral [F]ormat File" })
 
 -- Tabufline
 map("n", "<tab>", function()
-  require("nvchad.tabufline").next()
+	require("nvchad.tabufline").next()
 end, { desc = "Buffer Goto Next" })
 
 map("n", "<S-tab>", function()
-  require("nvchad.tabufline").prev()
+	require("nvchad.tabufline").prev()
 end, { desc = "Buffer Goto Prev" })
 
 map("n", "<leader>x", function()
-  require("nvchad.tabufline").close_buffer()
+	require("nvchad.tabufline").close_buffer()
 end, { desc = "Buffer Close" })
 
 map("n", "<S-Right>", function()
-  require("nvchad.tabufline").move_buf(1)
+	require("nvchad.tabufline").move_buf(1)
 end, { desc = "Move Buffer" })
 
 map("n", "<S-Left>", function()
-  require("nvchad.tabufline").move_buf(-1)
+	require("nvchad.tabufline").move_buf(-1)
 end, { desc = "Move Buffer" })
 
 -- Nvimtree
@@ -40,7 +40,12 @@ map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = 
 map("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", { desc = "[F]ind Git [C]ommits" })
 map("n", "<leader>fs", "<cmd>Telescope git_status<CR>", { desc = "[F]ind Git [S]tatus" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "[F]ind [F]iles" })
-map("n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "[F]ind [A]ll Files" })
+map(
+	"n",
+	"<leader>fa",
+	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
+	{ desc = "[F]ind [A]ll Files" }
+)
 map("n", "<leader>ft", "<cmd>Telescope todo-comments<CR>", { desc = "[F]ind [T]odo Comments" })
 
 -- Terminal
@@ -48,15 +53,15 @@ map("t", "<C-x>", "<C-\\><C-N>", { desc = "Terminal Escape Terminal Mode" })
 
 -- Toggleable
 map({ "n", "t" }, "<A-v>", function()
-  require("nvchad.term").toggle { pos = "vsp", id = "vtoggleTerm" }
+	require("nvchad.term").toggle({ pos = "vsp", id = "vtoggleTerm" })
 end, { desc = "Terminal Toggleable Vertical Term" })
 
 map({ "n", "t" }, "<A-h>", function()
-  require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+	require("nvchad.term").toggle({ pos = "sp", id = "htoggleTerm" })
 end, { desc = "Terminal Toggleable Horizontal Term" })
 
 map({ "n", "t" }, "<A-i>", function()
-  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+	require("nvchad.term").toggle({ pos = "float", id = "floatTerm" })
 end, { desc = "Terminal Toggle Floating Term" })
 
 map({ "n", "t" }, "<A-8>", function()
@@ -83,7 +88,6 @@ map("n", "<leader>rc", function()
 		pos = "float",
 
 		cmd = function()
-			local file = vim.fn.expand("%")
 
 			local ft_cmds = {
 				c = 'clear && gcc -o out "' .. file .. '" && ./out',
@@ -101,7 +105,7 @@ end, { desc = "[R]un [C]urrent File", noremap = true, silent = true, expr = true
 map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "Whichkey All Keymaps" })
 
 map("n", "<leader>wk", function()
-  vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
+	vim.cmd("WhichKey " .. vim.fn.input("WhichKey: "))
 end, { desc = "Whichkey Query Lookup" })
 
 -- AutoSession
