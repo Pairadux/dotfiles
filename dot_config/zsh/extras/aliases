@@ -18,6 +18,7 @@ alias grep='rg'
 alias ll='eza -lah'
 alias la='eza -a'
 alias l='eza -l'
+alias l1='eza -1'
 
 # *-------------*
 # | GIT ALIASES |
