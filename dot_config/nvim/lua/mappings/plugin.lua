@@ -83,25 +83,27 @@ end, { desc = "Terminal Toggle Lazygit" })
 
 -- Code Runner
 map("n", "<leader>rc", function()
-	require("nvchad.term").runner({
-		id = "coderun",
-		pos = "float",
+    vim.schedule(function()
+        require("nvchad.term").runner({
+            id = "coderun",
+            pos = "float",
 
-		cmd = function()
-			local file = vim.fn.expand("%:p")
-			local ft = vim.bo.ft
+            cmd = function()
+                local file = vim.fn.expand("%:p")
+                local ft = vim.bo.ft
 
-			local ft_cmds = {
-				c       = string.format("clear && gcc -o out %q && ./out", file),
-				cpp     = string.format("clear && g++ -o out %q && ./out", file),
-				python  = string.format("python3 %q", file),
-				rust    = "cargo run",
-				go      = string.format("clear && go run %q", file),
-			}
+                local ft_cmds = {
+                    c       = string.format("clear && gcc -o out %q && ./out", file),
+                    cpp     = string.format("clear && g++ -o out %q && ./out", file),
+                    python  = string.format("python3 %q", file),
+                    rust    = "cargo run",
+                    go      = string.format("clear && go run %q", file),
+                }
 
-			return ft_cmds[ft]
-		end,
-	})
+                return ft_cmds[ft]
+            end,
+        })
+    end)
 end, { desc = "[R]un [C]urrent File", noremap = true, silent = true })
 
 -- Whichkey
