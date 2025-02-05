@@ -14,6 +14,14 @@ map("n", "<leader>x", function()
   require("nvchad.tabufline").close_buffer()
 end, { desc = "Buffer Close" })
 
+map("n", "<S-Right>", function()
+  require("nvchad.tabufline").move_buf(1)
+end, { desc = "Move Buffer" })
+
+map("n", "<S-Left>", function()
+  require("nvchad.tabufline").move_buf(-1)
+end, { desc = "Move Buffer" })
+
 -- Nvimtree
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Nvimtree Toggle Window" })
 
