@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
-config.font = wezterm.font({ family = "JetBrains Mono" })
+config.font = wezterm.font("FiraCode Nerd Font", { weight = "Medium" })
 config.window_decorations = "RESIZE"
 config.color_scheme = "Tokyo Night"
 config.hide_tab_bar_if_only_one_tab = true
@@ -29,7 +29,7 @@ config.font_rules = {
 	{
 		intensity = "Bold",
 		font = wezterm.font({
-			family = "JetBrains Mono",
+			family = "FiraCode Nerd Font",
 			weight = "ExtraBold",
 		}),
 	},
@@ -37,7 +37,7 @@ config.font_rules = {
 		intensity = "Bold",
 		italic = true,
 		font = wezterm.font({
-			family = "JetBrains Mono",
+			family = "FiraCode Nerd Font",
 			weight = "ExtraBold",
 			style = "Italic",
 		}),
@@ -46,7 +46,7 @@ config.font_rules = {
 		italic = true,
 		intensity = "Half",
 		font = wezterm.font({
-			family = "JetBrains Mono",
+			family = "FiraCode Nerd Font",
 			weight = "Bold",
 			style = "Italic",
 		}),
@@ -55,7 +55,7 @@ config.font_rules = {
 		italic = true,
 		intensity = "Normal",
 		font = wezterm.font({
-			family = "JetBrains Mono",
+			family = "FiraCode Nerd Font",
 			style = "Italic",
 		}),
 	},
@@ -64,54 +64,54 @@ config.font_rules = {
 config.enable_kitty_keyboard = true
 
 config.keys = {
-    {
-        key = "J",
-        mods = "CTRL|SHIFT",
-        action = wezterm.action.DisableDefaultAssignment,
-    },
-    {
-        key = "K",
-        mods = "CTRL|SHIFT",
-        action = wezterm.action.DisableDefaultAssignment,
-    },
-    {
-        key = "L",
-        mods = "CTRL|SHIFT",
-        action = wezterm.action.DisableDefaultAssignment,
-    },
-    {
-        key = "U",
-        mods = "CTRL|SHIFT",
-        action = wezterm.action.DisableDefaultAssignment,
-    },
-    {
-        key = "N",
-        mods = "SUPER",
-        action = wezterm.action.DisableDefaultAssignment,
-    },
+	{
+		key = "J",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "K",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "L",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "U",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "N",
+		mods = "SUPER",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
 }
 
-wezterm.on('user-var-changed', function(window, pane, name, value)
-    local overrides = window:get_config_overrides() or {}
-    if name == "ZEN_MODE" then
-        local incremental = value:find("+")
-        local number_value = tonumber(value)
-        if incremental ~= nil then
-            while (number_value > 0) do
-                window:perform_action(wezterm.action.IncreaseFontSize, pane)
-                number_value = number_value - 1
-            end
-            overrides.enable_tab_bar = false
-        elseif number_value < 0 then
-            window:perform_action(wezterm.action.ResetFontSize, pane)
-            overrides.font_size = nil
-            overrides.enable_tab_bar = true
-        else
-            overrides.font_size = number_value
-            overrides.enable_tab_bar = false
-        end
-    end
-    window:set_config_overrides(overrides)
+wezterm.on("user-var-changed", function(window, pane, name, value)
+	local overrides = window:get_config_overrides() or {}
+	if name == "ZEN_MODE" then
+		local incremental = value:find("+")
+		local number_value = tonumber(value)
+		if incremental ~= nil then
+			while number_value > 0 do
+				window:perform_action(wezterm.action.IncreaseFontSize, pane)
+				number_value = number_value - 1
+			end
+			overrides.enable_tab_bar = false
+		elseif number_value < 0 then
+			window:perform_action(wezterm.action.ResetFontSize, pane)
+			overrides.font_size = nil
+			overrides.enable_tab_bar = true
+		else
+			overrides.font_size = number_value
+			overrides.enable_tab_bar = false
+		end
+	end
+	window:set_config_overrides(overrides)
 end)
 
 -- and finally, return the configuration to wezterm
