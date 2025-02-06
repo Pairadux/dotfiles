@@ -1,6 +1,6 @@
 return {
 
-	-- ######################################## Custom Plugins ########################################
+-- CUSTOM PLUGINS {{{
 
 	-- {
 	--     "Pairadux/custom-plugin",
@@ -8,7 +8,9 @@ return {
 	--     dev = true,
 	-- },
 
-	-- ######################################## Nvchad Plugins ########################################
+-- }}}
+
+-- NVCHAD PLUGINS {{{
 
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -87,7 +89,9 @@ return {
 		opts = require("configs.treesitter"),
 	},
 
-	-- ######################################## My Plugins ########################################
+-- }}}
+
+-- MY PLUGINS {{{
 
 	-- {
 	-- 	"mfussenegger/nvim-dap",
@@ -200,9 +204,10 @@ return {
 
 	{
 		"sphamba/smear-cursor.nvim",
-		enabled = function()
-			return not vim.g.neovide
-		end,
+        enabled = false,
+		-- enabled = function()
+		-- 	return not vim.g.neovide
+		-- end,
 		event = "VeryLazy",
 		opts = {
 			legacy_computing_symbols_support = true,
@@ -318,4 +323,7 @@ return {
 	},
 
 	{ "echasnovski/mini.icons", version = false },
+
+-- }}}
+
 }
