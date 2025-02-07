@@ -28,6 +28,7 @@
         ],
         "modules-center": [
             "custom/l_end",
+            //"hyprland/window",
             "custom/center",
             "custom/r_end"
         ],
