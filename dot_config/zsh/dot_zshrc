@@ -70,7 +70,7 @@ source $ZDOTDIR/extras/custom-scripts/vault_backup.zsh
 # +---------+
 # | Startup |
 # +---------+
-if [[ -z $TMUX && $TERM == "xterm-256color" ]]; then
+if [[ -z $TMUX && $TERM == "xterm-256color" && -z $NEOVIDE ]]; then
     tmux attach-session;
 fi
 
