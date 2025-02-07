@@ -122,8 +122,8 @@ map("n", "<leader>sl", "<cmd>SessionSearch<CR>", { desc = "[S]ession [L]oad", no
 -- TMUX NAVIGATOR
 map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux Window Left" })
 map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux Window Right" })
-map("n", "<C-S-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
-map("n", "<C-S-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
+map("n", "<C-A-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
+map("n", "<C-A-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
 
 -- Reload nvim
 map("n", "<leader>rn", function()
