@@ -1,8 +1,8 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: JetBrains Mono;
-    font-weight: bold;
+    font-family: FiraCode Mono;
+    font-weight: 700;
     min-height: 20px;
     font-size: 18px;
 }
@@ -25,14 +25,12 @@ window#waybar {
     padding-right: 3px;
     transition: none;
     color: #7aa2f7;
-    padding: 5px;
+    padding: 2px;
 }
 
 #workspaces button.active {
-    background: #bb9af7;
-    color: #ffffff;
-    padding-left: 8px;
-    padding-right: 8px;
+    background: inherit;
+    color: #ff757f;
     margin-left: 4px;
     margin-right: 4px;
 }
@@ -50,10 +48,6 @@ window#waybar {
 
 #workspaces button.focused {
     color: white;
-}
-
-#tray menu * {
-    min-height: 16px;
 }
 
 #tray menu seperator {
