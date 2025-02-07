@@ -6,7 +6,7 @@ if [ ! -f "$noteFilename" ]; then
     echo "## Notes for $(date +%F)" > "$noteFilename"
 fi
 
-neovide -- \
+NEOVIDE=1 neovide -- \
     -c "norm Go" \
     -c "norm Go#### $(date +%T)" \
     -c "norm G2o" \
