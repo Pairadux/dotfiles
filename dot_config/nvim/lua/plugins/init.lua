@@ -202,39 +202,37 @@ return {
 		opts = {},
 	},
 
-	{
-		"sphamba/smear-cursor.nvim",
-        enabled = false,
-		-- enabled = function()
-		-- 	return not vim.g.neovide
-		-- end,
-		event = "VeryLazy",
-		opts = {
-			legacy_computing_symbols_support = true,
-		},
-	},
-
 	-- {
-	-- 	"karb94/neoscroll.nvim",
-	-- 	enabled = function()
-	-- 		return not vim.g.neovide
-	-- 	end,
+	-- 	"sphamba/smear-cursor.nvim",
+	--        enabled = false,
+	-- 	-- enabled = function()
+	-- 	-- 	return not vim.g.neovide
+	-- 	-- end,
 	-- 	event = "VeryLazy",
 	-- 	opts = {
-	-- 		mappings = {
-	-- 			"<C-d>",
-	-- 			"<C-u>",
-	-- 			"<C-b>",
-	-- 			"<C-f>",
-	-- 			"<C-y>",
-	-- 			"<C-e>",
-	-- 			"zt",
-	-- 			"zz",
-	-- 			"zb",
-	-- 		},
-	-- 		hide_cursor = false,
+	-- 		legacy_computing_symbols_support = true,
 	-- 	},
 	-- },
+
+	{
+		"karb94/neoscroll.nvim",
+		enabled = function()
+			return not vim.g.neovide
+		end,
+		event = "VeryLazy",
+		opts = {
+			mappings = {
+				"<C-d>",
+				"<C-u>",
+				"<C-b>",
+				"<C-f>",
+				"<C-y>",
+				"<C-e>",
+				"zz",
+			},
+			hide_cursor = false,
+		},
+	},
 
 	{
 		"epwalsh/obsidian.nvim",
