@@ -29,7 +29,7 @@
         "show-special": true,
         "special-visible-only": true,
         "format-window-separator": ", ",
-        "window-rewrite-default": "𖣇",
+        "window-rewrite-default": "",
         "window-rewrite": {
             "class<firefox>": "",
             "class<firefox> title<.*youtube.*>": "",
