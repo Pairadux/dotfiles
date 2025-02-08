@@ -1,18 +1,22 @@
 return {
 	defaults = { lazy = true },
 
-    dev = {
-        path = "~/Dev/plugins",
-        patterns = {
-            "Pairadux",
-        }
-    },
+	rocks = {
+		hererocks = true,
+	},
+
+	dev = {
+		path = "~/Dev/plugins",
+		patterns = {
+			"Pairadux",
+		},
+	},
 
 	install = { colorscheme = { "nvchad" } },
 
 	ui = {
 		border = "single",
-        backdrop = 100,
+		backdrop = 100,
 		icons = {
 			ft = "",
 			lazy = "󰂠 ",

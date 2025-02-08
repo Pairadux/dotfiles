@@ -1,6 +1,6 @@
 return {
 
--- CUSTOM PLUGINS {{{
+	-- CUSTOM PLUGINS {{{
 
 	-- {
 	--     "Pairadux/custom-plugin",
@@ -8,9 +8,9 @@ return {
 	--     dev = true,
 	-- },
 
--- }}}
+	-- }}}
 
--- NVCHAD PLUGINS {{{
+	-- NVCHAD PLUGINS {{{
 
 	{
 		"nvim-tree/nvim-tree.lua",
@@ -89,9 +89,9 @@ return {
 		opts = require("configs.treesitter"),
 	},
 
--- }}}
+	-- }}}
 
--- MY PLUGINS {{{
+	-- MY PLUGINS {{{
 
 	-- {
 	-- 	"mfussenegger/nvim-dap",
@@ -249,6 +249,12 @@ return {
 	},
 
 	{
+		"3rd/image.nvim",
+        ft = "markdown",
+		opts = {},
+	},
+
+	{
 		"rmagatti/auto-session",
 		lazy = false,
 		opts = {
@@ -322,6 +328,5 @@ return {
 
 	{ "echasnovski/mini.icons", version = false },
 
--- }}}
-
+	-- }}}
 }
