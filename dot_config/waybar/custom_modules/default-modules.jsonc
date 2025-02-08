@@ -28,26 +28,27 @@
         },
         "show-special": true,
         "special-visible-only": true,
-        "format-window-separator": ", ",
+        "format-window-separator": " , ",
         "window-rewrite-default": "",
         "window-rewrite": {
             "class<firefox>": "",
             "class<firefox> title<.*youtube.*>": "",
             "class<firefox> title<.*github.*>": "",
             "class<firefox> title<.*chatgpt.*>": "",
-            "class<zen.*>": "󰰷",
+            "class<zen.*>": "",
             "class<zen.*> title<.*youtube.*>": "",
             "class<zen.*> title<.*github.*>": "",
             "class<zen.*> title<.*chatgpt.*>": "",
             "class<libreoffice-writer": "",
-            "class<obsidian>": "ᛞ",
+            "class<obsidian>": "",
             "class<neovide>": "",
             "class<kitty>": "󰄛",
             "thunderbird": "",
             "ticktick": "",
             "wezterm": "",
             "spotify": "󰓇",
-            "chrome": ""
+            "chrome": "",
+            "zathura": "𝒁"
         }
     },
     "tray": {
