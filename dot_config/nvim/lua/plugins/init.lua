@@ -250,6 +250,9 @@ return {
 
 	{
 		"3rd/image.nvim",
+		enabled = function()
+			return not vim.g.neovide
+		end,
         ft = "markdown",
 		opts = {},
 	},
