@@ -1,9 +1,19 @@
 #!/bin/bash
 
-noteFilename="$HOME/MEGA/00-09 System/00 System Management/00.00 JDex/00.07 Linux Quick Notes/$(date +%F).md"
+TODAY=$(date +"%F")
+YESTERDAY=$(date -d "yesterday" +"%F")
+TOMORROW=$(date -d "tomorrow" +"%F")
 
-if [ ! -f "$noteFilename" ]; then
-    echo "## Notes for $(date +%F)" > "$noteFilename"
+TEMPLATE="$HOME/MEGA/00-09 System/00 System Management/00.00 JDex/00.05 Templates/dailySnippet.md"
+
+FILE="$HOME/MEGA/00-09 System/00 System Management/00.00 JDex/00.06 Daily Notes/$(date +%F).md"
+
+if [ ! -f "$FILE" ]; then
+    sed -e "s/<% tp.date.now(\"YYYY-MM-DD\") %>/$TODAY/g" \
+        -e "s/<% tp.date.now(\"YYYY-MM-DD\", -1) %>/$YESTERDAY/g" \
+        -e "s/<% tp.date.now(\"YYYY-MM-DD\", 1) %>/$TOMORROW/g" \
+        "$TEMPLATE" > "$FILE"
+    echo -e "\n## Linux Quick Notes" >> "$FILE"
 fi
 
 NEOVIDE=1 neovide -- \
@@ -12,4 +22,4 @@ NEOVIDE=1 neovide -- \
     -c "norm G2o" \
     -c "norm zz" \
     -c "startinsert" \
-    "$noteFilename"
+    "$FILE"
