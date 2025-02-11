@@ -1,8 +1,8 @@
 # *------------------------*
 # | ZSH QUICK RELOAD ALIAS |
 # *------------------------*
-alias zshreload='source ~/.config/zsh/.zshrc'
 alias fullzshreload='source ~/.zshenv && source ~/.config/zsh/.zprofile && source ~/.config/zsh/.zshrc'
+alias zshreload='source ~/.config/zsh/.zshrc'
 alias ra='reload_aliases'
 
 # *-------------------*
@@ -42,6 +42,7 @@ alias down='cd ~/Downloads && clear'
 alias docs='cd ~/Documents && clear'
 alias dev='cd ~/Dev && clear'
 alias mega='cd ~/MEGA && clear'
+alias jdex='cd ~/MEGA/00-09\ System/00\ System\ Management/00.00\ JDex && clear'
 
 # *-------------*
 # | BAT ALIASES |
@@ -60,29 +61,29 @@ alias tre='tree -CL 2'
 # *-----------------*
 alias ca='chezmoi apply'
 
-# *-----------------------*
-# | ASSORTED UTIL ALIASES |
-# *-----------------------*
-alias doocommit='dooitcommit.sh'
-alias doopull='dooitpull.sh'
-alias nv='nvim'
-alias nvks='NVIM_APPNAME="kickstart-nvim" nvim'
-alias tc='taskcrab'
-alias lg='lazygit'
-alias catnip='cd && clear && catnip'
-alias shutdown='shutdown now'
-alias q='exit'
-alias waybarreload='killall -SIGUSR2 waybar'
-
 # *--------------------*
 # | PACINFO CHEATSHEET |
 # *--------------------*
-# FIXME: Update location
-# alias pacinfo='mdcat ~/Documents/SyncFolder/40-49\ Tech\ Projects/40\ Tech\ Admin/40.01\ Pacinfo.md'
+alias pacinfo='mdcat ~/MEGA/00-09\ System/00\ System\ Management/00.00\ JDex/10.01\ Inbox/40.01\ Pacinfo.md'
+
+# *---------------*
+# | CLEAR ALIASES |
+# *---------------*
+alias claer='clear'
+alias clera='clear'
+
+# *--------------*
+# | NVIM ALIASES |
+# *--------------*
+alias nv='nvim'
+alias nvks='NVIM_APPNAME="kickstart-nvim" nvim'
 
 # *--------------*
 # | MISC ALIASES |
 # *--------------*
 alias clangdump='~/.local/share/nvim/mason/bin/clang-format --dump-config > .clang-format'
-alias jdex='~/MEGA/00-09\ System/00\ System\ Management/00.00\ JDex && clear'
-alias claer='clear'
+alias waybarreload='killall -SIGUSR2 waybar'
+alias shutdown='shutdown now'
+alias lg='lazygit'
+alias q='exit'
+
