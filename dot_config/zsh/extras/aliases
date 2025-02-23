@@ -1,28 +1,28 @@
-# *------------------------*
-# | ZSH QUICK RELOAD ALIAS |
-# *------------------------*
+# *-------------------*
+# | ZSH QUICK RELOAD  |
+# *-------------------*
 alias fullzshreload='source ~/.zshenv && source ~/.config/zsh/.zprofile && source ~/.config/zsh/.zshrc'
 alias zshreload='source ~/.config/zsh/.zshrc'
 alias ra='reload_aliases'
 
-# *-------------------*
-# | SHADOWING ALIASES |
-# *-------------------*
+# *------------*
+# | SHADOWING  |
+# *------------*
 alias ls='eza' 
 alias grep='rg'
 
-# *----------------*
-# | LS/EZA ALIASES |
-# *----------------*
+# *---------*
+# | LS/EZA  |
+# *---------*
 # alias ls='eza'
 alias ll='eza -lah'
 alias la='eza -a'
 alias l='eza -l'
 alias l1='eza -1'
 
-# *-------------*
-# | GIT ALIASES |
-# *-------------*
+# *------*
+# | GIT  |
+# *------*
 alias gss='git status -s'
 alias gsl='git status'
 alias ga='git add'
@@ -31,9 +31,9 @@ alias gc='git commit'
 alias gl='git pull'
 alias vb='vault_backup'
 
-# *-------------------*
-# | DIRECTORY ALIASES |
-# *-------------------*
+# *------------*
+# | DIRECTORY  |
+# *------------*
 alias c='clear'
 alias cdc='cd && clear'
 alias ...='cd ../..'
@@ -44,21 +44,21 @@ alias dev='cd ~/Dev && clear'
 alias mega='cd ~/MEGA && clear'
 alias jdex='cd ~/MEGA/00-09\ System/00\ System\ Management/00.00\ JDex && clear'
 
-# *-------------*
-# | BAT ALIASES |
-# *-------------*
+# *------*
+# | BAT  |
+# *------*
 alias batzsh='bat ~/.config/zsh/.zshrc'
 alias aliases='bat ~/.config/zsh/extras/aliases'
 
-# *--------------*
-# | TREE ALIASES |
-# *--------------*
+# *-------*
+# | TREE  |
+# *-------*
 alias tree='tree -C'
 alias tre='tree -CL 2'
 
-# *-----------------*
-# | CHEZMOI ALIASES |
-# *-----------------*
+# *----------*
+# | CHEZMOI  |
+# *----------*
 alias ca='chezmoi apply'
 
 # *--------------------*
@@ -66,24 +66,28 @@ alias ca='chezmoi apply'
 # *--------------------*
 alias pacinfo='mdcat ~/MEGA/00-09\ System/00\ System\ Management/00.00\ JDex/10.01\ Inbox/40.01\ Pacinfo.md'
 
-# *---------------*
-# | CLEAR ALIASES |
-# *---------------*
+# *--------*
+# | CLEAR  |
+# *--------*
 alias claer='clear'
 alias clera='clear'
 
-# *--------------*
-# | NVIM ALIASES |
-# *--------------*
+# *-------*
+# | NVIM  |
+# *-------*
 alias nv='nvim'
 alias nvks='NVIM_APPNAME="kickstart-nvim" nvim'
 
-# *--------------*
-# | MISC ALIASES |
-# *--------------*
+# *-------*
+# | MISC  |
+# *-------*
 alias clangdump='~/.local/share/nvim/mason/bin/clang-format --dump-config > .clang-format'
 alias waybarreload='killall -SIGUSR2 waybar'
 alias shutdown='shutdown now'
 alias lg='lazygit'
 alias q='exit'
 
+# *---------*
+# | GCLOUD  |
+# *---------*
+alias sshg='gcloud cloud-shell ssh --authorize-session'
