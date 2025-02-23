@@ -13,7 +13,6 @@ if [ ! -f "$FILE" ]; then
         -e "s/<% tp.date.now(\"YYYY-MM-DD\", -1) %>/$YESTERDAY/g" \
         -e "s/<% tp.date.now(\"YYYY-MM-DD\", 1) %>/$TOMORROW/g" \
         "$TEMPLATE" > "$FILE"
-    echo -e "\n## Linux Quick Notes" >> "$FILE"
 fi
 
 NEOVIDE=1 neovide -- \
