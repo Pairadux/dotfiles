@@ -3,7 +3,7 @@
 # JD script not using fzf
 # jd() {
 #     local dir
-#     dir=$(fd -t d "^$1.*$" ~/Documents/SyncFolder -d 3 | head -n 1)
+#     dir=$(fd -t d "^$1.*$" ~/MEGA -d 3 | head -n 1)
 #     if [ -n "$dir" ]; then
 #         builtin cd "$dir" 2>/dev/null || echo "Cannot change to directory: $dir"
 #     else
@@ -17,10 +17,10 @@ jd() {
 
     if [ "$#" -eq 0 ]; then
         # If no arguments, show all directories
-        selected_dir=$(fd -t d . ~/Documents/SyncFolder -d 3 | fzf --height 50% --reverse)
+        selected_dir=$(fd -t d . ~/MEGA -d 3 | fzf --height 50% --reverse)
     else
         # If argument provided, use it as initial query
-        selected_dir=$(fd -t d . ~/Documents/SyncFolder -d 3 | fzf --height 50% --reverse -q "$1")
+        selected_dir=$(fd -t d . ~/MEGA -d 3 | fzf --height 50% --reverse -q "$1")
     fi
 
     if [ -n "$selected_dir" ]; then
