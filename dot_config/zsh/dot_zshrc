@@ -3,7 +3,9 @@
 # +---------+
 # | BINDING |
 # +---------+
-bindkey -e
+bindkey -v
+
+bindkey -M viins 'jk' vi-cmd-mode
 
 bindkey -r '^l'
 bindkey -r '^g'
