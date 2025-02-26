@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
 
-# +---------+
-# | BINDING |
-# +---------+
+# +-------------+
+# | PRE BINDING |
+# +-------------+
 bindkey -v
 
 bindkey -M viins 'jk' vi-cmd-mode
@@ -82,8 +82,10 @@ fi
 bindkey '^f' autosuggest-accept
 bindkey ' ' magic-space
 
+# *------------------------*
+# | GOOGLE CLOUD SDK SETUP |
+# *------------------------*
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/austingause/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/austingause/google-cloud-sdk/path.zsh.inc'; fi
-
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/austingause/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/austingause/google-cloud-sdk/completion.zsh.inc'; fi
