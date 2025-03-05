@@ -40,12 +40,7 @@ map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = 
 map("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", { desc = "[F]ind Git [C]ommits" })
 map("n", "<leader>fs", "<cmd>Telescope git_status<CR>", { desc = "[F]ind Git [S]tatus" })
 map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "[F]ind [F]iles" })
-map(
-	"n",
-	"<leader>fa",
-	"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
-	{ desc = "[F]ind [A]ll Files" }
-)
+map( "n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "[F]ind [A]ll Files" })
 map("n", "<leader>ft", "<cmd>Telescope todo-comments<CR>", { desc = "[F]ind [T]odo Comments" })
 
 -- Terminal
