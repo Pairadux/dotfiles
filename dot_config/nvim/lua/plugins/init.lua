@@ -253,7 +253,7 @@ return {
 		enabled = function()
 			return not vim.g.neovide
 		end,
-        ft = "markdown",
+		ft = "markdown",
 		opts = {},
 	},
 
@@ -332,4 +332,5 @@ return {
 	{ "echasnovski/mini.icons", version = false },
 
 	-- }}}
+
 }

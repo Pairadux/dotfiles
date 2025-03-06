@@ -33,9 +33,9 @@ map("n", "<C-S-j>", "<C-w>j", { desc = "Switch Window Down" })
 map("n", "<C-S-k>", "<C-w>k", { desc = "Switch Window Up" })
 
 -- Tab Management
--- map("n", "<leader><Tab>", "<Cmd>tabnew<CR>", { desc = "Create New Tab" })
--- map("n", "<leader>n", "gt", { desc = "Next Tab" })
--- map("n", "<leader>p", "gT", { desc = "Previous Tab" })
+map("n", "<leader><Tab>", "<Cmd>tabnew<CR>", { desc = "Create New Tab" })
+map("n", "<leader>n", "gt", { desc = "Next Tab" })
+map("n", "<leader>p", "gT", { desc = "Previous Tab" })
 
 -- Clear Highlights
 map("n", "<Esc>", "<cmd>noh<CR>", { desc = "General Clear Highlights" })
