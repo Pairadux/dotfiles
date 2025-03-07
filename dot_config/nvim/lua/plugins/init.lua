@@ -257,14 +257,23 @@ return {
 		opts = {},
 	},
 
+	-- {
+	-- 	"rmagatti/auto-session",
+	-- 	lazy = false,
+	-- 	opts = {
+	-- 		auto_create = false,
+	-- 		allowed_dirs = {
+	-- 			"~/Dev/taskcrab",
+	-- 			"~/Dev/my-portfolio",
+	-- 		},
+	-- 	},
+	-- },
+
 	{
-		"rmagatti/auto-session",
-		lazy = false,
+		"stevearc/resession.nvim",
 		opts = {
-			auto_create = false,
-			allowed_dirs = {
-				"~/Dev/taskcrab",
-				"~/Dev/my-portfolio",
+			extensions = {
+				tabufline = require("custom.tabufline_extension"),
 			},
 		},
 	},

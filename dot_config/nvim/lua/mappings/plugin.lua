@@ -109,10 +109,24 @@ map("n", "<leader>wk", function()
 end, { desc = "Whichkey Query Lookup" })
 
 -- AutoSession
-map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "[S]ession [S]ave", noremap = true, silent = true })
-map("n", "<leader>sr", "<cmd>SessionRestore<CR>", { desc = "[S]ession [R]estore", noremap = true, silent = true })
-map("n", "<leader>sd", "<cmd>SessionDelete<CR>", { desc = "[S]ession [D]elete", noremap = true, silent = true })
-map("n", "<leader>sl", "<cmd>SessionSearch<CR>", { desc = "[S]ession [L]oad", noremap = true, silent = true })
+-- map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "[S]ession [S]ave", noremap = true, silent = true })
+-- map("n", "<leader>sr", "<cmd>SessionRestore<CR>", { desc = "[S]ession [R]estore", noremap = true, silent = true })
+-- map("n", "<leader>sd", "<cmd>SessionDelete<CR>", { desc = "[S]ession [D]elete", noremap = true, silent = true })
+-- map("n", "<leader>sl", "<cmd>SessionSearch<CR>", { desc = "[S]ession [L]oad", noremap = true, silent = true })
+
+-- Resession
+map("n", "<Leader>ss", function()
+    local cwd = vim.fn.getcwd()
+	require("resession").save(cwd, { dir = "dirsession", notify = true })
+end, { desc = "[S]ession [S]ave" })
+
+map("n", "<Leader>sl", function()
+	require("resession").load()
+end, { desc = "[S]ession [L]oad" })
+
+map("n", "<Leader>st", function()
+	require("resession").save_tab()
+end, { desc = "[S]ession Save [T]ab" })
 
 -- TMUX NAVIGATOR
 map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux Window Left" })
