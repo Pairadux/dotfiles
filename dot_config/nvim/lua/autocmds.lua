@@ -1,5 +1,19 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+local function setup_resession_hooks()
+	local resession = require("resession")
+
+	resession.add_hook("post_load", function()
+		vim.o.showtabline = 2
+		vim.cmd("redraw!")
+	end)
+end
+
+-- Set up hooks as early as possible
+vim.defer_fn(function()
+	pcall(setup_resession_hooks)
+end, 0)
+
 autocmd("Filetype", {
 	pattern = { "*" },
 	callback = function()
@@ -10,12 +24,17 @@ autocmd("Filetype", {
 
 autocmd("VimEnter", {
 	callback = function()
+		vim.o.showtabline = 0
+
 		local cwd = vim.fn.getcwd()
 		local ok, _ = pcall(function()
 			require("resession").load(cwd, { dir = "dirsession", silent = true })
 		end)
+
 		if not ok then
 			vim.notify("No session found for " .. cwd, vim.log.levels.INFO)
+			vim.o.showtabline = 1
+			vim.cmd("redraw!")
 		end
 	end,
 })

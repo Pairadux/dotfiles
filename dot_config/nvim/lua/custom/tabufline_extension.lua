@@ -51,7 +51,6 @@ M.on_post_load = function(tab_bufs)
 			pcall(tabpage_set_var, tab, "bufs", new_bufs)
 		end
 	end
-	vim.cmd("redrawtabline")
 end
 
 return M
