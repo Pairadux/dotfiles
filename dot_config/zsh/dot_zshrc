@@ -89,3 +89,4 @@ bindkey ' ' magic-space
 if [ -f '/Users/austingause/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/austingause/google-cloud-sdk/path.zsh.inc'; fi
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/austingause/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/austingause/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/etc/profile.d/google-cloud-cli.sh' ]; then . '/etc/profile.d/google-cloud-cli.sh'; fi
