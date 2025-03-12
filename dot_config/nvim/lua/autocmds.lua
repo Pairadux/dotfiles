@@ -1,5 +1,13 @@
 local autocmd = vim.api.nvim_create_autocmd
 
+autocmd("Filetype", {
+	pattern = { "*" },
+	callback = function()
+		vim.opt.formatoptions:remove("o")
+	end,
+	desc = "Don't continue comments with o and O",
+})
+
 local function setup_resession_hooks()
 	local resession = require("resession")
 
@@ -13,14 +21,6 @@ end
 vim.defer_fn(function()
 	pcall(setup_resession_hooks)
 end, 0)
-
-autocmd("Filetype", {
-	pattern = { "*" },
-	callback = function()
-		vim.opt.formatoptions:remove("o")
-	end,
-	desc = "Don't continue comments with o and O",
-})
 
 autocmd("VimEnter", {
 	callback = function()
