@@ -38,3 +38,17 @@ autocmd("VimEnter", {
 		end
 	end,
 })
+
+autocmd("FileType", {
+    pattern = "markdown",
+    callback = function ()
+        vim.opt_local.autoindent = true
+        vim.opt_local.expandtab = true
+        -- Normal mode
+        vim.api.nvim_buf_set_keymap(0, 'n', '<Tab>', '>>', { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(0, 'n', '<S-Tab>', '<<', { noremap = true, silent = true })
+        -- Insert mode
+        vim.api.nvim_buf_set_keymap(0, 'i', '<Tab>', '<C-t>', { noremap = true, silent = true })
+        vim.api.nvim_buf_set_keymap(0, 'i', '<S-Tab>', '<C-d>', { noremap = true, silent = true })
+    end
+})
