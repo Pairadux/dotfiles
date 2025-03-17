@@ -2,79 +2,47 @@
     {
         "output": "DP-2",
         "position": "top",
-        "margin": "10 10 0 10",
+        "margin": "10 10 5 10",
         "fixed-center": true,
         "reload_style_on_change": true,
         "include": ["~/.config/waybar/custom_modules/default-modules.jsonc"],
         "modules-left": [
+            "custom/padd",
             "custom/l_end",
             "custom/power",
             "custom/r_end",
+            "custom/padd",
             "custom/l_end",
             "hyprland/workspaces",
             "custom/r_end",
-            //"custom/l_end",
-            //"hyprland/window",
-            //"custom/r_end",
-            //"custom/l_end",
-            //"temperature",
-            //"cpu",
-            //"memory",
-            //"custom/r_end",
+            "custom/padd",
             "custom/l_end",
             "pulseaudio",
             "custom/r_end",
-            "custom/spotify"
-        ],
-        "modules-center": [
+            "custom/padd",
             "custom/l_end",
-            //"hyprland/window",
-            "custom/center",
+            "custom/spotify",
             "custom/r_end"
         ],
+        "modules-center": [
+            "custom/center"
+        ],
         "modules-right": [
-            //"custom/l_end",
-            //"hyprland/window",
-            //"custom/r_end",
-            //"custom/l_end",
-            //"pulseaudio",
-            //"custom/r_end",
             "custom/l_end",
             "temperature",
             "cpu",
             "memory",
             "custom/r_end",
+            "custom/padd",
             "custom/l_end",
             "clock",
             "custom/r_end",
+            "custom/padd",
             "custom/l_end",
             "tray",
-            "custom/r_end"
+            "custom/r_end",
+            "custom/padd"
         ],
-        //"custom/power": {
-        //    "format": "⏻",
-        //    "on-click": "shutdown now",
-        //    "on-click-right": "reboot"
-        //},
-        //"hyprland/workspaces": {
-        //    "format": "{icon}{windows}",
-        //    "on-click": "activate",
-        //    "format-icons": {
-        //        "1": "1",
-        //        "2": "2",
-        //        "3": "3",
-        //        "4": "4",
-        //        "5": "5",
-        //        "urgent": "󰈸",
-        //        "active": "󰣇",
-        //        "default": ""
-        //    },
-        //    "persistent-workspaces": {
-        //        "DP-2": 1,
-        //        "HDMI-A-1": 2
-        //    },
-        //    "sort-by-number": true
-        //},
         "custom/spotify": {
             "exec": "/usr/bin/python3 ~/.config/waybar/custom_modules/mediaplayer.py --player spotify",
             "format": " {}",
@@ -87,110 +55,51 @@
             "escape": true,
             "tooltip": true
         },
-        //"tray": {
-        //    "icon-size": 16,
-        //    "spacing": 10
-        //},
-        //"clock": {
-        //    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        //    "format": "{:%a, %b %d, %I:%M %p}"
-        //},
-        //"custom/center": {
-        //    "format": ""
-        //},
         "cpu": {
-            "format": "{usage}% "
+            "format": "{usage}%  "
         },
         "memory": {
-            "format": "{}% 󰍛"
+            "format": "{}%  "
         },
         "temperature": {
             "critical-threshold": 80,
             "format": "{temperatureC}°C {icon}",
             "format-icons": ["", "", ""]
         }
-        //"hyprland/window": {
-        //    "format": " {initialTitle}"
-        //
-        //},
-        //"pulseaudio": {
-        //    "format": "{icon} {volume}%",
-        //    "format-muted": "󰝟",
-        //    "format-icons": {
-        //        "headphone": "",
-        //        "phone": "",
-        //        "portable": "",
-        //        "car": "",
-        //        "default": ["", "", ""]
-        //    },
-        //    "on-click": "pavucontrol"
-        //}
-        //"custom/l_end": {
-        //    "format": " ",
-        //    "interval": "once",
-        //    "tooltip": false
-        //},
-        //"custom/r_end": {
-        //    "format": " ",
-        //    "interval": "once",
-        //    "tooltip": false
-        //},
-        //"custom/padd": {
-        //    "format": "  ",
-        //    "interval": "once",
-        //    "tooltip": false
-        //}
     },
     {
         "output": "HDMI-A-1",
         "position": "top",
-        "margin": "10 10 0 10",
+        "margin": "10 10 5 10",
         "fixed-center": true,
         "reload_style_on_change": true,
         "include": ["~/.config/waybar/custom_modules/default-modules.jsonc"],
         "modules-left": [
+            "custom/padd",
             "custom/l_end",
             "custom/power",
             "custom/r_end",
+            "custom/padd",
             "custom/l_end",
             "hyprland/workspaces",
             "custom/r_end",
+            "custom/padd",
             "custom/l_end",
             "pulseaudio",
             "custom/r_end"
-            //"custom/l_end",
-            //"hyprland/window",
-            //"custom/r_end",
-            //"custom/l_end",
-            //"temperature",
-            //"cpu",
-            //"memory",
-            //"custom/r_end",
-            //"custom/spotify",
-            //"custom/l_end",
-            //"pulseaudio",
-            //"custom/r_end"
         ],
         "modules-center": [
-            "custom/l_end",
-            "custom/center",
-            "custom/r_end"
+            "custom/center"
         ],
         "modules-right": [
-            //"custom/l_end",
-            //"hyprland/window",
-            //"custom/r_end",
-            //"custom/l_end",
-            //"temperature",
-            //"cpu",
-            //"memory",
-            //"custom/r_end",
             "custom/l_end",
             "clock",
             "custom/r_end",
+            "custom/padd",
             "custom/l_end",
             "tray",
-            "custom/r_end"
+            "custom/r_end",
+            "custom/padd"
         ]
     }
 ]

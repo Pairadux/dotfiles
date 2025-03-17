@@ -1,6 +1,6 @@
 {
     "custom/power": {
-        "format": "⏻",
+        "format": " ⏻ ",
         "on-click": "shutdown now",
         "on-click-right": "reboot"
     },
@@ -29,26 +29,26 @@
         "show-special": true,
         "special-visible-only": true,
         "format-window-separator": " , ",
-        "window-rewrite-default": "",
+        "window-rewrite-default": " ",
         "window-rewrite": {
-            "class<firefox>": "",
-            "class<firefox> title<.*youtube.*>": "",
-            "class<firefox> title<.*github.*>": "",
-            "class<firefox> title<.*chatgpt.*>": "",
-            "class<zen.*>": "",
-            "class<zen.*> title<.*youtube.*>": "",
-            "class<zen.*> title<.*github.*>": "",
-            "class<zen.*> title<.*chatgpt.*>": "",
-            "class<libreoffice-writer": "",
-            "class<obsidian>": "",
-            "class<neovide>": "",
-            "class<kitty>": "󰄛",
-            "class<kitty> title<yazi>": "󰇥",
-            "thunderbird": "",
-            "ticktick": "",
-            "wezterm": "",
-            "spotify": "󰓇",
-            "chrome": "",
+            "class<firefox>": " ",
+            "class<firefox> title<.*youtube.*>": " ",
+            "class<firefox> title<.*github.*>": " ",
+            "class<firefox> title<.*chatgpt.*>": "  ",
+            "class<zen.*>": " ",
+            "class<zen.*> title<.*youtube.*>": " ",
+            "class<zen.*> title<.*github.*>": " ",
+            "class<zen.*> title<.*chatgpt.*>": "  ",
+            "class<libreoffice-writer": " ",
+            "class<obsidian>": " ",
+            "class<neovide>": " ",
+            "class<kitty>": "󰄛 ",
+            "class<kitty> title<yazi>": "󰇥 ",
+            "thunderbird": " ",
+            "ticktick": " ",
+            "wezterm": " ",
+            "spotify": "󰓇 ",
+            "chrome": " ",
             "zathura": "𝒁"
         }
     },
@@ -57,14 +57,14 @@
         "spacing": 10
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-muted": "󰝟",
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰝟 ",
         "format-icons": {
-            "headphone": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headphone": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": ["", " ", " "]
         },
         "on-click": "pavucontrol"
     },
@@ -73,11 +73,7 @@
         "format": "{:%a, %b %d, %I:%M %p}"
     },
     "custom/center": {
-        "format": ""
-    },
-    "hyprland/window": {
-        "format": " {initialTitle}"
-
+        "format": "꧁꧂"
     },
     "custom/l_end": {
         "format": " ",
@@ -90,7 +86,7 @@
         "tooltip": false
     },
     "custom/padd": {
-        "format": "  ",
+        "format": "   ",
         "interval": "once",
         "tooltip": false
     }

@@ -1,14 +1,17 @@
 * {
     border: none;
     border-radius: 0;
+    padding-top: 2px;
+    padding-bottom: 1px;
     font-family: FiraCode Mono;
     font-weight: 700;
-    min-height: 20px;
+    /*min-height: 20px;*/
     font-size: 18px;
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 0);
+    /*background: rgba(0, 0, 0, 0);*/
+    background: #24283b;
 }
 
 #workspaces {
@@ -16,23 +19,9 @@ window#waybar {
     background: #383c4a;
 }
 
-#workspaces button {
-    box-shadow: none;
-    text-shadow: none;
-    padding: 0px;
-    border-radius: 10px;
-    padding-left: 3px;
-    padding-right: 3px;
-    transition: none;
-    color: #7aa2f7;
-    padding: 2px;
-}
-
 #workspaces button.active {
     background: inherit;
     color: #ff757f;
-    margin-left: 4px;
-    margin-right: 4px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -40,10 +29,7 @@ window#waybar {
     transition: none;
     box-shadow: inherit;
     text-shadow: inherit;
-    border-radius: inherit;
-    border-radius: 10px;
     color: #ffffff;
-    background: #7aa2f7;
 }
 
 #workspaces button.focused {
@@ -56,7 +42,6 @@ window#waybar {
 
 #workspaces,
 #custom-spotify,
-#custom-center,
 #custom-power,
 #mode,
 #clock,
@@ -71,19 +56,20 @@ window#waybar {
     color: #7aa2f7;
     background: #24283b;
     opacity: 1;
-    margin: 4px 0px 4px 0px;
-    padding-left: 4px;
-    padding-right: 4px;
+}
+
+#custom-center {
+    background: rgba(0, 0, 0, 0);
 }
 
 #temperature,
 #cpu {
-    padding-right: 16px;
+    padding-right: 8px;
 }
 
-#custom-center {
-    font-size: 24px;
-}
+/*#custom-center {*/
+/*    font-size: 20px;*/
+/*}*/
 
 #pulseaudio.muted {
     background-color: #90b1b1;
@@ -94,24 +80,14 @@ window#waybar {
     background-color: #eb4d4b;
 }
 
-#custom-spotify {
-    margin: 4px 0px 4px 0px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-radius: 21px 21px 21px 21px;
-    margin-right: 9px;
-}
-    
 #custom-r_end {
     border-radius: 0px 21px 21px 0px;
-    margin-right: 9px;
-    padding-right: 3px;
+    padding-right: 4px;
 }
 
 #custom-l_end {
     border-radius: 21px 0px 0px 21px;
-    margin-left: 9px;
-    padding-left: 3px;
+    padding-left: 4px;
 }
 
 @keyframes blink {
@@ -120,105 +96,3 @@ window#waybar {
         color: #000000;
     }
 }
-
-/* #custom-pacman { */
-/*     padding-left: 16px; */
-/*     padding-right: 8px; */
-/*     border-radius: 10px 0px 0px 10px; */
-/*     transition: none; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/* } */
-
-/* #custom-spotify { */
-/*     padding-left: 16px; */
-/*     padding-right: 16px; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/*     border-radius: 10px; */
-/* } */
-/**/
-/* #custom-center { */
-/*     padding-left: 16px; */
-/*     padding-right: 16px; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/*     border-radius: 10px; */
-/*     font-size: 20px; */
-/* } */
-/**/
-/* #mode { */
-/*     padding-left: 16px; */
-/*     padding-right: 16px; */
-/*     border-radius: 10px; */
-/*     transition: none; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/* } */
-/**/
-/* #clock { */
-/*     margin-right: 8px; */
-/*     padding-left: 16px; */
-/*     padding-right: 16px; */
-/*     border-radius: 10px; */
-/*     transition: none; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/* } */
-/**/
-/* #custom-weather { */
-/*     padding-right: 16px; */
-/*     border-radius: 0px 10px 10px 0px; */
-/*     transition: none; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/* } */
-/**/
-/* #pulseaudio { */
-/*     margin-right: 8px; */
-/*     padding-left: 16px; */
-/*     padding-right: 16px; */
-/*     border-radius: 10px; */
-/*     transition: none; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/* } */
-
-/* #memory { */
-/*     margin-right: 8px; */
-/*     padding-left: 16px; */
-/*     padding-right: 16px; */
-/*     border-radius: 10px; */
-/*     transition: none; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/* } */
-/**/
-/* #cpu { */
-/*     margin-right: 8px; */
-/*     padding-left: 16px; */
-/*     padding-right: 16px; */
-/*     border-radius: 10px; */
-/*     transition: none; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/* } */
-/**/
-/* #temperature { */
-/*     margin-right: 8px; */
-/*     padding-left: 16px; */
-/*     padding-right: 16px; */
-/*     border-radius: 10px; */
-/*     transition: none; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/* } */
-
-/* #tray { */
-/*     padding-left: 16px; */
-/*     padding-right: 16px; */
-/*     border-radius: 10px; */
-/*     transition: none; */
-/*     color: #ffffff; */
-/*     background: #383c4a; */
-/* } */
