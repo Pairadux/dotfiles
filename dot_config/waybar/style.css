@@ -33,7 +33,7 @@
 window#waybar {
   /*background: #0f0f17;*/
   background: #1a1b26;
-  border: 3px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid #f7768e;
   /*border: 3px solid #414868;*/
   border-radius: 10px;
 }
@@ -175,7 +175,6 @@ tooltip {
   opacity: 1;
   margin: 0px 0px 0px 0px;
   padding-left: 3px;
-  padding-right: 3px;
 }
 
 #cpu {
