@@ -17,6 +17,7 @@ map({ "n", "v" }, "<C-k>", "5k", { noremap = true, silent = true })
 
 -- close nvim with q, different action based on buffer type
 map("n", "<C-q>", "ZZ", { noremap = true, silent = true })
+map("n", "<leader>qa", "<cmd>:wqa<CR>", { desc = "Quit all" })
 
 -- Insert Mode Mappings
 map("i", "<C-b>", "<ESC>^i", { desc = "Move Beginning of Line" })
