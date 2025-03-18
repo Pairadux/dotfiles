@@ -1,105 +1,212 @@
-[
-    {
-        "output": "DP-2",
-        "position": "left",
-        "margin": "10 10 5 10",
-        "fixed-center": true,
-        "reload_style_on_change": true,
-        "include": ["~/.config/waybar/custom_modules/default-modules.jsonc"],
-        "modules-left": [
-            "custom/padd",
-            "custom/l_end",
-            "custom/power",
-            "custom/r_end",
-            "custom/padd",
-            "custom/l_end",
-            "hyprland/workspaces",
-            "custom/r_end",
-            "custom/padd",
-            "custom/l_end",
-            "pulseaudio",
-            "custom/r_end",
-            "custom/padd",
-            "custom/l_end",
-            "custom/spotify",
-            "custom/r_end"
-        ],
-        "modules-center": [
-            "custom/center"
-        ],
-        "modules-right": [
-            "custom/l_end",
-            "temperature",
-            "cpu",
-            "memory",
-            "custom/r_end",
-            "custom/padd",
-            "custom/l_end",
-            "clock",
-            "custom/r_end",
-            "custom/padd",
-            "custom/l_end",
-            "tray",
-            "custom/r_end",
-            "custom/padd"
-        ],
-        "custom/spotify": {
-            "exec": "/usr/bin/python3 ~/.config/waybar/custom_modules/mediaplayer.py --player spotify",
-            "format": " {}",
-            "rotate": 0,
-            "return-type": "json",
-            "on-click": "playerctl play-pause --player spotify",
-            "on-click-right": "playerctl next --player spotify",
-            "on-click-middle": "playerctl previous --player spotify",
-            "max-length": 25,
-            "escape": true,
-            "tooltip": true
+{
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "fixed-center": true,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-top": 7,
+    "margin-bottom": 0,
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": true,
+    "modules-left": [
+        "custom/padd",
+        "hyprland/workspaces",
+        "custom/spacer",
+        "mpris"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "network",
+        "pulseaudio",
+        "pulseaudio/slider",
+        "memory",
+        "cpu",
+        "clock",
+        "custom/notification",
+        "custom/padd"
+    ],
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十",
+            "special": "零"
         },
-        "cpu": {
-            "format": "{usage}%  "
+        "persistent-workspaces": {
+            "DP-2": [1],
+            "HDMI-A-1": [2]
         },
-        "memory": {
-            "format": "{}%  "
+        "show-special": true,
+        "special-visible-only": true
+    },
+    "mpris": {
+        "format": "{player_icon}  {dynamic}",
+        "format-paused": "<span color='grey'>{status_icon} {dynamic}</span>",
+        "max-length": 50,
+        "player-icons": {
+            "default": "⏸",
+            "mpv": "🎵"
         },
-        "temperature": {
-            "critical-threshold": 80,
-            "format": "{temperatureC}°C {icon}",
-            "format-icons": ["", "", ""]
+        "status-icons": {
+            "paused": "▶"
         }
     },
-    {
-        "output": "HDMI-A-1",
-        "position": "top",
-        "margin": "10 10 5 10",
-        "fixed-center": true,
-        "reload_style_on_change": true,
-        "include": ["~/.config/waybar/custom_modules/default-modules.jsonc"],
-        "modules-left": [
-            "custom/padd",
-            "custom/l_end",
-            "custom/power",
-            "custom/r_end",
-            "custom/padd",
-            "custom/l_end",
-            "hyprland/workspaces",
-            "custom/r_end",
-            "custom/padd",
-            "custom/l_end",
-            "pulseaudio",
-            "custom/r_end"
+    "hyprland/window": {
+        //"format": "{}"   // <--- these is the default value  
+        "format": "{initialTitle}",
+        "max-length": 120,
+        "icon": false,
+        "icon-size": 13
+    },
+    "custom/script": {
+        "on-click": "~/.config/waybar/volume.sh toggle",
+        "format": " "
+    },
+    "custom/spotify": {
+        "exec": "mediaplayer.py --player spotify",
+        "format": " {}",
+        "rotate": 0,
+        "return-type": "json",
+        "on-click": "playerctl play-pause --player spotify",
+        "on-click-right": "playerctl next --player spotify",
+        "on-click-middle": "playerctl previous --player spotify",
+        "on-scroll-up": "volumecontrol.sh -p spotify i",
+        "on-scroll-down": "volumecontrol.sh -p spotify d",
+        "max-length": 25,
+        "escape": true,
+        "tooltip": true
+    },
+    "network": {
+        "tooltip": true,
+        "format-wifi": "{icon} ",
+        "format-icons": [
+            "󰤟",
+            "󰤢",
+            "󰤥"
         ],
-        "modules-center": [
-            "custom/center"
+        "rotate": 0,
+        "format-ethernet": "󰈀 ",
+        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+        "format-linked": "󰈀 {ifname} (No IP)",
+        "format-disconnected": " ",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor",
+        "interval": 2
+    },
+    "pulseaudio": {
+        "format": "{icon}",
+        "rotate": 0,
+        "format-muted": "婢",
+        "tooltip-format": "{icon}  {desc} // {volume}%",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": [
+                " ",
+                " ",
+                " "
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "rotate": 0,
+        "device": "pulseaudio",
+        "scroll-step": 5
+    },
+    "memory": {
+        "interval": 1,
+        "rotate": 0,
+        "format": "{icon}",
+        "format-icons": [
+            "󰝦 ",
+            "󰪞 ",
+            "󰪟 ",
+            "󰪠 ",
+            "󰪡 ",
+            "󰪢 ",
+            "󰪣 ",
+            "󰪤 ",
+            "󰪥 "
         ],
-        "modules-right": [
-            "custom/l_end",
-            "clock",
-            "custom/r_end",
-            "custom/padd",
-            "custom/l_end",
-            "tray",
-            "custom/r_end",
-            "custom/padd"
+        "max-length": 10
+    },
+    "cpu": {
+        "interval": 1,
+        "format": "{icon}",
+        "rotate": 0,
+        "format-icons": [
+            "󰝦 ",
+            "󰪞 ",
+            "󰪟 ",
+            "󰪠 ",
+            "󰪡 ",
+            "󰪢 ",
+            "󰪣 ",
+            "󰪤 ",
+            "󰪥 "
         ]
+    },
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "rotate": 0,
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "on-scroll": 1,
+            "on-click-right": "mode",
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b>{}</b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode"
+        }
+    },
+    // modules for padding //
+    "custom/spacer": {
+        "format": "|"
+    },
+    "custom/smallspacer": {
+        "format": " "
+    },
+    "custom/l_end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false
+    },
+    "custom/r_end": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false
+    },
+    "custom/padd": {
+        "format": "  ",
+        "interval": "once",
+        "tooltip": false
     }
-]
+}
+

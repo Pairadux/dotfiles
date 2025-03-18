@@ -1,98 +1,313 @@
+/*
+  Tokyo Night Palette
+  -----------------------------------------
+  background:       #1a1b26
+  secondary bg:     #16161e
+  accent bg:        #292e42
+  border color:     #414868
+  foreground:       #c0caf5
+  dim text:         #545c7e
+  red:              #f7768e
+  green:            #9ece6a
+  yellow:           #e0af68
+  blue:             #7aa2f7
+  purple:           #bb9af7
+  cyan:             #7dcfff
+  teal:             #73daca
+*/
+
+/* ------------------------------------------------------
+   1) Global Defaults
+   ------------------------------------------------------ */
+
 * {
-    border: none;
-    border-radius: 0;
-    padding-top: 2px;
-    padding-bottom: 1px;
-    font-family: FiraCode Mono;
-    font-weight: 700;
-    /*min-height: 20px;*/
-    font-size: 18px;
+  font-family: "FiraCode Mono";
+  font-weight: bold;
+  font-size: 15px;
 }
+
+/* ------------------------------------------------------
+   2) Waybar & Tooltip
+   ------------------------------------------------------ */
 
 window#waybar {
-    /*background: rgba(0, 0, 0, 0);*/
-    background: #24283b;
+  /*background: #0f0f17;*/
+  background: #1a1b26;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  /*border: 3px solid #414868;*/
+  border-radius: 10px;
 }
 
+tooltip {
+  /*background: #171717;*/
+  background: #1a1b26;
+  /*color: #a1bdce;*/
+  color: #c0caf5;
+  font-size: 13px;
+  border-radius: 7px;
+  /*border: 2px solid #101a24;*/
+  border: 2px solid #16161e;
+}
+
+/* ------------------------------------------------------
+   3) Workspace
+   ------------------------------------------------------ */
+
 #workspaces {
-    transition: none;
-    background: #383c4a;
+  background: rgba(23, 23, 23, 0);
+  /*color: #888789;*/
+  color: #545c7e;
+  box-shadow: none;
+  text-shadow: none;
+  border-radius: 9px;
+  transition: 0.2s ease;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-top: 1px;
+}
+
+#workspaces button {
+  background: rgba(23, 23, 23, 0);
+  /*color: #a1bdce;*/
+  color: #c0caf5;
+  box-shadow: none;
+  text-shadow: none;
+  border-radius: 9px;
+  transition: 0.2s ease;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
 #workspaces button.active {
-    background: inherit;
-    color: #ff757f;
+  /*color: #a1bdce;*/
+  color: #f7768e;
+  transition: all 0.3s ease;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-    transition: none;
-    box-shadow: inherit;
-    text-shadow: inherit;
-    color: #ffffff;
+  background: none;
+  /*color: #72d792;*/
+  color: #9ece6a;
+  animation: ws_hover 20s ease-in-out 1;
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
-#workspaces button.focused {
-    color: white;
+/* ------------------------------------------------------
+   4) Taskbar Buttons
+   ------------------------------------------------------ */
+
+#taskbar button {
+  box-shadow: none;
+  text-shadow: none;
+  font-size: 4px;
+  padding: 0px;
+  border-radius: 9px;
+  margin-bottom: 3px;
+  margin-left: 0px;
+  padding-left: 3px;
+  padding-right: 3px;
+  margin-right: 0px;
+  animation: tb_normal 20s ease-in-out 1;
 }
 
-#tray menu seperator {
-    min-height: 10px;
+#taskbar button.active {
+  margin-left: 3px;
+  padding-left: 12px;
+  padding-right: 12px;
+  margin-right: 3px;
+  animation: tb_active 20s ease-in-out 1;
+  transition: all 0.4s cubic-bezier(0.55, -0.68, 0.48, 1.682);
+  min-height: 9px;
 }
 
-#workspaces,
-#custom-spotify,
-#custom-power,
-#mode,
-#clock,
-#pulseaudio,
-#memory,
-#cpu,
-#temperature,
-#tray,
-#window,
-#custom-l_end,
-#custom-r_end {
-    color: #7aa2f7;
-    background: #24283b;
-    opacity: 1;
+#taskbar button:hover {
+  animation: tb_hover 20s ease-in-out 1;
+  transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
-#custom-center {
-    background: rgba(0, 0, 0, 0);
+/* ------------------------------------------------------
+   5) Tray Menu
+   ------------------------------------------------------ */
+
+#tray menu * {
+  min-height: 16px;
+  font-weight: bold;
+  font-size: 13px;
+  /*color: #9488e3;*/
+  color: #bb9af7;
 }
 
-#temperature,
+#tray menu separator {
+  min-height: 10px;
+}
+
+#custom-spacer,
+#custom-smallspacer {
+  opacity: 0;
+}
+
+/* ------------------------------------------------------
+   6) Common Modules
+   ------------------------------------------------------ */
+
+#clock {
+  /*color: #a1bdce;*/
+  color: #c0caf5;
+  font-size: 15px;
+  font-weight: 900;
+  font-family: "JetBrains Mono Nerd Font";
+  background: rgba(23, 23, 23, 0);
+  opacity: 1;
+  margin: 3px 0px 0px 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+}
+
+#pulseaudio {
+  font-weight: normal;
+  font-size: 18px;
+  /*color: #6f8fdb;*/
+  color: #7aa2f7;
+  background: rgba(22, 19, 32, 0);
+  opacity: 1;
+  margin: 0px 0px 0px 0px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
 #cpu {
-    padding-right: 8px;
+  font-weight: normal;
+  font-size: 22px;
+  /*color: #915caf;*/
+  color: #bb9af7;
 }
 
-/*#custom-center {*/
-/*    font-size: 20px;*/
-/*}*/
-
-#pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+#memory {
+  font-weight: normal;
+  font-size: 22px;
+  /*color: #e4c9af;*/
+  color: #e0af68;
 }
 
-#temperature.critical {
-    background-color: #eb4d4b;
+#mpris {
+  /*color: white;*/
+  color: #c0caf5;
+}
+
+#network {
+  /*color: #a1bdce;*/
+  color: #c0caf5;
+  font-weight: normal;
+  font-size: 19px;
+  padding-right: 0px;
+  padding-left: 4px;
+}
+
+#custom-spotify,
+#custom-menu {
+  /*color: #e8edf0;*/
+  color: #c0caf5;
+  background: rgba(23, 23, 23, 0);
+  margin: 0px 0px 0px 0px;
+  padding-left: 1px;
+  padding-right: 1px;
+  opacity: 0.1;
+}
+
+#tray,
+#window {
+  /*color: #a1bdce;*/
+  color: #c0caf5;
+}
+
+/* ------------------------------------------------------
+   7) Decorative Ends
+   ------------------------------------------------------ */
+
+#custom-l_end,
+#custom-r_end,
+#custom-sl_end,
+#custom-sr_end,
+#custom-rl_end {
+  /*color: #a6d189;*/
+  color: #9ece6a;
+}
+
+#mpris {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#custom-rr_end {
+  font-weight: normal;
+  /*color: #e8edf0;*/
+  color: #c0caf5;
+  background: rgba(23, 23, 23, 0);
+  opacity: 1;
+  margin: 0px 0px 0px 0px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+/* ------------------------------------------------------
+   8) Pulseaudio Slider
+   ------------------------------------------------------ */
+
+#pulseaudio-slider slider {
+  /*background: #a1bdce;*/
+  background: #c0caf5;
+  background-color: transparent;
+  box-shadow: none;
+  margin-right: 7px;
+}
+
+#pulseaudio-slider trough {
+  margin-top: -3px;
+  min-width: 90px;
+  min-height: 10px;
+  margin-bottom: -4px;
+  border-radius: 8px;
+  /*background: #343434;*/
+  background: #414868;
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 8px;
+  /*background-color: #2096c0;*/
+  background-color: #7dcfff;
 }
 
 #custom-r_end {
-    border-radius: 0px 21px 21px 0px;
-    padding-right: 4px;
+  border-radius: 0px 7px 7px 0px;
+  margin-right: 1px;
+  padding-right: 3px;
 }
 
 #custom-l_end {
-    border-radius: 21px 0px 0px 21px;
-    padding-left: 4px;
+  border-radius: 7px 0px 0px 7px;
+  margin-left: 1px;
+  padding-left: 3px;
 }
 
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+/* ------------------------------------------------------
+   9) Launchers
+   ------------------------------------------------------ */
+
+#custom-expand {
+  min-width: 25px;
+  /*color: #a1bdce;*/
+  color: #c0caf5;
+  font-size: 16px;
 }
+
+/* ------------------------------------------------------
+   10) Group-Minimized
+   ------------------------------------------------------ */
+
+#group-minimized {
+  border-left: 0.5px solid #414868;
+}
+
