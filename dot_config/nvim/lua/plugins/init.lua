@@ -273,7 +273,7 @@ return {
 		"stevearc/resession.nvim",
 		opts = {
 			extensions = {
-				tabufline = require("custom.tabufline_extension"),
+				tabufline = {}
 			},
 		},
 	},
