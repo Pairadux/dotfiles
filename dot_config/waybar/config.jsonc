@@ -13,6 +13,8 @@
     "reload_style_on_change": true,
     "modules-left": [
         "custom/padd",
+        "custom/power",
+        "custom/spacer",
         "hyprland/workspaces",
         "custom/spacer",
         "mpris"
@@ -30,6 +32,11 @@
         "custom/notification",
         "custom/padd"
     ],
+    "custom/power": {
+        "format": " ⏻ ",
+        "on-click": "shutdown now",
+        "on-click-right": "reboot"
+    },
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
@@ -46,8 +53,12 @@
             "special": "零"
         },
         "persistent-workspaces": {
-            "DP-2": [1],
-            "HDMI-A-1": [2]
+            "DP-2": [
+                1
+            ],
+            "HDMI-A-1": [
+                2
+            ]
         },
         "show-special": true,
         "special-visible-only": true
@@ -210,4 +221,3 @@
         "tooltip": false
     }
 }
-

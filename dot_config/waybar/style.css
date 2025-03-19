@@ -196,13 +196,18 @@ tooltip {
   color: #c0caf5;
 }
 
+#custom-power {
+  /*color: #a1bdce;*/
+  color: #c0caf5;
+  font-weight: normal;
+  font-size: 16px;
+}
+
 #network {
   /*color: #a1bdce;*/
   color: #c0caf5;
   font-weight: normal;
-  font-size: 19px;
-  padding-right: 0px;
-  padding-left: 4px;
+  font-size: 18px;
 }
 
 #custom-spotify,
