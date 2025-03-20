@@ -63,6 +63,13 @@ return {
 				end,
 				desc = "[S]ession Save [T]ab",
 			},
+			{
+				"<leader>sd",
+				function()
+					require("resession").delete(nil, { dir = "dirsession", notify = true })
+				end,
+				desc = "[S]ession [D]elete",
+			},
 		},
 		opts = {
 			extensions = {
