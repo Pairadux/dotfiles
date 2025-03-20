@@ -17,46 +17,58 @@ return {
 	{
 		"folke/flash.nvim",
 		event = "VeryLazy",
-		opts = {},
+		opts = {
+			char = {
+				char_actions = function()
+					return {
+						[";"] = "next", -- set to `right` to always go right
+						[","] = "prev", -- set to `left` to always go left
+						-- -- clever-f style
+						-- [motion:lower()] = "next",
+						-- [motion:upper()] = "prev",
+					}
+				end,
+			},
+		},
 		keys = {
 			{
 				"s",
-				mode = { "n", "x", "o" },
 				function()
 					require("flash").jump()
 				end,
+				mode = { "n", "x", "o" },
 				desc = "Flash",
 			},
 			{
 				"S",
-				mode = { "n", "x", "o" },
 				function()
 					require("flash").treesitter()
 				end,
+				mode = { "n", "x", "o" },
 				desc = "Flash Treesitter",
 			},
 			{
 				"r",
-				mode = "o",
 				function()
 					require("flash").remote()
 				end,
+				mode = "o",
 				desc = "Remote Flash",
 			},
 			{
 				"R",
-				mode = { "o", "x" },
 				function()
 					require("flash").treesitter_search()
 				end,
+				mode = { "o", "x" },
 				desc = "Treesitter Search",
 			},
 			{
 				"<c-s>",
-				mode = { "c" },
 				function()
 					require("flash").toggle()
 				end,
+				mode = { "c" },
 				desc = "Toggle Flash Search",
 			},
 		},

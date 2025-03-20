@@ -2,9 +2,9 @@
 local map = vim.keymap.set
 
 -- LSP Formatting
-map("n", "<leader>gf", function()
-	require("conform").format({ lsp_fallback = true })
-end, { desc = "[G]eneral [F]ormat File" })
+-- map("n", "<leader>gf", function()
+-- 	require("conform").format({ lsp_fallback = true })
+-- end, { desc = "[G]eneral [F]ormat File" })
 
 -- Tabufline
 map("n", "<tab>", function()
@@ -31,17 +31,17 @@ end, { desc = "Move Buffer" })
 map("n", "<C-n>", "<cmd>NvimTreeToggle<CR>", { desc = "Nvimtree Toggle Window" })
 
 -- Telescope
-map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "[F]ind Live [G]rep" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "[F]ind [B]uffers" })
-map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "[F]ind [H]elp Page" })
-map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "[F]ind [M]arks" })
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "[F]ind [O]ldfiles" })
-map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "[F]u[z]zy Find in Current Buffer" })
-map("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", { desc = "[F]ind Git [C]ommits" })
-map("n", "<leader>fs", "<cmd>Telescope git_status<CR>", { desc = "[F]ind Git [S]tatus" })
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "[F]ind [F]iles" })
-map( "n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "[F]ind [A]ll Files" })
-map("n", "<leader>ft", "<cmd>Telescope todo-comments<CR>", { desc = "[F]ind [T]odo Comments" })
+-- map("n", "<leader>fg", "<cmd>Telescope live_grep<CR>", { desc = "[F]ind Live [G]rep" })
+-- map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "[F]ind [B]uffers" })
+-- map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "[F]ind [H]elp Page" })
+-- map("n", "<leader>fm", "<cmd>Telescope marks<CR>", { desc = "[F]ind [M]arks" })
+-- map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "[F]ind [O]ldfiles" })
+-- map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "[F]u[z]zy Find in Current Buffer" })
+-- map("n", "<leader>fc", "<cmd>Telescope git_commits<CR>", { desc = "[F]ind Git [C]ommits" })
+-- map("n", "<leader>fs", "<cmd>Telescope git_status<CR>", { desc = "[F]ind Git [S]tatus" })
+-- map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "[F]ind [F]iles" })
+-- map( "n", "<leader>fa", "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>", { desc = "[F]ind [A]ll Files" })
+-- map("n", "<leader>ft", "<cmd>Telescope todo-comments<CR>", { desc = "[F]ind [T]odo Comments" })
 
 -- Terminal
 map("t", "<C-x>", "<C-\\><C-N>", { desc = "Terminal Escape Terminal Mode" })
@@ -102,11 +102,11 @@ map("n", "<leader>rc", function()
 end, { desc = "[R]un [C]urrent File", noremap = true, silent = true })
 
 -- Whichkey
-map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "Whichkey All Keymaps" })
-
-map("n", "<leader>wk", function()
-	vim.cmd("WhichKey " .. vim.fn.input("WhichKey: "))
-end, { desc = "Whichkey Query Lookup" })
+-- map("n", "<leader>wK", "<cmd>WhichKey <CR>", { desc = "Whichkey All Keymaps" })
+--
+-- map("n", "<leader>wk", function()
+-- 	vim.cmd("WhichKey " .. vim.fn.input("WhichKey: "))
+-- end, { desc = "Whichkey Query Lookup" })
 
 -- AutoSession
 -- map("n", "<leader>ss", "<cmd>SessionSave<CR>", { desc = "[S]ession [S]ave", noremap = true, silent = true })
@@ -115,29 +115,34 @@ end, { desc = "Whichkey Query Lookup" })
 -- map("n", "<leader>sl", "<cmd>SessionSearch<CR>", { desc = "[S]ession [L]oad", noremap = true, silent = true })
 
 -- Resession
-map("n", "<Leader>ss", function()
-    local cwd = vim.fn.getcwd()
-	require("resession").save(cwd, { dir = "dirsession", notify = true })
-end, { desc = "[S]ession [S]ave" })
-
-map("n", "<Leader>sl", function()
-	require("resession").load()
-end, { desc = "[S]ession [L]oad" })
-
-map("n", "<Leader>st", function()
-	require("resession").save_tab()
-end, { desc = "[S]ession Save [T]ab" })
+-- map("n", "<Leader>ss", function()
+--     local cwd = vim.fn.getcwd()
+-- 	require("resession").save(cwd, { dir = "dirsession", notify = true })
+-- end, { desc = "[S]ession [S]ave" })
+--
+-- map("n", "<Leader>sl", function()
+-- 	require("resession").load()
+-- end, { desc = "[S]ession [L]oad" })
+--
+-- map("n", "<Leader>st", function()
+-- 	require("resession").save_tab()
+-- end, { desc = "[S]ession Save [T]ab" })
 
 -- TMUX NAVIGATOR
-map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux Window Left" })
-map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux Window Right" })
-map("n", "<C-A-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
-map("n", "<C-A-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
+-- map("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>", { desc = "Tmux Window Left" })
+-- map("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>", { desc = "Tmux Window Right" })
+-- map("n", "<C-A-j>", "<cmd>TmuxNavigateDown<CR>", { desc = "Tmux Window Down" })
+-- map("n", "<C-A-k>", "<cmd>TmuxNavigateUp<CR>", { desc = "Tmux Window Up" })
 
 -- Reload nvim
 map("n", "<leader>rn", function()
 	require("nvchad.utils").reload()
 end, { desc = "[R]eload [N]vim", noremap = true, silent = true })
+
+-- Scratch
+-- map("n", "<leader>sn", "<cmd>Scratch<CR>", { desc = "[S]cratch [N]ew", noremap = true, silent = true })
+-- map("n", "<leader>sw", "<cmd>ScratchWithName<CR>", { desc = "[S]cratch [W]ith Name", noremap = true, silent = true })
+-- map("n", "<leader>so", "<cmd>ScratchOpen<CR>", { desc = "[S]cratch [O]pen", noremap = true, silent = true })
 
 -- -- DAP
 -- local dap = require("dap")

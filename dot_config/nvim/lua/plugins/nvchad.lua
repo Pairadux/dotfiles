@@ -16,6 +16,16 @@ return {
 
 	{
 		"folke/which-key.nvim",
+		keys = {
+			{ "<leader>wK", "<cmd>WhichKey <CR>", desc = "WhichKey All Keymaps" },
+			{
+				"<leader>wK",
+				function()
+					vim.cmd("WhichKey " .. vim.fn.input("WhichKey: "))
+				end,
+				desc = "WhichKey Query Lookup",
+			},
+		},
 		event = "VeryLazy",
 		opts = {
 			preset = "helix",
@@ -29,6 +39,15 @@ return {
 	{
 		"stevearc/conform.nvim",
 		cmd = { "ConformInfo" },
+		keys = {
+			{
+				"<leader>gf",
+				function()
+					require("conform").format({ lsp_fallback = true })
+				end,
+				desc = "[G]eneral [F]ormat",
+			},
+		},
 		-- event = 'BufWritePre', -- uncomment for format on save
 		opts = {
 			lsp_fallback = true,
@@ -93,6 +112,27 @@ return {
 
 	{
 		"nvim-telescope/telescope.nvim",
+		keys = {
+			{ "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "[F]ind Live [G]rep" },
+			{ "<leader>fb", "<cmd>Telescope buffers<CR>", desc = "[F]ind [B]uffers" },
+			{ "<leader>fh", "<cmd>Telescope help_tags<CR>", desc = "[F]ind [H]elp Page" },
+			{ "<leader>fm", "<cmd>Telescope marks<CR>", desc = "[F]ind [M]arks" },
+			{ "<leader>fo", "<cmd>Telescope oldfiles<CR>", desc = "[F]ind [O]ldfiles" },
+			{
+				"<leader>fz",
+				"<cmd>Telescope current_buffer_fuzzy_find<CR>",
+				desc = "[F]u[z]zy Find in Current Buffer",
+			},
+			{ "<leader>fc", "<cmd>Telescope git_commits<CR>", desc = "[F]ind Git [C]ommits" },
+			{ "<leader>fs", "<cmd>Telescope git_status<CR>", desc = "[F]ind Git [S]tatus" },
+			{ "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "[F]ind [F]iles" },
+			{
+				"<leader>fa",
+				"<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
+				desc = "[F]ind [A]ll Files",
+			},
+			{ "<leader>ft", "<cmd>Telescope todo-comments<CR>", desc = "[F]ind [T]odo Comments" },
+		},
 		opts = {
 			defaults = {
 				initial_mode = "insert",

@@ -40,6 +40,30 @@ return {
 
 	{
 		"stevearc/resession.nvim",
+		keys = {
+			{
+				"<leader>ss",
+				function()
+					local cwd = vim.fn.getcwd()
+					require("resession").save(cwd, { dir = "dirsession", notify = true })
+				end,
+				desc = "[S]ession [S]ave",
+			},
+			{
+				"<leader>sl",
+				function()
+					require("resession").load()
+				end,
+				desc = "[S]ession [L]oad",
+			},
+			{
+				"<leader>st",
+				function()
+					require("resession").save_tab()
+				end,
+				desc = "[S]ession Save [T]ab",
+			},
+		},
 		opts = {
 			extensions = {
 				tabufline = {},
@@ -49,6 +73,12 @@ return {
 
 	{
 		"christoomey/vim-tmux-navigator",
+        keys = {
+            { "<C-h>", "<cmd>TmuxNavigateLeft<CR>", desc = "Tmux Window Left"},
+            { "<C-l>", "<cmd>TmuxNavigateRight<CR>", desc = "Tmux Window Right"},
+            { "<C-A-j>", "<cmd>TmuxNavigateDown<CR>", desc = "Tmux Window Down"},
+            { "<C-A-k>", "<cmd>TmuxNavigateUp<CR>", desc = "Tmux Window Up"},
+        },
 		cmd = {
 			"TmuxNavigateLeft",
 			"TmuxNavigateDown",
@@ -79,7 +109,11 @@ return {
 
 	{
 		"LintaoAmons/scratch.nvim",
-		event = "VeryLazy",
+        keys = {
+            { "<leader>sn", "<cmd>Scratch<CR>", desc="[S]cratch [N]ew", noremap = true, silent = true},
+            { "<leader>sw", "<cmd>ScratchWithName<CR>", desc="[S]cratch [W]ith Name", noremap = true, silent = true},
+            { "<leader>so", "<cmd>ScratchOpen<CR>", desc="[S]cratch [O]pen", noremap = true, silent = true},
+        },
 		opts = {
 			file_picker = "telescope",
 			filetypes = {
