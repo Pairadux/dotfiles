@@ -76,7 +76,8 @@ alias clera='clear'
 # | NVIM  |
 # *-------*
 alias nv='nvim'
-alias nvks='NVIM_APPNAME="kickstart-nvim" nvim'
+alias nvim-kickstart='NVIM_APPNAME="nvim-kickstart" nvim'
+alias nvks='nvim-kickstart'
 
 # *-------*
 # | MISC  |
