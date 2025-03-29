@@ -1,3 +1,0 @@
-[submodule "dot_config/nvim-kickstart"]
-	path = dot_config/nvim-kickstart
-	url = https://github.com/Pairadux/kickstart.nvim.git
