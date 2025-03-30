@@ -99,3 +99,7 @@ if [ -f '/etc/profile.d/google-cloud-cli.sh' ]; then . '/etc/profile.d/google-cl
 if type pokemon-colorscripts &> /dev/null; then
     pokemon-colorscripts -r --no-title
 fi
+# +--------+
+# | ZOXIDE |
+# +--------+
+eval "$(zoxide init zsh)"
