@@ -33,7 +33,8 @@
         "custom/padd"
     ],
     "custom/power": {
-        "format": " ⏻ ",
+        "format": " ",
+        "tooltip-format": "left-click: shutdown\nright-click: reboot",
         "on-click": "shutdown now",
         "on-click-right": "reboot"
     },
@@ -50,7 +51,7 @@
             "8": "八",
             "9": "九",
             "10": "十",
-            "special": "零"
+            "special": " "
         },
         "persistent-workspaces": {
             "DP-2": [
@@ -68,11 +69,11 @@
         "format-paused": "<span color='grey'>{status_icon} {dynamic}</span>",
         "max-length": 50,
         "player-icons": {
-            "default": "⏸",
-            "mpv": "🎵"
+            "default": "",
+            "mpv": " "
         },
         "status-icons": {
-            "paused": "▶"
+            "paused": ""
         }
     },
     "hyprland/window": {
@@ -80,7 +81,7 @@
         "format": "⊣ {class} ⊢",
         "max-length": 120,
         "icon": false,
-        "icon-size": 13
+        "icon-size": 16
     },
     "custom/script": {
         "on-click": "~/.config/waybar/volume.sh toggle",
@@ -104,9 +105,9 @@
         "tooltip": true,
         "format-wifi": "{icon} ",
         "format-icons": [
-            "󰤟",
-            "󰤢",
-            "󰤥"
+            "󰤟 ",
+            "󰤢 ",
+            "󰤥 "
         ],
         "rotate": 0,
         "format-ethernet": "󰈀 ",
@@ -121,16 +122,16 @@
     "pulseaudio": {
         "format": "{icon}",
         "rotate": 0,
-        "format-muted": "婢",
+        "format-muted": " ",
         "tooltip-format": "{icon}  {desc} // {volume}%",
         "scroll-step": 5,
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
             "default": [
                 " ",
                 " ",
@@ -216,7 +217,7 @@
         "tooltip": false
     },
     "custom/padd": {
-        "format": "  ",
+        "format": "   ",
         "interval": "once",
         "tooltip": false
     }

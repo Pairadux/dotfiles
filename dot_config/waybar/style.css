@@ -23,7 +23,7 @@
 * {
   font-family: "FiraCode Mono";
   font-weight: bold;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 /* ------------------------------------------------------
@@ -61,9 +61,6 @@ tooltip {
   text-shadow: none;
   border-radius: 9px;
   transition: 0.2s ease;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-top: 1px;
 }
 
 #workspaces button {
@@ -74,16 +71,12 @@ tooltip {
   text-shadow: none;
   border-radius: 9px;
   transition: 0.2s ease;
-  padding-left: 4px;
-  padding-right: 4px;
 }
 
 #workspaces button.active {
   /*color: #a1bdce;*/
   color: #f7768e;
   transition: all 0.3s ease;
-  padding-left: 4px;
-  padding-right: 4px;
 }
 
 #workspaces button:hover {
@@ -199,8 +192,8 @@ tooltip {
 #custom-power {
   /*color: #a1bdce;*/
   color: #c0caf5;
+  padding-left: 2px;
   font-weight: normal;
-  font-size: 16px;
 }
 
 #network {
@@ -241,7 +234,6 @@ tooltip {
 }
 
 #mpris {
-  font-size: 15px;
   font-weight: bold;
 }
 
@@ -314,4 +306,3 @@ tooltip {
 #group-minimized {
   border-left: 0.5px solid #414868;
 }
-
