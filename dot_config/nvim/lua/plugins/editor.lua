@@ -97,8 +97,8 @@ return {
         opts = {
             preset = 'helix',
             keys = {
-                scroll_down = '<c-s-d>',
-                scroll_up = '<c-s-u>',
+                scroll_down = '<c-Down>',
+                scroll_up = '<c-Up>',
             },
             -- delay between pressing a key and opening which-key (milliseconds)
             -- this setting is independent of vim.opt.timeoutlen
