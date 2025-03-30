@@ -37,7 +37,17 @@ return {
         indent = { enabled = false },
         input = { enabled = false },
         -- TODO: make it so that pressing Tab does not select a file to be opened
-        picker = { enabled = true },
+        picker = {
+            enabled = true,
+            win = {
+                input = {
+                    keys = {
+                        ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
+                        ['<c-q>'] = { 'close', mode = { 'n', 'i' } },
+                    },
+                },
+            },
+        },
         notifier = { enabled = false },
         quickfile = { enabled = false },
         scope = { enabled = false },
