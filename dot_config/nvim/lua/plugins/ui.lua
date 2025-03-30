@@ -8,17 +8,17 @@
 return {
 
     -- Indent Blankline {{{
-    { -- Add indentation guides even on blank lines
+    {
         'lukas-reineke/indent-blankline.nvim',
-        -- Enable `lukas-reineke/indent-blankline.nvim`
-        -- See `:help ibl`
+        event = { 'BufReadPost', 'BufNewFile' },
         main = 'ibl',
         opts = {},
-    },-- }}}
+    }, -- }}}
 
     -- Lualine {{{
     {
         'nvim-lualine/lualine.nvim',
+        event = { 'BufReadPost', 'BufNewFile' },
         dependencies = {
             'nvim-tree/nvim-web-devicons',
         },
@@ -27,32 +27,30 @@ return {
                 theme = 'tokyonight',
             },
         },
-    },-- }}}
+    }, -- }}}
 
     -- Bufferline {{{
     {
         'akinsho/bufferline.nvim',
         version = '*',
-        event = 'VimEnter',
+        event = { 'BufReadPost', 'BufNewFile' },
         dependencies = {
             'nvim-tree/nvim-web-devicons',
         },
-        config = function()
-            require('bufferline').setup {
-                options = {
-                    buffer_close_icon = '',
-                    close_icon = '',
-                    offsets = {
-                        {
-                            filetype = 'neo-tree',
-                            text = 'NeoTree',
-                            text_align = 'center',
-                            separator = true,
-                        },
+        opts = {
+            options = {
+                buffer_close_icon = '',
+                close_icon = '',
+                offsets = {
+                    {
+                        filetype = 'neo-tree',
+                        text = 'NeoTree',
+                        text_align = 'center',
+                        separator = true,
                     },
                 },
-            }
-        end,
+            },
+        },
         keys = {
             -- stylua: ignore start
             { '<S-tab>', '<cmd>BufferLineCyclePrev<CR>', desc = 'Buffer Goto Prev' },
@@ -61,7 +59,7 @@ return {
             { '<S-Right>', function() require('bufferline').move(1) end , desc = 'Move Buffer Right' },
             -- stylua: ignore end
         },
-    },-- }}}
+    }, -- }}}
 
     -- Neoscroll {{{
     {
@@ -69,7 +67,7 @@ return {
         enabled = function()
             return not vim.g.neovide
         end,
-        event = 'VeryLazy',
+        event = { 'BufReadPost', 'BufNewFile' },
         opts = {
             mappings = {
                 '<C-d>',
@@ -82,11 +80,12 @@ return {
             },
             hide_cursor = false,
         },
-    },-- }}}
+    }, -- }}}
 
     -- Gitsigns {{{
     {
         'lewis6991/gitsigns.nvim',
+        event = { 'BufReadPost', 'BufNewFile' },
         opts = {
             signs = {
                 add = { text = '+' },
@@ -171,7 +170,7 @@ return {
                 override = {
                     ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
                     ['vim.lsp.util.stylize_markdown'] = true,
-                    ['cmp.entry.get_documentation'] = false -- requires hrsh7th/nvim-cmp
+                    ['cmp.entry.get_documentation'] = false, -- requires hrsh7th/nvim-cmp
                 },
                 -- hover = {
                 -- 	enabled = false,

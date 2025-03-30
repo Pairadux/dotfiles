@@ -33,7 +33,6 @@ return {
             'nvim-treesitter/nvim-treesitter',
         },
         opts = {},
-        event = { 'CmdlineEnter' },
         ft = { 'go', 'gomod' },
         build = ':lua require("go.install").update_all_sync()',
     }, -- }}}
@@ -41,10 +40,8 @@ return {
     -- Blink {{{
     {
         'saghen/blink.cmp',
-        enabled = function()
-            return not vim.tbl_contains({ 'markdown', 'txt' }, vim.bo.filetype)
-        end,
         version = '1.*',
+        event = 'InsertEnter',
         dependencies = {
             { 'rafamadriz/friendly-snippets' },
             { 'L3MON4D3/LuaSnip', version = 'v2.*' },

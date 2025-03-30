@@ -94,7 +94,7 @@ return {
     -- WhichKey {{{
     {
         'folke/which-key.nvim',
-        event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+        keys = { '<leader>', '<c-w>', '"', "'", '`', 'c', 'v', 'g' },
         opts = {
             preset = 'helix',
             keys = {
@@ -162,7 +162,6 @@ return {
     -- Flash {{{
     {
         'folke/flash.nvim',
-        event = 'VeryLazy',
         opts = {
             highlight = {
                 backdrop = false,

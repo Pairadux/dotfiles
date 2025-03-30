@@ -9,9 +9,10 @@ return {
 
     {
         'neovim/nvim-lspconfig',
+        event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             { 'saghen/blink.cmp' },
-            { 'williamboman/mason.nvim', opts = {} },
+            { 'williamboman/mason.nvim', cmd = 'Mason', opts = {} },
             'williamboman/mason-lspconfig.nvim',
             'WhoIsSethDaniel/mason-tool-installer.nvim',
             { 'j-hui/fidget.nvim', opts = {} },
@@ -134,7 +135,7 @@ return {
                             -- diagnostics = { disable = { 'missing-fields' } },
                         },
                     },
-                hyprls = {},
+                    hyprls = {},
                 },
             }
             local ensure_installed = vim.tbl_keys(servers or {})
