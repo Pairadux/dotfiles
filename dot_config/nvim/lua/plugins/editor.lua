@@ -16,6 +16,10 @@ return {
         event = 'VimEnter',
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = { signs = false },
+        keys = {
+            -- stylua: ignore 
+            { '<leader>ft', function() Snacks.picker.todo_comments() end, desc = '[F]ind [T]odo', },
+        },
     }, -- }}}
 
     -- Nvim Surround {{{
