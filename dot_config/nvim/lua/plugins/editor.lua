@@ -8,7 +8,9 @@
 
 return {
 
-    { 'echasnovski/mini.ai' },
+    { 'echasnovski/mini.ai', opts = {} },
+
+    { 'echasnovski/mini.align', opts = {} },
 
     -- Todo Comments {{{
     {
