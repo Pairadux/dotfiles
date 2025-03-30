@@ -34,9 +34,10 @@
     ],
     "custom/power": {
         "format": " ",
-        "tooltip-format": "left-click: shutdown\nright-click: reboot",
+        "tooltip-format": "left-click: shutdown\nmiddle-click: sleep\nright-click: reboot",
         "on-click": "shutdown now",
-        "on-click-right": "reboot"
+        "on-click-right": "reboot",
+        "on-click-middle": "systemctl sleep"
     },
     "hyprland/workspaces": {
         "format": "{icon}",
