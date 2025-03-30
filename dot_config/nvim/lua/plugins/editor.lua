@@ -18,7 +18,8 @@ return {
         opts = { signs = false },
         keys = {
             -- stylua: ignore 
-            { '<leader>ft', function() Snacks.picker.todo_comments() end, desc = '[F]ind [T]odo', },
+            ---@diagnostic disable-next-line: undefined-field
+            { '<leader>ft', function() require('snacks').picker.todo_comments() end, desc = '[F]ind [T]odo', },
         },
     }, -- }}}
 

@@ -36,7 +36,6 @@ return {
         explorer = { enabled = false },
         indent = { enabled = false },
         input = { enabled = false },
-        -- TODO: make it so that pressing Tab does not select a file to be opened
         picker = {
             enabled = true,
             win = {
