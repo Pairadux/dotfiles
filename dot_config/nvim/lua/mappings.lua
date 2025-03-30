@@ -18,8 +18,8 @@ map('i', 'jk', '<ESC>')
 -- map({ 'n', 'v' }, '<C-j>', '5j', { noremap = true, silent = true })
 -- map({ 'n', 'v' }, '<C-k>', '5k', { noremap = true, silent = true })
 
--- close nvim with q, different action based on buffer type
-map('n', '<C-q>', 'ZZ', { noremap = true, silent = true })
+-- close nvim easier
+-- map('n', '<C-q>', 'ZZ', { noremap = true, silent = true })
 -- map("n", "<leader>qa", "<cmd>wqa<CR>", { desc = "Quit all" })
 
 -- Insert Mode Mappings
