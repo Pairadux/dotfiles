@@ -1,24 +1,24 @@
 local autocmd = vim.api.nvim_create_autocmd
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
-autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-})
-
+-- Remove comment "spreading" with o and O
 autocmd('Filetype', {
+    desc = "Don't continue comments with o and O",
     pattern = { '*' },
     callback = function()
         vim.opt.formatoptions:remove 'o'
     end,
-    desc = "Don't continue comments with o and O",
 })
 
+-- Add text options for better typing
+autocmd('FileType', {
+    pattern = { 'markdown', 'text' },
+    callback = function()
+        vim.opt_local.spell = true
+        vim.opt_local.formatoptions = vim.opt_local.formatoptions + "nro"
+    end,
+})
+
+-- Load dirsession on VimEnter
 autocmd('VimEnter', {
     callback = function()
         local cwd = vim.fn.getcwd()
@@ -29,13 +29,6 @@ autocmd('VimEnter', {
         if not ok then
             vim.notify('No session found for ' .. cwd, vim.log.levels.INFO)
         end
-    end,
-})
-
-autocmd('FileType', {
-    pattern = { 'markdown', 'text' },
-    callback = function()
-        vim.opt_local.spell = true
     end,
 })
 
@@ -62,5 +55,13 @@ autocmd({ 'UIEnter', 'BufReadPost', 'BufNewFile' }, {
                 end
             end)
         end
+    end,
+})
+
+autocmd('TextYankPost', {
+    desc = 'Highlight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
     end,
 })
