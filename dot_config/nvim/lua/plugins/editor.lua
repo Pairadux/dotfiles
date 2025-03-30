@@ -94,7 +94,7 @@ return {
     -- WhichKey {{{
     {
         'folke/which-key.nvim',
-        keys = { '<leader>', '<c-w>', '"', "'", '`', 'c', 'v', 'g' },
+        event = 'VimEnter', -- Sets the loading event to 'VimEnter'
         opts = {
             preset = 'helix',
             keys = {
