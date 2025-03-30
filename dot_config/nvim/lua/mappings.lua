@@ -59,7 +59,7 @@ map('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'LSP [D]iagnostic [L]
 map('t', '<C-x>', '<C-\\><C-N>', { desc = 'Terminal Escape Terminal Mode' })
 
 -- Insert Line Break Sequence
-map('n', '<leader>ib', function ()
+map('n', '<leader>ib', function()
     require('util').insert_line_break()
 end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
 

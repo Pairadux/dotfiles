@@ -84,13 +84,13 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --}}}]]
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
-require("options")
-require("autocmds")
+require 'options'
+require 'autocmds'
 vim.schedule(function()
-	require("mappings")
+    require 'mappings'
 end)
-require("config.lazy")
+require 'config.lazy'
