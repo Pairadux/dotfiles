@@ -55,14 +55,18 @@ map('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'LSP [D]iagnostic [L]
 -- map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
 -- map("v", "<leader>/", "gc", { desc = "Toggle Comment", remap = true })
 
--- Insert Line Break Sequence
-map('n', '<leader>ib', '80i#<ESC>', { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
-
--- Insert Config Section Title Box
-map('n', '<leader>it', 'O# *-*<CR># | |<CR># *-*<ESC>', { noremap = true, silent = true, desc = '[I]nsert [T]itle' })
-
 -- Terminal
 map('t', '<C-x>', '<C-\\><C-N>', { desc = 'Terminal Escape Terminal Mode' })
+
+-- Insert Line Break Sequence
+map('n', '<leader>ib', function ()
+    require('util').insert_line_break()
+end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
+
+-- Insert Config Section Title Box
+map('n', '<leader>it', function()
+    require('util').insert_title_box()
+end, { noremap = true, silent = true, desc = '[I]nsert [T]itle Box' })
 
 ------------------------------------------------------------
 -- PLUGIN
