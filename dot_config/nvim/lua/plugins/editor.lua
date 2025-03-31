@@ -44,19 +44,19 @@ return {
         },
         cmd = 'Neotree',
         keys = {
-            { '<C-n>', '<cmd>Neotree toggle<CR>', desc = 'NeoTree Toggle', silent = true },
+            { '<C-n>', '<cmd>Neotree toggle reveal<CR>', desc = 'NeoTree Toggle', silent = true },
         },
         opts = {
             window = {
                 width = 30,
             },
-            filesystem = {
-                window = {
-                    mappings = {
-                        ['<C-n>'] = 'close_window',
-                    },
-                },
-            },
+            -- filesystem = {
+            --     window = {
+            --         mappings = {
+            --             ['<C-n>'] = 'close_window',
+            --         },
+            --     },
+            -- },
         },
     }, -- }}}
 
