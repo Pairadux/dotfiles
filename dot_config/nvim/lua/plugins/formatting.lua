@@ -35,6 +35,8 @@ return {
 
                 sh = { 'shfmt' },
 
+                zsh = { 'beautysh' },
+
                 yaml = { 'prettier' },
             },
         },

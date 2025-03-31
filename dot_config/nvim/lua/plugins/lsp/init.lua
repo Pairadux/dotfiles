@@ -122,6 +122,11 @@ return {
                 gopls = {},
                 pyright = {},
                 rust_analyzer = {},
+                bashls = {
+                    settings = {
+                        filetypes = { 'sh', 'zsh' },
+                    },
+                },
                 lua_ls = {
                     -- cmd = { ... },
                     -- filetypes = { ... },
@@ -146,6 +151,7 @@ return {
                 'shfmt',
                 'ruff',
                 'gofumpt',
+                'beautysh',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
             require('mason-lspconfig').setup {
