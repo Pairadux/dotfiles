@@ -10,7 +10,7 @@ return {
     -- Indent Blankline {{{
     {
         'lukas-reineke/indent-blankline.nvim',
-        event = { 'BufReadPost', 'BufNewFile' },
+        event = 'VeryLazy',
         main = 'ibl',
         opts = {},
     }, -- }}}
@@ -18,7 +18,7 @@ return {
     -- Lualine {{{
     {
         'nvim-lualine/lualine.nvim',
-        event = { 'BufReadPost', 'BufNewFile' },
+        event = 'VeryLazy',
         dependencies = {
             'nvim-tree/nvim-web-devicons',
         },
@@ -33,7 +33,7 @@ return {
     {
         'akinsho/bufferline.nvim',
         version = '*',
-        event = { 'BufReadPost', 'BufNewFile' },
+        event = 'VeryLazy',
         dependencies = {
             'nvim-tree/nvim-web-devicons',
         },
@@ -64,10 +64,11 @@ return {
     -- Neoscroll {{{
     {
         'karb94/neoscroll.nvim',
-        enabled = function()
+        enabled = true,
+        cond = function()
             return not vim.g.neovide
         end,
-        event = { 'BufReadPost', 'BufNewFile' },
+        event = 'VeryLazy',
         opts = {
             mappings = {
                 '<C-d>',
@@ -85,7 +86,7 @@ return {
     -- Gitsigns {{{
     {
         'lewis6991/gitsigns.nvim',
-        event = { 'BufReadPost', 'BufNewFile' },
+        event = 'VeryLazy',
         opts = {
             signs = {
                 add = { text = '+' },
