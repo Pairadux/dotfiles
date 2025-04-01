@@ -49,6 +49,7 @@ return {
             { '<C-n>', '<cmd>Neotree toggle reveal<CR>', desc = 'NeoTree Toggle', silent = true },
         },
         opts = {
+            close_if_last_window = true,
             window = {
                 width = 30,
             },
