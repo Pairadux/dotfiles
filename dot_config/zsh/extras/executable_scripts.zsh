@@ -45,6 +45,10 @@ fcd() {
     cd
 }
 
+pokemon() {
+    pokemon-colorscripts --no-title -b -rn gengar,lugia,articuno,zapdos,giratina,scyther,scizor,bisharp,garchomp,greninja,samurott,moltres,kricketune,lucario,absol,venusaur,blastoise,zoroark
+}
+
 # JUMP {{{
 # Easily jump around the file system by manually adding marks
 # marks are stored as symbolic links in the directory $MARKPATH (default $HOME/.marks)
