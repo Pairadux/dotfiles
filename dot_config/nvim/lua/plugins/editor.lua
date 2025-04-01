@@ -12,6 +12,8 @@ return {
 
     { 'echasnovski/mini.align', opts = {} },
 
+    { 'bullets-vim/bullets.vim', ft = 'md' },
+
     -- Todo Comments {{{
     {
         'folke/todo-comments.nvim',
