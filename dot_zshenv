@@ -17,13 +17,33 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # zsh
-export ZSH="$ZDOTDIR"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export HISTFILE="$ZDOTDIR/.zhistory"
 export HISTSIZE=10000
 export SAVEHIST=10000
 
-# cargo
-if [[ "$(uname)" == "Darwin" ]]; then
-    . "$HOME/.cargo/env"
-fi
+# go
+export GOPATH=$HOME/go
+export GOBIN=$GOPATH/bin
+
+# python
+export PYTHONPATH=/usr/lib/python3.12/site-packages:$PYTHONPATH
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init --path)"
+
+# fzf marks
+export FZF_MARKS_FILE="$HOME/.local/share/.fzf-marks"
+
+# from xdg-ninja
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export CUDA_CACHE_PATH="$XDG_CACHE_HOME/nv"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export WINEPREFIX="$XDG_DATA_HOME/wine"
+export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
+export NVM_DIR="$XDG_DATA_HOME/nvm"
+
+# path
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:$GOBIN
