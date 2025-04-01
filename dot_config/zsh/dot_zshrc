@@ -1,7 +1,5 @@
 #!/usr/bin/env zsh
 
-fpath=("$ZDOTDIR/extras/custom-scripts" $fpath)
-
 # +------+
 # | OPTS |
 # +------+
@@ -18,6 +16,11 @@ unsetopt CORRECT_ALL      # Try to correct the spelling of all arguments in a li
 # | PATH |
 # +------+
 typeset -U path
+
+# +---------+
+# | SCRIPTS |
+# +---------+
+source "$ZDOTDIR/extras/scripts.zsh"
 
 # +-----------+
 # | VI KEYMAP |
