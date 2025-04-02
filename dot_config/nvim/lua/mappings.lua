@@ -10,12 +10,15 @@ local map = vim.keymap.set
 map('i', 'jk', '<ESC>', { desc = 'Exit Insert Mode' })
 
 -- Navigation in Insert Mode
-map('i', '<C-b>', '<ESC>^i', { desc = 'Move to Beginning of Line' })
-map('i', '<C-e>', '<End>',   { desc = 'Move to End of Line' })
-map('i', '<C-h>', '<Left>',  { desc = 'Move Left' })
-map('i', '<C-l>', '<Right>', { desc = 'Move Right' })
-map('i', '<C-j>', '<Down>',  { desc = 'Move Down' })
-map('i', '<C-k>', '<Up>',    { desc = 'Move Up' })
+map('i', '<C-b>',     '<ESC>^i', { desc = 'Move to Beginning of Line' })
+map('i', '<C-e>',     '<End>',   { desc = 'Move to End of Line' })
+map('i', '<C-h>',     '<Left>',  { desc = 'Move Left' })
+map('i', '<C-l>',     '<Right>', { desc = 'Move Right' })
+map('i', '<C-j>',     '<Down>',  { desc = 'Move Down' })
+map('i', '<C-k>',     '<Up>',    { desc = 'Move Up' })
+map('i', '<C-Enter>', '<C-o>o',  { desc = 'Go to next line' })
+map('i', '<Tab>',     '<C-t>',   { desc = 'Indent in insert mode', buffer = true, silent = true })
+map('i', '<S-Tab>',   '<C-d>',   { desc = 'Undent in insert mode',buffer = true, silent = true })
 
 ------------------------------------------------------------
 -- NORMAL MODE MAPPINGS
@@ -47,7 +50,7 @@ map('n', '<leader>mo', '<cmd>Mason<CR>', { desc = '[Mason] Open', noremap = true
 
 -- Custom Utility Functions
 map('n', '<leader>ib', function() require('util').insert_line_break() end, { noremap = true, silent = true, desc = "Insert 80 #'s (Line Break)" })
-map('n', '<leader>it', function() require('util').insert_title_box() end, { noremap = true, silent = true, desc = 'Insert Title Box' })
+map('n', '<leader>it', function() require('util').insert_title_box()  end, { noremap = true, silent = true, desc = 'Insert Title Box' })
 
 ------------------------------------------------------------
 -- TERMINAL MODE MAPPINGS
