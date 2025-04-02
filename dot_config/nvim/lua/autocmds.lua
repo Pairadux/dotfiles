@@ -32,6 +32,19 @@ autocmd('VimEnter', {
     end,
 })
 
+-- Open snacks picker on dir open
+autocmd('VimEnter', {
+    callback = function()
+        local args = vim.fn.argv()
+        if #args >= 1 and vim.fn.isdirectory(args[1]) == 1 then
+            vim.schedule(function()
+                vim.cmd 'bdelete %'
+            end)
+            require('snacks').picker.files()
+        end
+    end,
+})
+
 -- user event that loads after UIEnter + only if file buf is there
 autocmd({ 'UIEnter', 'BufReadPost', 'BufNewFile' }, {
     group = vim.api.nvim_create_augroup('NvFilePost', { clear = true }),
