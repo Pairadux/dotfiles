@@ -33,7 +33,7 @@ return {
     {
         'akinsho/bufferline.nvim',
         version = '*',
-        event = 'VeryLazy',
+        event = 'VimEnter',
         dependencies = {
             'nvim-tree/nvim-web-devicons',
         },
@@ -86,7 +86,6 @@ return {
     -- Gitsigns {{{
     {
         'lewis6991/gitsigns.nvim',
-        event = 'VeryLazy',
         opts = {
             signs = {
                 add = { text = '+' },
