@@ -12,7 +12,27 @@ return {
 
     { 'echasnovski/mini.align', opts = {} },
 
-    { 'bullets-vim/bullets.vim', ft = 'md' },
+    -- Autolist {{{
+    {
+        'gaoDean/autolist.nvim',
+        ft = {
+            'markdown',
+            'text',
+            'tex',
+            'plaintex',
+            'norg',
+        },
+        cmd = {
+            'AutolistTab',
+            'AutolistShiftTab',
+            'AutolistNewBullet',
+            'AutolistNewBullet',
+            'AutolistNewBulletBefore',
+            'AutolistToggleCheckbox',
+            'AutolistRecalculate',
+        },
+        opts = {},
+    }, -- }}}
 
     -- Todo Comments {{{
     {
@@ -191,6 +211,7 @@ return {
             -- NOTE: I cannot figure out what these 2 do, so I am just not using them
             -- { 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash', },
             -- { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search', },
+            --
             -- stylua: ignore end
         },
     }, -- }}}
