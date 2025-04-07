@@ -21,7 +21,12 @@ scd() {
 }
 
 reload_aliases() {
-    source $ZDOTDIR/extras/aliases
+    source $ZDOTDIR/extras/.zaliases
+}
+
+reload_comp() {
+    rm -f $XDG_CACHE_HOME/zsh/zcompdump
+    autoload -U compinit; compinit
 }
 
 # JD script using fzf

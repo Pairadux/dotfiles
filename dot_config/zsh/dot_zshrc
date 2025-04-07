@@ -34,7 +34,7 @@ typeset -U path
 # +---------+
 # | ALIASES |
 # +---------+
-source "$ZDOTDIR/extras/aliases"
+source "$ZDOTDIR/extras/.zaliases"
 
 # +---------+
 # | SCRIPTS |

@@ -1,8 +1,8 @@
 # *-------------------*
 # | ZSH QUICK RELOAD  |
 # *-------------------*
-alias fullzshreload='source ~/.zshenv && source ~/.config/zsh/.zprofile && source ~/.config/zsh/.zshrc'
-alias zshreload='source ~/.config/zsh/.zshrc'
+alias reload_zsh_full='source ~/.zshenv && source ~/.config/zsh/.zprofile && source ~/.config/zsh/.zshrc && reload_comp'
+alias reload_zsh='source ~/.config/zsh/.zshrc'
 alias ra='reload_aliases'
 
 # *------------*
