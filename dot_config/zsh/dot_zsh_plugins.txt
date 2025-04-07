@@ -1,8 +1,9 @@
 # .zsh_plugins.txt
 
+sindresorhus/pure kind:fpath
+
+mattmc3/ez-compinit
 zsh-users/zsh-completions
-# urbainvaes/fzf-marks
+zsh-users/zsh-syntax-highlighting
 zsh-users/zsh-autosuggestions
-zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-history-substring-search
-sindresorhus/pure     kind:fpath
