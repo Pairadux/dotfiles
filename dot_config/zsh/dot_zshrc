@@ -76,18 +76,6 @@ export KEYTIMEOUT=1
 # zle -N incarg
 # bindkey -M vicmd '^a' incarg
 
-# +----------------+
-# | TAB COMPLETION |
-# +----------------+
-autoload -Uz compinit
-if [[ -n "${ZDOTDIR}/.zcompdump"(#qN.mh+24) ]]; then
-    compinit;
-else
-    compinit -C;
-fi;
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-ZLE_REMOVE_SUFFIX_CHARS=$' \t\n;&'
-
 # +-----+
 # | FZF |
 # +-----+
@@ -103,6 +91,15 @@ antidote load
 # | PROMPT |
 # +--------+
 autoload -Uz promptinit && promptinit && prompt pure
+
+# +----------------+
+# | TAB COMPLETION |
+# +----------------+
+# Available completion styles: gremlin, ohmy, prez, zshzoo
+# You can add your own too. To see all available completion styles
+# run 'compstyle -l'
+zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
+zstyle ':plugin:ez-compinit' 'compstyle' 'prez'
 
 # +--------+
 # | ZOXIDE |
