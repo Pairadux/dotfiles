@@ -152,6 +152,7 @@ return {
                 'ruff',
                 'gofumpt',
                 'beautysh',
+                'google-java-format',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
             require('mason-lspconfig').setup {

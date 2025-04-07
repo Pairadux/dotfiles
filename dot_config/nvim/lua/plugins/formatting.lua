@@ -31,6 +31,8 @@ return {
                 c = { 'clang-format' },
                 cpp = { 'clang-format' },
 
+                java = { 'google-java-format' },
+
                 markdown = { 'prettier' },
 
                 sh = { 'shfmt' },
