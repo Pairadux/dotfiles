@@ -3,15 +3,15 @@
 # +------+
 # | OPTS |
 # +------+
-setopt AUTO_CD            # Go to folder path without using cd.
-setopt AUTO_PUSHD         # Push the old directory onto the stack on cd.
-setopt PUSHD_IGNORE_DUPS  # Do not store duplicates in the stack.
-setopt PUSHD_SILENT       # Do not print the directory stack after pushd or popd.
-setopt AUTO_MENU          # show completion menu on succesive tab presses
-setopt COMPLETE_IN_WORD   # cd /ho/sco/tm<TAB> expands to /home/scott/tmp
-setopt CDABLE_VARS        # Change directory to a path stored in a variable
-setopt EXTENDED_GLOB      # Use extended globbing syntax
-unsetopt CORRECT_ALL      # Try to correct the spelling of all arguments in a line
+setopt AUTO_CD           # Go to folder path without using cd.
+setopt AUTO_PUSHD        # Push the old directory onto the stack on cd.
+setopt PUSHD_IGNORE_DUPS # Do not store duplicates in the stack.
+setopt PUSHD_SILENT      # Do not print the directory stack after pushd or popd.
+setopt AUTO_MENU         # show completion menu on succesive tab presses
+setopt COMPLETE_IN_WORD  # cd /ho/sco/tm<TAB> expands to /home/scott/tmp
+setopt CDABLE_VARS       # Change directory to a path stored in a variable
+setopt EXTENDED_GLOB     # Use extended globbing syntax
+unsetopt CORRECT_ALL     # Try to correct the spelling of all arguments in a line
 
 # +---------+
 # | HISTORY |
