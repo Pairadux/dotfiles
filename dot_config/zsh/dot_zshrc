@@ -80,11 +80,11 @@ export KEYTIMEOUT=1
 # bindkey -M vicmd ds delete-surround
 # bindkey -M vicmd ys add-surround
 # bindkey -M visual S add-surround
-#
-# # Increment a number
-# autoload -Uz incarg
-# zle -N incarg
-# bindkey -M vicmd '^a' incarg
+
+# Increment a number
+autoload -Uz incarg
+zle -N incarg
+bindkey -M vicmd '^a' incarg
 
 # +-----+
 # | FZF |
@@ -117,9 +117,9 @@ bindkey -r '^l'
 bindkey -r '^g'
 bindkey -r '^p'
 
-autoload -Uz edit-command-line
-zle -N edit-command-line
-bindkey -M vicmd '^v' edit-command-line
+# autoload -Uz edit-command-line
+# zle -N edit-command-line
+# bindkey -M vicmd '^v' edit-command-line
 
 bindkey '^f' autosuggest-accept
 bindkey ' ' magic-space
