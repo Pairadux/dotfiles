@@ -21,7 +21,7 @@ scd() {
 }
 
 reload_aliases() {
-    source $ZDOTDIR/extras/.zaliases
+    source $ZDOTDIR/extras/aliases
 }
 
 reload_comp() {

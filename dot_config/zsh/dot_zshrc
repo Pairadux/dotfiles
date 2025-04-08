@@ -34,12 +34,12 @@ typeset -U path
 # +---------+
 # | ZSTYLES |
 # +---------+
-source "$ZDOTDIR/extras/.zstyles"
+source "$ZDOTDIR/extras/zstyles"
 
 # +---------+
 # | ALIASES |
 # +---------+
-source "$ZDOTDIR/extras/.zaliases"
+source "$ZDOTDIR/extras/aliases"
 
 # +---------+
 # | SCRIPTS |
