@@ -86,6 +86,7 @@ source <(fzf --zsh)
 # +----------+
 source "$ZDOTDIR/.antidote/antidote.zsh"
 antidote load
+zstyle ':antidote:bundle' use-friendly-names 'yes'
 
 # +--------+
 # | PROMPT |
