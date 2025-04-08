@@ -1,5 +1,12 @@
 #!/usr/bin/env zsh
 
+
+
+# +---------+
+# | ZSTYLES |
+# +---------+
+source "$ZDOTDIR/extras/.zstyles"
+
 # +------+
 # | OPTS |
 # +------+
@@ -86,21 +93,12 @@ source <(fzf --zsh)
 # +----------+
 source "$ZDOTDIR/.antidote/antidote.zsh"
 antidote load
-zstyle ':antidote:bundle' use-friendly-names 'yes'
 
 # +--------+
 # | PROMPT |
 # +--------+
 autoload -Uz promptinit && promptinit && prompt pure
 
-# +----------------+
-# | TAB COMPLETION |
-# +----------------+
-# Available completion styles: gremlin, ohmy, prez, zshzoo
-# You can add your own too. To see all available completion styles
-# run 'compstyle -l'
-zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
-zstyle ':plugin:ez-compinit' 'compstyle' 'prez'
 
 # +--------+
 # | ZOXIDE |
@@ -129,3 +127,4 @@ bindkey ' ' magic-space
 if [[ -z $TMUX && $TERM == "xterm-kitty" && -z $NEOVIDE ]]; then
     tmux attach-session || tmux;
 fi
+
