@@ -12,6 +12,9 @@ autocmd('Filetype', {
 -- Load dirsession on VimEnter
 autocmd('VimEnter', {
     callback = function()
+        if vim.fn.argc() > 0 then
+            return -- Don't load session when args are given
+        end
         local cwd = vim.fn.getcwd()
         local ok, _ = pcall(function()
             require('resession').load(cwd, { dir = 'dirsession', silent = true })
