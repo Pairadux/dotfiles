@@ -36,16 +36,20 @@ reload_comp() {
 
 # JD script using fzf
 jd() {
-    local selected_dir
+    local selected_dir base_dir fd_cmd
+    base_dir=~/MEGA
+    fd_cmd=(fd -t d '\d\d\.\d\d' -E "00.00*" --base-directory "$base_dir")
     if [ "$#" -eq 0 ]; then
         # If no arguments, show all directories
-        selected_dir=$(fd -t d . ~/MEGA -d 3 | fzf --height 50% --reverse)
+        # selected_dir=$(fd -t d . ~/MEGA -d 3 | fzf --height 50% --reverse)
+        selected_dir=$("${fd_cmd[@]}" | fzf -e)
     else
         # If argument provided, use it as initial query
-        selected_dir=$(fd -t d . ~/MEGA -d 3 | fzf --height 50% --reverse -q "$1")
+        # selected_dir=$(fd -t d . ~/MEGA -d 3 | fzf --height 50% --reverse -q "$1")
+        selected_dir=$("${fd_cmd[@]}" | fzf -e -q "$1")
     fi
     if [ -n "$selected_dir" ]; then
-        cd "$selected_dir"
+        cd "$base_dir/$selected_dir"
     else
         echo "No directory selected."
     fi
@@ -67,10 +71,6 @@ man() {
     
     # Restore previous LESSOPEN if needed
     export LESSOPEN="$OLD_LESSOPEN"
-}
-
-fcd() {
-    cd
 }
 
 pokemon() {
