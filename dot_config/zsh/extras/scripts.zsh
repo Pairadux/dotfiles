@@ -16,6 +16,11 @@ vault_backup() {
     git push
 }
 
+# fuzzy cd
+fcd() {
+    cd $(fd -t d | fzf)
+}
+
 scd() {
     cd
 }
