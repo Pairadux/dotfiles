@@ -7,7 +7,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
-export XDG_PROJECTS_DIR="$HOME/Projects"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 
 # DIRECTORIES
@@ -37,7 +36,31 @@ export PYTHONPATH=/usr/lib/python3.12/site-packages:$PYTHONPATH
 # antidote
 export ANTIDOTE_HOME=~/.cache/antidote
 
-# fzf marks
+# fzf
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+    --tmux \
+    --highlight-line \
+    --info=inline-right \
+    --layout=reverse \
+    --border=sharp \
+    --color=bg+:#283457 \
+    --color=bg:#16161e \
+    --color=border:#27a1b9 \
+    --color=fg:#c0caf5 \
+    --color=gutter:#16161e \
+    --color=header:#ff9e64 \
+    --color=hl+:#2ac3de \
+    --color=hl:#2ac3de \
+    --color=info:#545c7e \
+    --color=marker:#ff007c \
+    --color=pointer:#ff007c \
+    --color=prompt:#2ac3de \
+    --color=query:#c0caf5:regular \
+    --color=scrollbar:#27a1b9 \
+    --color=separator:#ff9e64 \
+    --color=spinner:#ff007c \
+"
 export FZF_MARKS_FILE="$HOME/.local/share/.fzf-marks"
 
 # from xdg-ninja
