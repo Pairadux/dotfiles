@@ -24,7 +24,7 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 # go
-export GOPATH=$HOME/go
+export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin
 
 # python
@@ -72,9 +72,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export NVM_DIR="$XDG_DATA_HOME/nvm"
 
 # path
-export PATH=$PATH:$HOME/.local/bin
-export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$GOBIN
+export PATH=$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$GOBIN
 
 # pagers
 if [[ "$(uname)" == "Darwin" ]]; then
