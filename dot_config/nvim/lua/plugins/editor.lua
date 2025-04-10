@@ -12,28 +12,6 @@ return {
 
     { 'echasnovski/mini.align', opts = {} },
 
-    -- Autolist {{{
-    {
-        'gaoDean/autolist.nvim',
-        ft = {
-            'markdown',
-            'text',
-            'tex',
-            'plaintex',
-            'norg',
-        },
-        cmd = {
-            'AutolistTab',
-            'AutolistShiftTab',
-            'AutolistNewBullet',
-            'AutolistNewBullet',
-            'AutolistNewBulletBefore',
-            'AutolistToggleCheckbox',
-            'AutolistRecalculate',
-        },
-        opts = {},
-    }, -- }}}
-
     -- Todo Comments {{{
     {
         'folke/todo-comments.nvim',
