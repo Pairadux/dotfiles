@@ -40,11 +40,9 @@ export ANTIDOTE_HOME=~/.cache/antidote
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-    --tmux \
     --highlight-line \
     --info=inline-right \
     --layout=reverse \
-    --border=sharp \
     --color=bg+:#283457 \
     --color=bg:#16161e \
     --color=border:#27a1b9 \
