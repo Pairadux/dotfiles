@@ -2,7 +2,7 @@
 Session.vim
 
 # OS-specific files
-.DS_Store
+**/.DS_Store
 Thumbs.db
 
 # Vim/Neovim swap files
