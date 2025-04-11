@@ -6,8 +6,8 @@ prepend_keymap = [
 
     # TODO: add additional g key mappings for quick directory jumping
     # directory nav
-    { on = [ "g", "c" ], run = "cd ~/.local/share/chezmoi",                                   desc = "cd Chezmoi" },
-    { on = [ "g", "m" ], run = "cd ~/MEGA/",                                                  desc = "cd MEGA" },
-    { on = [ "g", "j" ], run = "cd '~/MEGA/00-09 System/00 System Management/00.00 JDex/'",   desc = "cd JDex" },
+    { on = [ "g", "d" ], run = "cd ~/.local/share/chezmoi",                                   desc = "cd Chezmoi" },
+    { on = [ "g", "c" ], run = "cd ~/Cloud/",                                                  desc = "cd Cloud" },
+    # { on = [ "g", "j" ], run = "cd '~/MEGA/00-09 System/00 System Management/00.00 JDex/'",   desc = "cd JDex" },
 
 ]

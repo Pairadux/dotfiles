@@ -2,9 +2,9 @@
 
 TODAY=$(date +"%F")
 
-TEMPLATE="$HOME/MEGA/00-09 System/00 System Management/00.00 JDex/00.05 Templates/linuxQuickNoteSnippet.md"
+TEMPLATE="$HOME/Cloud/00-09 System/00 System Management/00.00 JDex/00.05 Templates/linuxQuickNoteSnippet.md"
 
-FILE="$HOME/MEGA/00-09 System/00 System Management/00.00 JDex/00.07 Linux Quick Notes/$TODAY.md"
+FILE="$HOME/Cloud/00-09 System/00 System Management/00.00 JDex/00.07 Linux Quick Notes/$TODAY.md"
 
 if [ ! -f "$FILE" ]; then
     cat "$TEMPLATE" > "$FILE"
