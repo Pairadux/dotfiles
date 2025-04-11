@@ -10,7 +10,7 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_PICTURES_DIR="$HOME/Pictures"
 
 # DIRECTORIES
-export DOTFILES="$XDG_DATA_HOME/chezmoi"
+export DOTFILES="$HOME/.dotfiles"
 export HYPRSHOT_DIR="$XDG_PICTURES_DIR/screenshots"
 export CLOUD="$HOME/Cloud"
 
