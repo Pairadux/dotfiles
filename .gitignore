@@ -1,7 +1,1 @@
-# Tmux
-./.config/tmux/plugins
-./.config/tmux/plugins/**/
-
-# Others
-**/.DS_Store
 **/lazy-lock.json
