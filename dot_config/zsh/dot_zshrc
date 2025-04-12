@@ -55,7 +55,7 @@ source "$ZDOTDIR/extras/scripts.zsh"
 # | VI KEYMAP |
 # +-----------+
 bindkey -v
-export KEYTIMEOUT=1
+export KEYTIMEOUT=40
 
 # # Add Vi text-objects for brackets and quotes
 # autoload -Uz select-bracketed select-quoted
