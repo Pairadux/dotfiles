@@ -2,12 +2,13 @@
 
 TODAY=$(date +"%F")
 
-TEMPLATE="$HOME/Cloud/00-09 System/00 System Management/00.00 JDex/00.05 Templates/linuxQuickNoteSnippet.md"
+# TEMPLATE="$CLOUD/00-09 System/00 System Management/00.00 JDex/00.05 Templates/linuxQuickNoteSnippet.md"
 
-FILE="$HOME/Cloud/00-09 System/00 System Management/00.00 JDex/00.07 Linux Quick Notes/$TODAY.md"
+FILE="$CLOUD/10-19 Life Admin/15 Programming & Tech/15.07 Linux Quick Notes/$TODAY"
 
 if [ ! -f "$FILE" ]; then
-    cat "$TEMPLATE" > "$FILE"
+    printf "Notes for %s" "$TODAY" > "$FILE"
+    # cat "$TEMPLATE" >> "$FILE"
 fi
 
 NEOVIDE=1 neovide -- \
