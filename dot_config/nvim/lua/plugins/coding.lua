@@ -37,6 +37,10 @@ return {
         build = ':lua require("go.install").update_all_sync()',
     }, -- }}}
 
+    -- {
+    --     'mfussenegger/nvim-jdtls',
+    -- },
+
     -- Blink {{{
     {
         'saghen/blink.cmp',

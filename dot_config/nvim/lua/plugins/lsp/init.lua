@@ -47,7 +47,7 @@ return {
                     --    See `:help CursorHold` for information about when this is executed
                     --
                     -- When you move your cursor, the highlights will be cleared (the second autocommand).
-                    -- local client = vim.lsp.get_client_by_id(event.data.client_id)
+                    local client = vim.lsp.get_client_by_id(event.data.client_id)
                     -- if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
                     --     local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
                     --     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
@@ -122,6 +122,34 @@ return {
                 gopls = {},
                 pyright = {},
                 rust_analyzer = {},
+                -- jdtls = {
+                --     cmd = {
+                --         '/opt/homebrew/opt/openjdk@23/bin/java',
+                --         '-Declipse.application=org.eclipse.jdt.ls.core.id1',
+                --         '-Dosgi.bundles.defaultStartLevel=4',
+                --         '-Declipse.product=org.eclipse.jdt.ls.core.product',
+                --         -- '-Dlog.protocol=true',
+                --         -- '-Dlog.level=ALL',
+                --         '-Xmx1g',
+                --         '--add-modules=ALL-SYSTEM',
+                --         '--add-opens',
+                --         'java.base/java.util=ALL-UNNAMED',
+                --         '--add-opens',
+                --         'java.base/java.lang=ALL-UNNAMED',
+                --         '-jar',
+                --         vim.fn.glob(vim.fn.stdpath 'data' .. '/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar'),
+                --         '-configuration',
+                --         vim.fn.stdpath 'data' .. '/mason/packages/jdtls/' .. (vim.fn.has 'mac' == 1 and 'config_mac' or 'config_linux'),
+                --         '-data',
+                --         vim.fn.stdpath 'cache' .. '/jdtls_workspace',
+                --     },
+                --     filetypes = { 'java' },
+                --     -- This simple root_dir function makes the LSP work on standalone files.
+                --     root_dir = function(fname)
+                --         return vim.fs.dirname(fname) or vim.loop.cwd()
+                --     end,
+                --     single_file_support = true,
+                -- },
                 bashls = {
                     settings = {
                         filetypes = { 'sh', 'zsh' },
