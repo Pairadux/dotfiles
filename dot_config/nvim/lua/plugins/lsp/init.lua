@@ -121,6 +121,8 @@ return {
                 clangd = {},
                 gopls = {},
                 pyright = {},
+                svelte = {},
+                ts_ls = {},
                 rust_analyzer = {},
                 -- jdtls = {
                 --     cmd = {

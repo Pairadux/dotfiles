@@ -22,6 +22,7 @@ return {
                 go = { 'gofumpt' },
 
                 javascript = { 'prettier' },
+                typescript = { 'prettier' },
                 css = { 'prettier' },
                 html = { 'prettier' },
                 svelte = { 'prettier' },
