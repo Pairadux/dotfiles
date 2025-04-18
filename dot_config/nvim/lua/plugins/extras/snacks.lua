@@ -72,8 +72,8 @@ return {
         { '<A-i>', function() require('snacks').terminal.toggle(vim.o.shell) end, desc = 'Toggle Terminal', mode = { 'n', 't' }, },
         { ']]', function() require('snacks').words.jump(vim.v.count1) end, desc = 'Next Reference', mode = { 'n', 't' }, },
         { '[[', function() require('snacks').words.jump(-vim.v.count1) end, desc = 'Prev Reference', mode = { 'n', 't' }, },
-        -- { '<leader>z', function() require("snacks").zen() end, desc = 'Toggle Zen Mode', },
-        -- { '<leader>Z', function() require("snacks").zen.zoom() end, desc = 'Toggle Zoom', },
+        { '<leader>tz', function() require("snacks").zen() end, desc = '[T]oggle [Z]en Mode', },
+        -- { '<leader>tZ', function() require("snacks").zen.zoom() end, desc = '[T]oggle [Z]oom', },
         -- stylua: ignore end
         -- Git {{{
         -- TODO: add some of these to a nested "git" section
