@@ -3,3 +3,10 @@
 [flavor]
 dark = "tokyo-night"
 light = "tokyo-night"
+
+[icon]
+append_dirs = [
+    { name = "Archive", text = "" },
+    { name = "Cloud", text = "" },
+    { name = "Dev", text = "" },
+]
