@@ -61,27 +61,6 @@ return {
         },
     }, -- }}}
 
-    -- Neoscroll {{{
-    {
-        'karb94/neoscroll.nvim',
-        enabled = true,
-        cond = function()
-            return not vim.g.neovide
-        end,
-        event = 'VeryLazy',
-        opts = {
-            mappings = {
-                '<C-d>',
-                '<C-u>',
-                '<C-b>',
-                '<C-f>',
-                '<C-y>',
-                '<C-e>',
-                'zz',
-            },
-            hide_cursor = false,
-        },
-    }, -- }}}
 
     -- Gitsigns {{{
     {

@@ -34,8 +34,10 @@ return {
             },
         },
         explorer = { enabled = false },
+        image = { enabled = true },
         indent = { enabled = false },
         input = { enabled = false },
+        lazygit = { enabled = true },
         picker = {
             enabled = true,
             win = {
@@ -49,8 +51,9 @@ return {
         },
         notifier = { enabled = false },
         quickfile = { enabled = false },
-        scope = { enabled = false },
-        scroll = { enabled = false },
+        scope = { enabled = true },
+        scratch = { enabled = true },
+        scroll = { enabled = not vim.g.neovide },
         statuscolumn = { enabled = false },
         words = { enabled = true },
         terminal = { enabled = true },
@@ -72,6 +75,7 @@ return {
         { '<A-i>', function() require('snacks').terminal.toggle(vim.o.shell) end, desc = 'Toggle Terminal', mode = { 'n', 't' }, },
         { ']]', function() require('snacks').words.jump(vim.v.count1) end, desc = 'Next Reference', mode = { 'n', 't' }, },
         { '[[', function() require('snacks').words.jump(-vim.v.count1) end, desc = 'Prev Reference', mode = { 'n', 't' }, },
+        -- { '<leader>tz', function() require("snacks").zen() end, desc = '[T]oggle [Z]en Mode', },
         { '<leader>tz', function() require("snacks").zen() end, desc = '[T]oggle [Z]en Mode', },
         -- { '<leader>tZ', function() require("snacks").zen.zoom() end, desc = '[T]oggle [Z]oom', },
         -- stylua: ignore end
