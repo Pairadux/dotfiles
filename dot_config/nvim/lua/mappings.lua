@@ -31,9 +31,10 @@ map('n', '<C-j>', '<C-w>j', { desc = 'Switch Window Down' })
 map('n', '<C-k>', '<C-w>k', { desc = 'Switch Window Up' })
 
 -- Tab Management
-map('n', '<leader><Tab><Tab>', '<Cmd>tabnew<CR>', { desc = '[Tab] New Tab' })
-map('n', '<leader><Tab>n',     'gt',              { desc = '[Tab] Next' })
-map('n', '<leader><Tab>p',     'gT',              { desc = '[Tab] Prev' })
+map('n', '<leader><Tab><Tab>', '<Cmd>tabnew<CR>',   { desc = '[Tab] New Tab' })
+map('n', '<leader><Tab>n',     'gt',                { desc = '[Tab] Next' })
+map('n', '<leader><Tab>p',     'gT',                { desc = '[Tab] Prev' })
+map('n', '<leader><Tab>x',     '<Cmd>tabclose<CR>', { desc = '[Tab] Close' })
 
 -- Miscellaneous Normal Mappings
 map('n', '<Esc>',      '<cmd>noh<CR>',            { desc = 'Clear Highlights' })
