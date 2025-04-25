@@ -7,14 +7,30 @@
 
 return {
 
+    -- -- Scope{{{
+    -- {
+    --     'tiagovla/scope.nvim',
+    --     event = { 'TabNew', 'TabEnter', 'TabLeave' },
+    --     config = function()
+    --         require('scope').setup {
+    --             hooks = {
+    --                 pre_tab_leave = function()
+    --                     vim.api.nvim_exec_autocmds('User', { pattern = 'ScopeTabLeavePre' })
+    --                 end,
+    --                 post_tab_enter = function()
+    --                     vim.api.nvim_exec_autocmds('User', { pattern = 'ScopeTabEnterPost' })
+    --                 end,
+    --             },
+    --         }
+    --     end,
+    -- },-- }}}
+
     -- Resession{{{
     {
         'stevearc/resession.nvim',
         dependencies = {
-            {
-                'tiagovla/scope.nvim',
-                config = true,
-            },
+            'romgrk/barbar.nvim',
+            -- 'tiagovla/scope.nvim',
         },
         keys = {
             -- stylua: ignore start
@@ -40,7 +56,11 @@ return {
                 -- this is required, since the default filter skips nobuflisted buffers
                 return true
             end,
-            extensions = { scope = {} },
+            extensions = {
+                -- bufferline = {},
+                barbar = {},
+                -- scope = {},
+            },
         },
     }, -- }}}
 
