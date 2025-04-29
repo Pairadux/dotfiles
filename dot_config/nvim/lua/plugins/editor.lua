@@ -82,6 +82,27 @@ return {
         },
     }, -- }}}
 
+    -- Yazi {{{
+    {
+        'mikavilpas/yazi.nvim',
+        cmd = "Yazi",
+        dependencies = { 'folke/snacks.nvim', },
+        keys = {
+            {
+                '<leader>oy',
+                mode = { 'n', 'v' },
+                '<cmd>Yazi<cr>',
+                desc = '[O]pen [Y]azi',
+            },
+        },
+        opts = {
+            open_for_directories = false,
+            keymaps = {
+                show_help = '<f1>',
+            },
+        },
+    },-- }}}
+
     -- GrugFar {{{
     {
         'MagicDuck/grug-far.nvim',
