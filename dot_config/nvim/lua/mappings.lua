@@ -39,15 +39,12 @@ map('n', '<leader><Tab>x',     '<Cmd>tabclose<CR>', { desc = '[Tab] Close' })
 -- Miscellaneous Normal Mappings
 map('n', '<Esc>',      '<cmd>noh<CR>',            { desc = 'Clear Highlights' })
 map('n', '<C-s>',      '<cmd>w<CR>',              { desc = 'Save File' })
-map('n', '<C-c>',      '<cmd>%y+<CR>',            { desc = 'Copy Whole File' })
-map('n', '<leader>dl', vim.diagnostic.setloclist, { desc = 'LSP Diagnostic Loclist' })
+map('n', '<leader>cf', '<cmd>%y+<CR>',            { desc = '[C]opy [F]ile' })
+map('n', '<leader>od', vim.diagnostic.setloclist, { desc = '[O]pen [D]iagnostic Loclist' })
 
--- Lazy Plugin
-map('n', '<leader>lo', '<cmd>Lazy<CR>',        { desc = '[Lazy] Open', noremap = true, silent = true })
-map('n', '<leader>lu', '<cmd>Lazy update<CR>', { desc = '[Lazy] Update', noremap = true, silent = true })
-
--- Mason Plugin
-map('n', '<leader>mo', '<cmd>Mason<CR>', { desc = '[Mason] Open', noremap = true, silent = true })
+-- Open Modals
+map('n', '<leader>ol', '<cmd>Lazy<CR>',  { desc = '[O]pen [L]azy',  noremap = true, silent = true })
+map('n', '<leader>om', '<cmd>Mason<CR>', { desc = '[O]pen [M]ason', noremap = true, silent = true })
 
 -- Custom Utility Functions
 map('n', '<leader>ib', function() require('util').insert_line_break() end, { noremap = true, silent = true, desc = "Insert 80 #'s (Line Break)" })
