@@ -26,17 +26,17 @@ autocmd('VimEnter', {
 })
 
 -- Open snacks picker on dir open
-autocmd('VimEnter', {
-    callback = function()
-        local args = vim.fn.argv()
-        if #args >= 1 and vim.fn.isdirectory(args[1]) == 1 then
-            vim.schedule(function()
-                vim.cmd 'bdelete %'
-            end)
-            require('snacks').picker.files()
-        end
-    end,
-})
+-- autocmd('VimEnter', {
+--     callback = function()
+--         local args = vim.fn.argv()
+--         if #args >= 1 and vim.fn.isdirectory(args[1]) == 1 then
+--             vim.schedule(function()
+--                 vim.cmd 'bdelete %'
+--             end)
+--             require('snacks').picker.files()
+--         end
+--     end,
+-- })
 
 -- Configure text file specific options and mappings
 autocmd('FileType', {
