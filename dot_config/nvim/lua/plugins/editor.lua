@@ -1,9 +1,9 @@
 --[[
-  editor.lua
-  -------------
-  This file is for plugins that modify general editor behavior.
-  Include plugins for file navigation, editing enhancements,
-  and overall improvements to the editor experience.
+    editor.lua
+    -------------
+    This file is for plugins that modify general editor behavior.
+    Include plugins for file navigation, editing enhancements,
+    and overall improvements to the editor experience.
 ]]
 
 return {

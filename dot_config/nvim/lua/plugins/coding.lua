@@ -1,9 +1,9 @@
 --[[
-  coding.lua
-  -------------
-  This file is for plugins that enhance your coding workflow.
-  Include plugins for code navigation, autocompletion, snippet management,
-  and any other coding productivity tools.
+    coding.lua
+    -------------
+    This file is for plugins that enhance your coding workflow.
+    Include plugins for code navigation, autocompletion, snippet management,
+    and any other coding productivity tools.
 ]]
 
 return {
@@ -11,6 +11,7 @@ return {
     { 'Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
 
     -- Lazy Dev{{{
+    -- Lazy Dev {{{
     {
         'folke/lazydev.nvim',
         ft = 'lua',
