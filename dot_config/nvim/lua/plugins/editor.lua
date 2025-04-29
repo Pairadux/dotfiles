@@ -203,19 +203,16 @@ return {
     -- Flash {{{
     {
         'folke/flash.nvim',
+        event = 'VeryLazy',
         opts = {
+            -- jump = {
+            --     autojump = true,
+            -- },
             highlight = {
                 backdrop = false,
             },
             modes = {
                 char = {
-                    multi_line = false,
-                    char_actions = function()
-                        return {
-                            [';'] = 'next', -- set to `right` to always go right
-                            [','] = 'prev', -- set to `left` to always go left
-                        }
-                    end,
                     highlight = { backdrop = false },
                 },
             },
