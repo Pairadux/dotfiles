@@ -7,7 +7,7 @@
 
 return {
 
-    -- -- Scope{{{
+    -- -- Scope {{{
     -- {
     --     'tiagovla/scope.nvim',
     --     event = { 'TabNew', 'TabEnter', 'TabLeave' },
@@ -25,11 +25,11 @@ return {
     --     end,
     -- },-- }}}
 
-    -- Resession{{{
+    -- Resession {{{
     {
         'stevearc/resession.nvim',
         dependencies = {
-            'romgrk/barbar.nvim',
+            -- 'romgrk/barbar.nvim',
             -- 'tiagovla/scope.nvim',
         },
         keys = {
@@ -58,7 +58,7 @@ return {
             end,
             extensions = {
                 -- bufferline = {},
-                barbar = {},
+                -- barbar = {},
                 -- scope = {},
             },
         },
