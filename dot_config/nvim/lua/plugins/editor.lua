@@ -85,8 +85,8 @@ return {
     -- Yazi {{{
     {
         'mikavilpas/yazi.nvim',
-        cmd = "Yazi",
-        dependencies = { 'folke/snacks.nvim', },
+        cmd = 'Yazi',
+        dependencies = { 'folke/snacks.nvim' },
         keys = {
             {
                 '<leader>oy',
@@ -101,7 +101,7 @@ return {
                 show_help = '<f1>',
             },
         },
-    },-- }}}
+    }, -- }}}
 
     -- GrugFar {{{
     {
