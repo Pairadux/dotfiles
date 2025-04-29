@@ -7,23 +7,24 @@
 
 return {
 
-    -- -- Scope {{{
-    -- {
-    --     'tiagovla/scope.nvim',
-    --     event = { 'TabNew', 'TabEnter', 'TabLeave' },
-    --     config = function()
-    --         require('scope').setup {
-    --             hooks = {
-    --                 pre_tab_leave = function()
-    --                     vim.api.nvim_exec_autocmds('User', { pattern = 'ScopeTabLeavePre' })
-    --                 end,
-    --                 post_tab_enter = function()
-    --                     vim.api.nvim_exec_autocmds('User', { pattern = 'ScopeTabEnterPost' })
-    --                 end,
-    --             },
-    --         }
-    --     end,
-    -- },-- }}}
+    -- Scope {{{
+    {
+        'tiagovla/scope.nvim',
+        enabled = false,
+        event = { 'TabNew', 'TabEnter', 'TabLeave' },
+        config = function()
+            require('scope').setup {
+                hooks = {
+                    pre_tab_leave = function()
+                        vim.api.nvim_exec_autocmds('User', { pattern = 'ScopeTabLeavePre' })
+                    end,
+                    post_tab_enter = function()
+                        vim.api.nvim_exec_autocmds('User', { pattern = 'ScopeTabEnterPost' })
+                    end,
+                },
+            }
+        end,
+    }, -- }}}
 
     -- Resession {{{
     {
