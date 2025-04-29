@@ -1,7 +1,7 @@
 --[[
-  extras/snacks.lua
-  ------------------
-  This file is for snacks.nvim
+    extras/snacks.lua
+    ------------------
+    This file is for snacks.nvim
 ]]
 
 return {
@@ -61,23 +61,34 @@ return {
     keys = {
         -- stylua: ignore start
         -- Top Pickers & Explorer
-        { '<leader><space>', function() require('snacks').picker.smart() end, desc = 'Smart Find Files', },
-        { '<leader>fb', function() require('snacks').picker.buffers() end, desc = '[F]ind [B]uffers', },
-        { '<leader>ff', function() require('snacks').picker.files() end, desc = '[F]ind [F]iles', },
-        { '<leader>fr', function() require('snacks').picker.recent() end, desc = '[F]ind [R]ecent', },
-        { '<leader>fg', function() require('snacks').picker.grep() end, desc = '[F]ind [G]rep', },
+        { '<leader>fs', function() require('snacks').picker.smart() end,       desc = '[F]ind [S]mart', },
+        { '<leader>fb', function() require('snacks').picker.buffers() end,     desc = '[F]ind [B]uffers', },
+        { '<leader>ff', function() require('snacks').picker.files() end,       desc = '[F]ind [F]iles', },
+        { '<leader>fr', function() require('snacks').picker.recent() end,      desc = '[F]ind [R]ecent', },
+        { '<leader>fg', function() require('snacks').picker.grep() end,        desc = '[F]ind [G]rep', },
         -- Other
-        { '<leader>.', function() require('snacks').scratch() end, desc = 'Toggle Scratch Buffer', },
-        { '<leader>S', function() require('snacks').scratch.select() end, desc = 'Select Scratch Buffer', },
-        { '<leader>x', function() require('snacks').bufdelete() end, desc = 'Buffer Close', },
+        { '<leader>os', function() require('snacks').scratch() end,            desc = '[O]pen [S]cratch', },
+        { '<leader>oS', function() require('snacks').scratch.select() end,     desc = '[O]pen [S]cratch Selector', },
+        { '<C-c>',      function() require('snacks').bufdelete() end,          desc = 'Buffer Close', },
         { '<leader>cR', function() require('snacks').rename.rename_file() end, desc = 'Rename File', },
-        { '<leader>lg', function() require('snacks').lazygit() end, desc = '[L]azy[G]it', },
-        { '<A-i>', function() require('snacks').terminal.toggle(vim.o.shell) end, desc = 'Toggle Terminal', mode = { 'n', 't' }, },
-        { ']]', function() require('snacks').words.jump(vim.v.count1) end, desc = 'Next Reference', mode = { 'n', 't' }, },
+        { '<leader>og', function() require('snacks').lazygit() end,            desc = '[O]pen Lazy[G]it', },
+        {
+            '<A-i>',
+            function()
+                require('snacks.terminal').toggle(vim.o.shell, {
+                    win = {
+                        border = 'single',
+                        title = 'Terminal',
+                    },
+                })
+            end,
+            desc = 'Toggle Terminal', mode = { 'n', 't' },
+        },
+        { ']]', function() require('snacks').words.jump(vim.v.count1) end,  desc = 'Next Reference', mode = { 'n', 't' }, },
         { '[[', function() require('snacks').words.jump(-vim.v.count1) end, desc = 'Prev Reference', mode = { 'n', 't' }, },
         -- { '<leader>tz', function() require("snacks").zen() end, desc = '[T]oggle [Z]en Mode', },
         { '<leader>tz', function() require("snacks").zen() end, desc = '[T]oggle [Z]en Mode', },
-        -- { '<leader>tZ', function() require("snacks").zen.zoom() end, desc = '[T]oggle [Z]oom', },
+        { '<leader>tZ', function() require("snacks").zen.zoom() end, desc = '[T]oggle [Z]oom', },
         -- stylua: ignore end
         -- Git {{{
         -- TODO: add some of these to a nested "git" section
