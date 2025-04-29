@@ -10,7 +10,10 @@ return {
 
     { 'Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
 
-    -- Lazy Dev{{{
+    -- {
+    --     'mfussenegger/nvim-jdtls',
+    -- },
+
     -- Lazy Dev {{{
     {
         'folke/lazydev.nvim',
@@ -20,6 +23,7 @@ return {
                 -- Load luvit types when the `vim.uv` word is found
                 { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
                 { path = 'lazy.nvim', words = { 'LazyVim' } },
+                { path = 'snacks.nvim', words = { 'Snacks' } },
                 'nvim-dap-ui',
             },
         },
@@ -37,10 +41,6 @@ return {
         ft = { 'go', 'gomod' },
         build = ':lua require("go.install").update_all_sync()',
     }, -- }}}
-
-    -- {
-    --     'mfussenegger/nvim-jdtls',
-    -- },
 
     -- Blink {{{
     {
