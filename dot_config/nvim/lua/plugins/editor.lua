@@ -37,12 +37,13 @@ return {
     {
         'nvim-neo-tree/neo-tree.nvim',
         version = '*',
+        cond = false,
+        cmd = 'Neotree',
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
             'MunifTanjim/nui.nvim',
         },
-        cmd = 'Neotree',
         keys = {
             { '<C-n>', '<cmd>Neotree toggle reveal<CR>', desc = 'NeoTree Toggle', silent = true },
         },
@@ -61,19 +62,60 @@ return {
         },
     }, -- }}}
 
+    -- Oil {{{
+    {
+        'stevearc/oil.nvim',
+        lazy = false,
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        cmd = 'Oil',
+        keys = {
+            { '<leader>oo', '<cmd>Oil<CR>', desc = '[O]pen [O]il' },
+        },
+        opts = {
+            default_file_explorer = true,
+            columns = {
+                'permissions',
+                'size',
+                'icon',
+            },
+            delete_to_trash = true,
+        },
+    }, -- }}}
+
+    -- GrugFar {{{
+    {
+        'MagicDuck/grug-far.nvim',
+        cmd = 'GrugFar',
+        opts = {
+            headerMaxWidth = 80,
+            keymaps = {
+                close = { n = '<C-c>' },
+            },
+        },
+        keys = {
+            {
+                '<leader>gf',
+                function()
+                    local grug = require 'grug-far'
+                    local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
+                    grug.open {
+                        transient = true,
+                        prefills = {
+                            filesFilter = ext and ext ~= '' and '*.' .. ext or nil,
+                        },
+                    }
+                end,
+                mode = { 'n', 'v' },
+                desc = '[G]rug [F]ar',
+            },
+        },
+    }, -- }}}
+
     -- Nvim Autopairs {{{
     {
         'windwp/nvim-autopairs',
         event = 'InsertEnter',
-        -- Optional dependency
-        dependencies = { 'hrsh7th/nvim-cmp' },
-        config = function()
-            require('nvim-autopairs').setup {}
-            -- If you want to automatically add `(` after selecting a function or method
-            local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-            local cmp = require 'cmp'
-            cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
-        end,
+        opts = {},
     }, -- }}}
 
     -- Vim Tmux Navigator {{{
@@ -104,46 +146,16 @@ return {
                 scroll_down = '<c-Down>',
                 scroll_up = '<c-Up>',
             },
+            filter = function(mapping)
+                -- example to exclude mappings without a description
+                return mapping.desc and mapping.desc ~= ''
+            end,
             -- delay between pressing a key and opening which-key (milliseconds)
             -- this setting is independent of vim.opt.timeoutlen
             delay = 0,
             icons = {
-                -- set icon mappings to true if you have a Nerd Font
                 mappings = vim.g.have_nerd_font,
-                -- If you are using a Nerd Font: set icons.keys to an empty table which will use the
-                -- default which-key.nvim defined Nerd Font icons, otherwise define a string table
-                keys = vim.g.have_nerd_font and {} or {
-                    Up = '<Up> ',
-                    Down = '<Down> ',
-                    Left = '<Left> ',
-                    Right = '<Right> ',
-                    C = '<C-…> ',
-                    M = '<M-…> ',
-                    D = '<D-…> ',
-                    S = '<S-…> ',
-                    CR = '<CR> ',
-                    Esc = '<Esc> ',
-                    ScrollWheelDown = '<ScrollWheelDown> ',
-                    ScrollWheelUp = '<ScrollWheelUp> ',
-                    NL = '<NL> ',
-                    BS = '<BS> ',
-                    Space = '<Space> ',
-                    Tab = '<Tab> ',
-                    F1 = '<F1>',
-                    F2 = '<F2>',
-                    F3 = '<F3>',
-                    F4 = '<F4>',
-                    F5 = '<F5>',
-                    F6 = '<F6>',
-                    F7 = '<F7>',
-                    F8 = '<F8>',
-                    F9 = '<F9>',
-                    F10 = '<F10>',
-                    F11 = '<F11>',
-                    F12 = '<F12>',
-                },
             },
-
             -- Document existing key chains
             spec = {
                 { '<leader><tab>', group = '[Tab]' },
@@ -154,10 +166,15 @@ return {
                 { '<leader>w', group = '[W]orkspace' },
                 { '<leader>t', group = '[T]oggle' },
                 { '<leader>h', group = '[H]unk', mode = { 'n', 'v' } },
+                { '<leader>g', group = '[G]rug', mode = { 'n', 'v' } },
                 { '<leader>i', group = '[I]nsert' },
-                { '<leader>l', group = '[L]azy' },
-                { '<leader>m', group = '[M]ason' },
+                { '<leader>o', group = '[O]pen' },
                 { '<leader>s', group = '[S]ession' },
+                { '[', group = 'Prev' },
+                { ']', group = 'Next' },
+                { 'g', group = 'Goto' },
+                { 'z', group = 'Fold' },
+                { 'gx', desc = 'Open with system app' },
             },
         },
     }, -- }}}
