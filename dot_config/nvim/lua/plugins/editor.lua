@@ -222,9 +222,8 @@ return {
             { 's', function() require('flash').jump() end, mode = { 'n' }, desc = 'Flash', },
             { 'S', mode = { 'n', 'x', 'o' }, function() require('flash').treesitter() end, desc = 'Flash Treesitter', },
             -- NOTE: I cannot figure out what these 2 do, so I am just not using them
-            -- { 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash', },
-            -- { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search', },
-            --
+            { 'r', mode = 'o', function() require('flash').remote() end, desc = 'Remote Flash', },
+            { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search', },
             -- stylua: ignore end
         },
     }, -- }}}
