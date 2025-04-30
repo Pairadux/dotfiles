@@ -226,5 +226,9 @@ return {
             { 'R', mode = { 'o', 'x' }, function() require('flash').treesitter_search() end, desc = 'Treesitter Search', },
             -- stylua: ignore end
         },
+        config = function(_, opts)
+            require('flash').setup(opts)
+            vim.api.nvim_set_hl(0, 'FlashLabel', { link = 'IncSearch' })
+        end,
     }, -- }}}
 }
