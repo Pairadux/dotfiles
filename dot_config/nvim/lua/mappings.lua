@@ -39,7 +39,7 @@ map('n', '<leader><Tab>x',     '<Cmd>tabclose<CR>', { desc = '[Tab] Close' })
 -- Miscellaneous Normal Mappings
 map('n', '<Esc>',      '<cmd>noh<CR>',            { desc = 'Clear Highlights' })
 map('n', '<C-s>',      '<cmd>w<CR>',              { desc = 'Save File' })
-map('n', '<leader>cf', '<cmd>%y+<CR>',            { desc = '[C]opy [F]ile' })
+map('n', '<leader>cc', '<cmd>%y+<CR>',            { desc = '[C]ode [C]opy' })
 map('n', '<leader>od', vim.diagnostic.setloclist, { desc = '[O]pen [D]iagnostic Loclist' })
 
 -- Open Modals
