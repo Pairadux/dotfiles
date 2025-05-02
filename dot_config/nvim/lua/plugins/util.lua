@@ -1,8 +1,8 @@
 --[[
-  util.lua
-  ---------
-  This file is for utility plugins that provide helper functions or extra commands.
-  Include any plugins that offer additional features or integrations which don't belong to a specific category.
+    util.lua
+    ---------
+    This file is for utility plugins that provide helper functions or extra commands.
+    Include any plugins that offer additional features or integrations which don't belong to a specific category.
 ]]
 
 return {
@@ -10,7 +10,7 @@ return {
     -- Scope {{{
     {
         'tiagovla/scope.nvim',
-        enabled = false,
+        cond = false,
         event = { 'TabNew', 'TabEnter', 'TabLeave' },
         config = function()
             require('scope').setup {
@@ -31,7 +31,9 @@ return {
         'stevearc/resession.nvim',
         dependencies = {
             -- 'romgrk/barbar.nvim',
+            -- 'akinsho/bufferline.nvim',
             -- 'tiagovla/scope.nvim',
+            { 'Pairadux/platter.nvim', dev = true },
         },
         keys = {
             -- stylua: ignore start
@@ -59,8 +61,12 @@ return {
             end,
             extensions = {
                 -- bufferline = {},
-                -- barbar = {},
                 -- scope = {},
+                -- barbar = {},
+                platter = {
+                    -- Enable in tab-scoped sessions too (optional)
+                    enable_in_tab = true,
+                },
             },
         },
     }, -- }}}

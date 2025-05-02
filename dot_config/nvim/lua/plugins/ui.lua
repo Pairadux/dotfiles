@@ -1,11 +1,18 @@
 --[[
-  ui.lua
-  -------
-  This file is for plugins that affect the user interface.
-  Include plugins that enhance visual components, layout adjustments, and overall UI improvements.
+    ui.lua
+    -------
+    This file is for plugins that affect the user interface.
+    Include plugins that enhance visual components, layout adjustments, and overall UI improvements.
 ]]
 
 return {
+
+    {
+        'Pairadux/platter.nvim',
+        dev = true,
+        event = 'VimEnter',
+        opts = {},
+    },
 
     -- Indent Blankline {{{
     {
@@ -131,14 +138,17 @@ return {
     -- Bufferline {{{
     {
         'akinsho/bufferline.nvim',
+        cond = false,
         priority = 100,
         version = '*',
-        event = 'VimEnter',
+        lazy = false,
+        -- event = 'VimEnter',
         dependencies = {
             'nvim-tree/nvim-web-devicons',
         },
         opts = {
             options = {
+                persist_buffer_sort = true,
                 buffer_close_icon = '',
                 close_icon = '',
                 offsets = {
