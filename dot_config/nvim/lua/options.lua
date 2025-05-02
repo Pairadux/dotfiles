@@ -27,6 +27,7 @@ opt.showmode       = false -- Don't show mode (already in status line)
 opt.laststatus     = 3     -- Use global statusline
 opt.scrolloff      = 5     -- Minimal lines of context
 opt.signcolumn     = "yes"
+opt.showtabline    = 2
 
 -----------------------------------------------------------
 -- Clipboard
