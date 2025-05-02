@@ -21,6 +21,11 @@ require('lazy').setup {
         hererocks = true,
     },
 
+    dev = {
+        path = '~/Dev/nvim-plugins',
+        -- patterns = { 'Pairadux' },
+    },
+
     install = { colorscheme = { 'tokyonight', 'habamax' } },
 
     ui = {
