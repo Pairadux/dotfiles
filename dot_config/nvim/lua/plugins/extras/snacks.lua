@@ -16,7 +16,7 @@ return {
                     { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
                     { icon = ' ', key = 'g', desc = 'Find Text', action = ":lua Snacks.dashboard.pick('live_grep')" },
                     { icon = ' ', key = 'r', desc = 'Recent Files', action = ":lua Snacks.dashboard.pick('oldfiles')" },
-                    { icon = '󰇥 ', key = 'y', desc = 'Open Yazi', action = ":Yazi" },
+                    { icon = '󰇥 ', key = 'y', desc = 'Open Yazi', action = ':Yazi' },
                     { icon = '󰒲 ', key = 'L', desc = 'Lazy', action = ':Lazy', enabled = package.loaded.lazy ~= nil },
                     { icon = '󰟾 ', key = 'M', desc = 'Mason', action = ':Mason', enabled = package.loaded.lazy ~= nil },
                     { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
@@ -62,17 +62,18 @@ return {
     keys = {
         -- stylua: ignore start
         -- Top Pickers & Explorer
-        { '<leader>fs', function() require('snacks').picker.smart() end,       desc = '[F]ind [S]mart', },
-        { '<leader>fb', function() require('snacks').picker.buffers() end,     desc = '[F]ind [B]uffers', },
-        { '<leader>ff', function() require('snacks').picker.files() end,       desc = '[F]ind [F]iles', },
-        { '<leader>fr', function() require('snacks').picker.recent() end,      desc = '[F]ind [R]ecent', },
-        { '<leader>fg', function() require('snacks').picker.grep() end,        desc = '[F]ind [G]rep', },
+        { '<leader>fs', function() require('snacks').picker.smart() end,            desc = '[F]ind [S]mart', },
+        { '<leader>fb', function() require('snacks').picker.buffers() end,          desc = '[F]ind [B]uffers', },
+        { '<leader>ff', function() require('snacks').picker.files() end,            desc = '[F]ind [F]iles', },
+        { '<leader>fr', function() require('snacks').picker.recent() end,           desc = '[F]ind [R]ecent', },
+        { '<leader>fg', function() require('snacks').picker.grep() end,             desc = '[F]ind [G]rep', },
+        { '<leader>fm', function() require('snacks').picker.files({ft = "md"}) end, desc = '[F]ind [M]arkdown', },
         -- Other
-        { '<leader>os', function() require('snacks').scratch() end,            desc = '[O]pen [S]cratch', },
-        { '<leader>oS', function() require('snacks').scratch.select() end,     desc = '[O]pen [S]cratch Selector', },
-        { '<C-c>',      function() require('snacks').bufdelete() end,          desc = 'Buffer Close', },
-        { '<leader>cR', function() require('snacks').rename.rename_file() end, desc = 'Rename File', },
-        { '<leader>og', function() require('snacks').lazygit() end,            desc = '[O]pen Lazy[G]it', },
+        { '<leader>os', function() require('snacks').scratch() end,                 desc = '[O]pen [S]cratch', },
+        { '<leader>oS', function() require('snacks').scratch.select() end,          desc = '[O]pen [S]cratch Selector', },
+        -- { '<C-c>',      function() require('snacks').bufdelete() end,            desc = 'Buffer Close', },
+        { '<leader>cR', function() require('snacks').rename.rename_file() end,      desc = 'Rename File', },
+        { '<leader>og', function() require('snacks').lazygit() end,                 desc = '[O]pen Lazy[G]it', },
         {
             '<A-i>',
             function()
