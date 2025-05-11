@@ -1,8 +1,8 @@
 --[[
-  lsp/init.lua
-  ---------------
-  This file is for plugins related to the Language Server Protocol (LSP).
-  Include configurations and integrations for LSP servers to offer enhanced code intelligence.
+    lsp/init.lua
+    ---------------
+    This file is for plugins related to the Language Server Protocol (LSP).
+    Include configurations and integrations for LSP servers to offer enhanced code intelligence.
 ]]
 
 return {
