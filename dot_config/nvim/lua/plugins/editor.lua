@@ -62,6 +62,27 @@ return {
         },
     }, -- }}}
 
+    {
+        'ThePrimeagen/harpoon',
+        branch = 'harpoon2',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = {},
+        keys = {
+            -- stylua: ignore start
+            { '<leader>hl',      function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, desc = '[H]arpoon [L]ist' },
+            { '<leader><space>', function() require('harpoon'):list():add()     end, desc = 'Harpoon Add' },
+            { '<leader>hr',      function() require('harpoon'):list():remove()  end, desc = '[H]arpoon [R]emove' },
+            { '<C-n>',           function() require('harpoon'):list():next()    end, desc = 'Harpoon Next Location' },
+            { '<C-p>',           function() require('harpoon'):list():prev()    end, desc = 'Harpoon Previous Location' },
+            { '<leader>1',       function() require('harpoon'):list():select(1) end, desc = 'Harpoon 1' },
+            { '<leader>2',       function() require('harpoon'):list():select(2) end, desc = 'Harpoon 2' },
+            { '<leader>3',       function() require('harpoon'):list():select(3) end, desc = 'Harpoon 3' },
+            { '<leader>4',       function() require('harpoon'):list():select(4) end, desc = 'Harpoon 4' },
+            { '<leader>5',       function() require('harpoon'):list():select(5) end, desc = 'Harpoon 5' },
+            -- stylua: ignore end
+        },
+    },
+
     -- Oil {{{
     {
         'stevearc/oil.nvim',
@@ -186,7 +207,8 @@ return {
                 { '<leader>f', group = '[F]ind' },
                 { '<leader>w', group = '[W]orkspace' },
                 { '<leader>t', group = '[T]oggle' },
-                { '<leader>h', group = '[H]unk', mode = { 'n', 'v' } },
+                { '<leader>h', group = '[H]arpoon', mode = { 'n', 'v' } },
+                { '<leader>H', group = '[H]unk', mode = { 'n', 'v' } },
                 { '<leader>g', group = '[G]rug', mode = { 'n', 'v' } },
                 { '<leader>i', group = '[I]nsert' },
                 { '<leader>o', group = '[O]pen' },
