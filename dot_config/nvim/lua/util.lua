@@ -1,32 +1,43 @@
 local M = {}
 
-function M.insert_title_box()
+function M.insert_title()
+    -- grab commentstring prefix
     local cs = vim.bo.commentstring:match '^(.-)%%s' or vim.bo.commentstring
     cs = cs:gsub('%s*$', '')
 
+    -- prompt
     local title = vim.fn.input 'Enter title: '
     if title == '' then
         return
     end
 
-    local inner_width = #title + 2
-    local border = string.rep('-', inner_width)
-
-    local top_line = cs .. ' +' .. border .. '+'
-    local middle_line = cs .. ' | ' .. title .. ' |'
-    local bottom_line = top_line
-
-    vim.api.nvim_put({ top_line, middle_line, bottom_line }, 'l', true, true)
-
-    local pos = vim.api.nvim_win_get_cursor(0)
-    local buf_line_count = vim.api.nvim_buf_line_count(0)
-    if pos[1] == buf_line_count then
-        vim.api.nvim_buf_set_lines(0, buf_line_count, buf_line_count, false, { '' })
+    local top, mid, bot
+    if vim.bo.filetype == 'lua' then
+        -- fixed-width break style for lua
+        local border = string.rep('-', 60)
+        top = cs .. border
+        mid = cs .. ' ' .. title
+        bot = top
+    else
+        -- dynamic box style for everything else
+        local inner = #title + 2
+        local border = string.rep('-', inner)
+        top = cs .. ' +' .. border .. '+'
+        mid = cs .. ' | ' .. title .. ' |'
+        bot = top
     end
-    vim.api.nvim_win_set_cursor(0, { pos[1] + 1, 0 })
 
+    -- insert and restore cursor
+    vim.api.nvim_put({ top, mid, bot }, 'l', true, true)
+    local r, _ = unpack(vim.api.nvim_win_get_cursor(0))
+    local last = vim.api.nvim_buf_line_count(0)
+    if r == last then
+        vim.api.nvim_buf_set_lines(0, last, last, false, { '' })
+    end
+    vim.api.nvim_win_set_cursor(0, { r + 1, 0 })
+
+    -- center and drop into insert
     vim.cmd 'normal! zz'
-
     vim.cmd 'startinsert'
 end
 
