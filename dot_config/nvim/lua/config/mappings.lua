@@ -1,4 +1,5 @@
-local map = vim.keymap.set
+local map  = vim.keymap.set
+local util = require('util')
 
 -- stylua: ignore start
 
@@ -47,8 +48,10 @@ map('n', '<leader>ol', '<cmd>Lazy<CR>',  { desc = '[O]pen [L]azy',  noremap = tr
 map('n', '<leader>om', '<cmd>Mason<CR>', { desc = '[O]pen [M]ason', noremap = true, silent = true })
 
 -- Custom Utility Functions
-map('n', '<leader>ib', function() require('util').insert_line_break() end, { noremap = true, silent = true, desc = "Insert 80 #'s (Line Break)" })
-map('n', '<leader>it', function() require('util').insert_title_box()  end, { noremap = true, silent = true, desc = 'Insert Title Box' })
+map('n', '<leader>ib', function() util.insert_line_break()  end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
+map('n', '<leader>it', function() util.insert_title()   end, { noremap = true, silent = true, desc = '[I]nsert [T]itle' })
+
+------------------------------------------------------------
 
 ------------------------------------------------------------
 -- TERMINAL MODE MAPPINGS
