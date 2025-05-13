@@ -41,6 +41,11 @@ typeset -U path
 # +---------+
 source "$ZDOTDIR/extras/zstyles"
 
+# +-------+
+# | FPATH |
+# +-------+
+fpath+=($(brew --prefix)/share/zsh/site-functions)
+
 # +---------+
 # | ALIASES |
 # +---------+
