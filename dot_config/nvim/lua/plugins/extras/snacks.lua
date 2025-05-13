@@ -88,7 +88,6 @@ return {
         },
         { ']]', function() require('snacks').words.jump(vim.v.count1) end,  desc = 'Next Reference', mode = { 'n', 't' }, },
         { '[[', function() require('snacks').words.jump(-vim.v.count1) end, desc = 'Prev Reference', mode = { 'n', 't' }, },
-        -- { '<leader>tz', function() require("snacks").zen() end, desc = '[T]oggle [Z]en Mode', },
         { '<leader>tz', function() require("snacks").zen() end, desc = '[T]oggle [Z]en Mode', },
         { '<leader>tZ', function() require("snacks").zen.zoom() end, desc = '[T]oggle [Z]oom', },
         -- stylua: ignore end
