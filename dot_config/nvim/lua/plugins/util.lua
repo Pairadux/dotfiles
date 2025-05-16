@@ -63,10 +63,10 @@ return {
                 -- bufferline = {},
                 -- scope = {},
                 -- barbar = {},
-                platter = {
-                    -- Enable in tab-scoped sessions too (optional)
-                    enable_in_tab = true,
-                },
+                -- platter = {
+                --     -- Enable in tab-scoped sessions too (optional)
+                --     enable_in_tab = true,
+                -- },
             },
         },
     }, -- }}}
