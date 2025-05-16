@@ -40,7 +40,7 @@ return {
         'nvim-neo-tree/neo-tree.nvim',
         version = '*',
         cond = false,
-        cmd = 'Neotree',
+        lazy = false,
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
