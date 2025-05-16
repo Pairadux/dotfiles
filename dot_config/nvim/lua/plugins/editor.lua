@@ -64,6 +64,7 @@ return {
         },
     }, -- }}}
 
+    -- Harpoon {{{
     {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
@@ -83,7 +84,7 @@ return {
             { '<leader>5',       function() require('harpoon'):list():select(5) end, desc = 'Harpoon 5' },
             -- stylua: ignore end
         },
-    },
+    },-- }}}
 
     -- Oil {{{
     {
