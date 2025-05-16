@@ -82,7 +82,7 @@ alias nv='nvim'
 # *-------*
 # | MISC  |
 # *-------*
-alias clangdump='~/.local/share/nvim/mason/bin/clang-format --dump-config > .clang-format'
+alias clangdump='$MASON/bin/clang-format --dump-config > .clang-format'
 alias waybarreload='killall -SIGUSR2 waybar'
 alias shutdown='shutdown now'
 alias lg='lazygit'
