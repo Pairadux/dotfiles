@@ -12,6 +12,8 @@ return {
 
     { 'echasnovski/mini.align', opts = {} },
 
+    { 'NMAC427/guess-indent.nvim' }, -- Detect tabstop and shiftwidth automatically
+
     -- Todo Comments {{{
     {
         'folke/todo-comments.nvim',
