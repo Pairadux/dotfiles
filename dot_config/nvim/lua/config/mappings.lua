@@ -52,6 +52,10 @@ map('n', '<leader>ib', function() util.insert_line_break()  end, { noremap = tru
 map('n', '<leader>it', function() util.insert_title()   end, { noremap = true, silent = true, desc = '[I]nsert [T]itle' })
 
 ------------------------------------------------------------
+-- VISUAL MODE MAPPINGS
+------------------------------------------------------------
+
+map('v', 'gs', function() util.squeeze_interior_whitespace() end, { noremap = true, silent = true, desc = 'Squeeze redundant internal whitespace' })
 
 ------------------------------------------------------------
 -- TERMINAL MODE MAPPINGS

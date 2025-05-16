@@ -60,4 +60,45 @@ function M.insert_line_break()
     vim.api.nvim_put({ break_line }, 'l', true, true)
 end
 
+function M.squeeze_interior_whitespace()
+    -- Exit visual mode
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Esc>', true, false, true), 'nx', false)
+
+    -- Get 0-indexed start/end of the last visual selection
+    local s = vim.fn.getpos "'<"
+    local e = vim.fn.getpos "'>"
+    local sl, sc = s[2] - 1, s[3] - 1
+    local el, ec = e[2] - 1, e[3] - 1
+
+    if sl < 0 or el < 0 then
+        vim.api.nvim_err_writeln 'No valid selection found'
+        return
+    end
+
+    for ln = sl, el do
+        local line = vim.api.nvim_buf_get_lines(0, ln, ln + 1, false)[1] or ''
+        -- compute raw range
+        local lcol = (ln == sl) and sc or 0
+        local rcol = (ln == el) and ec or #line
+
+        -- clamp to [0, #line]
+        lcol = math.max(0, math.min(lcol, #line))
+        rcol = math.max(lcol, math.min(rcol, #line))
+
+        if lcol < rcol then
+            local segment = line:sub(lcol + 1, rcol)
+            local lead = segment:match '^%s*' or ''
+            local body = segment:sub(#lead + 1):gsub('%s+', ' ')
+            local modified = lead .. body
+
+            if modified ~= segment then
+                local ok, err = pcall(vim.api.nvim_buf_set_text, 0, ln, lcol, ln, rcol, { modified })
+                if not ok then
+                    vim.api.nvim_err_writeln('Error squeezing whitespace: ' .. err)
+                end
+            end
+        end
+    end
+end
+
 return M
