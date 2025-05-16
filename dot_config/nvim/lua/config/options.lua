@@ -69,16 +69,16 @@ o.smartindent = true -- Autoindent based on syntax
 -----------------------------------------------------------
 -- Visual & Display Options
 -----------------------------------------------------------
-o.termguicolors = true                                  -- Enable true colors for plugins like bufferline
-o.cursorline    = true                                  -- Highlight current line
-o.cursorlineopt = "both"                                -- Highlight line and number column
-o.list          = false                                 -- Hide whitespace characters
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' } -- Whitespace characters (keep opt, not o)
-o.fillchars     = { eob = " " }                         -- End-of-buffer filler
-o.inccommand    = "split"                               -- Live preview for substitutions
-o.wrap          = false                                 -- Disable line wrapping
-o.spell         = false                                 -- Disable spell checking
-o.whichwrap:append("<>[]hl")                            -- Allow cursor wrapping with these keys
+o.termguicolors = true                                    -- Enable true colors for plugins like bufferline
+o.cursorline    = true                                    -- Highlight current line
+o.cursorlineopt = "both"                                  -- Highlight line and number column
+o.inccommand    = "split"                                 -- Live preview for substitutions
+o.wrap          = false                                   -- Disable line wrapping
+o.spell         = false                                   -- Disable spell checking
+o.list          = false                                   -- Hide whitespace characters
+opt.listchars   = { tab = '» ', trail = '·', nbsp = '␣' } -- Whitespace characters (keep opt, not o)
+opt.fillchars   = { eob = " " }                           -- End-of-buffer filler (keep opt, not o)
+opt.whichwrap:append("<>[]hl")                            -- Allow cursor wrapping with these keys (keep opt, not o)
 
 -----------------------------------------------------------
 -- Session & Folding Options (Global Options)
@@ -94,7 +94,7 @@ o.confirm = true -- Confirm on unsaved changes when quitting
 -----------------------------------------------------------
 -- Disable Intro Message
 -----------------------------------------------------------
-o.shortmess:append("sI") -- Disable Neovim intro
+opt.shortmess:append("sI") -- Disable Neovim intro (keep opt, not o)
 
 -----------------------------------------------------------
 -- PATH Update for Mason.nvim
