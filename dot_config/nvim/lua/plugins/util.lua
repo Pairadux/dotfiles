@@ -30,10 +30,10 @@ return {
     {
         'stevearc/resession.nvim',
         dependencies = {
+            { 'akinsho/bufferline.nvim' },
             -- 'romgrk/barbar.nvim',
-            -- 'akinsho/bufferline.nvim',
             -- 'tiagovla/scope.nvim',
-            { 'Pairadux/platter.nvim', dev = true },
+            -- { 'Pairadux/platter.nvim', dev = true },
         },
         keys = {
             -- stylua: ignore start
@@ -62,11 +62,6 @@ return {
             extensions = {
                 -- bufferline = {},
                 -- scope = {},
-                -- barbar = {},
-                -- platter = {
-                --     -- Enable in tab-scoped sessions too (optional)
-                --     enable_in_tab = true,
-                -- },
             },
         },
     }, -- }}}

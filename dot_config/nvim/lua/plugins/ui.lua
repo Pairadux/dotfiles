@@ -9,6 +9,7 @@ return {
 
     {
         'Pairadux/platter.nvim',
+        cond = false,
         dev = true,
         event = 'VimEnter',
         opts = {},
@@ -32,113 +33,16 @@ return {
         opts = {
             options = {
                 theme = 'tokyonight',
+                component_separators = { left = '|', right = '|' },
+                section_separators = { left = '', right = '' },
             },
-        },
-    }, -- }}}
-
-    -- Barbar {{{
-    -- local map = vim.api.nvim_set_keymap
-    -- local opts = { noremap = true, silent = true }
-    --
-    -- -- Move to previous/next
-    -- map('n', '<A-,>', '<Cmd>BufferPrevious<CR>', opts)
-    -- map('n', '<A-.>', '<Cmd>BufferNext<CR>', opts)
-    --
-    -- -- Re-order to previous/next
-    -- map('n', '<A-<>', '<Cmd>BufferMovePrevious<CR>', opts)
-    -- map('n', '<A->>', '<Cmd>BufferMoveNext<CR>', opts)
-    --
-    -- -- Goto buffer in position...
-    -- map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>', opts)
-    -- map('n', '<A-2>', '<Cmd>BufferGoto 2<CR>', opts)
-    -- map('n', '<A-3>', '<Cmd>BufferGoto 3<CR>', opts)
-    -- map('n', '<A-4>', '<Cmd>BufferGoto 4<CR>', opts)
-    -- map('n', '<A-5>', '<Cmd>BufferGoto 5<CR>', opts)
-    -- map('n', '<A-6>', '<Cmd>BufferGoto 6<CR>', opts)
-    -- map('n', '<A-7>', '<Cmd>BufferGoto 7<CR>', opts)
-    -- map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>', opts)
-    -- map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>', opts)
-    -- map('n', '<A-0>', '<Cmd>BufferLast<CR>', opts)
-    --
-    -- -- Pin/unpin buffer
-    -- map('n', '<A-p>', '<Cmd>BufferPin<CR>', opts)
-    --
-    -- -- Goto pinned/unpinned buffer
-    -- --                 :BufferGotoPinned
-    -- --                 :BufferGotoUnpinned
-    --
-    -- -- Close buffer
-    -- map('n', '<A-c>', '<Cmd>BufferClose<CR>', opts)
-    --
-    -- -- Wipeout buffer
-    -- --                 :BufferWipeout
-    --
-    -- -- Close commands
-    -- --                 :BufferCloseAllButCurrent
-    -- --                 :BufferCloseAllButPinned
-    -- --                 :BufferCloseAllButCurrentOrPinned
-    -- --                 :BufferCloseBuffersLeft
-    -- --                 :BufferCloseBuffersRight
-    --
-    -- -- Magic buffer-picking mode
-    -- map('n', '<C-p>',   '<Cmd>BufferPick<CR>', opts)
-    -- map('n', '<C-s-p>', '<Cmd>BufferPickDelete<CR>', opts)
-    --
-    -- -- Sort automatically by...
-    -- map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
-    -- map('n', '<Space>bn', '<Cmd>BufferOrderByName<CR>', opts)
-    -- map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
-    -- map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
-    -- map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
-    --
-    -- -- Other:
-    -- -- :BarbarEnable - enables barbar (enabled by default)
-    -- -- :BarbarDisable - very bad command, should never be used
-    {
-        'romgrk/barbar.nvim',
-        enabled = false,
-        dependencies = {
-            'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
-            'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
-            -- 'tiagovla/scope.nvim',
-        },
-        init = function()
-            vim.g.barbar_auto_setup = false
-        end,
-        opts = {
-            animation = false,
-            clickable = false,
-            icons = {
-                button = '',
-            },
-            sidebar_filetypes = {
-                ['neo-tree'] = true,
-            },
-        },
-        keys = {
-            -- stylua: ignore start
-            { '<S-tab>', '<Cmd>BufferPrevious<CR>', noremap = true, silent = true, desc = 'Buffer Goto Previous'},
-            { '<tab>', '<Cmd>BufferNext<CR>', noremap = true, silent = true, desc = 'Buffer Goto Next'},
-            { '<S-Left>', '<Cmd>BufferMovePrevious<CR>', noremap = true, silent = true, desc = 'Move Buffer Left'},
-            { '<S-Right>', '<Cmd>BufferMoveNext<CR>', noremap = true, silent = true, desc = 'Move Buffer Right'},
-            { '<Leader>x', '<Cmd>BufferClose<CR>', noremap = true, silent = true, desc = 'Close Buffer'},
-            -- map('n', '<Space>bb', '<Cmd>BufferOrderByBufferNumber<CR>', opts)
-            -- map('n', '<Space>bn', '<Cmd>BufferOrderByName<CR>', opts)
-            -- map('n', '<Space>bd', '<Cmd>BufferOrderByDirectory<CR>', opts)
-            -- map('n', '<Space>bl', '<Cmd>BufferOrderByLanguage<CR>', opts)
-            -- map('n', '<Space>bw', '<Cmd>BufferOrderByWindowNumber<CR>', opts)
-            --         { '<S-tab>',   '<cmd>BufferLineCyclePrev<CR>', desc = 'Buffer Goto Prev'  },
-            --         { '<tab>',     '<cmd>BufferLineCycleNext<CR>', desc = 'Buffer Goto Next'  },
-            --         { '<S-Left>',  '<cmd>BufferLineMovePrev<CR>',  desc = 'Move Buffer Left'  },
-            --         { '<S-Right>', '<cmd>BufferLineMoveNext<CR>',  desc = 'Move Buffer Right' },
-            -- stylua: ignore end
         },
     }, -- }}}
 
     -- Bufferline {{{
     {
         'akinsho/bufferline.nvim',
-        cond = false,
+        cond = true,
         priority = 100,
         version = '*',
         lazy = false,
@@ -148,19 +52,22 @@ return {
         },
         opts = {
             options = {
-                persist_buffer_sort = true,
-                buffer_close_icon = '',
-                close_icon = '',
+                indicator = {
+                    style = 'underline',
+                },
                 offsets = {
-                    {
-                        filetype = 'neo-tree',
-                        text = 'NeoTree',
-                        text_align = 'center',
-                        separator = true,
-                    },
+                    -- {
+                    --     filetype = 'neo-tree',
+                    --     text = 'NeoTree',
+                    --     text_align = 'center',
+                    --     separator = true,
+                    -- },
                 },
                 show_buffer_close_icons = false,
                 show_close_icon = false,
+                -- persist_buffer_sort = true,
+                move_wraps_at_ends = true,
+                separator_style = { '', '' },
             },
         },
         keys = {

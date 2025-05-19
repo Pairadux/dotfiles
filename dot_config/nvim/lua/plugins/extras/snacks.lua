@@ -71,7 +71,7 @@ return {
         -- Other
         { '<leader>os', function() require('snacks').scratch() end,                 desc = '[O]pen [S]cratch', },
         { '<leader>oS', function() require('snacks').scratch.select() end,          desc = '[O]pen [S]cratch Selector', },
-        -- { '<C-c>',      function() require('snacks').bufdelete() end,            desc = 'Buffer Close', },
+        { '<C-c>',      function() require('snacks').bufdelete() end,            desc = 'Buffer Close', },
         { '<leader>cR', function() require('snacks').rename.rename_file() end,      desc = 'Rename File', },
         { '<leader>og', function() require('snacks').lazygit() end,                 desc = '[O]pen Lazy[G]it', },
         {
