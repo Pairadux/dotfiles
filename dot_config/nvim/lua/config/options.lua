@@ -20,7 +20,7 @@ g.loaded_ruby_provider    = 0
 -----------------------------------------------------------
 o.number         = true  -- Absolute line numbers
 o.relativenumber = true  -- Relative line numbers
-o.numberwidth    = 2     -- Set width of number column
+o.numberwidth    = 4     -- Set width of number column
 o.ruler          = false -- Disable the ruler
 o.mouse          = "a"   -- Enable mouse support
 o.showmode       = false -- Don't show mode (already in status line)
