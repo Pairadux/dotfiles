@@ -25,7 +25,7 @@ o.ruler          = false -- Disable the ruler
 o.mouse          = "a"   -- Enable mouse support
 o.showmode       = false -- Don't show mode (already in status line)
 o.laststatus     = 3     -- Use global statusline
-o.scrolloff      = 5     -- Minimal lines of context
+o.scrolloff      = 3     -- Minimal lines of context
 o.signcolumn     = "yes"
 o.showtabline    = 2
 
