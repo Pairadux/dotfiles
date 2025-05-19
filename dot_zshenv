@@ -37,6 +37,9 @@ export PYTHONPATH=/usr/lib/python3.12/site-packages:$PYTHONPATH
 # antidote
 export ANTIDOTE_HOME=~/.cache/antidote
 
+# brew
+export HOMEBREW_NO_ENV_HINTS=true
+
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
