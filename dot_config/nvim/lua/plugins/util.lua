@@ -10,7 +10,6 @@ return {
     -- Scope {{{
     {
         'tiagovla/scope.nvim',
-        cond = false,
         event = { 'TabNew', 'TabEnter', 'TabLeave' },
         config = function()
             require('scope').setup {
@@ -31,16 +30,19 @@ return {
         'stevearc/resession.nvim',
         dependencies = {
             { 'akinsho/bufferline.nvim' },
+            { 'tiagovla/scope.nvim' },
             -- 'romgrk/barbar.nvim',
-            -- 'tiagovla/scope.nvim',
             -- { 'Pairadux/platter.nvim', dev = true },
         },
         keys = {
             -- stylua: ignore start
-            { '<leader>ss', function() local cwd = vim.fn.getcwd() require('resession').save(cwd, { dir = 'dirsession', notify = true }) end, desc = '[S]ession [S]ave', },
-            { '<leader>sl', function() local cwd = vim.fn.getcwd() require('resession').load(cwd, { dir = 'dirsession', notify = true }) end, desc = '[S]ession [L]oad', },
+            { '<leader>sS', function() local cwd = vim.fn.getcwd() require('resession').save(cwd,   { dir = 'dirsession', notify = true }) end, desc = '[S]ession [S]ave Dirsession', },
+            { '<leader>sL', function() local cwd = vim.fn.getcwd() require('resession').load(cwd,   { dir = 'dirsession', notify = true }) end, desc = '[S]ession [L]oad Dirsession', },
+            { '<leader>sD', function() local cwd = vim.fn.getcwd() require('resession').delete(cwd, { dir = 'dirsession', notify = true }) end, desc = '[S]ession [D]elete Dirsession', },
+            { '<leader>ss', function() require('resession').save()     end, desc = '[S]ession [S]ave', },
+            { '<leader>sl', function() require('resession').load()     end, desc = '[S]ession [L]oad', },
+            { '<leader>sd', function() require('resession').delete()   end, desc = '[S]ession [D]elete', },
             { '<leader>st', function() require('resession').save_tab() end, desc = '[S]ession Save [T]ab', },
-            { '<leader>sd', function() require('resession').delete(nil, { dir = 'dirsession', notify = true }) end, desc = '[S]ession [D]elete', },
             -- stylua: ignore end
         },
         opts = {
@@ -60,8 +62,7 @@ return {
                 return true
             end,
             extensions = {
-                -- bufferline = {},
-                -- scope = {},
+                scope = {},
             },
         },
     }, -- }}}
