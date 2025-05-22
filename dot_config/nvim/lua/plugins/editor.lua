@@ -84,7 +84,7 @@ return {
             { '<leader>5',       function() require('harpoon'):list():select(5) end, desc = 'Harpoon 5' },
             -- stylua: ignore end
         },
-    },-- }}}
+    }, -- }}}
 
     -- Oil {{{
     {
@@ -204,10 +204,11 @@ return {
             -- Document existing key chains
             spec = {
                 { '<leader><tab>', group = '[Tab]' },
+                { '<leader>fe', group = '[E]xtras' },
+                { '<leader>f', group = '[F]ind' },
                 { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
                 { '<leader>d', group = '[D]ocument' },
                 { '<leader>r', group = '[R]ename' },
-                { '<leader>f', group = '[F]ind' },
                 { '<leader>w', group = '[W]orkspace' },
                 { '<leader>t', group = '[T]oggle' },
                 { '<leader>h', group = '[H]arpoon', mode = { 'n', 'v' } },
