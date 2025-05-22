@@ -7,14 +7,7 @@
 
 return {
 
-    {
-        'Pairadux/platter.nvim',
-        cond = false,
-        dev = true,
-        event = 'VimEnter',
-        opts = {},
-    },
-
+    -- Tabby {{{
     {
         'nanozuki/tabby.nvim',
         lazy = false,
@@ -77,7 +70,7 @@ return {
                 desc = '[Tab] [R]ename',
             },
         },
-    },
+    }, -- }}}
 
     -- Indent Blankline {{{
     {
