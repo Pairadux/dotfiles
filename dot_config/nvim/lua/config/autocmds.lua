@@ -12,19 +12,8 @@ autocmd('Filetype', {
 -- Load dirsession on VimEnter
 autocmd('VimEnter', {
     callback = function()
-        local ignore_dirs = {
-            '~/Dev/gotm',
-        }
         local cwd = vim.fn.getcwd()
-        local should_ignore = false
-        for _, dir in ipairs(ignore_dirs) do
-            local expanded_dir = vim.fn.expand(dir)
-            if cwd == expanded_dir then
-                should_ignore = true
-                break
-            end
-        end
-        if vim.fn.argc() > 0 or should_ignore then
+        if vim.fn.argc() > 0 then
             return -- Don't load session when args are given
         end
         local ok, _ = pcall(function()
