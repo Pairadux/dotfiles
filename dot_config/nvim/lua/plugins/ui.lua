@@ -66,8 +66,16 @@ return {
             end,
         },
         keys = {
-            { '<S-tab>', '<cmd>bprev<CR>', desc = 'Buffer Goto Prev' },
-            { '<tab>', '<cmd>bnext<CR>', desc = 'Buffer Goto Next' },
+            { '<S-Tab>', '<cmd>bprev<CR>', desc = 'Buffer Goto Prev' },
+            { '<Tab>', '<cmd>bnext<CR>', desc = 'Buffer Goto Next' },
+            {
+                '<leader><Tab>r',
+                function()
+                    local name = vim.fn.input '  New tab name: '
+                    require('tabby').tab_rename(name)
+                end,
+                desc = '[Tab] [R]ename',
+            },
         },
     },
 

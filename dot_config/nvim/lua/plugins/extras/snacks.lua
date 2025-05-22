@@ -61,9 +61,9 @@ return {
     },
     keys = {
         -- Top Pickers & Explorer
-        -- { '<leader>ff',  function() require('snacks').picker.files()                                   end, desc = '[F]ind [F]iles', },
         -- stylua: ignore start
-        { '<leader>ff',  function() require('snacks').picker.smart()                                   end, desc = '[F]ind [F]iles', },
+        { '<leader>ff',  function() require('snacks').picker.files()                                   end, desc = '[F]ind [F]iles', },
+        { '<leader>fs',  function() require('snacks').picker.smart()                                   end, desc = '[F]ind [S]mart' },
         { '<leader>fb',  function() require('snacks').picker.buffers()                                 end, desc = '[F]ind [B]uffers', },
         { '<leader>fr',  function() require('snacks').picker.recent()                                  end, desc = '[F]ind [R]ecent', },
         { '<leader>fg',  function() require('snacks').picker.grep()                                    end, desc = '[F]ind [G]rep', },
