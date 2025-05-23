@@ -140,7 +140,7 @@ return {
         },
         keys = {
             {
-                '<leader>eg',
+                '<leader>sr',
                 function()
                     local grug = require 'grug-far'
                     local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
@@ -152,7 +152,16 @@ return {
                     }
                 end,
                 mode = { 'n', 'v' },
-                desc = '[G]rugFar',
+                desc = '[S]earch and [R]eplace',
+            },
+            {
+                '<leader>si',
+                function()
+                    local grug = require 'grug-far'
+                    grug.open { visualSelectionUsage = 'operate-within-range' }
+                end,
+                mode = { 'n', 'v' },
+                desc = '[S]earch and Replace [I]n Range',
             },
         },
     }, -- }}}
@@ -212,7 +221,8 @@ return {
                 { '<leader>h', group = '[H]arpoon' },
                 { '<leader>H', group = '[H]unk', mode = { 'n', 'v' } },
                 { '<leader>o', group = '[O]pen' },
-                { '<leader>s', group = '[S]ession' },
+                { '<leader>S', group = '[S]ession' },
+                { '<leader>s', group = '[S]earch' },
                 { '<leader>e', group = '[E]xtras' },
                 { '<leader>ei', group = '[I]nsert' },
                 { '<leader>et', group = '[T]oggle' },

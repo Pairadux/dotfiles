@@ -34,9 +34,9 @@ return {
         },
         keys = {
             -- stylua: ignore start
-            { '<leader>ss', function() local cwd = vim.fn.getcwd() require('resession').save(cwd,   { dir = 'dirsession', notify = true }) end, desc = '[S]ession [S]ave', },
-            { '<leader>sl', function() local cwd = vim.fn.getcwd() require('resession').load(cwd,   { dir = 'dirsession', notify = true }) end, desc = '[S]ession [L]oad', },
-            { '<leader>sd', function() local cwd = vim.fn.getcwd() require('resession').delete(cwd, { dir = 'dirsession', notify = true }) end, desc = '[S]ession [D]elete', },
+            { '<leader>Ss', function() local cwd = vim.fn.getcwd() require('resession').save(cwd,   { dir = 'dirsession', notify = true }) end, desc = '[S]ession [S]ave', },
+            { '<leader>Sl', function() local cwd = vim.fn.getcwd() require('resession').load(cwd,   { dir = 'dirsession', notify = true }) end, desc = '[S]ession [L]oad', },
+            { '<leader>Sd', function() local cwd = vim.fn.getcwd() require('resession').delete(cwd, { dir = 'dirsession', notify = true }) end, desc = '[S]ession [D]elete', },
             -- stylua: ignore end
         },
         opts = {
