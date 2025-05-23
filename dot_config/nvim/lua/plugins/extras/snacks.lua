@@ -72,14 +72,14 @@ return {
         { '<leader>feh', function() require('snacks').picker.highlights()                              end, desc = '[F]ind [E]xtras [H]ighlights', },
         -- Other
         { '<C-c>',       function() require('snacks').bufdelete()                                      end, desc = 'Buffer Close', },
-        { '<leader>os',  function() require('snacks').scratch()                                        end, desc = '[O]pen [S]cratch', },
-        { '<leader>oS',  function() require('snacks').scratch.select()                                 end, desc = '[O]pen [S]cratch Selector', },
-        { '<leader>rf',  function() require('snacks').rename.rename_file()                             end, desc = '[R]ename [F]ile', },
-        { '<leader>og',  function() require('snacks').lazygit()                                        end, desc = '[O]pen Lazy[G]it', },
+        { '<leader>.',  function() require('snacks').scratch()                                         end, desc = 'Scratch', },
+        { '<leader>eS',  function() require('snacks').scratch.select()                                 end, desc = '[S]cratch Selector', },
+        { '<leader>eR',  function() require('snacks').rename.rename_file()                             end, desc = '[R]ename File', },
+        { '<leader>el',  function() require('snacks').lazygit()                                        end, desc = '[L]azyGit', },
         { ']]',          function() require('snacks').words.jump(vim.v.count1)                         end, desc = 'Next Reference', mode = { 'n', 't' }, },
         { '[[',          function() require('snacks').words.jump(-vim.v.count1)                        end, desc = 'Prev Reference', mode = { 'n', 't' }, },
-        { '<leader>tz',  function() require('snacks').zen()                                            end, desc = '[T]oggle [Z]en Mode', },
-        { '<leader>tZ',  function() require('snacks').zen.zoom()                                       end, desc = '[T]oggle [Z]oom', },
+        { '<leader>ez',  function() require('snacks').zen()                                            end, desc = '[Z]en', },
+        { 'gZ',          function() require('snacks').zen.zoom()                                       end, desc = '[Z]oom', },
         -- stylua: ignore end
         {
             '<A-i>',

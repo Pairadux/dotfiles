@@ -139,7 +139,7 @@ return {
         },
         keys = {
             {
-                '<leader>gf',
+                '<leader>eg',
                 function()
                     local grug = require 'grug-far'
                     local ext = vim.bo.buftype == '' and vim.fn.expand '%:e'
@@ -151,7 +151,7 @@ return {
                     }
                 end,
                 mode = { 'n', 'v' },
-                desc = '[G]rug [F]ar',
+                desc = '[G]rugFar',
             },
         },
     }, -- }}}
@@ -208,15 +208,13 @@ return {
                 { '<leader>f', group = '[F]ind' },
                 { '<leader>c', group = '[C]ode', mode = { 'n', 'x' } },
                 { '<leader>d', group = '[D]ocument' },
-                { '<leader>r', group = '[R]ename' },
-                { '<leader>w', group = '[W]orkspace' },
-                { '<leader>t', group = '[T]oggle' },
-                { '<leader>h', group = '[H]arpoon', mode = { 'n', 'v' } },
+                { '<leader>h', group = '[H]arpoon' },
                 { '<leader>H', group = '[H]unk', mode = { 'n', 'v' } },
-                { '<leader>g', group = '[G]rug', mode = { 'n', 'v' } },
-                { '<leader>i', group = '[I]nsert' },
                 { '<leader>o', group = '[O]pen' },
                 { '<leader>s', group = '[S]ession' },
+                { '<leader>e', group = '[E]xtras' },
+                { '<leader>ei', group = '[I]nsert' },
+                { '<leader>et', group = '[T]oggle' },
                 { '[', group = 'Prev' },
                 { ']', group = 'Next' },
                 { 'g', group = 'Goto' },

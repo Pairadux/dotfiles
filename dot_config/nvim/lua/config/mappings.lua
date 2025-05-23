@@ -48,8 +48,8 @@ map('n', '<leader>ol', '<cmd>Lazy<CR>',  { desc = '[O]pen [L]azy',  noremap = tr
 map('n', '<leader>om', '<cmd>Mason<CR>', { desc = '[O]pen [M]ason', noremap = true, silent = true })
 
 -- Custom Utility Functions
-map('n', '<leader>ib', function() util.insert_line_break()  end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
-map('n', '<leader>it', function() util.insert_title()   end, { noremap = true, silent = true, desc = '[I]nsert [T]itle' })
+map('n', '<leader>eib', function() util.insert_line_break()  end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
+map('n', '<leader>eit', function() util.insert_title()   end, { noremap = true, silent = true, desc = '[I]nsert [T]itle' })
 
 ------------------------------------------------------------
 -- VISUAL MODE MAPPINGS
