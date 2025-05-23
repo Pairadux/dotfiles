@@ -67,6 +67,7 @@ return {
     -- Harpoon {{{
     {
         'ThePrimeagen/harpoon',
+        cond = false,
         branch = 'harpoon2',
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {},
