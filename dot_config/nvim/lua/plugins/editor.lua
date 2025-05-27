@@ -8,11 +8,14 @@
 
 return {
 
+    { 'NMAC427/guess-indent.nvim' }, -- Detect tabstop and shiftwidth automatically
+
+    -- Mini {{{
     { 'echasnovski/mini.ai', opts = {} },
 
     { 'echasnovski/mini.align', opts = {} },
 
-    { 'NMAC427/guess-indent.nvim' }, -- Detect tabstop and shiftwidth automatically
+    { 'echasnovski/mini.move', event = 'VeryLazy', opts = {} }, -- }}}
 
     -- Todo Comments {{{
     {
