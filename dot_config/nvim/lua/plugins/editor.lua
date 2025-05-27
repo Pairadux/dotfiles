@@ -24,9 +24,14 @@ return {
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = { signs = false },
         keys = {
-            -- stylua: ignore 
-            ---@diagnostic disable-next-line: undefined-field
-            { '<leader>ft', function() require('snacks').picker.todo_comments() end, desc = '[F]ind [T]odo', },
+            {
+                '<leader>ft',
+                function()
+                    ---@diagnostic disable-next-line: undefined-field
+                    require('snacks').picker.todo_comments()
+                end,
+                desc = '[F]ind [T]odo',
+            },
         },
     }, -- }}}
 
