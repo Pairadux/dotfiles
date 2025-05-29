@@ -32,7 +32,7 @@ map('n', '<C-j>', '<C-w>j', { desc = 'Switch Window Down' })
 map('n', '<C-k>', '<C-w>k', { desc = 'Switch Window Up' })
 
 -- Tab Management
-map('n', '<leader><Tab>n', '<Cmd>tabnew<CR>  ', { desc = '[Tab] [N]ew Tab' })
+map('n', '<leader><Tab>n', '<Cmd>$tabnew<CR>  ', { desc = '[Tab] [N]ew Tab' })
 map('n', '<leader><Tab>x', '<Cmd>tabclose<CR>', { desc = '[Tab] Close'     })
 map('n', '<C-Tab>',        'gt',                { desc = '[Tab] Next'      })
 map('n', '<C-S-Tab>',      'gT',                { desc = '[Tab] Prev'      })
