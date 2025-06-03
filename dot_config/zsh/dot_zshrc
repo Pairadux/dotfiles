@@ -44,7 +44,9 @@ source "$ZDOTDIR/extras/zstyles"
 # +-------+
 # | FPATH |
 # +-------+
-fpath+=($(brew --prefix)/share/zsh/site-functions)
+if [[ "$(uname)" = "Darwin" ]]; then
+    fpath+=($(brew --prefix)/share/zsh/site-functions)
+fi
 
 # +---------+
 # | ALIASES |
