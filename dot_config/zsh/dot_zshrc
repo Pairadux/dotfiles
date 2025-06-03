@@ -134,6 +134,6 @@ bindkey ' ' magic-space
 # +--------------------------+
 # | Startup (keep at bottom) |
 # +--------------------------+
-if [[ -z $TMUX && $TERM == "xterm-kitty" && -z $NEOVIDE ]]; then
+if [[ -z $TMUX && -z $NEOVIDE ]]; then
     tmux attach-session || tmux;
 fi
