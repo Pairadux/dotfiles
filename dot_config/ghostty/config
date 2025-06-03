@@ -1,14 +1,12 @@
-# The template does not set any default options, since Ghostty ships
-# with sensible defaults for all options. Users should only need to set
-# options that they want to change from the default.
-#
+# Ghostty Notes {{{
+# View default configuration {{{
 # Run `ghostty +show-config --default --docs` to view a list of
 # all available config options and their default values.
 #
 # Additionally, each config option is also explained in detail
-# on Ghostty's website, at https://ghostty.org/docs/config.
+# on Ghostty's website, at https://ghostty.org/docs/config.}}}
 
-# Config syntax crash course
+# Config syntax crash course {{{
 # ==========================
 # # The config file consists of simple key-value pairs,
 # # separated by equals signs.
@@ -33,11 +31,47 @@
 # # Some config options have unique syntaxes for their value,
 # # which is explained in the docs for that config option.
 # # Just for example:
-# resize-overlay-duration = 4s 200ms
+# resize-overlay-duration = 4s 200ms}}}}}}
 
-font-family = "FiraCode Nerd Font Mono"
-font-family-bold = "FiraCode Nerd Font Mono Bold"
-font-family-italic = "VictorMono NFM Medium Italic"
-font-family-bold-italic = "VictorMono NFM Medium Oblique"
-font-size = 14
+# +----------+
+# | KEYBINDS |
+# +----------+
+keybind = ctrl+tab=unbind
+keybind = ctrl+shift+tab=unbind
+
+keybind = ctrl+tab=csi:9;5u
+keybind = ctrl+shift+tab=csi:9;6u
+keybind = shift+tab=csi:9;2u
+
+keybind = shift+enter=csi:13;2u
+keybind = ctrl+enter=csi:13;5u
+keybind = ctrl+shift+enter=csi:13;6u
+
+# +------+
+# | FONT |
+# +------+
+font-family             = "FiraCode Nerd Font Mono"  
+font-family-bold        = "FiraCode Nerd Font Mono"  
+font-family-italic      = "VictorMono Nerd Font Mono"  
+font-family-bold-italic = "VictorMono Nerd Font Mono"  
+
+font-style              = ""  
+font-style-bold         = ""  
+font-style-italic       = "Medium Italic"  
+font-style-bold-italic  = "Bold Oblique"  
+
+font-size    = 14
+font-thicken = true
+
+# +-------+
+# | THEME |
+# +-------+
 theme = tokyonight_night
+
+# +--------+
+# | WINDOW |
+# +--------+
+window-decoration = none
+window-save-state = always
+window-padding-x  = 0
+window-padding-y  = 2
