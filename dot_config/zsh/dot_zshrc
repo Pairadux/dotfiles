@@ -93,6 +93,6 @@ ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 # +--------------------------+
 # | Startup (keep at bottom) |
 # +--------------------------+
-if [[ -z $TMUX && -z $NEOVIDE ]]; then
+if [[ -z $TMUX && -z $NEOVIM && -z $NEOVIDE ]]; then
     tmux attach-session || tmux;
 fi
