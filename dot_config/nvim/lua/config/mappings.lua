@@ -33,14 +33,14 @@ map('n', '<C-k>', '<C-w>k', { desc = 'Switch Window Up' })
 
 -- Tab Management
 map('n', '<leader><Tab>n', '<Cmd>$tabnew<CR>  ', { desc = '[Tab] [N]ew Tab' })
-map('n', '<leader><Tab>x', '<Cmd>tabclose<CR>', { desc = '[Tab] Close'     })
-map('n', '<C-Tab>',        'gt',                { desc = '[Tab] Next'      })
-map('n', '<C-S-Tab>',      'gT',                { desc = '[Tab] Prev'      })
+map('n', '<leader><Tab>x', '<Cmd>tabclose<CR>',  { desc = '[Tab] Close'     })
+map('n', '<C-Tab>',        'gt',                 { desc = '[Tab] Next'      })
+map('n', '<C-S-Tab>',      'gT',                 { desc = '[Tab] Prev'      })
 
 -- Miscellaneous Normal Mappings
 map('n', '<Esc>',      '<cmd>noh<CR>',            { desc = 'Clear Highlights' })
 map('n', '<C-s>',      '<cmd>w<CR>',              { desc = 'Save File' })
-map('n', '<leader>cc', '<cmd>%y+<CR>',            { desc = '[C]ode [C]opy' })
+map('n', '<leader>ec', '<cmd>%y+<CR>',            { desc = '[C]opy File' })
 map('n', '<leader>od', vim.diagnostic.setloclist, { desc = '[O]pen [D]iagnostic Loclist' })
 
 -- Open Modals
@@ -48,8 +48,8 @@ map('n', '<leader>ol', '<cmd>Lazy<CR>',  { desc = '[O]pen [L]azy',  noremap = tr
 map('n', '<leader>om', '<cmd>Mason<CR>', { desc = '[O]pen [M]ason', noremap = true, silent = true })
 
 -- Custom Utility Functions
-map('n', '<leader>eib', function() util.insert_line_break()  end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
-map('n', '<leader>eit', function() util.insert_title()   end, { noremap = true, silent = true, desc = '[I]nsert [T]itle' })
+map('n', '<leader>ib', function() util.insert_line_break()  end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
+map('n', '<leader>it', function() util.insert_title()       end, { noremap = true, silent = true, desc = '[I]nsert [T]itle' })
 
 ------------------------------------------------------------
 -- VISUAL MODE MAPPINGS

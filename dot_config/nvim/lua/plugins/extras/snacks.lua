@@ -62,14 +62,14 @@ return {
     keys = {
         -- Top Pickers & Explorer
         -- stylua: ignore start
-        { '<leader>ff',  function() require('snacks').picker.files()                                   end, desc = '[F]ind [F]iles', },
-        { '<leader>fs',  function() require('snacks').picker.smart()                                   end, desc = '[F]ind [S]mart' },
-        { '<leader>fb',  function() require('snacks').picker.buffers()                                 end, desc = '[F]ind [B]uffers', },
-        { '<leader>fr',  function() require('snacks').picker.recent()                                  end, desc = '[F]ind [R]ecent', },
-        { '<leader>fg',  function() require('snacks').picker.grep()                                    end, desc = '[F]ind [G]rep', },
-        { '<leader>fm',  function() require('snacks').picker.files { ft = 'md' }                       end, desc = '[F]ind [M]arkdown', },
-        { '<leader>fei', function() require('snacks').picker.icons { layout = { preset = 'default' } } end, desc = '[F]ind [E]xtras [I]cons', },
-        { '<leader>feh', function() require('snacks').picker.highlights()                              end, desc = '[F]ind [E]xtras [H]ighlights', },
+        { '<leader>ff', function() require('snacks').picker.files()                                   end, desc = '[F]ind [F]iles', },
+        { '<leader>fs', function() require('snacks').picker.smart()                                   end, desc = '[F]ind [S]mart' },
+        { '<leader>fb', function() require('snacks').picker.buffers()                                 end, desc = '[F]ind [B]uffers', },
+        { '<leader>fr', function() require('snacks').picker.recent()                                  end, desc = '[F]ind [R]ecent', },
+        { '<leader>fg', function() require('snacks').picker.grep()                                    end, desc = '[F]ind [G]rep', },
+        { '<leader>fm', function() require('snacks').picker.files { ft = 'md' }                       end, desc = '[F]ind [M]arkdown', },
+        { '<leader>ii', function() require('snacks').picker.icons { layout = { preset = 'default' } } end, desc = '[I]nsert [I]cons', },
+        { '<leader>fh', function() require('snacks').picker.highlights()                              end, desc = '[F]ind [H]ighlights', },
         -- Other
         { '<C-c>',       function() require('snacks').bufdelete()                                      end, desc = 'Buffer Close', },
         { '<leader>.',  function() require('snacks').scratch()                                         end, desc = 'Scratch', },
