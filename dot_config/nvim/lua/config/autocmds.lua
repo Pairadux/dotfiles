@@ -1,13 +1,13 @@
 local autocmd = vim.api.nvim_create_autocmd
 
 -- Remove comment "spreading" with o and O
-autocmd('Filetype', {
-    desc = "Don't continue comments with o and O",
-    pattern = { '*' },
-    callback = function()
-        vim.opt.formatoptions:remove 'o'
-    end,
-})
+-- autocmd('Filetype', {
+--     desc = "Don't continue comments with o and O",
+--     pattern = { '*' },
+--     callback = function()
+--         vim.opt.formatoptions:remove 'o'
+--     end,
+-- })
 
 -- Load dirsession on VimEnter
 autocmd('VimEnter', {
