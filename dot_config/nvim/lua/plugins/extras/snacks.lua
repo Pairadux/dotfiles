@@ -78,7 +78,7 @@ return {
         { '<leader>el',  function() require('snacks').lazygit()                                        end, desc = '[L]azyGit', },
         { ']]',          function() require('snacks').words.jump(vim.v.count1)                         end, desc = 'Next Reference', mode = { 'n', 't' }, },
         { '[[',          function() require('snacks').words.jump(-vim.v.count1)                        end, desc = 'Prev Reference', mode = { 'n', 't' }, },
-        { '<leader>ez',  function() require('snacks').zen()                                            end, desc = '[Z]en', },
+        { '<leader>tz',  function() require('snacks').zen()                                            end, desc = '[T]oggle [Z]en', },
         { 'gZ',          function() require('snacks').zen.zoom()                                       end, desc = '[Z]oom', },
         -- stylua: ignore end
         {
