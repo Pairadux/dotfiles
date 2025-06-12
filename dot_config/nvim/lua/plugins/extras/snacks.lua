@@ -72,10 +72,11 @@ return {
         { '<leader>fh', function() require('snacks').picker.highlights()                              end, desc = '[F]ind [H]ighlights', },
         -- Other
         { '<C-c>',       function() require('snacks').bufdelete()                                      end, desc = 'Buffer Close', },
-        { '<leader>.',  function() require('snacks').scratch()                                         end, desc = 'Scratch', },
+        { '<leader>.',   function() require('snacks').scratch()                                        end, desc = 'Scratch', },
         { '<leader>eS',  function() require('snacks').scratch.select()                                 end, desc = '[S]cratch Selector', },
         { '<leader>eR',  function() require('snacks').rename.rename_file()                             end, desc = '[R]ename File', },
         { '<leader>el',  function() require('snacks').lazygit()                                        end, desc = '[L]azyGit', },
+        { 'gd',          function() require("snacks").picker.lsp_definitions()                         end, desc = 'Goto Definition', },
         { ']]',          function() require('snacks').words.jump(vim.v.count1)                         end, desc = 'Next Reference', mode = { 'n', 't' }, },
         { '[[',          function() require('snacks').words.jump(-vim.v.count1)                        end, desc = 'Prev Reference', mode = { 'n', 't' }, },
         { '<leader>tz',  function() require('snacks').zen()                                            end, desc = '[T]oggle [Z]en', },
@@ -300,13 +301,6 @@ return {
         --     desc = 'Colorschemes',
         -- },
         -- -- LSP
-        -- {
-        --     'gd',
-        --     function()
-        --         require("snacks").picker.lsp_definitions()
-        --     end,
-        --     desc = 'Goto Definition',
-        -- },
         -- {
         --     'gD',
         --     function()
