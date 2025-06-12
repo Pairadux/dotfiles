@@ -88,6 +88,7 @@ bindkey -r '^g'
 bindkey -r '^p'
 bindkey '^f' autosuggest-accept
 bindkey ' ' magic-space
+bindkey -s '^o' 'tms\n'
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
 # +--------------------------+
