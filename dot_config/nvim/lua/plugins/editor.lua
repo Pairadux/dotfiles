@@ -22,7 +22,12 @@ return {
         'folke/todo-comments.nvim',
         event = 'VimEnter',
         dependencies = { 'nvim-lua/plenary.nvim' },
-        opts = { signs = false },
+        opts = {
+            signs = false,
+            keywords = {
+                IDEA = { icon = '󰟶 ', color = 'test' },
+            },
+        },
         keys = {
             {
                 '<leader>ft',
@@ -227,7 +232,7 @@ return {
                 { '<leader>c', group = '[C]ode', mode = { 'n', 'x' }, icon = { icon = '', color = 'orange' } },
                 { '<leader>d', group = '[D]ocument', icon = { icon = '󰈙', color = 'orange' } },
                 { '<leader>h', group = '[H]arpoon' },
-                { '<leader>H', group = '[H]unk', icon = { icon = '', color = 'orange'}, mode = { 'n', 'v' } },
+                { '<leader>H', group = '[H]unk', icon = { icon = '', color = 'orange' }, mode = { 'n', 'v' } },
                 { '<leader>o', group = '[O]pen', icon = { icon = '', color = 'orange' } },
                 { '<leader>S', group = '[S]ession', icon = { icon = '', color = 'orange' } },
                 { '<leader>s', group = '[S]earch', icon = { icon = '󰛔', color = 'orange' } },
