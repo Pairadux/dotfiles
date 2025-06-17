@@ -73,7 +73,13 @@ return {
                         end,
                     },
                 },
-                opts = {},
+                config = function()
+                    require('luasnip').setup {
+                        region_check_events = 'CursorHold,InsertLeave,InsertEnter',
+                        delete_check_events = 'TextChanged,InsertEnter',
+                    }
+                    require('luasnip.loaders.from_vscode').lazy_load()
+                end,
             },
             { 'folke/lazydev.nvim' },
         },
@@ -127,5 +133,4 @@ return {
         },
         opts_extend = { 'sources.default' },
     }, --}}}
-
 }
