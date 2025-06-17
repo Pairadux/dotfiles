@@ -43,7 +43,7 @@ autocmd('FileType', {
     pattern = { 'markdown', 'text' },
     callback = function()
         vim.opt_local.spell = true
-        vim.opt_local.formatoptions:append 'nro'
+        vim.opt_local.formatoptions:append 'n'
         -- local map = vim.keymap.set
         -- -- Autolist
         -- -- map({ 'i' }, '<tab>', '<cmd>AutolistTab<cr>')
