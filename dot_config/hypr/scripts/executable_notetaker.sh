@@ -1,17 +1,16 @@
 #!/bin/bash
 
 TODAY=$(date +"%F")
+TIME=$(date +"%H:%M")
 
-TEMPLATE="$CLOUD/00-09 System/00 System Management/00.05 Templates/Daily-Note-Template.md"
-
-FILE="$CLOUD/10-19 Life Admin/19 Atomica/19.06 Daily Notes/$TODAY.md"
+FILE="$HOME/Documents/notes/$TODAY.md"
 
 if [ ! -f "$FILE" ]; then
-    cat "$TEMPLATE" >> "$FILE"
+    echo "# Notes for $TODAY" > $FILE
 fi
 
 NEOVIDE=1 neovide -- \
-    -c "norm Gkkk] jI- $(date +%H%M)-  " \
-    -c "norm zz" \
+    -c "call append(line('$'), ['', '## $TIME', '', ''])" \
+    -c "normal! Gzz" \
     -c "startinsert" \
     "$FILE"
