@@ -3,7 +3,7 @@
 TODAY=$(date +"%F")
 TIME=$(date +"%H:%M")
 
-FILE="$HOME/Documents/notes/$TODAY.md"
+FILE="$HOME/Notes/Areas/Linux Notes/$TODAY.md"
 
 if [ ! -f "$FILE" ]; then
     echo "# Notes for $TODAY" > $FILE
