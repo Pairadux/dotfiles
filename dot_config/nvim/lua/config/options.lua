@@ -61,11 +61,11 @@ o.undofile = true -- Enable persistent undo
 -----------------------------------------------------------
 -- Indentation & Formatting
 -----------------------------------------------------------
-o.expandtab   = true          -- Use spaces instead of tabs
-o.tabstop     = 4             -- Tab Stop
-o.shiftwidth  = 4             -- Indent width
-o.smartindent = true          -- Autoindent based on syntax
-opt.formatoptions:append({ 'r', 'o' }) -- Continue comment leader with <CR> in insert-mode
+o.expandtab   = true           -- Use spaces instead of tabs
+o.tabstop     = 4              -- Tab Stop
+o.shiftwidth  = 4              -- Indent width
+o.smartindent = true           -- Autoindent based on syntax
+opt.formatoptions:append('ro') -- Continue comment leader with <CR> in insert-mode
 
 -----------------------------------------------------------
 -- Visual & Display Options
