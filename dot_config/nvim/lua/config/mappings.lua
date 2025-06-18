@@ -17,9 +17,9 @@ map('i', '<C-h>',     '<Left>',  { desc = 'Move Left' })
 map('i', '<C-l>',     '<Right>', { desc = 'Move Right' })
 map('i', '<C-j>',     '<Down>',  { desc = 'Move Down' })
 map('i', '<C-k>',     '<Up>',    { desc = 'Move Up' })
-map('i', '<C-Enter>', '<C-o>o',  { desc = 'Go to next line' })
-map('i', '<Tab>',     '<C-t>',   { desc = 'Indent in insert mode', buffer = true, silent = true })
-map('i', '<S-Tab>',   '<C-d>',   { desc = 'Undent in insert mode',buffer = true, silent = true })
+map('i', '<C-Enter>', '<ESC>o',  { desc = 'Go to next line' })
+map('i', '<Tab>',     '<C-t>',   { desc = 'Indent in insert mode', silent = true })
+map('i', '<S-Tab>',   '<C-d>',   { desc = 'Undent in insert mode', silent = true })
 
 ------------------------------------------------------------
 -- NORMAL MODE MAPPINGS
