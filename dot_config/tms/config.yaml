@@ -1,0 +1,52 @@
+# Configuration for Tmux Session Manager
+
+# Directories to scan for projects
+# Each entry can be a simple path or include depth:
+#   - path: ~/
+#     depth: 3
+scan_dirs:
+    - path: ~/Dev
+      depth: null
+    - path: ~/.dotfiles/dot_config
+      depth: null
+
+# Additional entry directories (always included)
+entry_dirs:
+    - ~/Documents
+    - ~/Cloud
+    - ~/Notes
+
+# Directory names to ignore when scanning
+ignore_dirs:
+    - ~/Dev/_practice
+    - ~/Dev/_archive
+
+# Fallback session for when killing the final session
+fallback_session:
+    name: Default
+    path: ~/
+    layout:
+        windows:
+            - name: window
+              cmd: ""
+
+# Base index for tmux windows (0 or 1)
+tmux_base: 1
+
+# Default scanning depth for directories
+default_depth: 1
+
+# Default layout for new tmux sessions
+session_layout:
+    windows:
+        - name: edit
+          cmd: nvim
+        - name: term
+          cmd: ""
+
+# Default editor editing this config file
+editor: vi
+
+# The string that will prefix currently active Tmux sessions when using 'tms'
+tmux_session_prefix: '[TMUX] '
+
