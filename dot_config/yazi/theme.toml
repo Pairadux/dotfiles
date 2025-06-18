@@ -9,4 +9,5 @@ append_dirs = [
     { name = "Archive", text = "" },
     { name = "Cloud", text = "" },
     { name = "Dev", text = "" },
+    { name = "Notes", text = "" },
 ]
