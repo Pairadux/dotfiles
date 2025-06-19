@@ -7,8 +7,10 @@
 scan_dirs:
     - path: ~/Dev
       depth: null
+      alias: ""
     - path: ~/.dotfiles/dot_config
       depth: null
+      alias: ""
 
 # Additional entry directories (always included)
 entry_dirs:
