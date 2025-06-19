@@ -87,6 +87,7 @@ alias waybarreload='killall -SIGUSR2 waybar'
 alias shutdown='shutdown now'
 alias lg='lazygit'
 alias q='exit'
+alias tms='Tmux-Sessionizer'
 
 # *---------*
 # | GCLOUD  |
