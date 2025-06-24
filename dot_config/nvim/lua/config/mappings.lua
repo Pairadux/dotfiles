@@ -1,5 +1,5 @@
-local map  = vim.keymap.set
-local util = require('util')
+local map = vim.keymap.set
+local util = require 'util'
 
 -- stylua: ignore start
 
@@ -51,11 +51,17 @@ map('n', '<leader>om', '<cmd>Mason<CR>', { desc = '[O]pen [M]ason', noremap = tr
 map('n', '<leader>ib', function() util.insert_line_break()  end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
 map('n', '<leader>it', function() util.insert_title()       end, { noremap = true, silent = true, desc = '[I]nsert [T]itle' })
 
+-- Claude Code Integration
+map('n', '<leader>oc', function() util.open_claude_simple() end, { noremap = true, silent = true, desc = '[O]pen [C]laude' })
+map('n', '<leader>cf', function() util.open_claude_with_file() end, { noremap = true, silent = true, desc = '[C]laude This [F]ile' })
+map('n', '<leader>cc', function() util.open_claude_continue() end, { noremap = true, silent = true, desc = '[C]laude [C]ontinue' })
+
 ------------------------------------------------------------
 -- VISUAL MODE MAPPINGS
 ------------------------------------------------------------
 
 map('v', 'gs', function() util.squeeze_interior_whitespace() end, { noremap = true, silent = true, desc = 'Squeeze redundant internal whitespace' })
+map('v', '<leader>cs', function() util.open_claude_with_selection() end, { noremap = true, silent = true, desc = '[C]laude This [S]election' })
 
 ------------------------------------------------------------
 -- TERMINAL MODE MAPPINGS

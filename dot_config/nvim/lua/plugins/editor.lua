@@ -229,7 +229,7 @@ return {
                 { '<leader><tab>', group = '[Tab]' },
                 { '<leader>fe', group = '[E]xtras', icon = { icon = '', color = 'orange' } },
                 { '<leader>f', group = '[F]ind', icon = { icon = '', color = 'orange' } },
-                { '<leader>c', group = '[C]ode', mode = { 'n', 'x' }, icon = { icon = '', color = 'orange' } },
+                { '<leader>c', group = '[C]laud', icon = { icon = '', color = 'orange' }, mode = { 'n', 'v' } },
                 { '<leader>d', group = '[D]ocument', icon = { icon = '󰈙', color = 'orange' } },
                 { '<leader>h', group = '[H]arpoon' },
                 { '<leader>H', group = '[H]unk', icon = { icon = '', color = 'orange' }, mode = { 'n', 'v' } },

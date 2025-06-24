@@ -101,4 +101,145 @@ function M.squeeze_interior_whitespace()
     end
 end
 
+function M.get_visual_selection_info()
+    local mode = vim.fn.mode()
+
+    -- If we're currently in visual mode, get the selection directly
+    if mode == 'v' or mode == 'V' or mode == '\22' then -- \22 is visual block mode
+        local start_pos = vim.fn.getpos '.'
+        local end_pos = vim.fn.getpos 'v'
+
+        -- Ensure start comes before end
+        local sl, sc, el, ec
+        if start_pos[2] < end_pos[2] or (start_pos[2] == end_pos[2] and start_pos[3] <= end_pos[3]) then
+            sl, sc = start_pos[2], start_pos[3]
+            el, ec = end_pos[2], end_pos[3]
+        else
+            sl, sc = end_pos[2], end_pos[3]
+            el, ec = start_pos[2], start_pos[3]
+        end
+
+        return {
+            start_line = sl,
+            start_col = sc,
+            end_line = el,
+            end_col = ec,
+        }
+    else
+        -- Use marks from previous visual selection
+        local s = vim.fn.getpos "'<"
+        local e = vim.fn.getpos "'>"
+        local sl, sc = s[2], s[3]
+        local el, ec = e[2], e[3]
+
+        -- Check if we have valid selection marks
+        if sl == 0 or el == 0 then
+            return nil
+        end
+
+        return {
+            start_line = sl,
+            start_col = sc,
+            end_line = el,
+            end_col = ec,
+        }
+    end
+end
+
+function M.open_claude_with_selection()
+    local selection = M.get_visual_selection_info()
+
+    if not selection then
+        vim.notify('No valid visual selection found', vim.log.levels.WARN)
+        return
+    end
+
+    local file_path = vim.fn.expand '%:p'
+    -- Get relative path from current working directory
+    local relative_path = vim.fn.fnamemodify(file_path, ':.')
+
+    if not file_path or file_path == '' then
+        vim.notify('No file found for current buffer', vim.log.levels.WARN)
+        return
+    end
+
+    -- Create marker in format @filename.ext#L151-153 (or L155-155 for single line)
+    local marker = string.format('@%s#L%d-%d', relative_path, selection.start_line, selection.end_line)
+
+    -- Prompt user for their message
+    local user_message = vim.fn.input('Claude Code - ' .. marker)
+    if user_message == '' then
+        vim.notify('No message provided, cancelling', vim.log.levels.INFO)
+        return
+    end
+
+    -- Combine marker and message
+    local full_message = string.format('%s: %s', marker, user_message)
+
+    local claude_cmd = string.format('claude "%s"', full_message)
+
+    require('snacks.terminal').toggle(claude_cmd, {
+        win = {
+            border = 'single',
+            title = 'Claude Code - ' .. relative_path,
+            width = 0.9,
+            height = 0.8,
+        },
+    })
+end
+
+function M.open_claude_simple()
+    local claude_cmd = 'claude'
+
+    require('snacks.terminal').toggle(claude_cmd, {
+        win = {
+            border = 'single',
+            title = 'Claude Code',
+            width = 0.9,
+            height = 0.8,
+        },
+    })
+end
+
+function M.open_claude_with_file()
+    local file_path = vim.fn.expand '%:p'
+    -- Get relative path from current working directory
+    local relative_path = vim.fn.fnamemodify(file_path, ':.')
+
+    local marker = string.format('@%s', relative_path)
+
+    local user_message = vim.fn.input('Claude Code - ' .. marker .. ': ')
+    if user_message == '' then
+        vim.notify('No message provided, cancelling', vim.log.levels.INFO)
+        return
+    end
+
+    -- Combine marker and message
+    local full_message = string.format('%s: %s', marker, user_message)
+
+    local claude_cmd = string.format('claude "%s"', full_message)
+
+    require('snacks.terminal').toggle(claude_cmd, {
+        win = {
+            border = 'single',
+            title = 'Claude Code - ' .. relative_path,
+            width = 0.9,
+            height = 0.8,
+        },
+    })
+end
+
+function M.open_claude_continue()
+    local claude_cmd = 'claude --continue'
+
+    require('snacks.terminal').toggle(claude_cmd, {
+        win = {
+            border = 'single',
+            title = 'Claude Code - Continue',
+            width = 0.9,
+            height = 0.8,
+        },
+    })
+end
+
 return M
