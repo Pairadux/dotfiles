@@ -79,7 +79,7 @@ return {
         { 'gd',          function() require("snacks").picker.lsp_definitions()                         end, desc = 'Goto Definition', },
         { ']]',          function() require('snacks').words.jump(vim.v.count1)                         end, desc = 'Next Reference', mode = { 'n', 't' }, },
         { '[[',          function() require('snacks').words.jump(-vim.v.count1)                        end, desc = 'Prev Reference', mode = { 'n', 't' }, },
-        { '<leader>tz',  function() require('snacks').zen()                                            end, desc = '[T]oggle [Z]en', },
+        { '<leader>oz',  function() require('snacks').zen()                                            end, desc = '[O]pen [Z]en', },
         { 'gZ',          function() require('snacks').zen.zoom()                                       end, desc = '[Z]oom', },
         -- stylua: ignore end
         {
