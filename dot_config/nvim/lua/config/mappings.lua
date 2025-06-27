@@ -43,6 +43,11 @@ map('n', '<C-s>',      '<cmd>w<CR>',              { desc = 'Save File' })
 map('n', '<leader>ec', '<cmd>%y+<CR>',            { desc = '[C]opy File' })
 map('n', '<leader>od', vim.diagnostic.setloclist, { desc = '[O]pen [D]iagnostic Loclist' })
 
+map('n', '<C-n>', function (...)
+    local mini_files = require('mini.files')
+    if not mini_files.close() then mini_files.open(...) end
+end, { desc = 'Toggle Mini.files' })
+
 -- Open Modals
 map('n', '<leader>ol', '<cmd>Lazy<CR>',  { desc = '[O]pen [L]azy',  noremap = true, silent = true })
 map('n', '<leader>om', '<cmd>Mason<CR>', { desc = '[O]pen [M]ason', noremap = true, silent = true })

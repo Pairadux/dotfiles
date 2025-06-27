@@ -15,6 +15,8 @@ return {
 
     { 'echasnovski/mini.align', opts = {} },
 
+    { 'echasnovski/mini.files', opts = {} },
+
     { 'echasnovski/mini.move', event = 'VeryLazy', opts = {} }, -- }}}
 
     -- Todo Comments {{{
