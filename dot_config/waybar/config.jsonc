@@ -79,7 +79,7 @@
         }
     },
     "hyprland/window": {
-        //"format": "{}"   // <--- these is the default value  
+        // "format": "{}"   // <--- these is the default value  
         "format": "⊣ {class} ⊢",
         "max-length": 120,
         "icon": false,
