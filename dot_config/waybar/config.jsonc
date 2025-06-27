@@ -105,6 +105,7 @@
     },
     "network": {
         "tooltip": true,
+        "format": "󰈀 ",    
         "format-wifi": "{icon} ",
         "format-icons": [
             "󰤟 ",
