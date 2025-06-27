@@ -73,9 +73,9 @@ return {
         -- Other
         { '<C-c>',       function() require('snacks').bufdelete()                                      end, desc = 'Buffer Close', },
         { '<leader>.',   function() require('snacks').scratch()                                        end, desc = 'Scratch', },
-        { '<leader>eS',  function() require('snacks').scratch.select()                                 end, desc = '[S]cratch Selector', },
-        { '<leader>eR',  function() require('snacks').rename.rename_file()                             end, desc = '[R]ename File', },
-        { '<leader>el',  function() require('snacks').lazygit()                                        end, desc = '[L]azyGit', },
+        { '<leader>os',  function() require('snacks').scratch.select()                                 end, desc = '[O]pen [S]cratch selector', },
+        { '<leader>cr',  function() require('snacks').rename.rename_file()                             end, desc = '[C]ontent [R]ename', },
+        { '<leader>gg',  function() require('snacks').lazygit()                                        end, desc = '[G]it [G]UI', },
         { 'gd',          function() require("snacks").picker.lsp_definitions()                         end, desc = 'Goto Definition', },
         { ']]',          function() require('snacks').words.jump(vim.v.count1)                         end, desc = 'Next Reference', mode = { 'n', 't' }, },
         { '[[',          function() require('snacks').words.jump(-vim.v.count1)                        end, desc = 'Prev Reference', mode = { 'n', 't' }, },
