@@ -15,7 +15,29 @@ return {
 
     { 'echasnovski/mini.align', opts = {} },
 
-    { 'echasnovski/mini.files', opts = {} },
+    {
+        'echasnovski/mini.files',
+        opts = {
+            mappings = {
+                go_in = '',
+                go_in_plus = 'l',
+                go_out = '',
+                go_out_plus = 'h',
+            },
+        },
+        keys = {
+            {
+                '<C-n>',
+                function(...)
+                    local mini_files = require 'mini.files'
+                    if not mini_files.close() then
+                        mini_files.open(...)
+                    end
+                end,
+                desc = 'Toggle Mini.files',
+            },
+        },
+    },
 
     { 'echasnovski/mini.move', event = 'VeryLazy', opts = {} }, -- }}}
 
