@@ -31,7 +31,7 @@ return {
                     end
                     -- Mappings
                     map('<leader>lr', vim.lsp.buf.rename, '[L]sp [R]ename')
-                    map('<leader>la', vim.lsp.buf.code_action, '[L]sp Code [A]ction', { 'n', 'x' })
+                    map('<leader>la', vim.lsp.buf.code_action, '[L]sp [A]ction', { 'n', 'x' })
                     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
                     -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
                     local function client_supports_method(client, method, bufnr)
@@ -72,9 +72,9 @@ return {
                     --
                     -- This may be unwanted, since they displace some of your code
                     if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
-                        map('<leader>th', function()
+                        map('<leader>lh', function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-                        end, '[T]oggle Inlay [H]ints')
+                        end, '[L]sp Inlay [H]ints')
                     end
                 end,
             })
