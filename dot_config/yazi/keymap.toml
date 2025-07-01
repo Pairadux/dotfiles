@@ -9,6 +9,7 @@ prepend_keymap = [
     { on = [ "g", "d" ], run = "cd ~/.dotfiles", desc = "cd Dots" },
     { on = [ "g", "c" ], run = "cd ~/Cloud/",    desc = "cd Cloud" },
     { on = [ "g", "n" ], run = "cd ~/Notes/",    desc = "cd Notes" },
+    { on = [ "g", "j" ], run = "cd ~/JDex/",     desc = "cd JDex" },
     # { on = [ "g", "j" ], run = "cd '~/MEGA/00-09 System/00 System Management/00.00 JDex/'",   desc = "cd JDex" },
 
 ]

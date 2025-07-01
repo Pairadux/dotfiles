@@ -37,7 +37,7 @@ reload_comp() {
 # JD script using fzf
 jd() {
     local selected_dir base_dir fd_cmd
-    base_dir=~/Notes/JDex
+    base_dir=~/JDex
     fd_cmd=(fd -t f '\d\d\.\d\d' -E "00.00*" --base-directory "$base_dir")
     if [ "$#" -eq 0 ]; then
         # If no arguments, show all directories

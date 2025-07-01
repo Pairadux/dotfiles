@@ -16,7 +16,7 @@ scan_dirs:
 entry_dirs:
     - ~/Documents
     - ~/Cloud
-    - ~/Notes/JDex
+    - ~/JDex
 
 # Directory names to ignore when scanning
 ignore_dirs:
