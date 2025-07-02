@@ -242,4 +242,15 @@ function M.open_claude_continue()
     })
 end
 
+function M.open_todo()
+    local cwd = vim.fn.getcwd()
+    local todo_path = cwd .. '/todo.md'
+    
+    if vim.fn.filereadable(todo_path) == 1 then
+        vim.cmd('edit ' .. todo_path)
+    else
+        vim.notify('No todo.md file found in root directory: ' .. cwd, vim.log.levels.WARN)
+    end
+end
+
 return M

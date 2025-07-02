@@ -45,6 +45,7 @@ map('n', '<leader>od', vim.diagnostic.setloclist, { desc = '[O]pen [D]iagnostic 
 -- Open Applications/Tools
 map('n', '<leader>ol', '<cmd>Lazy<CR>',  { desc = '[O]pen [L]azy',  noremap = true, silent = true })
 map('n', '<leader>om', '<cmd>Mason<CR>', { desc = '[O]pen [M]ason', noremap = true, silent = true })
+map('n', '<leader>ot', function() util.open_todo() end, { desc = '[O]pen [T]odo', noremap = true, silent = true })
 
 -- Custom Utility Functions
 map('n', '<leader>ib', function() util.insert_line_break()  end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
