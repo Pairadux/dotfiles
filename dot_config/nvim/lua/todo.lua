@@ -184,8 +184,12 @@ function M.open()
         vim.api.nvim_buf_set_lines(buf, cursor_line - 1, cursor_line, false, { new_line })
         vim.bo[buf].modifiable = false
 
-        -- Update highlights
-        vim.api.nvim_buf_clear_namespace(buf, ns_id, cursor_line - 1, cursor_line)
+        -- Update highlights (get existing extmarks on current line and clear only those)
+        local line_extmarks = vim.api.nvim_buf_get_extmarks(buf, ns_id, {cursor_line - 1, 0}, {cursor_line - 1, -1}, {})
+        for _, mark in ipairs(line_extmarks) do
+            vim.api.nvim_buf_del_extmark(buf, ns_id, mark[1])
+        end
+        
         local checkbox_hl = item.completed and 'TodoCompleted' or 'TodoPending'
         local text_hl = item.completed and 'TodoCompletedText' or 'TodoPendingText'
         vim.api.nvim_buf_set_extmark(buf, ns_id, cursor_line - 1, 0, {
