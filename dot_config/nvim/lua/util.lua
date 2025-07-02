@@ -246,11 +246,49 @@ function M.open_todo()
     local cwd = vim.fn.getcwd()
     local todo_path = cwd .. '/todo.md'
 
-    if vim.fn.filereadable(todo_path) == 1 then
-        vim.cmd('edit ' .. todo_path)
-    else
+    if vim.fn.filereadable(todo_path) == 0 then
         vim.notify('No todo.md file found in root directory: ' .. cwd, vim.log.levels.WARN)
+        return
     end
+
+    -- Get screen dimensions
+    local screen_width = vim.o.columns
+    local screen_height = vim.o.lines
+
+    -- Calculate window size (smaller floating window)
+    local width = math.min(60, math.floor(screen_width * 0.4))
+    local height = math.min(20, math.floor(screen_height * 0.5))
+
+    -- Position in top-right corner
+    local row = 1
+    local col = screen_width - width - 2
+
+    -- Create buffer
+    local buf = vim.api.nvim_create_buf(false, true)
+
+    -- Window options
+    local win_opts = {
+        relative = 'editor',
+        width = width,
+        height = height,
+        row = row,
+        col = col,
+        style = 'minimal',
+        border = 'rounded',
+        title = ' TODO ',
+        title_pos = 'center',
+    }
+
+    -- Create window
+    local win = vim.api.nvim_open_win(buf, true, win_opts)
+
+    -- Load the todo file content
+    vim.cmd('edit ' .. todo_path)
+
+    -- Set window-local options
+    vim.wo[win].signcolumn = 'no'
+    vim.wo[win].number = false
+    vim.wo[win].relativenumber = false
 end
 
 return M
