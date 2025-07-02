@@ -255,9 +255,9 @@ return {
                 -- hover = {
                 -- 	enabled = false,
                 -- },
-                -- signature = {
-                --     enabled = true,
-                -- },
+                signature = {
+                    enabled = false,
+                },
             },
             presets = {
                 -- you can enable a preset by setting it to true, or a table that will override the preset config
