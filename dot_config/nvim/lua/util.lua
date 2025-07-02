@@ -71,7 +71,7 @@ function M.squeeze_interior_whitespace()
     local el, ec = e[2] - 1, e[3] - 1
 
     if sl < 0 or el < 0 then
-        vim.api.nvim_err_writeln 'No valid selection found'
+        vim.notify('No valid selection found', vim.log.levels.ERROR)
         return
     end
 
@@ -94,7 +94,7 @@ function M.squeeze_interior_whitespace()
             if modified ~= segment then
                 local ok, err = pcall(vim.api.nvim_buf_set_text, 0, ln, lcol, ln, rcol, { modified })
                 if not ok then
-                    vim.api.nvim_err_writeln('Error squeezing whitespace: ' .. err)
+                    vim.notify('Error squeezing whitespace: ' .. err, vim.log.levels.ERROR)
                 end
             end
         end
@@ -245,7 +245,7 @@ end
 function M.open_todo()
     local cwd = vim.fn.getcwd()
     local todo_path = cwd .. '/todo.md'
-    
+
     if vim.fn.filereadable(todo_path) == 1 then
         vim.cmd('edit ' .. todo_path)
     else
