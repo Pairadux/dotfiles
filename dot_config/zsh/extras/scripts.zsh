@@ -37,8 +37,8 @@ reload_comp() {
 # JD script using fzf
 jd() {
     local selected_dir base_dir fd_cmd
-    base_dir=~/JDex
-    fd_cmd=(fd -t f '\d\d\.\d\d' -E "00.00*" --base-directory "$base_dir")
+    base_dir=~/Cloud
+    fd_cmd=(fd -t d '\d\d\.\d\d' -E "00.00*" --base-directory "$base_dir")
     if [ "$#" -eq 0 ]; then
         # If no arguments, show all directories
         # selected_dir=$(fd -t d . ~/MEGA -d 3 | fzf --height 50% --reverse)
@@ -49,7 +49,7 @@ jd() {
         selected_dir=$("${fd_cmd[@]}" | fzf -e -q "$1")
     fi
     if [ -n "$selected_dir" ]; then
-        nv "$base_dir/$selected_dir"
+        cd "$base_dir/$selected_dir"
     else
         echo "No directory selected."
     fi
