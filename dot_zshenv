@@ -12,7 +12,7 @@ export XDG_BIN_HOME="$HOME/.local/bin"
 
 # DIRECTORIES
 export DOTFILES="$HOME/.dotfiles"
-export HYPRSHOT_DIR="$XDG_PICTURES_DIR/screenshots"
+export HYPRSHOT_DIR="$XDG_PICTURES_DIR/screenshots/hyprshot/"
 export CLOUD="$HOME/Cloud"
 
 # editor
