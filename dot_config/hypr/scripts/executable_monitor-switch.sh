@@ -15,7 +15,7 @@ if hyprctl monitors | grep -q "$EXTERNAL_MONITOR"; then
 else
     # External monitor not detected - restore your normal setup
     hyprctl keyword monitor "$MAIN_MONITOR,2560x1440@144,0x0,1"
-    hyprctl keyword monitor "$SECONDARY_MONITOR,1920x1080,320x-1080,1"
+    hyprctl keyword monitor "$SECONDARY_MONITOR,1920x1080,320x-1080,1,transform,2"
     # Restore original workspace assignments
     hyprctl keyword workspace "1,monitor:$MAIN_MONITOR,default:true,persistent:true"
     hyprctl keyword workspace "2,monitor:$SECONDARY_MONITOR,persistent:true"
