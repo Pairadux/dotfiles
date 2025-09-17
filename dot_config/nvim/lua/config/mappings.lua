@@ -56,6 +56,43 @@ map('n', '<leader>aa', function() util.open_claude_simple() end, { noremap = tru
 map('n', '<leader>af', function() util.open_claude_with_file() end, { noremap = true, silent = true, desc = '[A]I with [F]ile' })
 map('n', '<leader>ac', function() util.open_claude_continue() end, { noremap = true, silent = true, desc = '[A]I [C]ontinue' })
 
+-- stylua: ignore end
+
+-- Code Runner (Snacks Terminal)
+map('n', '<leader>rc', function()
+    local file = vim.fn.expand '%:p'
+    local ft = vim.bo.filetype
+
+    local ft_cmds = {
+        c = string.format('clear && gcc -o /tmp/out %q && /tmp/out', file),
+        cpp = string.format('clear && g++ -o /tmp/out %q && /tmp/out', file),
+        python = string.format('python3 %q', file),
+        lua = string.format('lua %q', file),
+        javascript = string.format('node %q', file),
+        rust = 'cargo run',
+        go = string.format('go run %q', file),
+        sh = string.format('bash %q', file),
+        zsh = string.format('zsh %q', file),
+    }
+
+    local cmd = ft_cmds[ft]
+    if cmd then
+        require('snacks.terminal').toggle(cmd, {
+            win = {
+                border = 'single',
+                title = string.format('Running %s', vim.fn.expand '%:t'),
+                width = 0.8,
+                height = 0.6,
+            },
+            auto_close = false,
+        })
+    else
+        vim.notify(string.format('No runner configured for filetype: %s', ft), vim.log.levels.WARN)
+    end
+end, { desc = '[R]un [C]urrent File', noremap = true, silent = true })
+
+-- stylua: ignore start
+
 -- Content Operations
 map('n', '<leader>cc', '<cmd>%y+<CR>', { desc = '[C]ontent [C]opy' })
 

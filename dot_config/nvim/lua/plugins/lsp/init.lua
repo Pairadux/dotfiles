@@ -123,7 +123,7 @@ return {
             local servers = {
                 clangd = {},
                 gopls = {},
-                pyright = {},
+                -- pyright = {},
                 svelte = {},
                 ts_ls = {},
                 rust_analyzer = {},
