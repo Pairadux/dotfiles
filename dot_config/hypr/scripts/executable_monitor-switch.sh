@@ -8,8 +8,8 @@ if hyprctl monitors | grep -q "$EXTERNAL_MONITOR"; then
     # External monitor detected - disable your current monitors
     hyprctl keyword monitor "$MAIN_MONITOR,disable"
     hyprctl keyword monitor "$SECONDARY_MONITOR,disable"
-    # Enable external monitor with your preferred settings
-    hyprctl keyword monitor "$EXTERNAL_MONITOR,3840x2160@30,0x0,1"
+    # Enable external monitor with its preferred settings
+    hyprctl keyword monitor "$EXTERNAL_MONITOR,preferred,0x0,1"
     # Set workspace 1 as default on external monitor
     hyprctl keyword workspace "1,monitor:$EXTERNAL_MONITOR,default:true"
 else
