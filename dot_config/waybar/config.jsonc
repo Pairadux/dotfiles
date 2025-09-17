@@ -29,7 +29,6 @@
         "memory",
         "cpu",
         "clock",
-        "custom/notification",
         "custom/padd"
     ],
     "custom/power": {
