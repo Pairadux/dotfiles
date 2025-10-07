@@ -17,6 +17,7 @@ entry_dirs:
     - ~/Documents
     - ~/Cloud
     - ~/JDex
+    - ~/Dev/CS-Homework/CS4884 Biometrics/
 
 # Directory names to ignore when scanning
 ignore_dirs:
