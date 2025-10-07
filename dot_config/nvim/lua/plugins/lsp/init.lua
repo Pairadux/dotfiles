@@ -193,6 +193,7 @@ return {
                 'prettier',
                 'clang-format',
                 'shfmt',
+                'pyright',
                 'ruff',
                 'gofumpt',
                 'beautysh',
