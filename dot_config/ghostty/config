@@ -66,7 +66,7 @@ font-thicken = true
 # +-------+
 # | THEME |
 # +-------+
-theme = tokyonight_night
+theme = TokyoNight Night
 
 # +--------+
 # | WINDOW |
