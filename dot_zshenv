@@ -30,10 +30,11 @@ export GOPATH=$HOME/.go
 export GOBIN=$GOPATH/bin
 
 # python
-export PYTHONPATH=/usr/lib/python3.12/site-packages:$PYTHONPATH
-# export PYENV_ROOT="$HOME/.pyenv"
-# export PATH="$PYENV_ROOT/bin:$PATH"
-# eval "$(pyenv init --path)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv >/dev/null; then
+    eval "$(pyenv init --path)"
+fi
 
 # antidote
 export ANTIDOTE_HOME=~/.cache/antidote
@@ -75,11 +76,10 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export NVM_DIR="$XDG_DATA_HOME/nvm"
 
 # path
-export PATH="/opt/homebrew/opt/openjdk/bin:$PATH:$HOME/.local/bin:$HOME/.cargo/bin:$GOBIN"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$GOBIN:$PATH"
 
 # pagers
 if [[ "$(uname)" == "Darwin" ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
     export LESSOPEN="| /opt/homebrew/bin/src-hilite-lesspipe.sh %s"
     export LESS='-R '
     export MANPAGER="less -R"
