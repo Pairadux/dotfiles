@@ -76,6 +76,10 @@ return {
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
                         end, '[L]sp Inlay [H]ints')
                     end
+                    -- Disable Ruff's hover in favor of Pyright
+                    if client and client.name == 'ruff' then
+                        client.server_capabilities.hoverProvider = false
+                    end
                 end,
             })
             -- Diagnostic Config
@@ -123,7 +127,14 @@ return {
             local servers = {
                 clangd = {},
                 gopls = {},
-                -- pyright = {},
+                pyright = {
+                    settings = {
+                        pyright = {
+                            disableOrganizeImports = true,
+                        },
+                    },
+                },
+                ruff = {},
                 svelte = {},
                 ts_ls = {},
                 rust_analyzer = {},
