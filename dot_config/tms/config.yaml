@@ -5,10 +5,13 @@
 #   - path: ~/
 #     depth: 3
 scan_dirs:
+    - path: ~/.dotfiles/dot_config
+      depth: null
+      alias: ""
     - path: ~/Dev
       depth: null
       alias: ""
-    - path: ~/.dotfiles/dot_config
+    - path: ~/Dev/CS-Homework/
       depth: null
       alias: ""
 
@@ -17,12 +20,13 @@ entry_dirs:
     - ~/Documents
     - ~/Cloud
     - ~/JDex
-    - ~/Dev/CS-Homework/CS4884 Biometrics/
 
 # Directory names to ignore when scanning
 ignore_dirs:
     - ~/Dev/_practice
     - ~/Dev/_archive
+    - ~/Dev/CS-Homework/
+    - ~/Dev/CS-Homework/.git
 
 # Fallback session for when killing the final session
 fallback_session:
