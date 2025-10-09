@@ -1,4 +1,4 @@
-# Configuration for Tmux Session Manager
+# Configuration for Muxly
 
 # Directories to scan for projects
 # Each entry can be a simple path or include depth:
@@ -54,6 +54,6 @@ session_layout:
 # Default editor editing this config file
 editor: vi
 
-# The string that will prefix currently active Tmux sessions when using 'tms'
+# The string that will prefix currently active Tmux sessions when using 'muxly'
 tmux_session_prefix: '[TMUX] '
 
