@@ -2,7 +2,7 @@
 
 I have attempted to create the best possible Mouseless Development Environment for myself. Most (non-Linux-specific) dotfiles are also compatible with Mac based on my testing[^1], though some integrations may require additional setup.
 
-My Dotfiles are managed with [ Chezmoi ](https://chezmoi.io), making them easy to install, update, and maintain across systems.
+My Dotfiles are managed with [Chezmoi](https://chezmoi.io), making them easy to install, update, and maintain across systems.
 
 I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.com/folke/tokyonight.nvim), so most of my configurations, when applicable, will include a Tokyo Night theme.
 
@@ -12,15 +12,16 @@ I am currently in love with [Folke's Tokyo Night Color Scheme](https://github.co
 - [Waybar](https://github.com/Alexays/Waybar) configuration and theming
 - Fully custom [ZSH](https://www.zsh.org/) environment utilizing [Antidote](https://antidote.sh/), [pure](https://github.com/sindresorhus/pure) prompt, zsh-completions, zsh-autosuggestions, fast-syntax-highlighting, zsh-history-substring-search, and custom scripts
   - View the [README](./dot_config/zsh/README.md)
-- [Nvim](https://neovim.io/) config utilizing [NVChad](https://nvchad.com/) with a significant amount of personal tweaks and plugins
+- Custom [Nvim](https://neovim.io/) configuration loosely based on [Kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
   - View the [README](./dot_config/nvim/README.md)
 - [Tmux](https://github.com/tmux/tmux) configurations utilizing [TPM](https://github.com/tmux-plugins/tpm) and various Tmux plugins. Custom mappings and leader keys
   - View the [README](./dot_config/tmux/README.md)
+- Basic [Ghostty](https://ghostty.org/) configuration and theming (**currently my primary terminal**)
 - Basic [Wezterm](https://wezfurlong.org/wezterm/index.html) configuration and theming
+- Basic [Kitty](https://sw.kovidgoyal.net/kitty/) configuration and theming
 - [Rofi](https://github.com/davatorium/rofi) launcher customizations and theming
 - [Bat](https://github.com/sharkdp/bat) theming
   - View the [README](./dot_config/bat/README.md)
-- Catnip configuration and theming
 - [Zellij](https://zellij.dev/) temporary configuration (was buggy so I switched back to Tmux, but wanted to leave config in case I try it again)
 - Other miscellaneous configurations and tweaks
 
