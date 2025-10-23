@@ -41,6 +41,7 @@ return {
         lazygit = { enabled = true },
         picker = {
             enabled = true,
+            show_delay = 0,
             win = {
                 input = {
                     keys = {
