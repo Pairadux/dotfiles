@@ -57,3 +57,4 @@ editor: vi
 # The string that will prefix currently active Tmux sessions when using 'muxly'
 tmux_session_prefix: '[TMUX] '
 
+always_kill_on_last_session: True
