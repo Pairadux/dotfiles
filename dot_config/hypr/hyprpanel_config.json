@@ -1,0 +1,98 @@
+{
+  "bar.customModules.storage.paths": [
+    "/",
+    "/home/austincgause"
+  ],
+  "theme.font.name": "FiraCode Nerd Font",
+  "theme.font.label": "FiraCode Nerd Font",
+  "bar.layouts": {
+    "0": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "network",
+        "bluetooth",
+        "systray",
+        "clock"
+      ]
+    },
+    "1": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock"
+      ]
+    },
+    "2": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock"
+      ]
+    }
+  },
+  "theme.bar.floating": true,
+  "bar.autoHide": "fullscreen",
+  "theme.bar.buttons.enableBorders": false,
+  "theme.bar.border.location": "full",
+  "theme.bar.border.width": "0.1em",
+  "theme.bar.enableShadow": false,
+  "bar.launcher.autoDetectIcon": false,
+  "theme.bar.buttons.dashboard.enableBorder": false,
+  "theme.bar.buttons.workspaces.enableBorder": false,
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.show_numbered": true,
+  "bar.workspaces.showWsIcons": false,
+  "bar.workspaces.showApplicationIcons": false,
+  "bar.systray.ignore": [
+    "nm-applet",
+    "steam"
+  ],
+  "bar.notifications.show_total": false,
+  "bar.notifications.hideCountWhenZero": false,
+  "theme.osd.enable": false,
+  "menus.clock.weather.location": "31602",
+  "menus.clock.weather.key": "388d49ad581645c4a1413654252810",
+  "menus.dashboard.powermenu.avatar.image": "/home/austincgause/Cloud/00-09 System/01 Life Admin Management/01.01 Inbox/Personal-Branding/pairadux/pairadux-logo-bg.jpg",
+  "menus.dashboard.controls.enabled": true,
+  "menus.dashboard.shortcuts.left.shortcut1.icon": "",
+  "menus.dashboard.shortcuts.left.shortcut1.command": "zen-browser",
+  "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Zen Browser",
+  "menus.dashboard.shortcuts.left.shortcut2.command": "spotify",
+  "menus.dashboard.shortcuts.right.shortcut3.command": "hyprshot -m region",
+  "menus.dashboard.directories.left.directory3.command": "bash -c \"xdg-open $HOME/Dev/\"",
+  "menus.dashboard.directories.left.directory3.label": "󰚝 Dev",
+  "menus.dashboard.directories.enabled": false,
+  "menus.dashboard.shortcuts.enabled": true,
+  "wallpaper.enable": false,
+  "theme.bar.location": "top",
+  "notifications.position": "top right",
+  "menus.clock.time.hideSeconds": true,
+  "bar.clock.format": "%a %b %d  %I:%M %p",
+  "theme.font.weight": 600,
+  "theme.font.size": "1.2rem",
+  "theme.osd.orientation": "horizontal",
+  "theme.osd.location": "top right",
+  "bar.customModules.storage.units": "auto"
+}
