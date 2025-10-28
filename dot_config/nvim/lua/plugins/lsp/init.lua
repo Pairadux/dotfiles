@@ -8,10 +8,16 @@
 return {
 
     {
+        'mason-org/mason.nvim',
+        lazy = false,
+        opts = {},
+    },
+
+    {
         'neovim/nvim-lspconfig',
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
-            { 'mason-org/mason.nvim', cmd = 'Mason', opts = {} },
+            { 'mason-org/mason.nvim' },
             { 'mason-org/mason-lspconfig.nvim' },
             { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
             { 'j-hui/fidget.nvim', opts = {} },
