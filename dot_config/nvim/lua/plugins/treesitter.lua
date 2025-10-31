@@ -8,8 +8,9 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
-        event = { 'BufReadPre', 'BufNewFile' },
         build = ':TSUpdate',
+        lazy = vim.fn.argc(-1) == 0,
+        event = 'VeryLazy',
         main = 'nvim-treesitter.configs', -- Sets main module to use for opts
         -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
         opts = {
