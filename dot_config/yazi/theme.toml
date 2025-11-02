@@ -10,6 +10,8 @@ append_dirs = [
     { name = "Cloud", text = "" },
     { name = "Dev", text = "" },
     { name = "Notes", text = "" },
+    { name = "Audio", text = "" },
+    { name = "Media", text = "󱧺" },
     { name = "Games", text = "󰖺" },
     { name = "JDex", text = "󱪹" },
 ]
