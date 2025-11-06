@@ -1,0 +1,47 @@
+#compdef genact
+
+autoload -U is-at-least
+
+_genact() {
+    typeset -A opt_args
+    typeset -a _arguments_options
+    local ret=1
+
+    if is-at-least 5.2; then
+        _arguments_options=(-s -S -C)
+    else
+        _arguments_options=(-s -C)
+    fi
+
+    local context curcontext="$curcontext" state line
+    _arguments "${_arguments_options[@]}" \
+'*-m+[Run only these modules]:MODULES:(ansible bootlog botnet bruteforce cargo cc composer cryptomining docker_build docker_image_rm download julia kernel_compile memdump mkinitcpio rkhunter simcity terraform weblog)' \
+'*--modules=[Run only these modules]:MODULES:(ansible bootlog botnet bruteforce cargo cc composer cryptomining docker_build docker_image_rm download julia kernel_compile memdump mkinitcpio rkhunter simcity terraform weblog)' \
+'-s+[Global speed factor]:SPEED_FACTOR: ' \
+'--speed-factor=[Global speed factor]:SPEED_FACTOR: ' \
+'-i+[Instantly print this many lines]:INSTANT_PRINT_LINES: ' \
+'--instant-print-lines=[Instantly print this many lines]:INSTANT_PRINT_LINES: ' \
+'--exit-after-time=[Exit after running for this long (format example\: 2h10min)]:EXIT_AFTER_TIME: ' \
+'--exit-after-modules=[Exit after running this many modules]:EXIT_AFTER_MODULES: ' \
+'--print-completions=[Generate completion file for a shell]:shell:(bash elvish fish powershell zsh)' \
+'-l[List available modules]' \
+'--list-modules[List available modules]' \
+'--print-manpage[Generate man page]' \
+'-h[Print help]' \
+'--help[Print help]' \
+'-V[Print version]' \
+'--version[Print version]' \
+&& ret=0
+}
+
+(( $+functions[_genact_commands] )) ||
+_genact_commands() {
+    local commands; commands=()
+    _describe -t commands 'genact commands' commands "$@"
+}
+
+if [ "$funcstack[1]" = "_genact" ]; then
+    _genact "$@"
+else
+    compdef _genact genact
+fi
