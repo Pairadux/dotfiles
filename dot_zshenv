@@ -18,6 +18,7 @@ export CLOUD="$HOME/Cloud"
 # editor
 export EDITOR="nvim"
 export VISUAL="nvim"
+export TERMINAL="ghostty"
 
 # zsh
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
