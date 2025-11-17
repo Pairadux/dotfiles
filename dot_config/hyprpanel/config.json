@@ -97,5 +97,6 @@
   "bar.customModules.storage.units": "auto",
   "scalingPriority": "hyprland",
   "theme.bar.margin_bottom": "0em",
-  "theme.bar.menus.menu.dashboard.scaling": 100
+  "theme.bar.menus.menu.dashboard.scaling": 100,
+  "bar.workspaces.ignored": ""
 }
