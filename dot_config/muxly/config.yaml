@@ -17,6 +17,7 @@ scan_dirs:
 
 # Additional entry directories (always included)
 entry_dirs:
+    - ~/.dotfiles
     - ~/Documents
     - ~/Cloud
     - ~/JDex
