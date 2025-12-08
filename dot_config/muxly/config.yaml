@@ -1,9 +1,23 @@
-# Configuration for Muxly
-
-# Directories to scan for projects
-# Each entry can be a simple path or include depth:
-#   - path: ~/
-#     depth: 3
+always_kill_on_last_session: true
+default_depth: 1
+editor: nvim
+entry_dirs:
+    - ~/.dotfiles
+    - ~/Documents
+    - ~/Cloud
+    - ~/JDex
+fallback_session:
+    layout:
+        windows:
+            - cmd: ""
+              name: window
+    name: Default
+    path: ~/
+ignore_dirs:
+    - ~/Dev/_practice
+    - ~/Dev/_archive
+    - ~/Dev/CS-Homework/
+    - ~/Dev/CS-Homework/.git
 scan_dirs:
     - path: ~/.dotfiles/dot_config
       depth: null
@@ -14,48 +28,11 @@ scan_dirs:
     - path: ~/Dev/CS-Homework/
       depth: null
       alias: ""
-
-# Additional entry directories (always included)
-entry_dirs:
-    - ~/.dotfiles
-    - ~/Documents
-    - ~/Cloud
-    - ~/JDex
-
-# Directory names to ignore when scanning
-ignore_dirs:
-    - ~/Dev/_practice
-    - ~/Dev/_archive
-    - ~/Dev/CS-Homework/
-    - ~/Dev/CS-Homework/.git
-
-# Fallback session for when killing the final session
-fallback_session:
-    name: Default
-    path: ~/
-    layout:
-        windows:
-            - name: window
-              cmd: ""
-
-# Base index for tmux windows (0 or 1)
-tmux_base: 1
-
-# Default scanning depth for directories
-default_depth: 1
-
-# Default layout for new tmux sessions
 session_layout:
     windows:
-        - name: edit
-          cmd: nvim
-        - name: term
-          cmd: ""
-
-# Default editor editing this config file
-editor: vi
-
-# The string that will prefix currently active Tmux sessions when using 'muxly'
+        - cmd: nvim
+          name: edit
+        - cmd: ""
+          name: term
+tmux_base: 1
 tmux_session_prefix: '[TMUX] '
-
-always_kill_on_last_session: True
