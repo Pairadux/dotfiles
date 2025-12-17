@@ -17,6 +17,7 @@ return {
             ensure_installed = {
                 'bash',
                 'c',
+                'dart',
                 'diff',
                 'html',
                 'lua',
@@ -54,7 +55,7 @@ return {
                 --  the list of additional_vim_regex_highlighting and disabled languages for indent.
                 additional_vim_regex_highlighting = { 'ruby', 'markdown', 'markdown_inline' },
             },
-            indent = { enable = true, disable = { 'ruby', 'markdown', 'markdown_inline' } },
+            indent = { enable = true, disable = { 'ruby', 'markdown', 'markdown_inline', 'dart' } },
         },
         -- There are additional nvim-treesitter modules that you can use to interact
         -- with nvim-treesitter. You should go explore a few and see what interests you:

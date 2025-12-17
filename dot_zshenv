@@ -77,7 +77,7 @@ export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
 export NVM_DIR="$XDG_DATA_HOME/nvm"
 
 # path
-export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$GOBIN:$PATH"
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$GOBIN:$HOME/.local/share/flutter-sdk/bin:$PATH"
 
 # pagers
 if [[ "$(uname)" == "Darwin" ]]; then

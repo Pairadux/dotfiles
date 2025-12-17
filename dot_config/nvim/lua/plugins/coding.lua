@@ -43,6 +43,43 @@ return {
         build = ':lua require("go.install").update_all_sync()',
     }, -- }}}
 
+    -- Flutter Tools {{{
+    {
+        'akinsho/flutter-tools.nvim',
+        lazy = false,
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
+        config = function()
+            require('flutter-tools').setup {
+                ui = {
+                    border = 'rounded',
+                },
+                decorations = {
+                    statusline = {
+                        app_version = true,
+                        device = true,
+                    },
+                },
+                debugger = {
+                    enabled = false, -- Can enable later if you want
+                },
+                lsp = {
+                    color = {
+                        enabled = true, -- Shows colors in editor
+                        background = false,
+                        foreground = false,
+                        virtual_text = true,
+                    },
+                    settings = {
+                        showTodos = true,
+                        completeFunctionCalls = true,
+                    },
+                },
+            }
+        end,
+    }, -- }}}
+
     -- Blink {{{
     {
         'saghen/blink.cmp',
