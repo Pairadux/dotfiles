@@ -9,7 +9,7 @@
 pre_sudo = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["gcloud"]
+disable = ["gcloud", "self_update"]
 
 # Display the time in step titles (default: true)
 display_time = true
