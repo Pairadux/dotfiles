@@ -1,3 +1,4 @@
 zstyle ':antidote:bundle' use-friendly-names 'yes'
 zstyle ':plugin:ez-compinit' 'use-cache' 'yes'
 zstyle ':plugin:ez-compinit' 'compstyle' 'prez'
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
