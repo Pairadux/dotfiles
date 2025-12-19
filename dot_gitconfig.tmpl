@@ -14,9 +14,13 @@
 	sort = version:refname
 [pager]
 	tag = false
+{{- $ghPath := "/usr/bin/gh" }}
+{{- if eq .chezmoi.os "darwin" }}
+{{-   $ghPath = "/opt/homebrew/bin/gh" }}
+{{- end }}
 [credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper =
+	helper = !{{ $ghPath }} auth git-credential
 [credential "https://gist.github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper =
+	helper = !{{ $ghPath }} auth git-credential
