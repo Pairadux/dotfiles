@@ -71,10 +71,11 @@ theme = TokyoNight
 # +--------+
 # | WINDOW |
 # +--------+
-window-decoration = none
+window-decoration = auto
 window-save-state = always
 window-padding-x  = 0
 window-padding-y  = 2
+macos-titlebar-style = hidden
 
 
 # +----------+
