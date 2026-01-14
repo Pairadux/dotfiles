@@ -77,12 +77,16 @@ window-padding-x  = 0
 window-padding-y  = 2
 macos-titlebar-style = hidden
 
-
 # +----------+
 # | BEHAVIOR |
 # +----------+
 confirm-close-surface = false
 
+# +------------+
+# | MACOS ICON |
+# +------------+
+macos-icon = custom
+macos-custom-icon = ~/.config/ghostty/assets/ghostty-original.icns
 
 # +---------------+
 # | CURSOR SHADER |
