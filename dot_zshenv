@@ -10,6 +10,9 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_PICTURES_DIR="$HOME/Media/Pictures"
 export XDG_BIN_HOME="$HOME/.local/bin"
 
+# SSH
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
 # DIRECTORIES
 export DOTFILES="$HOME/.dotfiles"
 export HYPRSHOT_DIR="$XDG_PICTURES_DIR/screenshots/hyprshot/"
