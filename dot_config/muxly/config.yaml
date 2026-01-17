@@ -5,7 +5,6 @@ entry_dirs:
     - ~/.dotfiles
     - ~/Documents
     - ~/Cloud
-    - ~/JDex
 fallback_session:
     layout:
         windows:
