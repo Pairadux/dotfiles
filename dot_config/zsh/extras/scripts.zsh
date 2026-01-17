@@ -9,11 +9,13 @@ function y() {
     rm -f -- "$tmp"
 }
 
-vault_backup() {
-    git add .
-    git commit -m "Vault Backup: $(date '+%Y-%m-%d %H:%M:%S')"
-    git pull
-    git push
+# push branch, create PR, merge, switch to main, pull
+prship() {
+    git push -u origin HEAD && \
+    gh pr create --fill && \
+    gh pr merge --merge --delete-branch && \
+    git switch main && \
+    git pull origin main
 }
 
 # fuzzy cd
