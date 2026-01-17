@@ -13,7 +13,7 @@ function y() {
 prship() {
     git push -u origin HEAD && \
     gh pr create --fill && \
-    gh pr merge --merge --delete-branch && \
+    gh pr merge --rebase --delete-branch && \
     git switch main && \
     git pull origin main
 }
