@@ -27,3 +27,5 @@ Thumbs.db
 
 # Muxly
 .muxly
+
+**/.claude/settings.local.json
