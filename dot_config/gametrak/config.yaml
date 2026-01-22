@@ -1,0 +1,27 @@
+games:
+    - class: steam_app_
+      name: Steam Games
+      prefix: true
+    - class: deadlock.exe
+      name: Deadlock
+      prefix: false
+    - class: hl2_linux
+      name: Half-Life 2
+      prefix: false
+    - class: RimWorldLinux
+      name: RimWorld
+      prefix: false
+    - class: FishingPlanet.X86_64
+      name: Fishing Planet
+      prefix: false
+    - class: rocketleague
+      name: Rocket League
+      prefix: true
+    - class: BeamNG.drive.x64
+      name: BeamNG.drive
+      prefix: false
+settings:
+    notifications: true
+    logsessions: false
+    sessionsfile: /home/austincgause/.local/share/gametrak/sessions.jsonl
+    hyprlandconf: /home/austincgause/.config/gametrak/games.conf
