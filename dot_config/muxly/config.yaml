@@ -4,6 +4,7 @@ editor: nvim
 entry_dirs:
     - ~/.dotfiles
     - ~/Documents
+    - ~/Downloads
     - ~/Cloud
 fallback_session:
     layout:
