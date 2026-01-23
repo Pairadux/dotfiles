@@ -22,6 +22,6 @@ games:
       prefix: false
 settings:
     notifications: true
-    log_sessions: false
+    log_sessions: true
     sessions_file: /home/austincgause/.local/share/gametrak/sessions.jsonl
     hyprland_conf: /home/austincgause/.config/gametrak/games.conf
