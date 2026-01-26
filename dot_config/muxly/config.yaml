@@ -1,44 +1,33 @@
-# Directories to scan for projects
 scan_dirs:
-  - path: ~/.dotfiles/dot_config
-  - path: ~/Dev
-  - path: ~/Dev/CS-Homework/
-
-# Additional entry directories (included directly, not scanned)
+    - path: ~/.dotfiles/dot_config
+      alias: "Config"
+    - path: ~/Dev
+    - path: ~/Dev/CS-Homework/
 entry_dirs:
-  - ~/.dotfiles
-  - ~/Documents
-  - ~/Downloads
-  - ~/Cloud
-
-# Directory paths to exclude from scanning
+    - ~/.dotfiles
+    - ~/Documents
+    - ~/Downloads
+    - ~/Cloud
 ignore_dirs:
-  - ~/Dev/_practice
-  - ~/Dev/_archive
-  - ~/Dev/CS-Homework/
-  - ~/Dev/CS-Homework/.git
-
-# Session to create when killing the last tmux session
-fallback_session:
-  name: Default
-  path: ~/
-  layout:
-    windows:
-      - name: window
-        cmd: ""
-
-# Default layout for new tmux sessions
+    - ~/Dev/_practice
+    - ~/Dev/_archive
+    - ~/Dev/CS-Homework/
 session_layout:
-  windows:
-    - name: edit
-      cmd: nvim
-    - name: term
-      cmd: ""
-
-# General settings
+    windows:
+        - cmd: nvim
+          name: edit
+        - cmd: ""
+          name: term
+fallback_session:
+    layout:
+        windows:
+            - cmd: ""
+              name: window
+    name: Default
+    path: ~/
 settings:
-  editor: nvim
-  tmux_base: 1
-  default_depth: 1
-  tmux_session_prefix: "[TMUX] "
-  always_kill_on_last_session: true
+    always_kill_on_last_session: true
+    default_depth: 1
+    editor: nvim
+    tmux_base: 1
+    tmux_session_prefix: '[TMUX] '
