@@ -26,3 +26,4 @@ settings:
     log_sessions: true
     sessions_file: /home/austincgause/.local/share/gametrak/sessions.jsonl
     hyprland_conf: /home/austincgause/.config/gametrak/games.conf
+    min_session_mins: 15
