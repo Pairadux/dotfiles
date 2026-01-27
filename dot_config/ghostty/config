@@ -82,6 +82,11 @@ macos-titlebar-style = hidden
 # +----------+
 confirm-close-surface = false
 
+# +-------------------+
+# | SHELL INTEGRATION |
+# +-------------------+
+shell-integration-features = cursor,no-sudo,title,ssh-env,ssh-terminfo,path
+
 # +------------+
 # | MACOS ICON |
 # +------------+
