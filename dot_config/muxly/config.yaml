@@ -1,11 +1,23 @@
-always_kill_on_last_session: true
-default_depth: 1
-editor: nvim
+scan_dirs:
+    - path: ~/.dotfiles/dot_config
+      alias: "Config"
+    - path: ~/Dev
+    - path: ~/Dev/CS-Homework/
 entry_dirs:
     - ~/.dotfiles
     - ~/Documents
     - ~/Downloads
     - ~/Cloud
+ignore_dirs:
+    - ~/Dev/_practice
+    - ~/Dev/_archive
+    - ~/Dev/CS-Homework/
+session_layout:
+    windows:
+        - cmd: nvim
+          name: edit
+        - cmd: ""
+          name: term
 fallback_session:
     layout:
         windows:
@@ -13,26 +25,9 @@ fallback_session:
               name: window
     name: Default
     path: ~/
-ignore_dirs:
-    - ~/Dev/_practice
-    - ~/Dev/_archive
-    - ~/Dev/CS-Homework/
-    - ~/Dev/CS-Homework/.git
-scan_dirs:
-    - path: ~/.dotfiles/dot_config
-      depth: null
-      alias: ""
-    - path: ~/Dev
-      depth: null
-      alias: ""
-    - path: ~/Dev/CS-Homework/
-      depth: null
-      alias: ""
-session_layout:
-    windows:
-        - cmd: nvim
-          name: edit
-        - cmd: ""
-          name: term
-tmux_base: 1
-tmux_session_prefix: '[TMUX] '
+settings:
+    always_kill_on_last_session: true
+    default_depth: 1
+    editor: nvim
+    tmux_base: 1
+    tmux_session_prefix: '[TMUX] '
