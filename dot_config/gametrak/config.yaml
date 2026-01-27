@@ -2,6 +2,7 @@ games:
     - class: steam_app_
       name: Steam Games
       prefix: true
+      use_title: true
     - class: deadlock.exe
       name: Deadlock
       prefix: false
