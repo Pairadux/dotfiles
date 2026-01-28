@@ -3,9 +3,9 @@ games:
       name: Steam Games
       prefix: true
       use_title: true
-    - class: deadlock.exe
-      name: Deadlock
-      prefix: false
+    # - class: deadlock.exe
+    #   name: Deadlock
+    #   prefix: false
     - class: hl2_linux
       name: Half-Life 2
       prefix: false
