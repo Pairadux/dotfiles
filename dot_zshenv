@@ -94,3 +94,4 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PAGER="less -R"
 fi
 
+. "/home/austincgause/.local/share/bob/env/env.sh"
