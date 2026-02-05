@@ -1,3 +1,9 @@
+{{- $homePath := "/home/austincgause" }}
+{{- $ghPath := "/usr/bin/gh" }}
+{{- if eq .chezmoi.os "darwin" }}
+{{-   $ghPath = "/opt/homebrew/bin/gh" }}
+{{-   $homePath = "/Users/austingause" }}
+{{- end -}}
 [user]
 	email = austincgause@gmail.com
 	name = Pairadux
@@ -9,15 +15,11 @@
 [init]
 	defaultBranch = main
 [core]
-	excludesfile = /Users/austingause/.config/git/ignore
+	excludesfile = {{ $homePath }}/.config/git/ignore
 [tag]
 	sort = version:refname
 [pager]
 	tag = false
-{{- $ghPath := "/usr/bin/gh" }}
-{{- if eq .chezmoi.os "darwin" }}
-{{-   $ghPath = "/opt/homebrew/bin/gh" }}
-{{- end }}
 [credential "https://github.com"]
 	helper =
 	helper = !{{ $ghPath }} auth git-credential
