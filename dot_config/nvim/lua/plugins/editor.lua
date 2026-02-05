@@ -11,12 +11,12 @@ return {
     { 'NMAC427/guess-indent.nvim' }, -- Detect tabstop and shiftwidth automatically
 
     -- Mini {{{
-    { 'echasnovski/mini.ai', opts = {} },
+    { 'nvim-mini/mini.ai', opts = {} },
 
-    { 'echasnovski/mini.align', opts = {} },
+    { 'nvim-mini/mini.align', opts = {} },
 
     {
-        'echasnovski/mini.files',
+        'nvim-mini/mini.files',
         opts = {
             mappings = {
                 go_in = '',
@@ -39,7 +39,7 @@ return {
         },
     },
 
-    { 'echasnovski/mini.move', event = 'VeryLazy', opts = {} }, -- }}}
+    { 'nvim-mini/mini.move', event = 'VeryLazy', opts = {} }, -- }}}
 
     -- Todo Comments {{{
     {
