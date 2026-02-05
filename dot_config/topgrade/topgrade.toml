@@ -49,3 +49,8 @@ use_sudo = false
 [flatpak]
 # Use sudo for system-wide flatpak updates
 use_sudo = true
+
+
+
+[commands]
+"Mason Update" = "nvim --headless -c 'autocmd User MasonToolsUpdateCompleted quitall' -c 'MasonToolsUpdate'"
