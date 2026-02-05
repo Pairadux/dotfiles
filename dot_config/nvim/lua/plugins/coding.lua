@@ -8,27 +8,10 @@
 
 return {
 
-    { 'Bilal2453/luvit-meta', lazy = true }, -- optional `vim.uv` typings
-
     {
         'mfussenegger/nvim-jdtls',
         enabled = false,
     },
-
-    -- Lazy Dev {{{
-    {
-        'folke/lazydev.nvim',
-        ft = 'lua',
-        opts = {
-            library = {
-                -- Load luvit types when the `vim.uv` word is found
-                { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-                { path = 'lazy.nvim', words = { 'LazyVim' } },
-                { path = 'snacks.nvim', words = { 'Snacks' } },
-                'nvim-dap-ui',
-            },
-        },
-    }, -- }}}
 
     -- Go Nvim {{{
     {
@@ -118,7 +101,6 @@ return {
                     require('luasnip.loaders.from_vscode').lazy_load()
                 end,
             },
-            { 'folke/lazydev.nvim' },
         },
         opts = {
             -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
@@ -159,12 +141,6 @@ return {
             },
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
-                per_filetype = {
-                    lua = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
-                },
-                providers = {
-                    lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-                },
             },
             fuzzy = { implementation = 'prefer_rust_with_warning' },
         },

@@ -18,7 +18,6 @@ return {
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             { 'mason-org/mason.nvim' },
-            { 'mason-org/mason-lspconfig.nvim' },
             { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
             { 'j-hui/fidget.nvim', opts = {} },
             { 'saghen/blink.cmp' },
@@ -39,21 +38,13 @@ return {
                     map('<leader>lr', vim.lsp.buf.rename, '[L]sp [R]ename')
                     map('<leader>la', vim.lsp.buf.code_action, '[L]sp [A]ction', { 'n', 'x' })
                     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-                    -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
-                    local function client_supports_method(client, method, bufnr)
-                        if vim.fn.has 'nvim-0.11' == 1 then
-                            return client:supports_method(method, bufnr)
-                        else
-                            return client.supports_method(method, { bufnr = bufnr })
-                        end
-                    end
                     -- The following two autocommands are used to highlight references of the
                     -- word under your cursor when your cursor rests there for a little while.
                     --    See `:help CursorHold` for information about when this is executed
                     --
                     -- When you move your cursor, the highlights will be cleared (the second autocommand).
                     local client = vim.lsp.get_client_by_id(event.data.client_id)
-                    -- if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
+                    -- if client and client:supports_method('textDocument/documentHighlight', event.buf) then
                     --     local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
                     --     vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
                     --         buffer = event.buf,
@@ -75,9 +66,7 @@ return {
                     -- end
                     -- The following code creates a keymap to toggle inlay hints in your
                     -- code, if the language server you are using supports them
-                    --
-                    -- This may be unwanted, since they displace some of your code
-                    if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
+                    if client and client:supports_method('textDocument/inlayHint', event.buf) then
                         map('<leader>lh', function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
                         end, '[L]sp Inlay [H]ints')
@@ -122,8 +111,6 @@ return {
             --  So, we create new capabilities with blink.cmp, and then broadcast that to the servers.
             local capabilities = require('blink.cmp').get_lsp_capabilities()
             -- Enable the following language servers
-            --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-            --
             --  Add any additional override configuration in the following tables. Available keys are:
             --  - cmd (table): Override the default command used to start the server
             --  - filetypes (table): Override the default list of associated filetypes for the server
@@ -178,21 +165,44 @@ return {
                     },
                 },
                 lua_ls = {
-                    -- cmd = { ... },
-                    -- filetypes = { ... },
-                    -- capabilities = {},
                     settings = {
                         Lua = {
                             completion = {
                                 callSnippet = 'Replace',
                             },
-                            -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-                            -- diagnostics = { disable = { 'missing-fields' } },
                         },
                     },
-                    hyprls = {},
                 },
+                hyprls = {},
             }
+            -- Merge blink capabilities into each server and register with native LSP API
+            for name, server in pairs(servers) do
+                server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+                vim.lsp.config(name, server)
+                vim.lsp.enable(name)
+            end
+            -- Special lua_ls config: inject Neovim runtime library (replaces lazydev.nvim)
+            vim.lsp.config('lua_ls', {
+                on_init = function(client)
+                    if client.workspace_folders then
+                        local path = client.workspace_folders[1].name
+                        if
+                            path ~= vim.fn.stdpath 'config'
+                            and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+                        then
+                            return
+                        end
+                    end
+                    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+                        runtime = { version = 'LuaJIT', path = { 'lua/?.lua', 'lua/?/init.lua' } },
+                        workspace = {
+                            checkThirdParty = false,
+                            library = vim.api.nvim_get_runtime_file('', true),
+                        },
+                    })
+                end,
+            })
+            -- Mason tool installer — ensure all servers + formatters/linters are installed
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format Lua code
@@ -206,20 +216,6 @@ return {
                 'google-java-format',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
-            require('mason-lspconfig').setup {
-                ensure_installed = {}, -- explicitly set to an empty table thanks to the mason-tool-installer above
-                automatic_installation = false,
-                handlers = {
-                    function(server_name)
-                        local server = servers[server_name] or {}
-                        -- This handles overriding only values explicitly passed
-                        -- by the server configuration above. Useful when disabling
-                        -- certain features of an LSP (for example, turning off formatting for ts_ls)
-                        server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-                        require('lspconfig')[server_name].setup(server)
-                    end,
-                },
-            }
         end,
     },
 }
