@@ -207,9 +207,11 @@ return {
             --     end,
             -- })
             -- Mason tool installer — ensure all servers + formatters/linters are installed
-            local ensure_installed = vim.tbl_keys(servers or {})
-            vim.list_extend(ensure_installed, {
-                'stylua', -- Used to format Lua code
+            local ensure_installed = {
+                'bash-language-server',
+                'lua-language-server',
+                'hyprls',
+                'stylua',
                 'prettier',
                 'clang-format',
                 'shfmt',
@@ -218,7 +220,7 @@ return {
                 'gofumpt',
                 'beautysh',
                 'google-java-format',
-            })
+            }
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
         end,
     },
