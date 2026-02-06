@@ -73,6 +73,17 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
     --color=separator:#ff9e64 \
     --color=spinner:#ff007c \
 "
+export FZF_ALT_C_COMMAND="{ fd --type d --max-depth 4 \
+    --exclude Library \
+    --exclude Movies \
+    --exclude Music \
+    --exclude Pictures \
+    --exclude Public \
+    --exclude Archive \
+    --exclude 'Dev/_*' \
+    --exclude 'Creative Cloud Files' \
+    --exclude google-cache-sdk; \
+    fd --type d --max-depth 3 . .dotfiles .config 2>/dev/null; }"
 export FZF_MARKS_FILE="$HOME/.local/share/.fzf-marks"
 
 # from xdg-ninja
