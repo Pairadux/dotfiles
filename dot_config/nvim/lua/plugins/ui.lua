@@ -96,6 +96,7 @@ return {
             },
             sections = {
                 lualine_c = { 'lsp_status' },
+                lualine_z = {'filename', 'location'}
             },
         },
     }, -- }}}
