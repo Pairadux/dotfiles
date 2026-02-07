@@ -28,12 +28,13 @@ scan_dirs:
     - path: ~/.dotfiles/dot_config
       alias: "Config"
     - path: ~/Dev
+      template: "Editor, Claude, Terminal"
     - path: ~/Dev/CS-Homework
 entry_dirs:
-    - ~/.dotfiles
-    - ~/Documents
-    - ~/Downloads
-    - ~/Cloud
+    - path: ~/.dotfiles
+    - path: ~/Documents
+    - path: ~/Downloads
+    - path: ~/Cloud
 ignore_dirs:
     - ~/Dev/_practice
     - ~/Dev/_archive
@@ -43,10 +44,16 @@ ignore_dirs:
 primary_template:
     name: Editor + Terminal
     windows:
-        - name: editor
+        - name: edit
           cmd: nvim
         - name: term
 templates:
+    - name: Editor, Claude, Terminal
+      windows:
+        - name: edit
+          cmd: nvim
+        - name: claude
+        - name: term
     - name: Single Window
       windows:
         - name: main
