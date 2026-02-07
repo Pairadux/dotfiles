@@ -78,7 +78,7 @@ o.wrap          = false                                   -- Disable line wrappi
 o.spell         = false                                   -- Disable spell checking
 o.list          = false                                   -- Hide whitespace characters
 opt.listchars   = { tab = '» ', trail = '·', nbsp = '␣' } -- Whitespace characters (keep opt, not o)
-opt.fillchars   = { eob = ' ' }                           -- End-of-buffer filler (keep opt, not o)
+opt.fillchars:append({eob = ' ' })                        -- End-of-buffer filler (keep opt, not o)
 opt.whichwrap:append('<>[]hl')                            -- Allow cursor wrapping with these keys (keep opt, not o)
 
 -----------------------------------------------------------
