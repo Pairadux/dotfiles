@@ -26,26 +26,26 @@ map('i', '<S-Tab>',   '<C-d>',   { desc = 'Undent in insert mode', silent = true
 ------------------------------------------------------------
 
 -- Window Movement
-map('n', '<C-h>', '<C-w>h', { desc = 'Switch Window Left' })
-map('n', '<C-l>', '<C-w>l', { desc = 'Switch Window Right' })
-map('n', '<C-j>', '<C-w>j', { desc = 'Switch Window Down' })
-map('n', '<C-k>', '<C-w>k', { desc = 'Switch Window Up' })
+-- map('n', '<C-h>', '<C-w>h', { desc = 'Switch Window Left' })
+-- map('n', '<C-l>', '<C-w>l', { desc = 'Switch Window Right' })
+-- map('n', '<C-j>', '<C-w>j', { desc = 'Switch Window Down' })
+-- map('n', '<C-k>', '<C-w>k', { desc = 'Switch Window Up' })
 
 -- Tab Management
-map('n', '<leader><Tab>n', '<Cmd>$tabnew<CR>  ', { desc = '[Tab] [N]ew Tab' })
-map('n', '<leader><Tab>x', '<Cmd>tabclose<CR>',  { desc = '[Tab] Close'     })
-map('n', '<C-Tab>',        'gt',                 { desc = '[Tab] Next'      })
-map('n', '<C-S-Tab>',      'gT',                 { desc = '[Tab] Prev'      })
+-- map('n', '<leader><Tab>n', '<Cmd>$tabnew<CR>  ', { desc = '[Tab] [N]ew Tab' })
+-- map('n', '<leader><Tab>x', '<Cmd>tabclose<CR>',  { desc = '[Tab] Close'     })
+-- map('n', '<C-Tab>',        'gt',                 { desc = '[Tab] Next'      })
+-- map('n', '<C-S-Tab>',      'gT',                 { desc = '[Tab] Prev'      })
 
 -- Miscellaneous Normal Mappings
 map('n', '<Esc>',      '<cmd>noh<CR>',            { desc = 'Clear Highlights' })
-map('n', '<C-s>',      '<cmd>w<CR>',              { desc = 'Save File' })
+-- map('n', '<C-s>',      '<cmd>w<CR>',              { desc = 'Save File' })
 map('n', '<leader>od', vim.diagnostic.setloclist, { desc = '[O]pen [D]iagnostic Loclist' })
 
 -- Open Applications/Tools
 map('n', '<leader>ol', '<cmd>Lazy<CR>',  { desc = '[O]pen [L]azy',  noremap = true, silent = true })
 map('n', '<leader>om', '<cmd>Mason<CR>', { desc = '[O]pen [M]ason', noremap = true, silent = true })
-map('n', '<leader>ot', function() util.open_todo() end, { desc = '[O]pen [T]odo', noremap = true, silent = true })
+-- map('n', '<leader>ot', function() util.open_todo() end, { desc = '[O]pen [T]odo', noremap = true, silent = true })
 
 -- Custom Utility Functions
 map('n', '<leader>ib', function() util.insert_line_break()  end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
@@ -55,43 +55,6 @@ map('n', '<leader>it', function() util.insert_title()       end, { noremap = tru
 map('n', '<leader>aa', function() util.open_claude_simple() end, { noremap = true, silent = true, desc = '[A]I [A]ssistant' })
 map('n', '<leader>af', function() util.open_claude_with_file() end, { noremap = true, silent = true, desc = '[A]I with [F]ile' })
 map('n', '<leader>ac', function() util.open_claude_continue() end, { noremap = true, silent = true, desc = '[A]I [C]ontinue' })
-
--- stylua: ignore end
-
--- Code Runner (Snacks Terminal)
-map('n', '<leader>rc', function()
-    local file = vim.fn.expand '%:p'
-    local ft = vim.bo.filetype
-
-    local ft_cmds = {
-        c = string.format('clear && gcc -o /tmp/out %q && /tmp/out', file),
-        cpp = string.format('clear && g++ -o /tmp/out %q && /tmp/out', file),
-        python = string.format('python3 %q', file),
-        lua = string.format('lua %q', file),
-        javascript = string.format('node %q', file),
-        rust = 'cargo run',
-        go = string.format('go run %q', file),
-        sh = string.format('bash %q', file),
-        zsh = string.format('zsh %q', file),
-    }
-
-    local cmd = ft_cmds[ft]
-    if cmd then
-        require('snacks.terminal').toggle(cmd, {
-            win = {
-                border = 'single',
-                title = string.format('Running %s', vim.fn.expand '%:t'),
-                width = 0.8,
-                height = 0.6,
-            },
-            auto_close = false,
-        })
-    else
-        vim.notify(string.format('No runner configured for filetype: %s', ft), vim.log.levels.WARN)
-    end
-end, { desc = '[R]un [C]urrent File', noremap = true, silent = true })
-
--- stylua: ignore start
 
 -- Content Operations
 map('n', '<leader>cc', '<cmd>%y+<CR>', { desc = '[C]ontent [C]opy' })
