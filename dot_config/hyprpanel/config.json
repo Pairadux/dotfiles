@@ -62,8 +62,8 @@
   "theme.bar.buttons.dashboard.enableBorder": false,
   "theme.bar.buttons.workspaces.enableBorder": false,
   "bar.workspaces.show_icons": false,
-  "bar.workspaces.show_numbered": true,
-  "bar.workspaces.showWsIcons": false,
+  "bar.workspaces.show_numbered": false,
+  "bar.workspaces.showWsIcons": true,
   "bar.workspaces.showApplicationIcons": false,
   "bar.systray.ignore": [
     "nm-applet",
@@ -98,5 +98,17 @@
   "scalingPriority": "hyprland",
   "theme.bar.margin_bottom": "0em",
   "theme.bar.menus.menu.dashboard.scaling": 100,
-  "bar.workspaces.ignored": ""
+  "bar.workspaces.ignored": "",
+  "menus.transition": "crossfade",
+  "theme.bar.transparent": false,
+  "bar.workspaces.workspaces": 2,
+  "bar.workspaces.applicationIconOncePerWorkspace": true,
+  "bar.workspaces.showAllActive": true,
+  "bar.workspaces.workspaceIconMap": {
+    "20": "󰊠",
+    "30": "",
+    "40": "",
+    "50": "",
+    "100": ""
+  }
 }
