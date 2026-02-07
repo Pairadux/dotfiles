@@ -17,6 +17,7 @@ return {
 
     {
         'nvim-mini/mini.files',
+        cond = false,
         opts = {
             mappings = {
                 go_in = '',
@@ -104,22 +105,21 @@ return {
     -- Harpoon {{{
     {
         'ThePrimeagen/harpoon',
-        cond = false,
         branch = 'harpoon2',
+        event = 'VeryLazy',
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {},
         keys = {
             -- stylua: ignore start
-            { '<leader>hl',      function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, desc = '[H]arpoon [L]ist' },
-            { '<leader><space>', function() require('harpoon'):list():add()     end, desc = 'Harpoon Add' },
-            { '<leader>hr',      function() require('harpoon'):list():remove()  end, desc = '[H]arpoon [R]emove' },
-            { '<C-n>',           function() require('harpoon'):list():next()    end, desc = 'Harpoon Next Location' },
-            { '<C-p>',           function() require('harpoon'):list():prev()    end, desc = 'Harpoon Previous Location' },
-            { '<leader>1',       function() require('harpoon'):list():select(1) end, desc = 'Harpoon 1' },
-            { '<leader>2',       function() require('harpoon'):list():select(2) end, desc = 'Harpoon 2' },
-            { '<leader>3',       function() require('harpoon'):list():select(3) end, desc = 'Harpoon 3' },
-            { '<leader>4',       function() require('harpoon'):list():select(4) end, desc = 'Harpoon 4' },
-            { '<leader>5',       function() require('harpoon'):list():select(5) end, desc = 'Harpoon 5' },
+            { '<leader>oh',        function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end, desc = '[O]pen [H]arpoon' },
+            { '<leader><space>',   function() require('harpoon'):list():add()     end, desc = 'Harpoon Add' },
+            { '<leader><BS>',      function() require('harpoon'):list():remove()  end, desc = 'Harpoon Remove' },
+            { '<C-n>',             function() require('harpoon'):list():next()    end, desc = 'Harpoon Next Location' },
+            { '<C-p>',             function() require('harpoon'):list():prev()    end, desc = 'Harpoon Previous Location' },
+            { '<C-h>',             function() require('harpoon'):list():select(1) end, desc = 'Harpoon 1' },
+            { '<C-j>',             function() require('harpoon'):list():select(2) end, desc = 'Harpoon 2' },
+            { '<C-k>',             function() require('harpoon'):list():select(3) end, desc = 'Harpoon 3' },
+            { '<C-l>',             function() require('harpoon'):list():select(4) end, desc = 'Harpoon 4' },
             -- stylua: ignore end
         },
     }, -- }}}
@@ -135,10 +135,23 @@ return {
         },
         opts = {
             default_file_explorer = true,
+            skip_confirm_for_simple_edits = true,
+            watch_for_changes = true,
             columns = {
                 'permissions',
                 'size',
                 'icon',
+            },
+            view_options = {
+                show_hidden = true,
+                is_always_hidden = function(name)
+                    return name == '.git' or name == '.DS_Store'
+                end,
+            },
+            keymaps = {
+                ['h'] = 'actions.parent',
+                ['l'] = 'actions.select',
+                ['q'] = 'actions.close',
             },
             delete_to_trash = true,
         },
@@ -148,6 +161,7 @@ return {
     {
         'mikavilpas/yazi.nvim',
         cmd = 'Yazi',
+        cond = false,
         dependencies = { 'folke/snacks.nvim' },
         keys = {
             {
@@ -213,6 +227,7 @@ return {
     -- Vim Tmux Navigator {{{
     {
         'christoomey/vim-tmux-navigator',
+        cond = false,
         keys = {
             { '<C-h>', '<cmd>TmuxNavigateLeft<CR>', desc = 'Tmux Window Left' },
             { '<C-l>', '<cmd>TmuxNavigateRight<CR>', desc = 'Tmux Window Right' },
