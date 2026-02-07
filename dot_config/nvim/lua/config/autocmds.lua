@@ -9,21 +9,6 @@ local autocmd = vim.api.nvim_create_autocmd
 --     end,
 -- })
 
--- Load dirsession on VimEnter
-autocmd('VimEnter', {
-    callback = function()
-        local cwd = vim.fn.getcwd()
-        if vim.fn.argc() > 0 then
-            return -- Don't load session when args are given
-        end
-        local ok, _ = pcall(function()
-            require('resession').load(cwd, { dir = 'dirsession', silent = true })
-        end)
-        if not ok then
-            vim.notify('No session found for ' .. cwd, vim.log.levels.INFO)
-        end
-    end,
-})
 
 -- Open snacks picker on dir open
 -- autocmd('VimEnter', {
