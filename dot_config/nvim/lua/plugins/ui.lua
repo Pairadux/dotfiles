@@ -10,6 +10,7 @@ return {
     -- Tabby {{{
     {
         'nanozuki/tabby.nvim',
+        cond = false,
         lazy = false,
         opts = {
             line = function(line)
