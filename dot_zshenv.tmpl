@@ -1,3 +1,7 @@
+{{- $homePath := "/home/austincgause" }}
+{{- if eq .chezmoi.os "darwin" }}
+{{-   $homePath = "/Users/austingause" }}
+{{- end -}}
 #!/usr/bin/env zsh
 
 ######################################## EXPORT ENVIRONMENT VARIABLE ########################################
@@ -105,4 +109,4 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PAGER="less -R"
 fi
 
-. "/home/austincgause/.local/share/bob/env/env.sh"
+. "{{ $homePath }}/.local/share/bob/env/env.sh"
