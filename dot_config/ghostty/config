@@ -73,8 +73,10 @@ theme = TokyoNight
 # +--------+
 window-decoration = auto
 window-save-state = always
-window-padding-x  = 0
-window-padding-y  = 0
+window-padding-x       = 0
+window-padding-y       = 4,0
+window-padding-balance = true
+window-padding-color   = extend
 macos-titlebar-style = hidden
 
 # +----------+
