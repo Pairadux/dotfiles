@@ -28,7 +28,7 @@ scan_dirs:
     - path: ~/.dotfiles/dot_config
       alias: "Config"
     - path: ~/Dev
-      template: "Editor, Claude, Terminal"
+      template: "Editor, Claude, Scratch"
     - path: ~/Dev/CS-Homework
 entry_dirs:
     - path: ~/.dotfiles
@@ -42,18 +42,18 @@ ignore_dirs:
     - .git
     - node_modules
 primary_template:
-    name: Editor + Terminal
+    name: Editor + Scratch
     windows:
         - name: edit
           cmd: nvim
-        - name: term
+        - name: scratch
 templates:
-    - name: Editor, Claude, Terminal
+    - name: Editor, Claude, Scratch
       windows:
         - name: edit
           cmd: nvim
         - name: claude
-        - name: term
+        - name: scratch
     - name: Single Window
       windows:
         - name: main
