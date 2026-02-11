@@ -53,7 +53,7 @@
     }
   },
   "theme.bar.floating": true,
-  "bar.autoHide": "fullscreen",
+  "bar.autoHide": "never",
   "theme.bar.buttons.enableBorders": false,
   "theme.bar.border.location": "full",
   "theme.bar.border.width": "0.1em",
