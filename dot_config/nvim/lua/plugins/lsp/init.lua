@@ -35,8 +35,8 @@ return {
                         vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
                     end
                     -- Mappings
-                    map('<leader>lr', vim.lsp.buf.rename, '[L]sp [R]ename')
-                    map('<leader>la', vim.lsp.buf.code_action, '[L]sp [A]ction', { 'n', 'x' })
+                    map('<leader>lr', vim.lsp.buf.rename, '[L]anguage [R]ename')
+                    map('<leader>la', vim.lsp.buf.code_action, '[L]anguage [A]ction', { 'n', 'x' })
                     map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
                     -- The following two autocommands are used to highlight references of the
                     -- word under your cursor when your cursor rests there for a little while.
@@ -69,7 +69,7 @@ return {
                     if client and client:supports_method('textDocument/inlayHint', event.buf) then
                         map('<leader>lh', function()
                             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-                        end, '[L]sp Inlay [H]ints')
+                        end, '[L]anguage Inlay [H]ints')
                     end
                     -- Disable Ruff's hover in favor of Pyright
                     if client and client.name == 'ruff' then
@@ -160,9 +160,7 @@ return {
                 --     single_file_support = true,
                 -- },
                 bashls = {
-                    settings = {
-                        filetypes = { 'sh', 'zsh' },
-                    },
+                    filetypes = { 'sh', 'zsh' },
                 },
                 lua_ls = {
                     settings = {
@@ -220,6 +218,9 @@ return {
                 'gofumpt',
                 'beautysh',
                 'google-java-format',
+                'shellcheck',
+                'luacheck',
+                'golangci-lint',
             }
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
         end,

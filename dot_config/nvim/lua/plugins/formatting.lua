@@ -11,8 +11,10 @@ return {
         event = { 'BufWritePre' },
         cmd = { 'ConformInfo' },
         keys = {
-            -- stylua: ignore
-            { 'gw', function() require('conform').format { async = true, lsp_format = 'fallback' } end, mode = '', desc = 'Format buffer', },
+            -- stylua: ignore start
+            { 'gw',         function() require('conform').format { async = true, lsp_format = 'fallback' } end, mode = '', desc = 'Format buffer', },
+            { '<leader>lf', function() require('conform').format { async = true, lsp_format = 'fallback' } end, desc = '[L]anguage [F]ormat', },
+            -- stylua: ignore end
         },
         opts = {
             notify_on_error = true,

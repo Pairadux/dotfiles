@@ -57,7 +57,7 @@ map('n', '<leader>af', function() util.open_claude_with_file() end, { noremap = 
 map('n', '<leader>ac', function() util.open_claude_continue() end, { noremap = true, silent = true, desc = '[A]I [C]ontinue' })
 
 -- Content Operations
-map('n', '<leader>cc', '<cmd>%y+<CR>', { desc = '[C]ontent [C]opy' })
+map('n', '<leader>cc', '<cmd>%y+<CR>', { desc = '[C]urrent [C]opy' })
 
 ------------------------------------------------------------
 -- VISUAL MODE MAPPINGS

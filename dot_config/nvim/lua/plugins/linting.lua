@@ -8,12 +8,23 @@
 return {
     { -- Linting
         'mfussenegger/nvim-lint',
-        enabled = false,
         event = { 'BufReadPre', 'BufNewFile' },
+        keys = {
+            {
+                '<leader>li',
+                function()
+                    require('lint').try_lint()
+                end,
+                desc = '[L]anguage L[i]nt',
+            },
+        },
         config = function()
             local lint = require 'lint'
             lint.linters_by_ft = {
-                markdown = { 'markdownlint' },
+                sh = { 'shellcheck' },
+                zsh = { 'shellcheck' },
+                lua = { 'luacheck' },
+                go = { 'golangcilint' },
             }
 
             -- To allow other plugins to add linters to require('lint').linters_by_ft,
