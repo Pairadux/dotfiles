@@ -1,0 +1,5 @@
+- Dotfiles are stored in ~/.dotfiles/dot_config/
+- always attempt to adhere to KISS and DRY principles
+- Keep comments to logical minimums, doc comments that explain complex logic or doc comments preceding methods are always encouraged though
+- try to commit often and logically using conventional commits, primarily (feat:, fix:, chore:, docs:, refactor:, style:, test:)
+- When editing system files (e.g., /etc/), remind user to use `sudoedit` instead of `sudo nvim` (bob-managed nvim isn't in root's PATH)
