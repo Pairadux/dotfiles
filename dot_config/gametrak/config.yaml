@@ -3,24 +3,20 @@ games:
       name: Steam Games
       prefix: true
       use_title: true
-    # - class: deadlock.exe
-    #   name: Deadlock
-    #   prefix: false
     - class: hl2_linux
       name: Half-Life 2
-      prefix: false
     - class: RimWorldLinux
       name: RimWorld
-      prefix: false
     - class: FishingPlanet.X86_64
       name: Fishing Planet
-      prefix: false
     - class: rocketleague
       name: Rocket League
       prefix: true
     - class: BeamNG.drive.x64
       name: BeamNG.drive
-      prefix: false
+    - class: Minecraft
+      name: Minecraft
+      prefix: true
 settings:
     notifications: true
     log_sessions: true
