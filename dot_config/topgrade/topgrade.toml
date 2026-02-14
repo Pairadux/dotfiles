@@ -53,4 +53,4 @@ use_sudo = true
 
 
 [commands]
-"Mason Update" = "nvim --headless -c \"lua require('lazy').load({plugins = {'mason-tool-installer.nvim'}})\" -c 'autocmd User MasonToolsUpdateCompleted quitall' -c 'MasonToolsUpdate'"
+"Mason Update" = "nvim --headless -c \"lua vim.notify = function(msg) io.stderr:write(msg .. '\\n') end; require('lazy').load({plugins = {'nvim-lspconfig'}})\" -c MasonToolsUpdateSync -c quitall"
