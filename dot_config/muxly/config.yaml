@@ -28,7 +28,7 @@ scan_dirs:
     - path: ~/.dotfiles/dot_config
       alias: "Config"
     - path: ~/Dev
-      template: "Editor, Claude, Scratch"
+      template: "Editor, Claude, Scratch, Mail"
     - path: ~/Dev/CS-Homework
 entry_dirs:
     - path: ~/.dotfiles
@@ -54,6 +54,14 @@ templates:
           cmd: nvim
         - name: claude
         - name: scratch
+    - name: Editor, Claude, Scratch, Mail
+      windows:
+        - name: edit
+          cmd: nvim
+        - name: claude
+        - name: scratch
+        - name: mail
+          cmd: aerc
     - name: Single Window
       windows:
         - name: main
