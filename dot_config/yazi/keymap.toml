@@ -2,7 +2,8 @@
 prepend_keymap = [
     
     # plugin keybinds
-    { on = [ "c", "m" ], run = "plugin chmod", desc = "Chmod on selected files" },
+    { on = [ "c", "m" ], run = "plugin chmod",              desc = "Chmod on selected files" },
+    { on = [ "c", "c" ], run = "plugin copy-file-contents", desc = "Copy file contents to clipboard" },
 
     # TODO: add additional g key mappings for quick directory jumping
     # directory nav
