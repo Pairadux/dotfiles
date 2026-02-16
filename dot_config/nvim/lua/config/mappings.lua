@@ -37,6 +37,10 @@ map('i', '<S-Tab>',   '<C-d>',   { desc = 'Undent in insert mode', silent = true
 -- map('n', '<C-Tab>',        'gt',                 { desc = '[Tab] Next'      })
 -- map('n', '<C-S-Tab>',      'gT',                 { desc = '[Tab] Prev'      })
 
+-- Buffer Navigation
+map('n', '<Tab>',   '<cmd>bnext<CR>', { desc = 'Buffer Goto Next' })
+map('n', '<S-Tab>', '<cmd>bprev<CR>', { desc = 'Buffer Goto Prev' })
+
 -- Miscellaneous Normal Mappings
 map('n', '<Esc>',      '<cmd>noh<CR>',            { desc = 'Clear Highlights' })
 -- map('n', '<C-s>',      '<cmd>w<CR>',              { desc = 'Save File' })
