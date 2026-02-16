@@ -95,8 +95,8 @@ return {
                 section_separators = { left = '', right = '' },
             },
             sections = {
+                lualine_b = { 'branch', 'filename' },
                 lualine_c = { 'lsp_status' },
-                lualine_z = {'filename', 'location'}
             },
         },
     }, -- }}}
