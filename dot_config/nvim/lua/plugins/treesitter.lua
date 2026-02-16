@@ -38,7 +38,6 @@ return {
                 'css',
                 'javascript',
                 'latex',
-                'norg',
                 'scss',
                 'svelte',
                 'tsx',
