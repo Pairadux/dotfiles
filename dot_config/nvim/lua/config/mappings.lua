@@ -26,10 +26,10 @@ map('i', '<S-Tab>',   '<C-d>',   { desc = 'Undent in insert mode', silent = true
 ------------------------------------------------------------
 
 -- Window Movement
-map('n', '<C-h>', '<C-w>h', { desc = 'Switch Window Left' })
-map('n', '<C-l>', '<C-w>l', { desc = 'Switch Window Right' })
-map('n', '<C-j>', '<C-w>j', { desc = 'Switch Window Down' })
-map('n', '<C-k>', '<C-w>k', { desc = 'Switch Window Up' })
+-- map('n', '<C-h>', '<C-w>h', { desc = 'Switch Window Left' })
+-- map('n', '<C-l>', '<C-w>l', { desc = 'Switch Window Right' })
+-- map('n', '<C-j>', '<C-w>j', { desc = 'Switch Window Down' })
+-- map('n', '<C-k>', '<C-w>k', { desc = 'Switch Window Up' })
 
 -- Tab Management
 -- map('n', '<leader><Tab>n', '<Cmd>$tabnew<CR>  ', { desc = '[Tab] [N]ew Tab' })
