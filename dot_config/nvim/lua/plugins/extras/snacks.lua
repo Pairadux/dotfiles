@@ -59,6 +59,13 @@ return {
         statuscolumn = { enabled = false },
         words = { enabled = true },
         terminal = { enabled = true },
+        zen = {
+            win = {
+                backdrop = {
+                    transparent = false
+                }
+            }
+        }
     },
     keys = {
         -- Top Pickers & Explorer
