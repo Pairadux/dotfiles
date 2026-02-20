@@ -202,6 +202,10 @@ return {
                         gitsigns.nav_hunk 'prev'
                     end
                 end, { desc = 'Jump to previous git [c]hange' })
+
+                map({ 'n', 'x' }, '<leader>ghr', ':Gitsigns reset_hunk<CR>', { desc = 'Reset Hunk' })
+
+                map('n', '<leader>ghR', gitsigns.reset_buffer, { desc = 'Reset Buffer' })
             end,
         },
     }, -- }}}
