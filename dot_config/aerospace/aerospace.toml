@@ -47,9 +47,9 @@ outer.right      = 0
 [mode.main.binding]
 
 # Workspaces — dedicated
-alt-t = 'workspace T'
-alt-b = 'workspace B'
-alt-m = 'workspace M'
+alt-t = ['exec-and-forget open -a Ghostty',  'workspace T']
+alt-b = ['exec-and-forget open -a Vivaldi',  'workspace B']
+alt-m = ['exec-and-forget open -a Fastmail', 'workspace M']
 
 # Workspaces — general
 alt-1 = 'workspace 1'
@@ -119,10 +119,10 @@ alt-v    = 'layout floating tiling'
 alt-r               = 'mode resize'
 alt-shift-semicolon = 'mode service'
 
-# App launchers
-alt-shift-t = ['exec-and-forget open -a Ghostty',  'workspace T']
-alt-shift-b = ['exec-and-forget open -a Vivaldi',  'workspace B']
-alt-shift-m = ['exec-and-forget open -a Fastmail', 'workspace M']
+# App launchers — move window to dedicated workspace
+alt-shift-t = 'move-node-to-workspace T'
+alt-shift-b = 'move-node-to-workspace B'
+alt-shift-m = 'move-node-to-workspace M'
 
 # ── Resize Mode ───────────────────────────────────────────────────────────────
 
