@@ -8,14 +8,15 @@
 #
 # entry_dirs: Additional directories always included (not scanned)
 #
-# ignore_dirs: Directory paths to exclude from scanning
+# ignore_dirs: Directories to exclude from scanning (additive)
+#   .git and node_modules are always ignored and do not need to be listed.
 #
-# primary_template: The default template used for new sessions
-#   name: Template name (required)
+# templates: Session templates (one must have default: true)
+#   name: Short identifier used as the tmux session name (required)
+#   label: Human-readable display name shown in the muxly create TUI (optional)
+#   default: Mark exactly one template as the default (required on one template)
 #   path: Fixed working directory (optional, uses fzf picker if omitted)
 #   windows: List of windows to create with optional commands
-#
-# templates: Additional templates to choose from (optional)
 #
 # settings: General application settings
 #   editor: Default editor for 'muxly config edit' (overrides $EDITOR)
@@ -39,15 +40,14 @@ ignore_dirs:
     - ~/Dev/_practice
     - ~/Dev/_archive
     - ~/Dev/CS-Homework
-    - .git
-    - node_modules
-primary_template:
-    name: Editor + Scratch
-    windows:
+templates:
+    - name: editor-scratch
+      label: Editor + Scratch
+      default: true
+      windows:
         - name: edit
           cmd: nvim
         - name: scratch
-templates:
     - name: Editor, Claude, Scratch
       windows:
         - name: edit
