@@ -132,7 +132,7 @@ return {
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         cmd = 'Oil',
         keys = {
-            { '<leader>oo', '<cmd>Oil<CR>', desc = '[O]pen [O]il' },
+            { '<leader>oo', '<cmd>Oil --preview<CR>', desc = '[O]pen [O]il' },
         },
         opts = {
             default_file_explorer = true,
