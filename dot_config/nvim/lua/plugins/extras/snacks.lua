@@ -72,7 +72,8 @@ return {
         -- stylua: ignore start
         { '<leader>ff', function() require('snacks').picker.files()                                   end, desc = '[F]ind [F]iles', },
         { '<leader>fs', function() require('snacks').picker.smart()                                   end, desc = '[F]ind [S]mart' },
-        { '<leader>fb', function() require('snacks').picker.buffers()                                 end, desc = '[F]ind [B]uffers', },
+        { '<leader>fb', function() require('snacks').picker.buffers({ current = false, matcher = { frecency = true, sort_empty = true } }) end, desc = '[F]ind [B]uffers', },
+        { '<C-p>',      function() require('snacks').picker.smart()                                   end, desc = 'Smart Picker', },
         { '<leader>fr', function() require('snacks').picker.recent()                                  end, desc = '[F]ind [R]ecent', },
         { '<leader>fg', function() require('snacks').picker.grep()                                    end, desc = '[F]ind [G]rep', },
         { '<leader>fm', function() require('snacks').picker.files { ft = 'md' }                       end, desc = '[F]ind [M]arkdown', },
