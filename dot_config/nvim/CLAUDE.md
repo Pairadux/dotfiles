@@ -44,7 +44,6 @@ Each file handles a specific aspect of the editor:
 - Optional plugins that can be easily enabled/disabled
 - `debug.lua` - Debugging tools (DAP)
 - `snacks.lua` - Snacks.nvim utility collection (picker, dashboard, lazygit, terminal, etc.)
-- `claudecode.lua` - Claude Code AI integration via `coder/claudecode.nvim` (WebSocket-based)
 
 ### Disabled Plugins
 
@@ -71,10 +70,6 @@ Each plugin file returns a table of plugin specifications following Lazy.nvim's 
 - Mason handles automatic installation of servers and tools
 - Blink.cmp provides completion with LSP integration
 - Consistent keybinding pattern with `<leader>l` prefix for LSP actions
-
-**AI Integration**:
-- `claudecode.nvim` provides WebSocket-based IDE integration with Claude Code
-- Keymaps under `<leader>a` prefix: toggle (`aa`), continue (`ac`), resume (`ar`), focus (`af`), add buffer (`ab`), send selection (`as` in visual mode)
 
 **File Management Approach**:
 - Oil.nvim as the primary file explorer (opens with preview pane via `<leader>oo`)
