@@ -26,12 +26,16 @@ return {
                     -- make the separator pop with one of the theme’s blues:
                     highlights.WinSeparator = {
                         fg = colors.blue1,
-                        bg = 'NONE',
+                        bg = ‘NONE’,
                     }
                     -- fallback for older Neovim:
                     highlights.VertSplit = {
                         fg = colors.blue1,
-                        bg = 'NONE',
+                        bg = ‘NONE’,
+                    }
+                    -- restore visible EOB tildes (tokyonight hides them by default)
+                    highlights.EndOfBuffer = {
+                        fg = colors.dark3,
                     }
                 end,
             }
