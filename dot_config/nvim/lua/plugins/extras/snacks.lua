@@ -62,10 +62,17 @@ return {
         zen = {
             win = {
                 backdrop = {
-                    transparent = false
-                }
-            }
-        }
+                    transparent = false,
+                },
+            },
+        },
+        styles = {
+            dashboard = {
+                wo = {
+                    fillchars = 'eob: ',
+                },
+            },
+        },
     },
     keys = {
         -- Top Pickers & Explorer
