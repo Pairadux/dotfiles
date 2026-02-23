@@ -25,50 +25,68 @@
 #   tmux_session_prefix: Prefix for active tmux sessions in the selector
 #   always_kill_on_last_session: Skip prompt and kill server on last session
 
+# +-----------+
+# | SCAN-DIRS |
+# +-----------+
 scan_dirs:
     - path: ~/.dotfiles/dot_config
       alias: "Config"
+
     - path: ~/Dev
-      template: "Editor, Claude, Scratch, Mail"
-    - path: ~/Dev/CS-Homework
+      template: "edit-ai-x"
+
+    # - path: ~/Dev/CS-Homework
+
+# +------------+
+# | ENTRY-DIRS |
+# +------------+
 entry_dirs:
     - path: ~/.dotfiles
     - path: ~/Documents
     - path: ~/Downloads
     - path: ~/Cloud
+
+# +-------------+
+# | IGNORE-DIRS |
+# +-------------+
 ignore_dirs:
     - ~/Dev/_practice
     - ~/Dev/_archive
     - ~/Dev/CS-Homework
+
+# +-----------+
+# | TEMPLATES |
+# +-----------+
 templates:
-    - name: editor-scratch
+    - name: edit-x
       label: Editor + Scratch
       default: true
       windows:
         - name: edit
           cmd: nvim
         - name: scratch
-    - name: Editor, Claude, Scratch
+
+    - name: edit-ai-x
+      label: Editor, Claude, Scratch
       windows:
         - name: edit
           cmd: nvim
         - name: claude
         - name: scratch
-    - name: Editor, Claude, Scratch, Mail
-      windows:
-        - name: edit
-          cmd: nvim
-        - name: claude
-        - name: scratch
-        - name: mail
-          cmd: aerc
-    - name: Single Window
+
+    - name: minimal
+      label: Single Window
       windows:
         - name: main
+
     - name: Quick Session
       path: ~/
       windows:
         - name: main
+
+# +----------+
+# | SETTINGS |
+# +----------+
 settings:
     editor: nvim
     tmux_base: 1
