@@ -274,6 +274,7 @@ return {
                 { '<leader>s', group = '[S]earch', icon = { icon = '󰛔', color = 'orange' } },
                 { '<leader>i', group = '[I]nsert', icon = { icon = '', color = 'orange' } },
                 { '<leader>l', group = '[L]anguage', icon = { icon = '󰒋', color = 'orange' } },
+                { '<leader>t', group = '[T]oggle', icon = { icon = '', color = 'orange' } },
                 { '[', group = 'Prev' },
                 { ']', group = 'Next' },
                 { 'g', group = 'Goto' },

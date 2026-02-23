@@ -99,11 +99,47 @@ return {
         { 'gZ',          function() require('snacks').zen.zoom()                                       end, desc = '[Z]oom', },
         -- stylua: ignore end
         {
-            '<A-i>',
+            '<C-_>',
             function()
-                require('snacks.terminal').toggle(vim.o.shell, { win = { border = 'single', title = 'Terminal' } })
+                require('snacks.terminal').toggle(vim.o.shell, {
+                    count = 1,
+                    win = { border = 'single', title = 'Terminal' },
+                })
             end,
             desc = 'Toggle Terminal',
+            mode = { 'n', 't' },
+        },
+        {
+            '<leader>tv',
+            function()
+                require('snacks.terminal').toggle(vim.o.shell, {
+                    count = 2,
+                    win = { position = 'right', border = 'single', title = 'Terminal' },
+                })
+            end,
+            desc = 'Toggle Terminal (vertical)',
+            mode = { 'n', 't' },
+        },
+        {
+            '<C-\\>',
+            function()
+                require('snacks.terminal').toggle(vim.o.shell, {
+                    count = 2,
+                    win = { position = 'right', border = 'single', title = 'Terminal' },
+                })
+            end,
+            desc = 'Toggle Terminal (vertical)',
+            mode = { 'n', 't' },
+        },
+        {
+            '<leader>th',
+            function()
+                require('snacks.terminal').toggle(vim.o.shell, {
+                    count = 3,
+                    win = { position = 'bottom', border = 'single', title = 'Terminal' },
+                })
+            end,
+            desc = 'Toggle Terminal (horizontal)',
             mode = { 'n', 't' },
         },
         -- Git {{{

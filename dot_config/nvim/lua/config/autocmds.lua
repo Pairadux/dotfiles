@@ -79,6 +79,26 @@ autocmd({ 'UIEnter', 'BufReadPost', 'BufNewFile' }, {
     end,
 })
 
+-- wipe non-snacks terminals on hide
+vim.api.nvim_create_autocmd("TermOpen", {
+    callback = function(ev)
+        if vim.bo[ev.buf].filetype ~= "snacks_terminal" then
+            vim.opt_local.bufhidden = "wipe"
+        end
+    end,
+})
+
+-- force kill snacks terminals on quit
+vim.api.nvim_create_autocmd("QuitPre", {
+    callback = function()
+        for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if vim.bo[buf].filetype == "snacks_terminal" then
+                vim.cmd("bwipeout! " .. buf)
+            end
+        end
+    end,
+})
+
 autocmd('TextYankPost', {
     desc = 'Highlight when yanking (copying) text',
     group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
