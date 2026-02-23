@@ -55,11 +55,6 @@ map('n', '<leader>om', '<cmd>Mason<CR>', { desc = '[O]pen [M]ason', noremap = tr
 map('n', '<leader>ib', function() util.insert_line_break()  end, { noremap = true, silent = true, desc = "[I]nsert 80 #'s (Line [B]reak)" })
 map('n', '<leader>it', function() util.insert_title()       end, { noremap = true, silent = true, desc = '[I]nsert [T]itle' })
 
--- AI/Assistant Integration
-map('n', '<leader>aa', function() util.open_claude_simple() end, { noremap = true, silent = true, desc = '[A]I [A]ssistant' })
-map('n', '<leader>af', function() util.open_claude_with_file() end, { noremap = true, silent = true, desc = '[A]I with [F]ile' })
-map('n', '<leader>ac', function() util.open_claude_continue() end, { noremap = true, silent = true, desc = '[A]I [C]ontinue' })
-
 -- Content Operations
 map('n', '<leader>cc', '<cmd>%y+<CR>', { desc = '[C]urrent [C]opy' })
 
@@ -68,7 +63,6 @@ map('n', '<leader>cc', '<cmd>%y+<CR>', { desc = '[C]urrent [C]opy' })
 ------------------------------------------------------------
 
 map('v', 'gs', function() util.squeeze_interior_whitespace() end, { noremap = true, silent = true, desc = 'Squeeze redundant internal whitespace' })
-map('v', '<leader>as', function() util.open_claude_with_selection() end, { noremap = true, silent = true, desc = '[A]I with [S]election' })
 
 ------------------------------------------------------------
 -- TERMINAL MODE MAPPINGS
