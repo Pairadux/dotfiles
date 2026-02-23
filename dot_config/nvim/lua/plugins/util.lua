@@ -10,6 +10,7 @@ return {
     -- Scope {{{
     {
         'tiagovla/scope.nvim',
+        cond = false,
         event = { 'TabNew', 'TabEnter', 'TabLeave' },
         config = function()
             require('scope').setup {

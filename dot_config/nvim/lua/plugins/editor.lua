@@ -106,6 +106,7 @@ return {
     {
         'ThePrimeagen/harpoon',
         branch = 'harpoon2',
+        cond = false,
         event = 'VeryLazy',
         dependencies = { 'nvim-lua/plenary.nvim' },
         opts = {},
