@@ -111,17 +111,6 @@ return {
             mode = { 'n', 't' },
         },
         {
-            '<leader>tv',
-            function()
-                require('snacks.terminal').toggle(vim.o.shell, {
-                    count = 2,
-                    win = { position = 'right', border = 'single', title = 'Terminal' },
-                })
-            end,
-            desc = 'Toggle Terminal (vertical)',
-            mode = { 'n', 't' },
-        },
-        {
             '<C-\\>',
             function()
                 require('snacks.terminal').toggle(vim.o.shell, {
@@ -130,17 +119,6 @@ return {
                 })
             end,
             desc = 'Toggle Terminal (vertical)',
-            mode = { 'n', 't' },
-        },
-        {
-            '<leader>th',
-            function()
-                require('snacks.terminal').toggle(vim.o.shell, {
-                    count = 3,
-                    win = { position = 'bottom', border = 'single', title = 'Terminal' },
-                })
-            end,
-            desc = 'Toggle Terminal (horizontal)',
             mode = { 'n', 't' },
         },
         -- Git {{{
