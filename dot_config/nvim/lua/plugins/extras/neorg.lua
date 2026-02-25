@@ -2,7 +2,7 @@ return {
     'nvim-neorg/neorg',
     lazy = false,
     version = '*',
-    config = require('neorg').setup {
+    opts = {
         load = {
             ['core.defaults'] = {},
             ['core.concealer'] = {},
