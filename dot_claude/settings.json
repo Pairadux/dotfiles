@@ -1,0 +1,16 @@
+{
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); git_branch=$(git branch --show-current 2>/dev/null); git_status=$(git status --porcelain 2>/dev/null); if [ -n \"$git_branch\" ]; then if [ -n \"$git_status\" ]; then printf \"\\033[31m*\\033[0m\\033[32m[%s]\\033[0m\" \"$git_branch\"; else printf \"\\033[32m[%s]\\033[0m\" \"$git_branch\"; fi; fi; printf \"\\033[36m[%s]\\033[0m\" \"$(echo \"$input\" | jq -r '.workspace.current_dir' | sed 's|^.*/||')\""
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true
+  },
+  "alwaysThinkingEnabled": true,
+  "effortLevel": "high"
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  }
+}
