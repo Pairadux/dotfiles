@@ -165,8 +165,12 @@ return {
                 lua_ls = {
                     settings = {
                         Lua = {
+                            runtime = { version = 'LuaJIT' },
                             completion = {
                                 callSnippet = 'Replace',
+                            },
+                            diagnostics = {
+                                globals = { 'vim' },
                             },
                             workspace = {
                                 checkThirdParty = false,
@@ -219,7 +223,6 @@ return {
                 'beautysh',
                 'google-java-format',
                 'shellcheck',
-                'luacheck',
                 'golangci-lint',
             }
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
