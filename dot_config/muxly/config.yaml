@@ -42,6 +42,7 @@ scan_dirs:
 # +------------+
 entry_dirs:
     - path: ~/.dotfiles
+    - path: ~/.dotfiles/dot_claude
     - path: ~/Documents
     - path: ~/Downloads
     - path: ~/Cloud
