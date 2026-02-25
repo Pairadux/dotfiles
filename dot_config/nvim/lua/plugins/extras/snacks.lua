@@ -47,6 +47,7 @@ return {
                     keys = {
                         ['<Esc>'] = { 'close', mode = { 'n', 'i' } },
                         ['<c-q>'] = { 'close', mode = { 'n', 'i' } },
+                        ['<C-p>'] = { 'close', mode = { 'n', 'i' } },
                     },
                 },
             },
