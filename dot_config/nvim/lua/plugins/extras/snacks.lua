@@ -103,7 +103,7 @@ return {
             '<C-_>',
             function()
                 require('snacks.terminal').toggle(vim.o.shell, {
-                    count = 1,
+                    count = 99,
                     win = { border = 'single', title = 'Terminal' },
                 })
             end,
@@ -114,7 +114,7 @@ return {
             '<C-\\>',
             function()
                 require('snacks.terminal').toggle(vim.o.shell, {
-                    count = 2,
+                    count = 1,
                     win = { position = 'right', border = 'single', title = 'Terminal' },
                 })
             end,
