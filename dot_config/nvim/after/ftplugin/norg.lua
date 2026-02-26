@@ -1,6 +1,9 @@
 -- ~/.config/nvim/ftplugin/norg.lua
 local map = vim.keymap.set
 
+-- Options
+vim.wo.foldlevel = 99
+
 -- Which-key groups (buffer-local)
 require('which-key').add({
     { '<LocalLeader>t', group = '[T]ask',   buffer = true },
