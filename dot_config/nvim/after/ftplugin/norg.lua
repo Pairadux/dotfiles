@@ -32,9 +32,10 @@ map('i', '<M-d>',           '<Plug>(neorg.tempus.insert-date.insert-mode)', { bu
 map('n', '<LocalLeader>cm', '<Plug>(neorg.looking-glass.magnify-code-block)', { buffer = true, desc = '[C]ode [M]agnify' })
 
 -- Navigation
-map('n', '<CR>',   '<Plug>(neorg.esupports.hop.hop-link)',          { buffer = true, desc = 'Follow link' })
-map('n', '<M-CR>', '<Plug>(neorg.esupports.hop.hop-link.vsplit)',   { buffer = true, desc = 'Follow link in vsplit' })
-map('n', '<M-t>',  '<Plug>(neorg.esupports.hop.hop-link.tab-drop)', { buffer = true, desc = 'Follow link in tab' })
+map('n', '<CR>',             '<Plug>(neorg.esupports.hop.hop-link)',          { buffer = true, desc = 'Follow link' })
+map('n', '<M-CR>',           '<Plug>(neorg.esupports.hop.hop-link.vsplit)',   { buffer = true, desc = 'Follow link in vsplit' })
+map('n', '<M-t>',            '<Plug>(neorg.esupports.hop.hop-link.tab-drop)', { buffer = true, desc = 'Follow link in tab' })
+map('n', '<localleader>nt',  '<cmd>Neorg toc<CR>',                            { buffer = true, desc = '[N]eorg [T]OC' })
 
 -- Promote/Demote
 map('n', '>.',        '<Plug>(neorg.promo.promote)',              { buffer = true, desc = 'Promote object' })
