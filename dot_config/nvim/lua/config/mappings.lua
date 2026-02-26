@@ -58,6 +58,11 @@ map('n', '<leader>it', function() util.insert_title()       end, { noremap = tru
 -- Content Operations
 map('n', '<leader>cc', '<cmd>%y+<CR>', { desc = '[C]urrent [C]opy' })
 
+-- Neorg
+map('n', '<localleader>ni', '<cmd>Neorg index<CR>',  { noremap = true, silent = true, desc = '[N]eorg [I]ndex' })
+map('n', '<localleader>nr', '<cmd>Neorg return<CR>', { noremap = true, silent = true, desc = '[N]eorg [R]eturn' })
+map('n', '<localleader>nn', function() require('neorg').modules.get_module('core.dirman').new_note() end, { noremap = true, silent = true, desc = '[N]eorg [N]ew Note' })
+
 ------------------------------------------------------------
 -- VISUAL MODE MAPPINGS
 ------------------------------------------------------------
