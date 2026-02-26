@@ -9,7 +9,6 @@ local autocmd = vim.api.nvim_create_autocmd
 --     end,
 -- })
 
-
 -- Open snacks picker on dir open
 -- autocmd('VimEnter', {
 --     callback = function()
@@ -80,20 +79,20 @@ autocmd({ 'UIEnter', 'BufReadPost', 'BufNewFile' }, {
 })
 
 -- wipe non-snacks terminals on hide
-vim.api.nvim_create_autocmd("TermOpen", {
+autocmd('TermOpen', {
     callback = function(ev)
-        if vim.bo[ev.buf].filetype ~= "snacks_terminal" then
-            vim.opt_local.bufhidden = "wipe"
+        if vim.bo[ev.buf].filetype ~= 'snacks_terminal' then
+            vim.opt_local.bufhidden = 'wipe'
         end
     end,
 })
 
 -- force kill snacks terminals on quit
-vim.api.nvim_create_autocmd("QuitPre", {
+autocmd('QuitPre', {
     callback = function()
         for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-            if vim.bo[buf].filetype == "snacks_terminal" then
-                vim.cmd("bwipeout! " .. buf)
+            if vim.bo[buf].filetype == 'snacks_terminal' then
+                vim.cmd('bwipeout! ' .. buf)
             end
         end
     end,
