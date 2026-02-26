@@ -43,9 +43,8 @@ return {
                 'tsx',
                 'typst',
                 'vue',
+                'norg',
             }
-
-            require('nvim-treesitter').install(filetypes)
 
             vim.api.nvim_create_autocmd('FileType', {
                 pattern = filetypes,
@@ -54,6 +53,8 @@ return {
                     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                 end,
             })
+
+            require('nvim-treesitter').install(filetypes)
         end,
 
         -- There are additional nvim-treesitter modules that you can use to interact
