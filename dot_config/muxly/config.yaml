@@ -46,6 +46,8 @@ entry_dirs:
     - path: ~/Documents
     - path: ~/Downloads
     - path: ~/Cloud
+    - path: ~/Cloud/JD
+    - path: ~/Cloud/Notes
 
 # +-------------+
 # | IGNORE-DIRS |
