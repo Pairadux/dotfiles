@@ -13,6 +13,6 @@ prepend_keymap = [
     { on = [ "g", "c" ],      run = "cd ~/Cloud",       desc = "cd Cloud" },
     { on = [ "g", "n" ],      run = "cd ~/Cloud/Notes", desc = "cd Notes" },
     { on = [ "g", "j" ],      run = "cd ~/Cloud/JD",    desc = "cd JDex"  },
-    { on = [ "g", "a" ],      run = "cd ~/Cloud/JD/30-39 Academia/34 Undergrad (BS CS) (VSU)/",    desc = "cd Academia"  },
+    { on = [ "g", "a" ],      run = "cd '~/Cloud/JD/30-39 Academia/34 Undergrad (BS CS) (VSU)'", desc = "cd Academia"  },
 
 ]
