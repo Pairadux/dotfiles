@@ -59,8 +59,10 @@ map('n', '<leader>it', function() util.insert_title()       end, { noremap = tru
 map('n', '<leader>cc', '<cmd>%y+<CR>', { desc = '[C]urrent [C]opy' })
 
 -- Neorg
-map('n', '<localleader>ni', '<cmd>Neorg index<CR>',  { noremap = true, silent = true, desc = '[N]eorg [I]ndex' })
-map('n', '<localleader>nr', '<cmd>Neorg return<CR>', { noremap = true, silent = true, desc = '[N]eorg [R]eturn' })
+map('n', '<localleader>ni', '<cmd>Neorg index<CR>',         { noremap = true, silent = true, desc = '[N]eorg [I]ndex' })
+map('n', '<localleader>nr', '<cmd>Neorg return<CR>',        { noremap = true, silent = true, desc = '[N]eorg [R]eturn' })
+map('n', '<localleader>nj', '<cmd>Neorg journal<CR>',       { noremap = true, silent = true, desc = '[N]eorg [J]ournal' })
+map('n', '<localleader>nt', '<cmd>Neorg journal today<CR>', { noremap = true, silent = true, desc = '[N]eorg Journal [T]oday' })
 map('n', '<localleader>nn', function() require('neorg').modules.get_module('core.dirman').new_note() end, { noremap = true, silent = true, desc = '[N]eorg [N]ew Note' })
 
 ------------------------------------------------------------
