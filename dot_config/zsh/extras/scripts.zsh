@@ -79,6 +79,35 @@ pokemon() {
     pokemon-colorscripts --no-title -b -rn gengar,lugia,articuno,zapdos,giratina,scyther,scizor,bisharp,garchomp,greninja,samurott,moltres,kricketune,lucario,absol,venusaur,blastoise,zoroark
 }
 
+# yt-dlp: download mp3 (use --raw to skip metadata/thumbnail)
+ytdl() {
+    local raw=false
+    local url=""
+
+    for arg in "$@"; do
+        case "$arg" in
+            --raw) raw=true ;;
+            *) url="$arg" ;;
+        esac
+    done
+
+    if [[ -z "$url" ]]; then
+        echo "Usage: ytdl [--raw] <url>"
+        return 1
+    fi
+
+    local output_dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Music"
+    local opts=(--extract-audio --audio-format mp3 --audio-quality 0
+                --cookies ~/.youtube-cookies.txt
+                -o "${output_dir}/%(title)s.%(ext)s")
+
+    if [[ "$raw" = false ]]; then
+        opts+=(--add-metadata --embed-thumbnail)
+    fi
+
+    yt-dlp "${opts[@]}" "$url"
+}
+
 # JUMP {{{
 # Easily jump around the file system by manually adding marks
 # marks are stored as symbolic links in the directory $MARKPATH (default $HOME/.marks)
