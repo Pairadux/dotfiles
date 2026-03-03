@@ -54,7 +54,10 @@ return {
                 end,
             })
 
-            require('nvim-treesitter').install(filetypes)
+            -- norg parser is built manually by the neorg plugin, skip it here
+            require('nvim-treesitter').install(vim.tbl_filter(function(ft)
+                return ft ~= 'norg'
+            end, filetypes))
         end,
 
         -- There are additional nvim-treesitter modules that you can use to interact
