@@ -41,6 +41,7 @@ return {
                 ['core.defaults'] = {},
                 ['core.concealer'] = {
                     config = {
+                        folds = false,
                         icon_preset = 'diamond',
                         init_open_folds = 'always',
                     },
