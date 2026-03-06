@@ -11,6 +11,7 @@ return {
     opts = {
         bigfile = { enabled = false },
         dashboard = {
+            enabled = vim.fn.getcwd() ~= vim.fn.expand('~') .. "/Cloud/Notes",
             preset = {
                 keys = {
                     { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },

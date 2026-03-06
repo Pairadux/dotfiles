@@ -105,3 +105,19 @@ autocmd('TextYankPost', {
         vim.hl.on_yank()
     end,
 })
+
+autocmd('User', {
+    pattern = 'LazyDone',
+    callback = function()
+        if vim.fn.argc() > 0 then
+            return
+        end
+        local cwd = vim.fn.getcwd()
+        local home = vim.fn.expand '~'
+        if cwd == home .. '/Cloud/Notes' then
+            vim.cmd 'edit index.norg'
+            vim.cmd 'filetype detect'
+            vim.api.nvim_exec_autocmds('BufRead', { buffer = 0 })
+        end
+    end,
+})
