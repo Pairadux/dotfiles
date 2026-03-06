@@ -129,6 +129,7 @@ return {
     {
         'stevearc/oil.nvim',
         lazy = false,
+        cond = false,
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         cmd = 'Oil',
         keys = {
@@ -162,7 +163,6 @@ return {
     {
         'mikavilpas/yazi.nvim',
         cmd = 'Yazi',
-        cond = false,
         dependencies = { 'folke/snacks.nvim' },
         keys = {
             {
