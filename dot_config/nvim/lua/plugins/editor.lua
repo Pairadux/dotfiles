@@ -281,6 +281,7 @@ return {
                 { 'g', group = 'Goto' },
                 { 'z', group = 'Fold' },
                 { 'gx', desc = 'Open with system app' },
+                -- TODO: add whichkey group for 'gr', also look into removing current LSP mappings for that
             },
         },
     }, -- }}}
