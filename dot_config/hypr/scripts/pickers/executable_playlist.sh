@@ -7,7 +7,7 @@
 
 source "$(dirname "$0")/_common.sh"
 
-playlist=$(mpc lsplaylists | sed 's/^/󰎈  /' | "${ROFI_DMENU[@]}" -p "󰎈 playlist" | sed 's/^󰎈  //')
+playlist=$(mpc lsplaylists | sed 's/^/󰎈  /' | "${ROFI_DMENU[@]}" -p "󰎈 Playlist" | sed 's/^󰎈  //')
 [[ -z "$playlist" ]] && exit 0
 
 mpc clear

@@ -34,17 +34,18 @@ for script in "$PICKER_DIR"/*.sh; do
     [[ -x "$script" ]] || continue
     name=$(basename "$script" .sh)
     [[ "$name" == _* ]] && continue
+    label=$(echo "$name" | sed 's/\b\(.\)/\u\1/g; s/-/ /g')
     icon=$(grep -m1 '^# ICON:' "$script" | sed 's/^# ICON: *//')
     if [[ -n "$icon" ]]; then
-        entries+="$icon  $name"$'\n'
+        entries+="$icon  $label"$'\n'
     else
-        entries+="$name"$'\n'
+        entries+="$label"$'\n'
     fi
 done
 
-selection=$(printf '%s' "$entries" | sort -t' ' -k2 | "${ROFI_DMENU[@]}" -p " picker")
+selection=$(printf '%s' "$entries" | sort -t' ' -k2 | "${ROFI_DMENU[@]}" -p " Picker")
 [[ -z "$selection" ]] && exit 0
 
-# Strip icon prefix to get the picker name
-picker=$(echo "$selection" | sed 's/^.*  //')
+# Strip icon prefix and convert label back to filename
+picker=$(echo "$selection" | sed 's/^.*  //; s/ /-/g' | tr '[:upper:]' '[:lower:]')
 exec "$PICKER_DIR/$picker.sh"
