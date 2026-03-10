@@ -43,7 +43,7 @@ for script in "$PICKER_DIR"/*.sh; do
     fi
 done
 
-selection=$(printf '%s' "$entries" | sort -t' ' -k2 | "${ROFI_DMENU[@]}" -p " Picker")
+selection=$(printf '%s' "$entries" | sort -f -t' ' -k2 | "${ROFI_DMENU[@]}" -p " Picker")
 [[ -z "$selection" ]] && exit 0
 
 # Strip icon prefix and convert label back to filename
