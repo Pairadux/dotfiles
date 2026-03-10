@@ -1,4 +1,5 @@
 #!/bin/bash
+# ICON: 󰕾
 #
 # audio output picker — switch default pipewire sink
 #

@@ -1,4 +1,5 @@
 #!/bin/bash
+# ICON: 󰅇
 #
 # clipboard picker — select from clipboard history
 #

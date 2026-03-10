@@ -27,9 +27,22 @@ if [[ -n "$1" ]]; then
     fi
 fi
 
-picker=$(find "$PICKER_DIR" -name '*.sh' -executable -printf '%f\n' \
-    | sed 's/\.sh$//' \
-    | sort \
-    | rofi -dmenu -p "picker")
+# Build menu entries with icons from each picker's # ICON: comment
+entries=""
+for script in "$PICKER_DIR"/*.sh; do
+    [[ -x "$script" ]] || continue
+    name=$(basename "$script" .sh)
+    icon=$(grep -m1 '^# ICON:' "$script" | sed 's/^# ICON: *//')
+    if [[ -n "$icon" ]]; then
+        entries+="$icon  $name"$'\n'
+    else
+        entries+="$name"$'\n'
+    fi
+done
 
-[[ -n "$picker" ]] && exec "$PICKER_DIR/$picker.sh"
+selection=$(printf '%s' "$entries" | sort -t' ' -k2 | rofi -dmenu -p " picker")
+[[ -z "$selection" ]] && exit 0
+
+# Strip icon prefix to get the picker name
+picker=$(echo "$selection" | sed 's/^.*  //')
+exec "$PICKER_DIR/$picker.sh"
