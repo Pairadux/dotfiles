@@ -21,7 +21,7 @@ source "$PICKER_DIR/_common.sh"
 if [[ -n "$1" ]]; then
     script="$PICKER_DIR/$1.sh"
     if [[ -x "$script" ]]; then
-        exec "$script"
+        exec "$script" "${@:2}"
     else
         notify-send "Picker" "Unknown picker: $1"
         exit 1
