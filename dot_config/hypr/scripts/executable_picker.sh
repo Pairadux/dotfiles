@@ -16,6 +16,7 @@
 #   - calc: rofi-calc plugin, result to clipboard
 
 PICKER_DIR="$(dirname "$0")/pickers"
+source "$PICKER_DIR/_common.sh"
 
 if [[ -n "$1" ]]; then
     script="$PICKER_DIR/$1.sh"
@@ -32,6 +33,7 @@ entries=""
 for script in "$PICKER_DIR"/*.sh; do
     [[ -x "$script" ]] || continue
     name=$(basename "$script" .sh)
+    [[ "$name" == _* ]] && continue
     icon=$(grep -m1 '^# ICON:' "$script" | sed 's/^# ICON: *//')
     if [[ -n "$icon" ]]; then
         entries+="$icon  $name"$'\n'
@@ -40,7 +42,7 @@ for script in "$PICKER_DIR"/*.sh; do
     fi
 done
 
-selection=$(printf '%s' "$entries" | sort -t' ' -k2 | rofi -dmenu -p " picker")
+selection=$(printf '%s' "$entries" | sort -t' ' -k2 | "${ROFI_DMENU[@]}" -p " picker")
 [[ -z "$selection" ]] && exit 0
 
 # Strip icon prefix to get the picker name

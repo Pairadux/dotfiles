@@ -5,7 +5,9 @@
 #
 # Assumes repeat and random are enabled globally in mpd (persisted via state_file).
 
-playlist=$(mpc lsplaylists | sed 's/^/󰎈  /' | rofi -dmenu -p "󰎈 playlist" | sed 's/^󰎈  //')
+source "$(dirname "$0")/_common.sh"
+
+playlist=$(mpc lsplaylists | sed 's/^/󰎈  /' | "${ROFI_DMENU[@]}" -p "󰎈 playlist" | sed 's/^󰎈  //')
 [[ -z "$playlist" ]] && exit 0
 
 mpc clear
