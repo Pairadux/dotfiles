@@ -75,7 +75,11 @@ map('v', 'gs', function() util.squeeze_interior_whitespace() end, { noremap = tr
 -- TERMINAL MODE MAPPINGS
 ------------------------------------------------------------
 
-map('t', '<C-x>', '<C-\\><C-N>', { desc = 'Exit Terminal Mode' })
+map('t', '<C-x>', '<C-\\><C-N>',       { desc = 'Exit Terminal Mode' })
+map('t', '<C-h>', '<C-\\><C-N><C-w>h', { desc = 'Switch Window Left' })
+map('t', '<C-l>', '<C-\\><C-N><C-w>l', { desc = 'Switch Window Right' })
+map('t', '<C-j>', '<C-\\><C-N><C-w>j', { desc = 'Switch Window Down' })
+map('t', '<C-k>', '<C-\\><C-N><C-w>k', { desc = 'Switch Window Up' })
 
 ------------------------------------------------------------
 -- ARCHIVED/DEPRECATED MAPPINGS
