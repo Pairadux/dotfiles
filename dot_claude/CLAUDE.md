@@ -33,6 +33,7 @@
 - Commits: use conventional commits with a brief imperative subject line — all lowercase.
   Common types: `feat:`, `fix:`, `chore:`, `docs:`, `refactor:`, `style:`, `test:`.
   Body is optional; use it only to explain *why*, not *what* — the diff shows what changed.
+- Never use heredoc (`cat <<'EOF'`) for git commit messages. Use a simple `-m "message"` flag.
 - Issues: describe the problem or desired outcome, not the solution. If the fix is already
   known, a one-line note is fine, but don't write the implementation in the issue.
 - PRs: write enough for a reviewer to understand the purpose and any non-obvious context.
