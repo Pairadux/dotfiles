@@ -61,6 +61,7 @@ alias tre='tree -CL 2'
 # *----------*
 # | CHEZMOI  |
 # *----------*
+alias cm='chezmoi'
 alias ca='chezmoi apply'
 
 # *--------------------*
