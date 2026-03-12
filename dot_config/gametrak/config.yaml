@@ -17,6 +17,10 @@ games:
     - class: Minecraft
       name: Minecraft
       prefix: true
+    - class: Slay the Spire 2
+      name: Slay the Spire 2
+    - class: Slay the Spire
+      name: Slay the Spire 
 settings:
     notifications: true
     log_sessions: true
