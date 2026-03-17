@@ -85,10 +85,10 @@ eval "$(zoxide init zsh)"
 # +---------+
 export KEYTIMEOUT=40
 bindkey -r '^l'
-bindkey -r '^g'
 bindkey -r '^p'
 bindkey '^f' autosuggest-accept
 bindkey ' ' magic-space
+bindkey '^g' _navi_widget
 bindkey -s '^o' 'muxly\n'
 ZVM_VI_INSERT_ESCAPE_BINDKEY=jk
 
