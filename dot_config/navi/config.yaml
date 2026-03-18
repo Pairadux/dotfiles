@@ -1,0 +1,9 @@
+cheats:
+  paths:
+    - ~/.config/navi/cheats
+
+client:
+  tealdeer: true
+
+shell:
+  command: zsh
