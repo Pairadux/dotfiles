@@ -77,3 +77,16 @@ $ playlist: mpc lsplaylists 2>/dev/null
 
 # ncmpcpp — Interactive MPD music player TUI
 ncmpcpp
+
+% wallpaper-ctl, wallpaper, hyprpaper, hyprland
+
+# wallpaper-ctl — List available wallpaper pairs
+wallpaper-ctl --list
+
+# wallpaper-ctl — Apply a wallpaper by name (persists across reboots)
+wallpaper-ctl <name>
+
+# wallpaper-ctl — Generate sliced pair from flat PNG and apply
+wallpaper-ctl <name> --generate
+
+$ name: wallpaper-ctl --list 2>/dev/null | sed '1d; s/^  //'
