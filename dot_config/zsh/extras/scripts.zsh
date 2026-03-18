@@ -12,11 +12,11 @@ function y() {
 # push branch, create PR, merge, switch to main, pull
 prship() {
     git push -u origin HEAD && \
-    gh pr create --fill && \
-    gh pr merge --rebase --delete-branch && \
-    git switch main && \
-    git pull origin main
-}
+        gh pr create --fill && \
+        gh pr merge --rebase --delete-branch && \
+        git switch main && \
+        git pull origin main
+    }
 
 # fuzzy cd
 fcd() {
@@ -71,9 +71,9 @@ man() {
         LESS_TERMCAP_us=$'\e[01;32m' \
         command man "$@"
 
-    # Restore previous LESSOPEN if needed
-    export LESSOPEN="$OLD_LESSOPEN"
-}
+        # Restore previous LESSOPEN if needed
+        export LESSOPEN="$OLD_LESSOPEN"
+    }
 
 pokemon() {
     pokemon-colorscripts --no-title -b -rn gengar,lugia,articuno,zapdos,giratina,scyther,scizor,bisharp,garchomp,greninja,samurott,moltres,kricketune,lucario,absol,venusaur,blastoise,zoroark
@@ -98,46 +98,47 @@ ytdl() {
 
     local output_dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Music"
     local opts=(--extract-audio --audio-format mp3 --audio-quality 0
-                --cookies ~/.youtube-cookies.txt
-                -o "${output_dir}/%(title)s.%(ext)s")
+        --cookies ~/.youtube-cookies.txt
+        -o "${output_dir}/%(title)s.%(ext)s")
 
-    if [[ "$raw" = false ]]; then
-        opts+=(--add-metadata --embed-thumbnail)
-    fi
+        if [[ "$raw" = false ]]; then
+            opts+=(--add-metadata --embed-thumbnail)
+        fi
 
-    yt-dlp "${opts[@]}" "$url"
-}
+        yt-dlp "${opts[@]}" "$url"
+    }
 
 _navi_call() {
-   local result="$(navi "$@" </dev/tty)"
-   printf "%s" "$result"
+    local result="$(navi "$@" </dev/tty)"
+    printf "%s" "$result"
 }
 
 _navi_widget() {
-   local -r input="${LBUFFER}"
-   local -r last_command="$(echo "${input}" | navi fn widget::last_command)"
-   local replacement="$last_command"
+    local -r input="${LBUFFER}"
+    local -r last_command="$(echo "${input}" | navi fn widget::last_command)"
+    local replacement="$last_command"
 
-   if [ -z "$last_command" ]; then
-      replacement="$(_navi_call --print)"
-   elif [ "$LASTWIDGET" = "_navi_widget" ] && [ "$input" = "$previous_output" ]; then
-      replacement="$(_navi_call --print --query "$last_command")"
-   else
-      replacement="$(_navi_call --print --best-match --query "$last_command")"
-   fi
+    if [ -z "$last_command" ]; then
+        replacement="$(_navi_call --print)"
+    elif [ "$LASTWIDGET" = "_navi_widget" ] && [ "$input" = "$previous_output" ]; then
+        replacement="$(_navi_call --print --query "$_navi_original_query")"
+    else
+        _navi_original_query="$last_command"
+        replacement="$(_navi_call --print --best-match --query "$last_command")"
+    fi
 
-   if [ -n "$replacement" ]; then
-      local -r find="${last_command}_NAVIEND"
-      previous_output="${input}_NAVIEND"
-      previous_output="${previous_output//$find/$replacement}"
-   else
-      previous_output="$input"
-   fi
+    if [ -n "$replacement" ]; then
+        local -r find="${last_command}_NAVIEND"
+        previous_output="${input}_NAVIEND"
+        previous_output="${previous_output//$find/$replacement}"
+    else
+        previous_output="$input"
+    fi
 
-   zle kill-whole-line
-   LBUFFER="${previous_output}"
-   region_highlight=("P0 100 bold")
-   zle redisplay
+    zle kill-whole-line
+    LBUFFER="${previous_output}"
+    region_highlight=("P0 100 bold")
+    zle redisplay
 }
 
 zle -N _navi_widget
