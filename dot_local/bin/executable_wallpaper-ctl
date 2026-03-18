@@ -1,20 +1,30 @@
 #!/bin/bash
-# usage: wallpaper-ctl <name> [--generate] [--list]
+# usage: wallpaper-ctl <name> [--generate] [--write] [--set] [--list]
 #
-# Applies a wallpaper pair and persists the selection to hyprpaper-wallpaper.conf.
-# With --generate, slices a flat source PNG into top/bottom via rwpspread first.
+# Manages wallpaper pairs for a dual-monitor hyprpaper setup.
+#
+#   --list       show available wallpaper pairs
+#   --generate   slice a flat source PNG into top/bottom via rwpspread
+#   --write      persist the selection to hyprpaper-wallpaper.conf
+#   --set        apply live via hyprctl and persist to config
+#
+# With no flags, shows info about the named wallpaper.
 
 WALLPAPER_DIR="$HOME/Media/Pictures/wallpapers"
 WALLPAPER_CONF="$HOME/.config/hypr/hyprpaper-wallpaper.conf"
 
 GENERATE=0
 LIST=0
+WRITE=0
+SET=0
 INPUT=""
 
 for arg in "$@"; do
     case "$arg" in
         --generate) GENERATE=1 ;;
         --list)     LIST=1 ;;
+        --write)    WRITE=1 ;;
+        --set)      SET=1 ;;
         *)          INPUT="$arg" ;;
     esac
 done
@@ -31,7 +41,15 @@ if [[ $LIST -eq 1 ]]; then
 fi
 
 if [[ -z "$INPUT" ]]; then
-    echo "Usage: wallpaper-ctl <name> [--generate] [--list]"
+    echo "Usage: wallpaper-ctl <name> [--generate] [--write] [--set] [--list]"
+    echo ""
+    echo "Options:"
+    echo "  --list       show available wallpaper pairs"
+    echo "  --generate   slice flat source PNG into top/bottom via rwpspread"
+    echo "  --write      persist selection to hyprpaper-wallpaper.conf"
+    echo "  --set        apply live and persist to config"
+    echo ""
+    echo "With no flags, shows info about the named wallpaper."
     exit 1
 fi
 
@@ -63,21 +81,46 @@ if [[ $GENERATE -eq 1 ]]; then
     echo "Saved to $WALLPAPER_PAIR"
 fi
 
-# Check pair exists
-if [[ ! -f "$TOP" ]] || [[ ! -f "$BOTTOM" ]]; then
-    echo "Error: top.png/bottom.png not found in $WALLPAPER_PAIR"
-    echo "Run with --generate to create them from ${BASENAME}-wallpaper.png"
-    exit 1
+# --write and --set require the pair to exist
+if [[ $WRITE -eq 1 || $SET -eq 1 ]]; then
+    if [[ ! -f "$TOP" ]] || [[ ! -f "$BOTTOM" ]]; then
+        echo "Error: top.png/bottom.png not found in $WALLPAPER_PAIR"
+        echo "Run with --generate to create them from ${BASENAME}-wallpaper.png"
+        exit 1
+    fi
 fi
 
-# Apply live
-hyprctl hyprpaper wallpaper "HDMI-A-1,$TOP"
-hyprctl hyprpaper wallpaper "DP-2,$BOTTOM"
+# --set: apply live and persist
+if [[ $SET -eq 1 ]]; then
+    hyprctl hyprpaper wallpaper "HDMI-A-1,$TOP"
+    hyprctl hyprpaper wallpaper "DP-2,$BOTTOM"
+    WRITE=1
+    echo "Applied: $BASENAME"
+fi
 
-# Persist for next boot
-cat > "$WALLPAPER_CONF" <<EOF
+# --write: persist for next boot
+if [[ $WRITE -eq 1 ]]; then
+    cat > "$WALLPAPER_CONF" <<EOF
 \$wallpaper_top = $TOP
 \$wallpaper_bottom = $BOTTOM
 EOF
+    echo "Written: $WALLPAPER_CONF"
+fi
 
-echo "Applied: $BASENAME"
+# Default (no action flags): show info about the wallpaper
+if [[ $GENERATE -eq 0 && $WRITE -eq 0 && $SET -eq 0 ]]; then
+    echo "Wallpaper: $BASENAME"
+    echo "  Directory: $WALLPAPER_DIR/$BASENAME"
+
+    if [[ -f "$FLAT" ]]; then
+        echo "  Flat source: found"
+    else
+        echo "  Flat source: not found"
+    fi
+
+    if [[ -f "$TOP" && -f "$BOTTOM" ]]; then
+        echo "  Pair: ready (top.png + bottom.png)"
+    else
+        echo "  Pair: not generated"
+    fi
+fi
