@@ -1,0 +1,93 @@
+% gh, github, pull request, issue, cli
+
+# gh — Create a pull request (interactive)
+gh pr create
+
+# gh — Create a pull request with auto-filled title/body from commits
+gh pr create --fill
+
+# gh — List open pull requests
+gh pr list
+
+# gh — View a pull request in the terminal
+gh pr view <pr_number>
+
+# gh — Checkout a pull request locally
+gh pr checkout <pr_number>
+
+# gh — Merge a pull request with rebase
+gh pr merge <pr_number> --rebase --delete-branch
+
+# gh — Create an issue
+gh issue create
+
+# gh — List open issues
+gh issue list
+
+# gh — View issue details
+gh issue view <issue_number>
+
+# gh — Open current repo in the browser
+gh browse
+
+# gh — View workflow runs (CI/CD status)
+gh run list
+
+# gh — Watch a workflow run in progress
+gh run watch <run_id>
+
+# gh — Clone a repository
+gh repo clone <owner>/<repo>
+
+# gh — Fork a repository
+gh repo fork <owner>/<repo>
+
+# gh — Create a new repository
+gh repo create <name>
+
+# gh — View repo details
+gh repo view
+
+# prship — Push, create PR, merge, switch to main, pull (one-liner)
+prship
+
+% just, justfile, command runner, task
+
+# just — List all available recipes
+just --list
+
+# just — Run the default recipe
+just
+
+# just — Run a specific recipe
+just <recipe>
+
+# just — Run a recipe with arguments
+just <recipe> <args>
+
+# just — Show the source of a recipe
+just --show <recipe>
+
+# just — Choose a recipe interactively
+just --choose
+
+# just — Edit the justfile
+just --edit
+
+$ recipe: just --summary 2>/dev/null | tr ' ' '\n'
+
+% lazygit, git, tui, interactive
+
+# lazygit — Interactive git TUI (alias: gg)
+lazygit
+
+% pre-commit, git hooks, linter, formatter
+
+# pre-commit — Git hook manager that runs linters/formatters before commits
+pre-commit run --all-files
+
+# pre-commit — Install hooks into the current repo
+pre-commit install
+
+# pre-commit — Update hook versions to latest
+pre-commit autoupdate

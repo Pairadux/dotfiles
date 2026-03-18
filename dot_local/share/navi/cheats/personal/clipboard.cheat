@@ -1,0 +1,25 @@
+% clipboard, copy, paste, wl-copy, wl-paste, wayland
+
+# wl-copy — Copy text to clipboard
+echo '<text>' | wl-copy
+
+# wl-copy — Copy file contents to clipboard
+wl-copy < <file>
+
+# wl-copy — Copy command output to clipboard
+<command> | wl-copy
+
+# wl-copy — Copy and serve only one paste request then exit
+<command> | wl-copy --paste-once
+
+# wl-copy — Clear the clipboard
+wl-copy --clear
+
+# wl-paste — Paste clipboard contents to stdout
+wl-paste
+
+# wl-paste — Paste clipboard into a file
+wl-paste > <file>
+
+# wl-paste — Paste without trailing newline
+wl-paste --no-newline

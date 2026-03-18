@@ -1,0 +1,100 @@
+% yay, aur, pacman, package, arch
+
+# yay — Install a package (repos + AUR)
+yay -S <package_name>
+
+# yay — Search for packages (repos + AUR)
+yay <search_term>
+
+# yay — Update all packages (repos + AUR)
+yay -Syu
+
+# yay — Remove a package and its unused dependencies
+yay -Rs <installed_package>
+
+# yay — Show package info
+yay -Si <package_name>
+
+# yay — Show info for an installed package
+yay -Qi <installed_package>
+
+# yay — List explicitly installed packages
+yay -Qe
+
+# yay — List installed AUR packages only
+yay -Qm
+
+# yay — Show which package owns a file
+yay -Qo <file>
+
+# yay — Clean build cache
+yay -Sc
+
+# yay — Show PKGBUILD diffs before upgrading
+yay -Syu --devel --combinedupgrade
+
+# yay — Remove orphaned packages (no longer needed dependencies)
+yay -Qdtq | yay -Rs -
+
+$ installed_package: yay -Qe | awk '{print $1}'
+
+% flatpak, package, sandboxed, app
+
+# flatpak — Install an app
+flatpak install <remote> <app_id>
+
+# flatpak — List installed apps
+flatpak list
+
+# flatpak — List installed apps (app IDs only)
+flatpak list --columns=application
+
+# flatpak — Run an installed app
+flatpak run <app>
+
+# flatpak — Update all installed apps
+flatpak update
+
+# flatpak — Remove an installed app
+flatpak uninstall <app>
+
+# flatpak — Search for an app
+flatpak search <query>
+
+# flatpak — List configured remotes
+flatpak remotes
+
+$ app: flatpak list --columns=application 2>/dev/null
+$ remote: flatpak remotes --columns=name 2>/dev/null
+
+% topgrade, update, upgrade, system
+
+# topgrade — Run all configured updaters
+topgrade
+
+# topgrade — Dry run (show what would update)
+topgrade -n
+
+# topgrade — Skip specific updaters
+topgrade --disable <step>
+
+# topgrade — Run only a specific updater
+topgrade --only <step>
+
+# topgrade — Edit the configuration file
+topgrade --edit-config
+
+$ step: echo "system git_repos flatpak npm" | tr ' ' '\n'
+
+% reflector, mirror, pacman, mirrorlist, arch
+
+# reflector — Sort Arch mirrors by speed, save the fastest N
+sudo reflector --sort rate -l <count> --save /etc/pacman.d/mirrorlist
+
+# reflector — Filter mirrors by country and sort by speed
+sudo reflector -c <country> --sort rate -l <count> --save /etc/pacman.d/mirrorlist
+
+# reflector — List available mirror countries
+reflector --list-countries
+
+$ country: reflector --list-countries 2>/dev/null | awk '{print $1}'

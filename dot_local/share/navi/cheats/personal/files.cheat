@@ -1,0 +1,129 @@
+% fd, find alternative, file search
+
+# fd — Find files by name pattern
+fd '<pattern>'
+
+# fd — Find files by extension
+fd -e <ext>
+
+# fd — Find directories only
+fd -t d '<pattern>'
+
+# fd — Find files only (no directories)
+fd -t f '<pattern>'
+
+# fd — Find with max depth limit
+fd -d <depth> '<pattern>'
+
+# fd — Find including hidden and ignored files
+fd -HI '<pattern>'
+
+# fd — Find and execute a command on each result
+fd '<pattern>' -x <command> {}
+
+# fd — Find files modified in the last N days
+fd --changed-within <days>d
+
+# fd — Find files larger than a given size
+fd -S +<size>
+
+# fd — Find empty files or directories
+fd -t f -S 0
+fd -t d --empty
+
+# fd — Find and delete matching files (careful!)
+fd '<pattern>' -x rm {}
+
+# fd — Exclude a directory from search
+fd '<pattern>' -E <excluded_dir>
+
+# fd — Search only in a specific directory
+fd '<pattern>' <search_path>
+
+# fd — Find with full regex pattern
+fd -r '<regex>'
+
+# fd — List all files (no filter), useful for piping
+fd -t f
+
+$ ext: echo "rs go py ts tsx js json toml yaml md sh"  | tr ' ' '\n'
+
+% eza, ls alternative, listing
+
+# eza — Long listing with all files and human-readable sizes (ll)
+eza -lah
+
+# eza — List all including hidden files (la)
+eza -a
+
+# eza — Long listing (l)
+eza -l
+
+# eza — One file per line (l1)
+eza -1
+
+# eza — List sorted by modification time (newest first)
+eza -l --sort modified
+
+# eza — Long listing with git status column
+eza -l --git
+
+# eza — Show as a tree with depth limit
+eza --tree --level <depth>
+
+# eza — List only directories
+eza -D
+
+# eza — Group directories before files in listing
+eza --group-directories-first
+
+% yazi, file manager, tui, browser
+
+# yazi — Open terminal file manager (y wrapper for cd-on-exit)
+y
+
+# yazi — Open file manager in a specific directory
+y <path>
+
+% zoxide, cd alternative, jump, directory
+
+# zoxide — Jump to best matching directory
+z <query>
+
+# zoxide — Interactive directory picker with fzf
+zi
+
+# zoxide — Add a directory to the database manually
+zoxide add <path>
+
+# zoxide — Remove a directory from the database
+zoxide remove <path>
+
+# zoxide — List all tracked directories with scores
+zoxide query --list --score
+
+% bat, cat alternative, syntax highlighting, pager
+
+# bat — View file with syntax highlighting
+bat <file>
+
+# bat — View file with a specific language syntax
+bat -l <language> <file>
+
+# bat — View only a range of lines
+bat --line-range <start>:<end> <file>
+
+# bat — Plain output (no decorations, useful for piping)
+bat -pp <file>
+
+# bat — Show non-printable characters
+bat --show-all <file>
+
+# bat — List available themes
+bat --list-themes
+
+# bat — View file with a specific theme
+bat --theme <theme> <file>
+
+$ language: bat --list-languages | awk -F: '{print $1}'
+$ theme: bat --list-themes | grep '^Theme:' | awk '{print $2}'

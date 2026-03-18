@@ -1,0 +1,30 @@
+% tmux, session, multiplexer, terminal
+
+# tmux — New session with a name
+tmux new -s <session_name>
+
+# tmux — List all sessions
+tmux ls
+
+# tmux — Attach to a session by name
+tmux attach -t <session>
+
+# tmux — Kill a specific session
+tmux kill-session -t <session>
+
+# tmux — Detach from current session
+tmux detach
+
+# tmux — New window in current session
+tmux new-window
+
+# tmux — Split pane horizontally
+tmux split-window -h
+
+# tmux — Split pane vertically
+tmux split-window -v
+
+# tmux — Switch to another session interactively
+tmux switch-client -t <session>
+
+$ session: tmux list-sessions -F '#S' 2>/dev/null

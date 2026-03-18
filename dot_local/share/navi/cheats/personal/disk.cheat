@@ -1,0 +1,64 @@
+% dua, disk usage, du alternative, interactive
+
+# dua — Interactive disk usage analyzer (navigate with hjkl)
+dua i <path>
+
+# dua — Show aggregate disk usage of current directory
+dua
+
+# dua — Show disk usage summary of a specific path
+dua <path>
+
+% dust, disk usage, du alternative, visual
+
+# dust — Visual disk usage tree of current directory
+dust
+
+# dust — Disk usage tree limited to N levels deep
+dust -d <depth>
+
+# dust — Show only directories, skip individual files
+dust -D
+
+# dust — Show N largest items
+dust -n <count>
+
+# dust — Disk usage in reverse order (smallest first)
+dust -r
+
+# dust — Disk usage tree for a specific path
+dust <path>
+
+% duf, filesystem, df alternative, disk free
+
+# duf — Tabular overview of all mounted filesystems
+duf
+
+# duf — Show only local (non-network) filesystems
+duf --only local
+
+# duf — Output filesystem info as JSON
+duf --json
+
+% tree, directory, listing, structure
+
+# tree — Directory tree limited to N levels deep
+tree -L <depth>
+
+# tree — Show only directories (no files)
+tree -d
+
+# tree — N levels deep, directories only
+tree -dL <depth>
+
+# tree — Show tree with human-readable file sizes
+tree -sh
+
+# tree — Directory tree as JSON output
+tree -J
+
+# tree — Show tree ignoring a pattern (e.g. node_modules, .git)
+tree -I '<pattern>'
+
+# tree — Show tree with full relative paths
+tree -f

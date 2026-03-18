@@ -1,0 +1,66 @@
+% eva, calc, calculator, math
+
+# eva — Calculate an expression (alias: calc)
+eva '<expression>'
+
+# calc — Calculate with 2 decimal places (alias for eva -f 2)
+calc '<expression>'
+
+# eva — Calculate with specific decimal precision
+eva -f <decimals> '<expression>'
+
+% fx, json, viewer, explorer, interactive
+
+# fx — Interactively explore a JSON file
+fx <file>
+
+# fx — Pipe JSON into fx for interactive exploration
+<command> | fx
+
+# fx — Extract a field from JSON
+cat <file> | fx '.key'
+
+% glow, markdown, reader, renderer, pager
+
+# glow — Render and view a markdown file in the terminal
+glow <file>
+
+# glow — Browse markdown files interactively
+glow
+
+% wget, download, http, fetch
+
+# wget — Download a file
+wget '<url>'
+
+# wget — Download and save with a specific filename
+wget -O <filename> '<url>'
+
+# wget — Resume an interrupted download
+wget -c '<url>'
+
+# wget — Download all URLs listed in a file
+wget -i <url_file>
+
+# wget — Mirror a website for offline viewing
+wget --mirror --convert-links --page-requisites '<url>'
+
+# wget — Download with speed limit (e.g. 500k, 2m)
+wget --limit-rate=<rate> '<url>'
+
+# wget — Quiet mode (no progress output)
+wget -q '<url>'
+
+% 7zip, archive, compress, extract, 7z
+
+# 7z — Create an archive
+7z a <archive>.7z <files>
+
+# 7z — Extract an archive
+7z x <archive>
+
+# 7z — List contents of an archive
+7z l <archive>
+
+# 7z — Extract to a specific directory
+7z x <archive> -o<output_dir>

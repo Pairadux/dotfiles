@@ -1,0 +1,79 @@
+% yt-dlp, youtube, download, video, audio
+
+# yt-dlp — Download video (best quality)
+yt-dlp '<url>'
+
+# yt-dlp — Download audio only as mp3
+yt-dlp --extract-audio --audio-format mp3 '<url>'
+
+# yt-dlp — Download best audio quality as mp3 with metadata
+yt-dlp --extract-audio --audio-format mp3 --audio-quality 0 --add-metadata --embed-thumbnail '<url>'
+
+# yt-dlp — List available formats for a video
+yt-dlp -F '<url>'
+
+# yt-dlp — Download a specific format by ID
+yt-dlp -f <format_id> '<url>'
+
+# yt-dlp — Download entire playlist
+yt-dlp '<playlist_url>'
+
+# yt-dlp — Download with custom output filename template
+yt-dlp -o '<template>' '<url>'
+
+# yt-dlp — Download with cookies file (for auth-required content)
+yt-dlp --cookies <cookie_file> '<url>'
+
+# ytdl — Custom mp3 downloader (macOS, wraps yt-dlp)
+ytdl '<url>'
+
+# ytdl — Raw mp3 download without metadata/thumbnail
+ytdl --raw '<url>'
+
+% mpc, mpd, music, player, daemon, playlist
+
+# mpc — Toggle play/pause
+mpc toggle
+
+# mpc — Next track
+mpc next
+
+# mpc — Previous track
+mpc prev
+
+# mpc — Show currently playing track
+mpc current
+
+# mpc — Show player status
+mpc status
+
+# mpc — Set volume (0-100)
+mpc volume <level>
+
+# mpc — Load a playlist
+mpc load <playlist>
+
+# mpc — List available playlists
+mpc lsplaylists
+
+# mpc — Clear the current queue
+mpc clear
+
+# mpc — Toggle random mode
+mpc random
+
+# mpc — Toggle repeat mode
+mpc repeat
+
+# mpc — Search the music library
+mpc search any '<query>'
+
+# mpc — Add all results of a search to the queue
+mpc search any '<query>' | mpc add
+
+$ playlist: mpc lsplaylists 2>/dev/null
+
+% ncmpcpp, music, player, tui, mpd
+
+# ncmpcpp — Interactive MPD music player TUI
+ncmpcpp

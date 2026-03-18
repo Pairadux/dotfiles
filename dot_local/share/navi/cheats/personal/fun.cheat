@@ -1,0 +1,25 @@
+% fun, rice, terminal, eye candy, entertainment
+
+# cmatrix — Falling Matrix-style terminal rain
+cmatrix
+
+# cbonsai — Procedurally growing bonsai tree animation
+cbonsai -l
+
+# pipes.sh — Animated pipes screensaver
+pipes.sh
+
+# asciiquarium — ASCII art aquarium animation
+asciiquarium
+
+# sl — Steam locomotive (mistyped ls)
+sl
+
+# vitetris — Terminal Tetris game
+vitetris
+
+# pokemon — Random Pokemon art from curated list
+pokemon
+
+# genact — Fake activity generator (pretend to be busy)
+genact

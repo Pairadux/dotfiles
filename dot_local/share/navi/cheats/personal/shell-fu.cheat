@@ -1,0 +1,82 @@
+% awk, column, extract, text processing, pipeline
+
+# awk — Extract the Nth column from output
+<command> | awk '{print $<column>}'
+
+# awk — Extract column with a custom delimiter (e.g. ":" or ",")
+<command> | awk -F '<delimiter>' '{print $<column>}'
+
+# awk — Sum a column of numbers
+<command> | awk '{sum += $<column>} END {print sum}'
+
+# awk — Print only lines matching a pattern
+<command> | awk '/<pattern>/'
+
+# awk — Deduplicate lines (like uniq but doesn't need sort)
+<command> | awk '!seen[$0]++'
+
+# awk — Print lines between two patterns (inclusive)
+awk '/<start>/,/<end>/' <file>
+
+# awk — Reformat output with a different separator
+<command> | awk '{OFS="<separator>"} {print $1, $2}'
+
+# awk — Print a specific line number
+awk 'NR==<line_number>' <file>
+
+% sed, replace, substitute, in-place, text transform
+
+# sed — Find and replace all occurrences (to stdout)
+<command> | sed 's/<old>/<new>/g'
+
+# sed — In-place find and replace in a file
+sed -i 's/<old>/<new>/g' <file>
+
+# sed — Use pipe delimiter to avoid escaping slashes (paths)
+sed -i 's|<old_path>|<new_path>|g' <file>
+
+# sed — Delete lines matching a pattern
+sed '/<pattern>/d' <file>
+
+# sed — Print only a range of lines
+sed -n '<start>,<end>p' <file>
+
+# sed — Remove trailing whitespace from a file
+sed -i -E 's/\s+$//g' <file>
+
+# sed — Remove empty/blank lines from a file
+sed -i '/^$/d' <file>
+
+% xargs, pipe, batch, parallel, execute
+
+# xargs — Pipe a list of items into a command
+<command> | xargs <target_command>
+
+# xargs — Run command once per input line with placeholder
+<command> | xargs -I {} <target_command> {}
+
+# xargs — Null-delimited input (safe for filenames with spaces)
+<command> | xargs -0 <target_command>
+
+# xargs — Run up to N commands in parallel
+<command> | xargs -P <procs> -I {} <target_command> {}
+
+# xargs — Process N items at a time (batching)
+<command> | xargs -n <batch_size> <target_command>
+
+% pipeline, combo, fd, rg, glue, chain
+
+# fd + xargs — Run a command on all files matching a pattern
+fd -e <ext> | xargs <command>
+
+# rg + sed — Search and replace across matching files
+rg -l '<pattern>' | xargs sed -i 's/<old>/<new>/g'
+
+# rg + wl-copy — Copy search results to clipboard
+rg '<pattern>' | wl-copy
+
+# fd + bat — Preview all files of a type
+fd -e <ext> | xargs bat
+
+# command output to clipboard — Pipe any output to Wayland clipboard
+<command> | wl-copy

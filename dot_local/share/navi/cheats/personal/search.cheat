@@ -1,0 +1,92 @@
+% rg, ripgrep, grep alternative, search, text
+
+# rg — Search for a pattern in current directory
+rg '<pattern>'
+
+# rg — Case-insensitive search
+rg -i '<pattern>'
+
+# rg — Search only in specific file types
+rg -t <type> '<pattern>'
+
+# rg — Search with glob filter (e.g. '*.json')
+rg -g '<glob>' '<pattern>'
+
+# rg — Fixed string / literal search (no regex)
+rg -F '<literal>'
+
+# rg — Show only filenames containing matches
+rg -l '<pattern>'
+
+# rg — Count matches per file
+rg -c '<pattern>'
+
+# rg — Search with N lines of context around matches
+rg -C <lines> '<pattern>'
+
+# rg — Search hidden and gitignored files too
+rg -uuu '<pattern>'
+
+# rg — Search in a specific directory
+rg '<pattern>' <path>
+
+# rg — Invert match (lines NOT matching)
+rg -v '<pattern>'
+
+# rg — Search for whole words only
+rg -w '<pattern>'
+
+# rg — Show only the matching part of each line
+rg -o '<pattern>'
+
+# rg — Replace matches (dry-run preview to stdout)
+rg '<pattern>' -r '<replacement>'
+
+# rg — Multiline search (pattern spanning lines)
+rg -U '<pattern>'
+
+# rg — List all supported file type names
+rg --type-list
+
+# rg — Search and pipe results to fzf for interactive filtering
+rg '<pattern>' | fzf
+
+# rg — Search for pattern, showing before and after context
+rg -B <before> -A <after> '<pattern>'
+
+$ type: rg --type-list | awk -F: '{print $1}'
+
+% fzf, fuzzy finder, picker, filter, interactive
+
+# fzf — Fuzzy find files (basic)
+fzf
+
+# fzf — Find files with bat preview
+fzf --preview 'bat --color=always {}'
+
+# fzf — Multi-select mode (Tab to select, Enter to confirm)
+fzf --multi
+
+# fzf — Pipe any command through fzf for interactive filtering
+<command> | fzf
+
+# fzf — Find files with fd and preview with bat
+fd -t f | fzf --preview 'bat --color=always {}'
+
+# fzf — Fuzzy cd into a subdirectory
+cd $(fd -t d | fzf)
+
+# fzf — Fuzzy-select a git branch and switch to it
+git switch $(git branch | fzf)
+
+# fzf — Exact match mode (disable fuzzy)
+fzf --exact
+
+# fzf — Reverse layout with constrained height
+fzf --reverse --height 40%
+
+# fzf — Use fzf to kill a process by name
+kill $(ps aux | fzf | awk '{print $2}')
+
+# fzf — Preview directory contents while picking
+fd -t d | fzf --preview 'eza --tree --level 2 {}'

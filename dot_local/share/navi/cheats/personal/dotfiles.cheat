@@ -1,0 +1,107 @@
+% chezmoi, dotfiles, config, manager
+
+# chezmoi — Apply dotfiles to home directory (alias: ca)
+chezmoi apply
+
+# chezmoi — Pull remote changes and apply
+chezmoi update
+
+# chezmoi — Open a shell in the source directory
+chezmoi cd
+
+# chezmoi — Re-add modified files back to source state
+chezmoi re-add
+
+# chezmoi — Add a file or directory to chezmoi tracking
+chezmoi add <file>
+
+# chezmoi — Mark a tracked file as a template
+chezmoi chattr +template <target>
+
+# chezmoi — Change file attributes (executable, private, etc.)
+chezmoi chattr <modifier> <target>
+
+# chezmoi — Preview what would change before applying
+chezmoi status
+
+# chezmoi — Show full diff of pending changes
+chezmoi diff
+
+# chezmoi — List all managed files
+chezmoi managed
+
+# chezmoi — List managed files, only show files (no dirs)
+chezmoi managed --include=files
+
+# chezmoi — List managed files under a specific path
+chezmoi managed <path>
+
+# chezmoi — List unmanaged files in home directory
+chezmoi unmanaged
+
+# chezmoi — List unmanaged files under a specific path
+chezmoi unmanaged <path>
+
+# chezmoi — Stop tracking a file (keeps the file on disk)
+chezmoi forget <target>
+
+# chezmoi — Verify all targets match their expected state
+chezmoi verify
+
+# chezmoi — Run a git command in the source directory
+chezmoi git -- <git_args>
+
+# chezmoi — Check for configuration problems
+chezmoi doctor
+
+# chezmoi — Preview what a template file would render to
+chezmoi cat <target>
+
+# chezmoi — Show all template variables (os, arch, hostname, etc.)
+chezmoi data
+
+# chezmoi — Show template data as YAML
+chezmoi data --format=yaml
+
+# chezmoi — Test a template expression inline
+chezmoi execute-template '{{ .chezmoi.os }}'
+
+# chezmoi — Generate a tar archive of all managed dotfiles
+chezmoi archive --output=<filename>.tar.gz
+
+$ target: chezmoi managed 2>/dev/null
+$ modifier: echo "+template -template +executable -executable +private -private +readonly -readonly" | tr ' ' '\n'
+
+% bob, neovim, version manager, nvim
+
+# bob — Install a neovim version
+bob install <version>
+
+# bob — Switch to a neovim version (installs if needed)
+bob use <version>
+
+# bob — List installed neovim versions
+bob ls
+
+# bob — List available remote versions
+bob ls-remote
+
+# bob — Update nightly or stable
+bob update <channel>
+
+# bob — Uninstall a neovim version
+bob uninstall <version>
+
+$ version: bob ls 2>/dev/null | awk 'NR>1 {print $1}'
+$ channel: echo "nightly stable --all" | tr ' ' '\n'
+
+% tealdeer, tldr, cheatsheet, help, manpage
+
+# tealdeer — Look up a command's tldr page
+tldr <command>
+
+# tealdeer — Update the local tldr cache
+tldr --update
+
+# tealdeer — List all available tldr pages
+tldr --list

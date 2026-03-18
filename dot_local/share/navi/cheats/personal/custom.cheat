@@ -1,0 +1,58 @@
+% muxly, tmux, session, project, manager
+
+# muxly — Open session picker (also Ctrl+O)
+muxly
+
+# muxly — Create session from a template
+muxly create <template>
+
+# muxly — Add a directory to the project scan list
+muxly add <path>
+
+# muxly — Remove a directory from the scan list
+muxly remove
+
+# muxly — Kill current session and switch to another
+muxly kill
+
+# muxly — Switch to an active tmux session
+muxly switch
+
+# muxly — Check environment and configuration health
+muxly doctor
+
+# muxly — View or edit configuration
+muxly config
+
+$ template: echo "edit-x edit-ai-x minimal quick-session" | tr ' ' '\n'
+
+% jdexr, johnny decimal, search, index, metadata
+
+# jdexr — Search JD entries by keywords (any match)
+jdexr <keywords>
+
+# jdexr — Search requiring ALL keywords to match
+jdexr -a <keywords>
+
+# jdexr — Search and show full paths
+jdexr -p <keywords>
+
+# jdexr — Initialize metadata files for JD entries
+jdexr init
+
+# jdexr — Rebuild the search index from metadata
+jdexr refresh
+
+% gametrak, game, tracker, session, hyprland
+
+# gametrak — Add a game to the tracking list
+gametrak add
+
+# gametrak — View recent game sessions
+gametrak history
+
+# gametrak — Show aggregate game time statistics
+gametrak stats
+
+# gametrak — Regenerate the Hyprland games.conf window rules
+gametrak generate
