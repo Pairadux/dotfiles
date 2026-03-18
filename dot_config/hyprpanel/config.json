@@ -79,7 +79,7 @@
   "menus.dashboard.shortcuts.left.shortcut1.icon": "",
   "menus.dashboard.shortcuts.left.shortcut1.command": "zen-browser",
   "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Zen Browser",
-  "menus.dashboard.shortcuts.left.shortcut2.command": "spotify",
+  "menus.dashboard.shortcuts.left.shortcut2.command": "ghostty -e ncmpcpp",
   "menus.dashboard.shortcuts.right.shortcut3.command": "hyprshot -m region",
   "menus.dashboard.directories.left.directory3.command": "bash -c \"xdg-open $HOME/Dev/\"",
   "menus.dashboard.directories.left.directory3.label": "󰚝 Dev",
@@ -113,5 +113,7 @@
     "100": "",
     "-98": ""
   },
-  "theme.bar.buttons.windowtitle.enableBorder": false
+  "theme.bar.buttons.windowtitle.enableBorder": false,
+  "menus.dashboard.shortcuts.left.shortcut2.icon": "",
+  "menus.dashboard.shortcuts.left.shortcut2.tooltip": "Music"
 }
