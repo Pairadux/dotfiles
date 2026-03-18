@@ -1,0 +1,83 @@
+#!/bin/bash
+# usage: wallpaper-ctl <name> [--generate] [--list]
+#
+# Applies a wallpaper pair and persists the selection to hyprpaper-wallpaper.conf.
+# With --generate, slices a flat source PNG into top/bottom via rwpspread first.
+
+WALLPAPER_DIR="$HOME/Media/Pictures/wallpapers"
+WALLPAPER_CONF="$HOME/.config/hypr/hyprpaper-wallpaper.conf"
+
+GENERATE=0
+LIST=0
+INPUT=""
+
+for arg in "$@"; do
+    case "$arg" in
+        --generate) GENERATE=1 ;;
+        --list)     LIST=1 ;;
+        *)          INPUT="$arg" ;;
+    esac
+done
+
+# --list: show available wallpaper pairs
+if [[ $LIST -eq 1 ]]; then
+    echo "Available wallpaper pairs:"
+    for dir in "$WALLPAPER_DIR"/*/; do
+        name=$(basename "$dir")
+        pair="$dir/${name}-wallpaper"
+        [[ -f "$pair/top.png" && -f "$pair/bottom.png" ]] && echo "  $name"
+    done
+    exit 0
+fi
+
+if [[ -z "$INPUT" ]]; then
+    echo "Usage: wallpaper-ctl <name> [--generate] [--list]"
+    exit 1
+fi
+
+BASENAME="$INPUT"
+WALLPAPER_PAIR="$WALLPAPER_DIR/$BASENAME/${BASENAME}-wallpaper"
+FLAT="$WALLPAPER_DIR/$BASENAME/${BASENAME}-wallpaper.png"
+TOP="$WALLPAPER_PAIR/top.png"
+BOTTOM="$WALLPAPER_PAIR/bottom.png"
+
+# --generate: slice flat PNG with rwpspread
+if [[ $GENERATE -eq 1 ]]; then
+    if [[ ! -f "$FLAT" ]]; then
+        echo "Error: flat source not found at $FLAT"
+        exit 1
+    fi
+
+    echo "Generating from $FLAT..."
+    mkdir -p "$WALLPAPER_PAIR"
+
+    rwpspread --ppi \
+        --monitors "HDMI-A-1:27" "DP-2:27" \
+        --bezel 83 \
+        -o "$WALLPAPER_PAIR" \
+        -i "$FLAT"
+
+    mv "$WALLPAPER_PAIR"/rwps_HDMI-A-1_*.png "$TOP"
+    mv "$WALLPAPER_PAIR"/rwps_DP-2_*.png "$BOTTOM"
+
+    echo "Saved to $WALLPAPER_PAIR"
+fi
+
+# Check pair exists
+if [[ ! -f "$TOP" ]] || [[ ! -f "$BOTTOM" ]]; then
+    echo "Error: top.png/bottom.png not found in $WALLPAPER_PAIR"
+    echo "Run with --generate to create them from ${BASENAME}-wallpaper.png"
+    exit 1
+fi
+
+# Apply live
+hyprctl hyprpaper wallpaper "HDMI-A-1,$TOP"
+hyprctl hyprpaper wallpaper "DP-2,$BOTTOM"
+
+# Persist for next boot
+cat > "$WALLPAPER_CONF" <<EOF
+\$wallpaper_top = $TOP
+\$wallpaper_bottom = $BOTTOM
+EOF
+
+echo "Applied: $BASENAME"
