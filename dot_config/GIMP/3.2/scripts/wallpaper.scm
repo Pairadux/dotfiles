@@ -30,23 +30,16 @@
 
 ; ── EXPORT: build output path, flatten, export, close ──────────────────────
 (define (script-fu-wallpaper-export image drawables)
+  (script-fu-use-v3)
   (if (string=? *wallpaper-source-path* "")
     (gimp-message "No source path recorded — run Wallpaper Import first.")
     (let* (
-           ; e.g. "/home/austin/pics/sunset.jpg"
-           ; → parts: ("" "home" "austin" "pics" "sunset.jpg")
            (all-parts   (strbreakup *wallpaper-source-path* "/"))
-
-           ; last element is the filename, everything before is the dir
            (filename    (car (reverse all-parts)))
            (dir-parts   (reverse (cdr (reverse all-parts))))
            (dir         (str-join dir-parts "/"))
-
-           ; strip the extension: "sunset.jpg" → "sunset"
            (name-parts  (strbreakup filename "."))
            (name-noext  (str-join (reverse (cdr (reverse name-parts))) "."))
-
-           ; final output path: "/home/austin/pics/sunset-wallpaper.png"
            (output      (string-append dir "/" name-noext "-wallpaper.png")))
 
       (gimp-image-flatten image)
