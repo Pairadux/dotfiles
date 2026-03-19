@@ -64,7 +64,7 @@
         #:include-thumbnail     #f
         #:include-comment       #f)
 
-      (gimp-image-delete image))))
+      (gimp-display-delete (car (gimp-image-get-displays image)))
 
 (script-fu-register-filter
   "script-fu-wallpaper-export"
