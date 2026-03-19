@@ -7,3 +7,55 @@ btop
 
 # fastfetch — Display system information
 fastfetch
+
+% xdg-open, open, launch, default app, file
+
+# xdg-open — Open a file with its default application
+xdg-open <file>
+
+# xdg-open — Open a URL in the default browser
+xdg-open '<url>'
+
+# xdg-open — Open current directory in the file manager
+xdg-open .
+
+% xdg-mime, mime, default, filetype, association
+
+# xdg-mime — Query the MIME type of a file
+xdg-mime query filetype <file>
+
+# xdg-mime — Query the default app for a MIME type
+xdg-mime query default <mime_type>
+
+# xdg-mime — Set the default app for a MIME type
+xdg-mime default <desktop_file> <mime_type>
+
+$ mime_type: echo "application/pdf image/png image/jpeg text/plain text/html video/mp4 audio/mpeg inode/directory" | tr ' ' '\n'
+
+% desktop, .desktop, launcher, application, gtk-launch
+
+# gtk-launch — Launch an app by its .desktop file name (without .desktop suffix)
+gtk-launch <app_name>
+
+# List all installed .desktop files
+fd -e desktop . /usr/share/applications ~/.local/share/applications 2>/dev/null
+
+# Find a .desktop file by app name
+fd -e desktop '<pattern>' /usr/share/applications ~/.local/share/applications 2>/dev/null
+
+# View the contents of a .desktop file
+bat /usr/share/applications/<desktop_file>
+
+# Refresh the desktop file database after manual edits
+update-desktop-database ~/.local/share/applications
+
+% file, identify, type, magic
+
+# file — Identify the type of a file
+file <file>
+
+# file — Identify type with MIME output
+file --mime-type <file>
+
+# file — Identify type without filename prefix (just the result)
+file -b <file>
