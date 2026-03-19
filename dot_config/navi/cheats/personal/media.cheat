@@ -90,3 +90,56 @@ wallpaper-ctl <name>
 wallpaper-ctl <name> --generate
 
 $ name: wallpaper-ctl --list 2>/dev/null | sed '1d; s/^  //'
+
+% magick, imagemagick, image, convert, resize, gif, pdf
+
+# magick — Show image details (format, dimensions, color, size)
+magick identify -verbose <image>
+
+# magick — Show image resolution only
+magick identify -format '%wx%h\n' <image>
+
+# magick — Resize image to specific width (keep aspect ratio)
+magick <image> -resize <width> <output>
+
+# magick — Resize image to exact dimensions (may distort)
+magick <image> -resize <width>x<height>! <output>
+
+# magick — Convert image to another format
+magick <image> <output>
+
+# magick — Batch convert all images in dir to another format
+magick mogrify -format <ext> <dir>/*.<source_ext>
+
+# magick — Create GIF from images in a directory
+magick <dir>/*.{png,jpg} -delay <delay> -loop 0 <output>.gif
+
+# magick — Create PDF from images in a directory
+magick <dir>/*.{png,jpg} <output>.pdf
+
+# magick — Merge multiple PDFs into one
+magick <dir>/*.pdf <output>.pdf
+
+# magick — Strip all metadata (EXIF, GPS, etc.)
+magick <image> -strip <output>
+
+# magick — Crop image (WxH+X+Y from top-left)
+magick <image> -crop <geometry> <output>
+
+# magick — Rotate image by degrees
+magick <image> -rotate <degrees> <output>
+
+# magick — Compress JPEG to a specific quality (1-100)
+magick <image> -quality <quality> <output>
+
+# magick — Add text watermark to bottom-right
+magick <image> -gravity SouthEast -pointsize <fontsize> -fill 'rgba(255,255,255,0.5)' -annotate +10+10 '<text>' <output>
+
+# magick — Create a montage (contact sheet) from images
+magick montage <dir>/*.{png,jpg} -geometry +2+2 <output>
+
+# magick — Convert image to grayscale
+magick <image> -colorspace Gray <output>
+
+# magick — Trim whitespace/transparent borders from image
+magick <image> -trim +repage <output>
