@@ -23,3 +23,6 @@ pokemon
 
 # genact — Fake activity generator (pretend to be busy)
 genact
+
+# genact — Fake download progress bar (slow, long-running)
+genact -m download -s .25 -i 5250
