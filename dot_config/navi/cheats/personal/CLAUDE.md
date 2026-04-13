@@ -47,7 +47,7 @@ $ placeholder: cmd --- --multi true  ← fzf options after ---
 | dev.cheat         | gh, just, lazygit, pre-commit              |
 | dotfiles.cheat    | chezmoi, bob, tealdeer                     |
 | pkg.cheat         | yay, flatpak, topgrade, reflector          |
-| media.cheat       | yt-dlp, mpc, ncmpcpp, magick               |
+| media.cheat       | yt-dlp, mpc, ncmpcpp, magick, nikon/gphoto2 |
 | utils.cheat       | eva/calc, fx, glow, wget, 7zip             |
 | system.cheat      | btop, fastfetch                            |
 | fun.cheat         | cmatrix, cbonsai, pipes.sh, pokemon, sl, asciiquarium, vitetris, genact |

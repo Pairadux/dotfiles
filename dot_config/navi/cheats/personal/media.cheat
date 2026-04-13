@@ -91,6 +91,37 @@ wallpaper-ctl <name> --generate
 
 $ name: wallpaper-ctl --list 2>/dev/null | sed '1d; s/^  //'
 
+% nikon, camera, gphoto2, import, photos, photography
+
+# nikon-import — Import photos from camera, sort by EXIF date into JPEG/RAW
+nikon-import
+
+# nikon-delete — Verify imported photos and delete from camera
+nikon-delete
+
+# gphoto2 — Detect connected camera
+gphoto2 --auto-detect
+
+# gphoto2 — List files on camera
+gphoto2 --list-files --folder <folder>
+
+# gphoto2 — List folders on camera
+gphoto2 --list-folders
+
+# gphoto2 — Delete all files from camera folder
+gphoto2 --delete-all-files --folder <folder> --recurse
+
+# Browse Nikon JPEG imports
+ls ~/Media/Pictures/Nikon/JPEG/
+
+# Browse Nikon RAW imports
+ls ~/Media/Pictures/Nikon/RAW/
+
+# Show import sizes by date
+du -sh ~/Media/Pictures/Nikon/JPEG/*/ ~/Media/Pictures/Nikon/RAW/*/
+
+$ folder: gphoto2 --list-folders 2>/dev/null | grep -oP "'/[^']+" | sed "s/^'//"
+
 % magick, imagemagick, image, convert, resize, gif, pdf
 
 # magick — Show image details (format, dimensions, color, size)
