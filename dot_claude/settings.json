@@ -1,4 +1,8 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "model": "opus",
   "statusLine": {
     "type": "command",
@@ -9,8 +13,8 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "high",
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  }
+  "theme": "dark-daltonized",
+  "preferredNotifChannel": "notifications_disabled",
+  "autoCompactEnabled": false,
+  "fileCheckpointingEnabled": false
 }
