@@ -10,7 +10,7 @@
 #
 # With no flags, shows info about the named wallpaper.
 
-WALLPAPER_DIR="$HOME/Media/Pictures/wallpapers"
+WALLPAPER_DIR="$HOME/Cloud/Media/Pictures/wallpapers"
 WALLPAPER_CONF="$HOME/.config/hypr/hyprpaper-wallpaper.conf"
 
 GENERATE=0

@@ -5,7 +5,7 @@
 
 source "$(dirname "$0")/_common.sh"
 
-WALLPAPER_DIR="$HOME/Media/Pictures/wallpapers"
+WALLPAPER_DIR="$HOME/Cloud/Media/Pictures/wallpapers"
 WALLPAPER_CONF="$HOME/.config/hypr/hyprpaper-wallpaper.conf"
 
 # Collect folders that have a valid <name>-wallpaper/{top,bottom}.png pair

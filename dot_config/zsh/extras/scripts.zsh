@@ -104,7 +104,7 @@ ytdl() {
             cookies_opt=(--cookies ~/.youtube-cookies.txt)
             ;;
         linux*)
-            output_dir="$HOME/Media/Music"
+            output_dir="$HOME/Cloud/Media/Music"
             cookies_opt=(--cookies-from-browser "firefox:$HOME/.zen/bju8d2g9.Default (alpha)")
             ;;
         *) echo "ytdl: unsupported OS: $OSTYPE"; return 1 ;;
