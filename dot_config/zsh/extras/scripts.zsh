@@ -96,19 +96,13 @@ ytdl() {
         return 1
     fi
 
-    local output_dir
     local -a cookies_opt
     case "$OSTYPE" in
-        darwin*)
-            output_dir="$HOME/Library/Mobile Documents/com~apple~CloudDocs/Music"
-            cookies_opt=(--cookies ~/.youtube-cookies.txt)
-            ;;
-        linux*)
-            output_dir="$HOME/Cloud/Media/Music"
-            cookies_opt=(--cookies-from-browser "firefox:$HOME/.zen/bju8d2g9.Default (alpha)")
-            ;;
+        darwin*) cookies_opt=(--cookies ~/.youtube-cookies.txt) ;;
+        linux*)  cookies_opt=(--cookies-from-browser "firefox:$HOME/.zen/bju8d2g9.Default (alpha)") ;;
         *) echo "ytdl: unsupported OS: $OSTYPE"; return 1 ;;
     esac
+    local output_dir="$PWD"
     local archive_file="${output_dir}/.ytdl-archive.txt"
     local opts=(--extract-audio --audio-format mp3 --audio-quality 0
         "${cookies_opt[@]}"
