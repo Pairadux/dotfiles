@@ -8,8 +8,9 @@ alias ra='reload_aliases'
 # *------------*
 # | SHADOWING  |
 # *------------*
-alias ls='eza' 
+alias ls='eza'
 alias grep='rg'
+alias rg='rg -M 200 --max-columns-preview'
 
 # *---------*
 # | LS/EZA  |
