@@ -121,3 +121,21 @@ autocmd('User', {
         end
     end,
 })
+
+-- Notes index helpers: \la archives the note under the cursor, \ls syncs
+-- on-disk notes into the index. Buffer-local, only active in index.norg.
+autocmd('FileType', {
+    pattern = 'norg',
+    callback = function(args)
+        if vim.api.nvim_buf_get_name(args.buf) ~= vim.fn.expand '~/Cloud/Notes/index.norg' then
+            return
+        end
+        local notes = require 'notes'
+        local opts = { buffer = args.buf, silent = true }
+        vim.keymap.set('n', '<localleader>la', notes.archive_under_cursor, vim.tbl_extend('keep', { desc = '[L]ist [A]rchive item' }, opts))
+        vim.keymap.set('n', '<localleader>lA', notes.archive_header_under_cursor, vim.tbl_extend('keep', { desc = '[L]ist [A]rchive header' }, opts))
+        vim.keymap.set('n', '<localleader>ln', notes.add_under_heading, vim.tbl_extend('keep', { desc = '[L]ist [N]ew note' }, opts))
+        vim.keymap.set('n', '<localleader>ld', notes.delete_under_cursor, vim.tbl_extend('keep', { desc = '[L]ist [D]elete' }, opts))
+        vim.keymap.set('n', '<localleader>ls', notes.sync_index, vim.tbl_extend('keep', { desc = '[L]ist [S]ync' }, opts))
+    end,
+})
