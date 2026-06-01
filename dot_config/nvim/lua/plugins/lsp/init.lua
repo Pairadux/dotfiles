@@ -187,6 +187,28 @@ return {
                 vim.lsp.config(name, server)
                 vim.lsp.enable(name)
             end
+            -- Godot (GDScript): the language server runs *inside* the Godot editor, reachable
+            -- over TCP on 127.0.0.1:6005 — so it is wired up by hand, not installed via Mason.
+            -- Configured outside the loop above because Godot's server doesn't implement
+            -- textDocument/typeDefinition, and a deep-merge can't delete a capability key.
+            local gdscript_capabilities = vim.deepcopy(capabilities)
+            gdscript_capabilities.textDocument.typeDefinition = nil
+            vim.lsp.config('gdscript', {
+                cmd = vim.lsp.rpc.connect('127.0.0.1', 6005),
+                filetypes = { 'gdscript', 'gdshader' },
+                root_markers = { 'project.godot', '.git' },
+                capabilities = gdscript_capabilities,
+                handlers = {
+                    -- Godot spams "Method not found: godot/reloadScript" on save; swallow just that.
+                    ['window/showMessage'] = function(err, result, ctx)
+                        if result and result.message and result.message:match 'reloadScript' then
+                            return
+                        end
+                        return vim.lsp.handlers['window/showMessage'](err, result, ctx)
+                    end,
+                },
+            })
+            vim.lsp.enable 'gdscript'
             -- Special lua_ls config: inject Neovim runtime library (replaces lazydev.nvim)
             -- vim.lsp.config('lua_ls', {
             --     on_init = function(client)
@@ -224,6 +246,7 @@ return {
                 'google-java-format',
                 'shellcheck',
                 'golangci-lint',
+                'gdtoolkit', -- provides the gdformat binary (gdlint also installed, unused)
             }
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
         end,

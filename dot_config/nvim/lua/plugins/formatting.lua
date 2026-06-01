@@ -43,6 +43,8 @@ return {
                 zsh = { 'beautysh' },
 
                 yaml = { 'prettier' },
+
+                gdscript = { 'gdformat' },
             },
         },
     },

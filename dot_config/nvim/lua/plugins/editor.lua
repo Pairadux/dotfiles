@@ -8,7 +8,7 @@
 
 return {
 
-    { 'NMAC427/guess-indent.nvim' }, -- Detect tabstop and shiftwidth automatically
+    { 'NMAC427/guess-indent.nvim', cond = false }, -- auto indent-detection; disabled in favor of ftplugin/formatter-driven indentation
 
     -- Mini {{{
     { 'nvim-mini/mini.ai', opts = {} },

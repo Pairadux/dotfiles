@@ -44,14 +44,18 @@ return {
                 'typst',
                 'vue',
                 'norg',
+                'gdscript',
+                'gdshader',
+                'godot_resource',
             }
 
             vim.api.nvim_create_autocmd('FileType', {
                 pattern = filetypes,
                 callback = function()
                     vim.treesitter.start()
-                    -- norg has its own indentexpr via core.esupports.indent
-                    if vim.bo.filetype ~= 'norg' then
+                    -- norg has its own indentexpr via core.esupports.indent;
+                    -- gdscript uses Neovim's bundled indent/gdscript.vim (recommended tabs, width 4)
+                    if vim.bo.filetype ~= 'norg' and vim.bo.filetype ~= 'gdscript' then
                         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                     end
                 end,

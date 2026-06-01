@@ -4,6 +4,15 @@
     This file is for snacks.nvim
 ]]
 
+-- Inside a Godot project, hide the engine's non-script clutter from the file picker.
+local function godot_files(opts)
+    opts = opts or {}
+    if vim.fs.root(vim.fn.getcwd(), 'project.godot') then
+        opts.exclude = { 'assets', 'scenes', '*.uid', '*.import', '.godot' }
+    end
+    return opts
+end
+
 return {
     'folke/snacks.nvim',
     priority = 1000,
@@ -80,7 +89,7 @@ return {
     keys = {
         -- Top Pickers & Explorer
         -- stylua: ignore start
-        { '<leader>ff',      function() require('snacks').picker.files()                                         end, desc = '[F]ind [F]iles', },
+        { '<leader>ff',      function() require('snacks').picker.files(godot_files())                            end, desc = '[F]ind [F]iles', },
         { '<leader>fs',      function() require('snacks').picker.smart()                                         end, desc = '[F]ind [S]mart' },
         { '<C-p>',           function() require('snacks').picker.smart()                                         end, desc = 'Smart Picker', },
         { '<leader>fb',      function() require('snacks').picker.buffers({ current = false, matcher = { frecency = true, sort_empty = true } }) end, desc = '[F]ind [B]uffers', },

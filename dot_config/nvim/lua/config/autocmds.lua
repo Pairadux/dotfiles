@@ -139,3 +139,20 @@ autocmd('FileType', {
         vim.keymap.set('n', '<localleader>ls', notes.sync_index, vim.tbl_extend('keep', { desc = '[L]ist [S]ync' }, opts))
     end,
 })
+
+-- Godot external editor bridge: when nvim starts inside a Godot project (a project.godot
+-- exists at or above the cwd), listen on a fixed pipe so clicking a script in Godot opens
+-- it in this instance. Configure the Godot side in Editor Settings → Text Editor → External
+-- (Exec Path = nvim, Exec Flags point at this same pipe). Only one nvim can own the pipe;
+-- the first in-project instance wins. Stale pipe after a crash: rm it and relaunch.
+autocmd('VimEnter', {
+    callback = function()
+        if not vim.fs.root(vim.fn.getcwd(), 'project.godot') then
+            return
+        end
+        local pipe = vim.fn.stdpath('cache') .. '/server.pipe'
+        if not vim.uv.fs_stat(pipe) then
+            pcall(vim.fn.serverstart, pipe)
+        end
+    end,
+})
