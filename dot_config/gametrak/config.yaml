@@ -23,6 +23,8 @@ games:
       name: Slay the Spire
     - class: Haste.x86_64
       name: Haste
+    - class: EscapeSimulator
+      name: Escape Simulator
 settings:
     notifications: true
     log_sessions: true
