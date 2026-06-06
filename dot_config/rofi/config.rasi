@@ -7,9 +7,9 @@ configuration{
     location: 0;
     disable-history: false;
     sidebar-mode: false;
-    display-drun: " ";
-    display-run: " ";
-    display-window: " ";
+    display-drun: "";
+    display-run: "";
+    display-window: "";
     
     //adding vim keybindings
     kb-row-up: "Up,Control+k";
@@ -27,3 +27,23 @@ configuration{
     kb-mode-complete: "Control+o";
 }
 @theme "/usr/share/rofi/themes/tokyonight_big2.rasi"
+
+// Scale the imported theme up. Element/icon sizes are em-based so they follow
+// the font; window width is fixed in the theme so it's bumped here too. Tune to taste.
+* {
+    font: "Monospace 13";
+}
+window {
+    width: 800;
+}
+
+// Distinguish the prompt from the input: render the prompt as a filled accent
+// "chip" so it reads as separate from the entry text (they share a color otherwise).
+prompt {
+    background-color: @hv;
+    text-color: @bg;
+    padding: 1px 8px;
+    border-radius: 4px;
+    margin: 0px 8px 0px 0px;
+    vertical-align: 0.5;
+}
