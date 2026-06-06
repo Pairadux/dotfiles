@@ -25,6 +25,8 @@ games:
       name: Haste
     - class: EscapeSimulator
       name: Escape Simulator
+    - class: subnautica2-win64-shipping.exe
+      name: Subnautica 2
 settings:
     notifications: true
     log_sessions: true
