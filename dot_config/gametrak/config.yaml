@@ -27,6 +27,8 @@ games:
       name: Escape Simulator
     - class: subnautica2-win64-shipping.exe
       name: Subnautica 2
+    - class: deadlock.exe
+      name: Deadlock
 settings:
     notifications: true
     log_sessions: true
