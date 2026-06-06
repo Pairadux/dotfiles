@@ -3,7 +3,7 @@
 # notetaker.sh — atomic capture into the Obsidian Vault
 #
 # Usage:
-#   notetaker.sh [kind]    kind is one of note|idea|observation|memory (default: note)
+#   notetaker.sh [kind]    kind is one of Note|Idea|Observation|Memory (default: Note)
 #
 # Every capture is its own markdown file. The kind selects the destination
 # folder; the folder IS the type, so no `type` property is written. Output
@@ -11,24 +11,24 @@
 # captures the same. Obsidian does not need to be running.
 
 VAULT="$HOME/Vault"
-kind="${1:-note}"
+kind="${1:-Note}"
 
 case "$kind" in
-    note)        dir="$VAULT/Notes" ;;
-    idea)        dir="$VAULT/Ideas" ;;
-    observation) dir="$VAULT/Observations" ;;
-    memory)      dir="$VAULT/Memories" ;;
+    Note)        dir="$VAULT/Notes" ;;
+    Idea)        dir="$VAULT/Ideas" ;;
+    Observation) dir="$VAULT/Observations" ;;
+    Memory)      dir="$VAULT/Memories" ;;
     *) notify-send "Notetaker" "Unknown kind: $kind"; exit 1 ;;
 esac
 
 # Notes and observations are timestamped; ideas and memories are named by hand.
 case "$kind" in
-    idea|memory)
-        name=$(rofi -dmenu -l 0 -p " ${kind^} name" </dev/null)
+    Idea|Memory)
+        name=$(rofi -dmenu -l 0 -theme-str 'listview { enabled: false; }' -p " ${kind^} name" </dev/null)
         [[ -z "$name" ]] && exit 0
         ;;
     *)
-        name=$(date +"%Y-%m-%d_%H%M%S")
+        name=$(date +"%Y-%m-%dT%H%M%S")
         ;;
 esac
 
@@ -47,7 +47,7 @@ done
 # frontmatter), then a blank line and empty body for the cursor to land in.
 printf '%s\n' '---' "created: $(date +"%Y-%m-%dT%H:%M:%S")" '---' '' > "$file"
 
-NEOVIDE=1 neovide -- \
+ghostty --title=Notetaker -e nvim \
     -c "normal! G" \
     -c "startinsert" \
     "$file"

@@ -25,6 +25,10 @@ if [[ -n "$ROFI_RETV" ]]; then
     mkdir -p "$tmp_dir"
 
     read -r -d '' prog <<'GAWK'
+BEGIN {
+    # Send the configuration header to Rofi right before processing lines
+    printf "\0prompt\x1f󰅇 Clipboard\n"
+}
 /^[0-9]+\s<meta http-equiv=/ { next }
 match($0, /^([0-9]+)\s(\[\[\s)?binary.*(jpg|jpeg|png|bmp)/, grp) {
     if (ENVIRON["CLIPHIST_FILTER"] == "text") next
@@ -64,11 +68,11 @@ match($0, /^([0-9]+)\s(\[\[\s)?binary.*(jpg|jpeg|png|bmp)/, grp) {
         wrapped = wrapped (wrapped == "" ? "" : "&#10;") line
     if (i <= n) wrapped = wrapped "…"
 
-    print wrapped "\0info\x1f" orig
+    print wrapped "\0icon\x1ftext-x-generic\x1finfo\x1f" orig
 }
 GAWK
 
-    TMP="$tmp_dir" cliphist list -preview-width 300 | gawk "$prog"
+    cliphist list -preview-width 300 | TMP="$tmp_dir" gawk "$prog"
     exit
 fi
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-# ICON:  
+# ICON: 
 #
 # note picker — pick a capture kind and hand it to the notetaker
 #
@@ -8,7 +8,7 @@
 
 source "$(dirname "$0")/_common.sh"
 
-kind=$(printf '%s\n' note idea observation memory \
+kind=$(printf '%s\n' Note Idea Observation Memory \
     | sed 's/^/  /' \
     | "${ROFI_DMENU[@]}" -p " Note" \
     | sed 's/^.*  //')
