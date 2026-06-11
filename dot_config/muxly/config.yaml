@@ -45,6 +45,7 @@ entry_dirs:
     - path: ~/.dotfiles/dot_claude
     - path: ~/Documents
     - path: ~/Downloads
+    - path: ~/Vault
     - path: ~/Cloud
     - path: ~/Cloud/JD
     - path: ~/Cloud/Notes
