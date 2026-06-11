@@ -4,11 +4,12 @@
     This file is for snacks.nvim
 ]]
 
--- Inside a Godot project, hide the engine's non-script clutter from the file picker.
+-- Inside a Godot project, restrict the file picker to source files,
+-- hiding the engine's binary assets (textures, models, audio) and generated clutter.
 local function godot_files(opts)
     opts = opts or {}
     if vim.fs.root(vim.fn.getcwd(), 'project.godot') then
-        opts.exclude = { 'assets', 'scenes', '*.uid', '*.import', '.godot' }
+        opts.ft = { 'gd', 'tscn', 'cs', 'gdshader' }
     end
     return opts
 end
