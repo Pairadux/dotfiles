@@ -34,6 +34,8 @@
       ],
       "right": [
         "volume",
+        "bluetooth",
+        "systray",
         "clock"
       ]
     },
