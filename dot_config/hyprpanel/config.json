@@ -37,20 +37,7 @@
         "clock"
       ]
     },
-    "2": {
-      "left": [
-        "dashboard",
-        "workspaces",
-        "windowtitle"
-      ],
-      "middle": [
-        "media"
-      ],
-      "right": [
-        "volume",
-        "clock"
-      ]
-    }
+    "2": "none"
   },
   "theme.bar.floating": true,
   "bar.autoHide": "never",
