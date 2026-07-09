@@ -1,4 +1,3 @@
--- ~/.config/nvim/ftplugin/norg.lua
 local map = vim.keymap.set
 
 -- Options

@@ -43,7 +43,6 @@ return {
                 'tsx',
                 'typst',
                 'vue',
-                'norg',
                 'gdscript',
                 'gdshader',
                 'godot_resource',
@@ -53,18 +52,14 @@ return {
                 pattern = filetypes,
                 callback = function()
                     vim.treesitter.start()
-                    -- norg has its own indentexpr via core.esupports.indent;
                     -- gdscript uses Neovim's bundled indent/gdscript.vim (recommended tabs, width 4)
-                    if vim.bo.filetype ~= 'norg' and vim.bo.filetype ~= 'gdscript' then
+                    if vim.bo.filetype ~= 'gdscript' then
                         vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                     end
                 end,
             })
 
-            -- norg parser is built manually by the neorg plugin, skip it here
-            require('nvim-treesitter').install(vim.tbl_filter(function(ft)
-                return ft ~= 'norg'
-            end, filetypes))
+            require('nvim-treesitter').install(filetypes)
         end,
 
         -- There are additional nvim-treesitter modules that you can use to interact
