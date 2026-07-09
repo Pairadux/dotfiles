@@ -13,5 +13,6 @@
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
   "theme": "dark-daltonized",
-  "fileCheckpointingEnabled": false
+  "fileCheckpointingEnabled": false,
+  "tui": "fullscreen"
 }
