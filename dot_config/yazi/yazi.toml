@@ -9,6 +9,9 @@ show_symlink   = true
 wrap     = "no"
 tab_size = 4
 
+[tasks]
+image_alloc = 0
+
 [opener]
 edit = [
 	{ run = '$EDITOR "$@"', desc = "$EDITOR", block = true },
@@ -42,3 +45,6 @@ play = [
 # ]
 
 [plugin]
+prepend_previewers = [
+	{ mime = "image/tiff", run = "magick" },
+]
