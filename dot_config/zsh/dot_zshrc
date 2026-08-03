@@ -68,7 +68,18 @@ source <(fzf --zsh)
 # | Antidote |
 # +----------+
 source "$ZDOTDIR/.antidote/antidote.zsh"
-antidote load
+# antidote rebuilds .zsh_plugins.zsh through a fixed temp path, so shells starting at
+# the same time (tmux panes right after `antidote update`) clobber each other's temp
+# file and the losers end up sourcing no plugins at all. Serializing the load fixes it:
+# whoever waits finds the static file already fresh and skips the rebuild. The bundle
+# file doubles as the lock target — flock is advisory and never truncates it.
+zmodload zsh/system
+() {
+    local lockfd
+    zsystem flock -f lockfd -t 10 "$ZDOTDIR/.zsh_plugins.txt" 2>/dev/null
+    antidote load
+    (( lockfd )) && exec {lockfd}>&-
+}
 
 # +--------+
 # | PROMPT |
