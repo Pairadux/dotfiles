@@ -1,0 +1,301 @@
+" ============================================================================
+" .ideavimrc — ported from ~/.config/nvim
+" IntelliJ IDEA Ultimate, macOS keymap
+"
+" Reload after editing: <leader>vr  (or :source ~/.ideavimrc)
+"
+" Every :action ID here is UNVERIFIED until you confirm it. See the
+" checklist at the bottom of this file before trusting any of them.
+" ============================================================================
+
+let mapleader = " "
+let maplocalleader = "\\"
+
+
+" ============================================================================
+" Extensions
+" ============================================================================
+
+set surround              " nvim-surround: ys / ds / cs / visual S
+set miniai                " mini.ai: an/in/al/il, af/if
+set argtextobj            " aa / ia for arguments
+set highlightedyank       " your vim.hl.on_yank autocmd
+set matchit               " % on keywords
+set commentary            " gcc / gc{motion} — Neovim gives you this built-in
+set which-key             " requires the "Which-Key" plugin from the marketplace
+set notimeout             " which-key wants this; overrides your timeoutlen=400
+
+" Not enabled, but available if you want them back:
+"   set sneak                " s{char}{char} — closest to flash's `s`
+"   set ReplaceWithRegister  " gr{motion} — pairs with losing flash's remote `r`
+"   set NERDTree             " makes the Project tool window j/k/o navigable
+
+
+" ============================================================================
+" Settings
+" ============================================================================
+
+set clipboard+=unnamed,ideaput
+set ideajoin                   " J uses IntelliJ's smart join
+set idearefactormode=keep      " refactorings don't yank you into insert mode
+set ignorecase
+set smartcase
+set incsearch
+set hlsearch
+set number
+set relativenumber
+set scrolloff=10
+set showmode
+
+
+" ============================================================================
+" sethandler — resolve Ctrl-key conflicts up front so IdeaVim stops
+" popping the "keybinding disabled" dialog mid-edit.
+" ============================================================================
+
+" Yours — high traffic, Vim wins
+sethandler <C-h> n:vim i:vim
+sethandler <C-j> n:vim i:vim
+sethandler <C-k> n:vim i:vim
+sethandler <C-l> n:vim i:vim
+sethandler <C-b> n:vim i:vim
+sethandler <C-e> n:vim i:vim
+sethandler <C-d> a:vim
+sethandler <C-u> a:vim
+sethandler <C-f> a:vim
+sethandler <C-y> a:vim
+sethandler <C-v> a:vim
+sethandler <C-o> a:vim
+sethandler <C-w> a:vim
+sethandler <C-c> n:vim
+sethandler <C-p> n:vim i:ide
+sethandler <C-\> n:vim
+
+" IntelliJ wins — its completion popup should behave normally
+sethandler <C-n> i:ide
+sethandler <C-space> i:ide
+sethandler <C-s> i:ide
+sethandler <Tab> i:ide
+sethandler <S-Tab> i:ide
+
+
+" ============================================================================
+" Insert mode
+" ============================================================================
+
+inoremap jk <Esc>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-b> <Esc>^i
+inoremap <C-e> <Esc>$a
+
+" Your <Tab>/<S-Tab> insert-mode indent mappings are deliberately NOT ported.
+" IntelliJ owns Tab for completion acceptance, and blink's super-tab has no
+" equivalent here. Use <C-t>/<C-d> if you want the indent behaviour.
+
+
+" ============================================================================
+" Normal mode — core
+" ============================================================================
+
+nnoremap <Esc> :nohlsearch<CR>
+
+" Window navigation (editor splits)
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Buffer/tab cycling
+nnoremap <Tab> :action NextTab<CR>
+nnoremap <S-Tab> :action PreviousTab<CR>
+nnoremap <C-c> :action CloseContent<CR>
+
+" Yank whole buffer
+nnoremap <leader>cc :%y+<CR>
+
+" Squeeze interior whitespace (your util.squeeze_interior_whitespace).
+" Anchored so leading indentation survives.
+xnoremap gs :s/\v(\S)\zs\s+/ /g<CR>
+
+" Move lines / selections (mini.move)
+nnoremap <M-j> :action MoveLineDown<CR>
+nnoremap <M-k> :action MoveLineUp<CR>
+vnoremap <M-j> :action MoveLineDown<CR>
+vnoremap <M-k> :action MoveLineUp<CR>
+nnoremap <M-h> :action MoveElementLeft<CR>
+nnoremap <M-l> :action MoveElementRight<CR>
+
+" Reload this file
+nnoremap <leader>vr :action IdeaVim.ReloadVimRc.reload<CR>
+
+
+" ============================================================================
+" Finding — <leader>f  (snacks.picker)
+" ============================================================================
+
+nnoremap <C-p> :action GotoFile<CR>
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fs :action SearchEverywhere<CR>
+nnoremap <leader>fb :action Switcher<CR>
+nnoremap <leader>fr :action RecentFiles<CR>
+nnoremap <leader>fg :action FindInPath<CR>
+nnoremap <leader>ft :action ActivateTODOToolWindow<CR>
+
+" Search & replace (grug-far)
+nnoremap <leader>sr :action ReplaceInPath<CR>
+vnoremap <leader>sr :action ReplaceInPath<CR>
+nnoremap <leader>si :action Replace<CR>
+vnoremap <leader>si :action Replace<CR>
+
+
+" ============================================================================
+" LSP / code — <leader>l
+" ============================================================================
+
+nnoremap K :action QuickJavaDoc<CR>
+
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gD :action GotoTypeDeclaration<CR>
+
+nnoremap <leader>lr :action RenameElement<CR>
+nnoremap <leader>la :action ShowIntentionActions<CR>
+xnoremap <leader>la :action ShowIntentionActions<CR>
+nnoremap <leader>lf :action ReformatCode<CR>
+nnoremap <leader>lh :action ToggleInlayHintsGloballyAction<CR>
+nnoremap <leader>li :action InspectCode<CR>
+
+" gw — shadows core `gw` (format motion), same as your Neovim config does
+nnoremap gw :action ReformatCode<CR>
+
+" Diagnostics
+nnoremap ]d :action GotoNextError<CR>
+nnoremap [d :action GotoPreviousError<CR>
+nnoremap <leader>od :action ActivateProblemsViewToolWindow<CR>
+
+" References under cursor (snacks.words)
+nnoremap ]] :action GotoNextElementUnderCaretUsage<CR>
+nnoremap [[ :action GotoPrevElementUnderCaretUsage<CR>
+
+" The rest of Neovim 0.12's built-in LSP defaults. You weren't sure you use
+" these — uncomment any that turn out to be muscle memory.
+"   nnoremap grr :action FindUsages<CR>
+"   nnoremap gri :action GotoImplementation<CR>
+"   nnoremap grt :action GotoTypeDeclaration<CR>
+"   nnoremap gO  :action FileStructurePopup<CR>
+"   nnoremap grn :action RenameElement<CR>
+"   nnoremap gra :action ShowIntentionActions<CR>
+
+
+" ============================================================================
+" Git — <leader>g  (gitsigns)
+" ============================================================================
+
+nnoremap ]c :action VcsShowNextChangeMarker<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<CR>
+nnoremap <leader>ghr :action Vcs.RollbackChangedLines<CR>
+xnoremap <leader>ghr :action Vcs.RollbackChangedLines<CR>
+nnoremap <leader>gg :action ActivateVersionControlToolWindow<CR>
+
+
+" ============================================================================
+" Open / tool windows — <leader>o
+" ============================================================================
+
+nnoremap <C-\> :action ActivateTerminalToolWindow<CR>
+nnoremap <leader>oy :action ActivateProjectToolWindow<CR>
+nnoremap <leader>oz :action ToggleDistractionFreeMode<CR>
+nnoremap gZ :action HideAllWindows<CR>
+nnoremap <leader>. :action NewScratchFile<CR>
+nnoremap <leader>cr :action RenameFile<CR>
+
+
+" ============================================================================
+" Which-Key group descriptions
+" ============================================================================
+
+let g:WhichKeyDesc_find = "<leader>f Find"
+let g:WhichKeyDesc_find_files = "<leader>ff Files"
+let g:WhichKeyDesc_find_smart = "<leader>fs Search everywhere"
+let g:WhichKeyDesc_find_buffers = "<leader>fb Switcher"
+let g:WhichKeyDesc_find_recent = "<leader>fr Recent files"
+let g:WhichKeyDesc_find_grep = "<leader>fg Find in path"
+let g:WhichKeyDesc_find_todo = "<leader>ft Todo"
+
+let g:WhichKeyDesc_lsp = "<leader>l LSP"
+let g:WhichKeyDesc_lsp_rename = "<leader>lr Rename"
+let g:WhichKeyDesc_lsp_action = "<leader>la Code action"
+let g:WhichKeyDesc_lsp_format = "<leader>lf Format"
+let g:WhichKeyDesc_lsp_hints = "<leader>lh Toggle inlay hints"
+let g:WhichKeyDesc_lsp_inspect = "<leader>li Inspect code"
+
+let g:WhichKeyDesc_git = "<leader>g Git"
+let g:WhichKeyDesc_git_gui = "<leader>gg Version control"
+let g:WhichKeyDesc_git_hunk = "<leader>gh Hunk"
+let g:WhichKeyDesc_git_hunk_reset = "<leader>ghr Reset hunk"
+
+let g:WhichKeyDesc_open = "<leader>o Open"
+let g:WhichKeyDesc_open_diag = "<leader>od Problems"
+let g:WhichKeyDesc_open_files = "<leader>oy Project tree"
+let g:WhichKeyDesc_open_zen = "<leader>oz Zen mode"
+
+let g:WhichKeyDesc_search = "<leader>s Search & replace"
+let g:WhichKeyDesc_search_replace = "<leader>sr Replace in path"
+let g:WhichKeyDesc_search_in = "<leader>si Replace in selection"
+
+let g:WhichKeyDesc_code = "<leader>c Code"
+let g:WhichKeyDesc_code_copy = "<leader>cc Yank buffer"
+let g:WhichKeyDesc_code_rename = "<leader>cr Rename file"
+
+let g:WhichKeyDesc_vim = "<leader>v Vim"
+let g:WhichKeyDesc_vim_reload = "<leader>vr Reload ideavimrc"
+
+
+" ============================================================================
+" NOT PORTED — recorded so you know these were decisions, not oversights
+" ============================================================================
+"
+"   <leader>ol / <leader>om   Lazy / Mason — Settings > Plugins is the analogue
+"   <leader>fh                highlight-group picker — colorscheme debug tool
+"   <leader>ii                nerd-font icon picker — no equivalent
+"   <leader>fm                markdown-scoped file picker — no scoped action
+"   <localleader>nf / ng      ~/Cloud/Notes picker — add Notes as a content
+"                             root and use a custom scope in Find in Path, or
+"                             keep a second project window open on it
+"   ga / gA                   mini.align — nothing in IdeaVim or IntelliJ
+"   <leader>ib / <leader>it   comment rule / boxed title — use Live Templates
+"   s / S / r / R             flash.nvim — `set sneak` gets you s{char}{char};
+"                             treesitter select maps loosely to Opt+Up
+"                             (EditorSelectWord)
+"   markdown gj/gk/g0/g$      no ftplugin mechanism in IdeaVim
+"   terminal-mode maps        IntelliJ's terminal is a tool window, not a buffer
+"   <C-_>                     may not reach IdeaVim at all; <C-\> covers it
+"   <leader>a* Claude Code    the JetBrains plugin's action IDs are unknown —
+"                             run :actionlist claude and add them yourself
+"   Godot (gdscript LSP,
+"   <leader>ff filter,
+"   :GodotDocs)               staying in Neovim
+"
+" ============================================================================
+" VERIFY BEFORE TRUSTING
+" ============================================================================
+"
+" In IntelliJ, run :actionlist <pattern> and confirm each of these resolves.
+" A wrong action ID fails silently — no error, the key just does nothing.
+"
+"   :actionlist Goto          gd, gD, ]] , [[
+"   :actionlist Rename        <leader>lr, <leader>cr
+"   :actionlist Reformat      gw, <leader>lf
+"   :actionlist Doc           K
+"   :actionlist InlayHints    <leader>lh   ← least confident of the set
+"   :actionlist Error         ]d, [d
+"   :actionlist ChangeMarker  ]c, [c
+"   :actionlist Rollback      <leader>ghr
+"   :actionlist Tab           <Tab>, <S-Tab>, <C-c>
+"   :actionlist Switcher      <leader>fb
+"   :actionlist Scratch       <leader>.
+"   :actionlist ToolWindow    <C-\>, <leader>oy, <leader>od, <leader>gg
+"   :actionlist Replace       <leader>si   ← "Replace" is generic, check it
+"   :actionlist claude        the whole <leader>a group
