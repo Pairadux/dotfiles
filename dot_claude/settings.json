@@ -15,5 +15,6 @@
   "effortLevel": "xhigh",
   "tui": "fullscreen",
   "theme": "dark-daltonized",
-  "fileCheckpointingEnabled": false
+  "fileCheckpointingEnabled": false,
+  "model": "opus"
 }
