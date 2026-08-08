@@ -1,0 +1,16 @@
+# Personal scripts live in their own repo so they carry their own history,
+# rather than being mixed into the dotfiles tree. chezmoi only guarantees the
+# clone exists and stays current — edits are committed in ~/.bin directly, not
+# via `chezmoi edit`.
+#
+# Cloned in full (no --depth) because this is a repo that gets committed to,
+# not a read-only vendored dependency. The pull is --ff-only so local work is
+# never silently rewritten; if it refuses, ~/.bin has unpushed commits.
+
+[".bin"]
+    type = "git-repo"
+    url = "https://github.com/Pairadux/bin.git"
+    refreshPeriod = "168h"
+
+[".bin".pull]
+    args = ["--ff-only"]
