@@ -7,8 +7,6 @@ local g = vim.g
 -----------------------------------------------------------
 -- Global Variables & Providers
 -----------------------------------------------------------
-g.tmux_navigator_no_mappings = 1
-
 -- Disable unused language providers
 g.loaded_node_provider    = 0
 g.loaded_python3_provider = 0

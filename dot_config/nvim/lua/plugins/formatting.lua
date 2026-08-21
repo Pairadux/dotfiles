@@ -12,7 +12,7 @@ return {
         cmd = { 'ConformInfo' },
         keys = {
             -- stylua: ignore start
-            { 'gw',         function() require('conform').format { async = true, lsp_format = 'fallback' } end, mode = '', desc = 'Format buffer', },
+            { 'gw',         function() require('conform').format { async = true, lsp_format = 'fallback' } end, mode = { 'n', 'x' }, desc = 'Format buffer', },
             { '<leader>lf', function() require('conform').format { async = true, lsp_format = 'fallback' } end, desc = '[L]anguage [F]ormat', },
             -- stylua: ignore end
         },
