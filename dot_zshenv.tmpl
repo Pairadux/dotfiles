@@ -107,6 +107,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export LESS='-R '
     export MANPAGER="less -R"
     export PAGER="less -R"
+
+    export PATH="/Applications/MEGAcmd.app/Contents/MacOS:$PATH"
 fi
 
 . "{{ $homePath }}/.local/share/bob/env/env.sh"
