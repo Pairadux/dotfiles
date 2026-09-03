@@ -1,0 +1,220 @@
+{{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
+{{- $primary := "" -}}
+{{- $secondary := "" -}}
+{{- range $machine.monitors -}}
+{{-   $role := dig "role" "" . -}}
+{{-   if eq $role "primary" }}{{ $primary = .output }}{{ else if eq $role "secondary" }}{{ $secondary = .output }}{{ end -}}
+{{- end -}}
+{{- $multihead := and (ne $primary "") (ne $secondary "") -}}
+{{- $laptop := $machine.laptop -}}
+// waybar — the bar for machines that cannot run hyprpanel (Arch Linux ARM has
+// no hyprpanel package). Layout deliberately mirrors the hyprpanel bar so the
+// two machines feel the same: launcher + workspaces + window title on the left,
+// media in the middle, status cluster on the right.
+//
+// Battery and backlight are emitted only on laptops; workspace pinning only on
+// a machine that actually has two displays. Both come from machines.toml.
+{
+    "layer": "top",
+    "position": "top",
+    "fixed-center": true,
+    "margin-left": 10,
+    "margin-right": 10,
+    "margin-top": 7,
+    "margin-bottom": 0,
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "reload_style_on_change": true,
+
+    "modules-left": [
+        "custom/power",
+        "hyprland/workspaces",
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "mpris"
+    ],
+    "modules-right": [
+        "pulseaudio",
+{{ if $laptop }}        "backlight",
+{{ end }}        "network",
+        "bluetooth",
+{{ if $laptop }}        "battery",
+{{ end }}        "tray",
+        "clock"
+    ],
+
+    "custom/power": {
+        "format": " ",
+        "tooltip-format": "left-click: shutdown\nmiddle-click: suspend\nright-click: reboot",
+        "on-click": "shutdown now",
+        "on-click-right": "reboot",
+        "on-click-middle": "systemctl suspend"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        // 1-10 keep the kanji numerals; the named workspaces reuse the same
+        // glyphs as hyprpanel's workspaceIconMap so muscle memory carries over.
+        "format-icons": {
+            "1": "一",
+            "2": "二",
+            "3": "三",
+            "4": "四",
+            "5": "五",
+            "6": "六",
+            "7": "七",
+            "8": "八",
+            "9": "九",
+            "10": "十",
+            "20": "󰊠",
+            "30": "",
+            "40": "",
+            "50": "",
+            "60": "󰇮",
+            "70": "",
+            "100": " ",
+            "special": " "
+        },
+{{ if $multihead }}        "persistent-workspaces": {
+            "{{ $primary }}": [
+                1
+            ],
+            "{{ $secondary }}": [
+                2
+            ]
+        },
+{{ else }}        // Single display: no workspace is pinned to an output, so keep 1 and 2
+        // present on the only bar there is.
+        "persistent-workspaces": {
+            "*": [
+                1,
+                2
+            ]
+        },
+{{ end }}        "show-special": true,
+        "special-visible-only": true
+    },
+
+    "hyprland/window": {
+        "format": "⊣ {class} ⊢",
+        "max-length": 120,
+        "icon": false
+    },
+
+    "mpris": {
+        "format": "{player_icon}  {dynamic}",
+        "format-paused": "<span color='#545c7e'>{status_icon} {dynamic}</span>",
+        "max-length": 50,
+        "player-icons": {
+            "default": "",
+            "mpv": " "
+        },
+        "status-icons": {
+            "paused": ""
+        }
+    },
+
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": " ",
+        "tooltip-format": "{icon}  {desc} // {volume}%",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": " ",
+            "hands-free": " ",
+            "headset": " ",
+            "phone": " ",
+            "portable": " ",
+            "car": " ",
+            "default": [
+                " ",
+                " ",
+                " "
+            ]
+        },
+        "on-click": "pavucontrol"
+    },
+{{ if $laptop }}
+    "backlight": {
+        "format": "{icon}",
+        "tooltip-format": "Backlight: {percent}%",
+        "format-icons": [
+            "󰃞 ",
+            "󰃟 ",
+            "󰃠 "
+        ],
+        "scroll-step": 5
+    },
+{{ end }}
+    "network": {
+        "format": "󰈀 ",
+        "format-wifi": "{icon} ",
+        "format-icons": [
+            "󰤟 ",
+            "󰤢 ",
+            "󰤥 "
+        ],
+        "format-ethernet": "󰈀 ",
+        "format-linked": "󰈀 {ifname} (No IP)",
+        "format-disconnected": " ",
+        "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>",
+        "tooltip-format-ethernet": "Ethernet\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "nm-connection-editor",
+        "interval": 5
+    },
+
+    "bluetooth": {
+        "format": "󰂯 ",
+        "format-disabled": "",
+        "format-connected": "󰂱 ",
+        "tooltip-format": "{controller_alias}\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n{device_enumerate}",
+        "on-click": "blueman-manager"
+    },
+{{ if $laptop }}
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} ",
+        "format-charging": "󰂄 ",
+        "format-plugged": "󰚥 ",
+        "format-icons": [
+            "󰁺",
+            "󰁻",
+            "󰁽",
+            "󰁿",
+            "󰂁",
+            "󰂂",
+            "󰁹"
+        ],
+        "tooltip-format": "{capacity}% — {timeTo}\nPower draw: {power}W",
+        "interval": 30
+    },
+{{ end }}
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+
+    "clock": {
+        "format": "{:%a %b %d  %I:%M %p}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#7aa2f7'><b>{}</b></span>",
+                "weekdays": "<span color='#e0af68'><b>{}</b></span>",
+                "today": "<span color='#f7768e'><b>{}</b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode"
+        }
+    }
+}
