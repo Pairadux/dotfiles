@@ -1,10 +1,15 @@
+{{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
+{{- $primary := "" -}}
+{{- range $machine.monitors -}}
+{{-   if eq (dig "role" "" .) "primary" }}{{ $primary = .output }}{{ end -}}
+{{- end -}}
 # See dunst(5) for all configuration options
 
 [global]
     ### Display ###
 
     # Which monitor should the notifications be displayed on.
-    monitor = "DP-2"
+    monitor = "{{ $primary }}"
 
     # Display notification on focused monitor.  Possible modes are:
     #   mouse: follow mouse pointer

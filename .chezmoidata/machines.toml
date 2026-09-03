@@ -1,0 +1,176 @@
+# Machine inventory — the single place a host's hardware facts are declared.
+#
+# Templates in this repo branch on the *capabilities* described here (is there
+# more than one display, is this a laptop, does it want a VA-API driver, does
+# it run gametrak), never on `.chezmoi.hostname`. Bringing up a new machine is
+# therefore a data change: add a `[machines.<hostname>]` block below and the
+# templates pick it up with no edits.
+#
+# Preview another host's output from here. chezmoi has no flag to override
+# .chezmoi.hostname, so force the lookup key instead:
+#
+#   sed 's|index .machines .chezmoi.hostname|index .machines "fuji"|g' \
+#     dot_config/hypr/hyprland.lua.tmpl | chezmoi execute-template
+#
+# Check whether the current host has an entry at all (an unrecognised host
+# silently falls back to [fallback] below):
+#
+#   chezmoi execute-template \
+#     '{{ if hasKey .machines .chezmoi.hostname }}known{{ else }}FALLBACK{{ end }}'
+#
+# ---------------------------------------------------------------------------
+# Per-machine keys
+# ---------------------------------------------------------------------------
+#   arch          informational only. Anything not "x86_64" should be treated
+#                 as "verify this package exists in that repo set before
+#                 relying on it" — Arch Linux ARM carries far less than Arch.
+#   laptop        true enables battery/backlight/touchpad-oriented config.
+#   vaapi_driver  value for LIBVA_DRIVER_NAME. Omit the key entirely to leave
+#                 the variable unset (correct for anything without a discrete
+#                 GPU whose driver needs forcing).
+#   autostart     ordered list of keys into [autostart_commands] below. Order
+#                 is the exec order, so `dbus` stays first.
+#   monitors      ordered list of displays; see the monitor keys below.
+#
+# Monitor keys
+#   output     connector name as reported by `hyprctl monitors`.
+#   mode       "WIDTHxHEIGHT[@REFRESH]", or "preferred" to let Hyprland pick.
+#   position   "XxY", or "auto".
+#   scale      number.
+#   transform  optional Hyprland transform (1 = 90°, 2 = 180°, 3 = 270°).
+#              Omit for a normally-oriented display.
+#   role       optional, "primary" or "secondary". Workspace pinning and the
+#              monitor= field on window rules are only emitted when a machine
+#              declares BOTH roles — that is the "has a multi-monitor layout"
+#              capability. A single-display machine declares only "primary".
+#   note       optional; rendered as a comment above the generated line.
+
+# ---------------------------------------------------------------------------
+# Shared autostart command table. Machines reference these by key so the same
+# command is never spelled out twice.
+#
+# Keys that name a Lua local declared in hyprland.lua's PROGRAMS section (see
+# $luaLocals in hyprland.lua.tmpl) are emitted as that bare identifier instead
+# of a quoted string, so the two definitions cannot drift.
+# ---------------------------------------------------------------------------
+[autostart_commands]
+dbus            = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+lockscreen      = "hyprlock"
+nm-applet       = "nm-applet"
+dunst           = "dunst"
+hyprpaper       = "hyprpaper"
+hyprpanel       = "hyprpanel"
+waybar          = "waybar"
+cliphist-text   = "wl-paste --type text --watch cliphist store"
+cliphist-image  = "wl-paste --type image --watch cliphist store"
+hyprpolkitagent = "systemctl --user start hyprpolkitagent"
+mega-status     = "systemctl --user start mega-status"
+gametrak        = "gametrak"
+
+# ---------------------------------------------------------------------------
+# archlinux — x86_64 desktop, AMD GPU, three displays.
+# ---------------------------------------------------------------------------
+[machines.archlinux]
+arch         = "x86_64"
+laptop       = false
+vaapi_driver = "radeonsi"
+autostart = [
+    "dbus",
+    "lockscreen",
+    "nm-applet",
+    "dunst",
+    "hyprpaper",
+    "hyprpanel",
+    "cliphist-text",
+    "cliphist-image",
+    "hyprpolkitagent",
+    "mega-status",
+    "gametrak",
+]
+
+[[machines.archlinux.monitors]]
+output   = "DP-2"
+mode     = "2560x1440@144"
+position = "0x0"
+scale    = 1
+role     = "primary"
+
+[[machines.archlinux.monitors]]
+output    = "HDMI-A-1"
+mode      = "1920x1080"
+position  = "320x-1080"
+scale     = 1
+transform = 2
+role      = "secondary"
+
+[[machines.archlinux.monitors]]
+output    = "HDMI-A-2"
+mode      = "1920x1080"
+position  = "-720x0"
+scale     = 1.5
+transform = 1
+note      = "TEMP VERTICAL MONITOR"
+
+# ---------------------------------------------------------------------------
+# fuji — Apple M2 MacBook Air on Asahi Alarm (Arch Linux ARM, aarch64).
+#
+# Asahi cannot drive external displays, so this host is permanently
+# single-head: only a "primary" role is declared, which switches off workspace
+# pinning, per-window monitor= fields and the split wallpaper path everywhere.
+#
+# hyprpanel is unavailable in the Alarm repos, so the bar here is waybar.
+# gametrak and mega-status are not packaged/needed, and the session does not
+# lock on start.
+# ---------------------------------------------------------------------------
+[machines.fuji]
+arch   = "aarch64"
+laptop = true
+# vaapi_driver deliberately unset: Asahi's GPU stack needs no LIBVA override,
+# and radeonsi would be actively wrong here.
+autostart = [
+    "dbus",
+    "nm-applet",
+    "dunst",
+    "hyprpaper",
+    "waybar",
+    "cliphist-text",
+    "cliphist-image",
+    "hyprpolkitagent",
+]
+
+[[machines.fuji.monitors]]
+output   = "eDP-1"
+mode     = "preferred"
+position = "0x0"
+scale    = 2
+role     = "primary"
+note     = "scale 2 is a starting value - tune against `hyprctl monitors` on the hardware"
+
+# ---------------------------------------------------------------------------
+# Fallback for a host with no block above: a conservative single-display
+# session that comes up usable, rather than a template error or a blank
+# screen. Add a real [machines.<hostname>] entry as soon as you know the
+# hardware -- see the hasKey check at the top of this file to detect that you
+# are running on the fallback.
+# ---------------------------------------------------------------------------
+[fallback]
+arch   = "unknown"
+laptop = false
+autostart = [
+    "dbus",
+    "nm-applet",
+    "dunst",
+    "hyprpaper",
+    "waybar",
+    "cliphist-text",
+    "cliphist-image",
+    "hyprpolkitagent",
+]
+
+[[fallback.monitors]]
+output   = ""
+mode     = "preferred"
+position = "auto"
+scale    = 1
+role     = "primary"
+note     = "catch-all: empty output matches every connected display"

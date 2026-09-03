@@ -1,3 +1,11 @@
+{{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
+{{- $primary := "" -}}
+{{- $secondary := "" -}}
+{{- range $machine.monitors -}}
+{{-   $role := dig "role" "" . -}}
+{{-   if eq $role "primary" }}{{ $primary = .output }}{{ else if eq $role "secondary" }}{{ $secondary = .output }}{{ end -}}
+{{- end -}}
+{{- $split := and (ne $primary "") (ne $secondary "") -}}
 source = ~/.config/hypr/hyprpaper-wallpaper.conf
 source = ~/.config/hypr/fonts.conf
 
@@ -9,8 +17,9 @@ $check    = rgb(158, 206, 106)    # #9ece6a  green (auth in progress)
 $fail     = rgb(247, 118, 142)    # #f7768e  red (auth failed)
 
 # BACKGROUND
+{{ if $split -}}
 background {
-    monitor = HDMI-A-1
+    monitor = {{ $secondary }}
     path = $wallpaper_top
     blur_passes = 3
     contrast = 0.8916
@@ -19,7 +28,7 @@ background {
     vibrancy_darkness = 0.0
 }
 background {
-    monitor = DP-2
+    monitor = {{ $primary }}
     path = $wallpaper_bottom
     blur_passes = 3
     contrast = 0.8916
@@ -27,7 +36,17 @@ background {
     vibrancy = 0.1696
     vibrancy_darkness = 0.0
 }
-
+{{ else -}}
+background {
+    monitor = {{ $primary }}
+    path = $wallpaper_main
+    blur_passes = 3
+    contrast = 0.8916
+    brightness = 0.8172
+    vibrancy = 0.1696
+    vibrancy_darkness = 0.0
+}
+{{ end }}
 # GENERAL
 general {
     hide_cursor = false
@@ -35,7 +54,7 @@ general {
 
 # INPUT FIELD
 input-field {
-    monitor = DP-2
+    monitor = {{ $primary }}
     size = 250, 60
     outline_thickness = 2
     dots_size = 0.2 # Scale of input-field height, 0.2 - 0.8
@@ -57,7 +76,7 @@ input-field {
 
 # TIME
 label {
-    monitor = DP-2
+    monitor = {{ $primary }}
     text = cmd[update:1000] echo "$(date +"%-I:%M%p")"
     color = $fg
     font_size = 120
@@ -69,7 +88,7 @@ label {
 
 # USER
 label {
-    monitor = DP-2
+    monitor = {{ $primary }}
     text = Hi there, $USER
     color = $fg
     font_size = 25

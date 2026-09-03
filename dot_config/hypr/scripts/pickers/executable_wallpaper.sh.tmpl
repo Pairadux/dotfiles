@@ -1,0 +1,62 @@
+{{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
+{{- $primary := "" -}}
+{{- $secondary := "" -}}
+{{- range $machine.monitors -}}
+{{-   $role := dig "role" "" . -}}
+{{-   if eq $role "primary" }}{{ $primary = .output }}{{ else if eq $role "secondary" }}{{ $secondary = .output }}{{ end -}}
+{{- end -}}
+{{- /* Capability: a stacked primary+secondary pair, the layout the top/bottom
+       slices in <name>-wallpaper/ are cut for. A single display uses the
+       unsliced <name>-wallpaper.png source instead. */ -}}
+{{- $split := and (ne $primary "") (ne $secondary "") -}}
+#!/bin/bash
+# ICON: 󰸉
+#
+# wallpaper picker — select and apply a wallpaper{{ if $split }} pair{{ end }} via hyprpaper
+
+source "$(dirname "$0")/_common.sh"
+
+WALLPAPER_DIR="$HOME/Cloud/Media/Pictures/wallpapers"
+WALLPAPER_CONF="$HOME/.config/hypr/hyprpaper-wallpaper.conf"
+
+{{ if $split }}# Collect folders that have a valid <name>-wallpaper/{top,bottom}.png pair
+{{ else }}# Collect folders that have a flat <name>-wallpaper.png source
+{{ end }}entries=()
+for dir in "$WALLPAPER_DIR"/*/; do
+    name=$(basename "$dir")
+{{ if $split }}    pair="$dir/${name}-wallpaper"
+    [[ -f "$pair/top.png" && -f "$pair/bottom.png" ]] && entries+=("$name")
+{{ else }}    [[ -f "$dir/${name}-wallpaper.png" ]] && entries+=("$name")
+{{ end }}done
+
+if [[ ${#entries[@]} -eq 0 ]]; then
+    notify-send "Wallpaper" "No wallpaper {{ if $split }}pairs{{ else }}images{{ end }} found"
+    exit 1
+fi
+
+selection=$(printf '%s\n' "${entries[@]}" | sort -f | sed 's/^/󰸉  /' | "${ROFI_DMENU[@]}" -p "󰸉 Wallpaper" | sed 's/^󰸉  //')
+[[ -z "$selection" ]] && exit 0
+
+{{ if $split }}top="$WALLPAPER_DIR/$selection/${selection}-wallpaper/top.png"
+bottom="$WALLPAPER_DIR/$selection/${selection}-wallpaper/bottom.png"
+
+# Apply live
+hyprctl hyprpaper wallpaper "{{ $secondary }},$top"
+hyprctl hyprpaper wallpaper "{{ $primary }},$bottom"
+
+# Persist for next boot
+cat > "$WALLPAPER_CONF" <<EOF
+\$wallpaper_top = $top
+\$wallpaper_bottom = $bottom
+EOF
+{{ else }}main="$WALLPAPER_DIR/$selection/${selection}-wallpaper.png"
+
+# Apply live
+hyprctl hyprpaper wallpaper "{{ $primary }},$main"
+
+# Persist for next boot
+cat > "$WALLPAPER_CONF" <<EOF
+\$wallpaper_main = $main
+EOF
+{{ end }}
+notify-send "Wallpaper" "Applied: $selection"

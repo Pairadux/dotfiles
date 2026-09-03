@@ -1,14 +1,34 @@
+{{- /*
+   Generated from .chezmoidata/machines.toml. Branch on capabilities derived
+   below, never on .chezmoi.hostname, so a new machine is a data entry.
+*/ -}}
+{{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
+{{- $monitors := $machine.monitors -}}
+{{- $primary := "" -}}
+{{- $secondary := "" -}}
+{{- range $monitors -}}
+{{-   $role := dig "role" "" . -}}
+{{-   if eq $role "primary" }}{{ $primary = .output }}{{ else if eq $role "secondary" }}{{ $secondary = .output }}{{ end -}}
+{{- end -}}
+{{- /* Capability: a real multi-monitor layout. Only then is it meaningful to
+       pin workspaces or windows to a named output. */ -}}
+{{- $multihead := and (ne $primary "") (ne $secondary "") -}}
+{{- /* Capability: gametrak runs here, so ~/.config/gametrak/games.conf exists. */ -}}
+{{- $gametrak := has "gametrak" $machine.autostart -}}
+{{- /* Autostart keys that name a Lua local from the PROGRAMS section below;
+       emitted bare so the local stays the single definition of the command. */ -}}
+{{- $luaLocals := list "lockscreen" -}}
 ------------------
 ---- MONITORS ----
 ------------------
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 
-hl.monitor({ output = "DP-2", mode = "2560x1440@144", position = "0x0", scale = 1 })
-hl.monitor({ output = "HDMI-A-1", mode = "1920x1080", position = "320x-1080", scale = 1, transform = 2 })
--- TEMP VERTICAL MONITOR
-hl.monitor({ output = "HDMI-A-2", mode = "1920x1080", position = "-720x0", scale = 1.5, transform = 1 })
-
+{{ range $monitors -}}
+{{ with dig "note" "" . }}-- {{ . }}
+{{ end -}}
+hl.monitor({ output = "{{ .output }}", mode = "{{ .mode }}", position = "{{ .position }}", scale = {{ .scale }}{{ with dig "transform" 0 . }}, transform = {{ . }}{{ end }} })
+{{ end }}
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
@@ -27,17 +47,8 @@ local picker      = "~/.config/hypr/scripts/picker.sh"
 -------------------
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
-    hl.exec_cmd(lockscreen)
-    hl.exec_cmd("nm-applet")
-    hl.exec_cmd("dunst")
-    hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("hyprpanel")
-    hl.exec_cmd("wl-paste --type text --watch cliphist store")
-    hl.exec_cmd("wl-paste --type image --watch cliphist store")
-    hl.exec_cmd("systemctl --user start hyprpolkitagent")
-    hl.exec_cmd("systemctl --user start mega-status")
-    hl.exec_cmd("gametrak")
+{{ range $machine.autostart }}    hl.exec_cmd({{ if has . $luaLocals }}{{ . }}{{ else }}"{{ index $.autostart_commands . }}"{{ end }})
+{{ end -}}
 end)
 
 -------------------------------
@@ -48,7 +59,9 @@ hl.env("XCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Ice")
 hl.env("HYPRCURSOR_SIZE", "24")
-hl.env("LIBVA_DRIVER_NAME", "radeonsi")
+{{ with dig "vaapi_driver" "" $machine -}}
+hl.env("LIBVA_DRIVER_NAME", "{{ . }}")
+{{ end -}}
 hl.env("QT_STYLE_OVERRIDE", "kvantum")
 hl.env("XDG_DATA_DIRS",
     "/var/lib/flatpak/exports/share:" ..
@@ -251,8 +264,8 @@ hl.window_rule({
     name  = "neovide",
     match = { class = "neovide" },
 
-    monitor = "DP-2",
-    float   = true,
+{{ if $multihead }}    monitor = "{{ $primary }}",
+{{ end }}    float   = true,
     size    = { 1920, 1080 },
 })
 
@@ -289,8 +302,8 @@ hl.window_rule({
     match = { class = "discord" },
 
     workspace = "40",
-    monitor   = "HDMI-A-1",
-})
+{{ if $multihead }}    monitor   = "{{ $secondary }}",
+{{ end }}})
 
 -- Steam Client
 hl.window_rule({
@@ -298,8 +311,8 @@ hl.window_rule({
     match = { class = "^(steam)$" },
 
     workspace = "50",
-    monitor   = "DP-2",
-})
+{{ if $multihead }}    monitor   = "{{ $primary }}",
+{{ end }}})
 
 -- Steam - Subwindows (everything except main Steam window)
 hl.window_rule({
@@ -317,6 +330,7 @@ hl.window_rule({
     min_size = { 1, 1 },
 })
 
+{{ if $gametrak -}}
 -- Steam Games
 -- gametrak writes $game_regex into games.conf in the old hyprlang format; read it
 -- back out here since Lua configs have no `source` keyword.
@@ -335,13 +349,14 @@ if games then
         match = { class = games },
 
         workspace    = "100",
-        monitor      = "DP-2",
-        fullscreen   = true,
+{{ if $multihead }}        monitor      = "{{ $primary }}",
+{{ end }}        fullscreen   = true,
         immediate    = true,
         idle_inhibit = "always",
     })
 end
 
+{{ end -}}
 -- GIMP
 hl.window_rule({
     name  = "gimp-dialogs",
@@ -377,30 +392,39 @@ hl.window_rule({
     suppress_event = "maximize",
 })
 
+{{ if $multihead -}}
 -- See https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
 
-hl.workspace_rule({ workspace = "1", monitor = "DP-2", default = true, persistent = true })
-hl.workspace_rule({ workspace = "2", monitor = "HDMI-A-1", persistent = true })
-hl.workspace_rule({ workspace = "3", monitor = "HDMI-A-1" })
-hl.workspace_rule({ workspace = "4", monitor = "HDMI-A-1" })
-hl.workspace_rule({ workspace = "5", monitor = "HDMI-A-1" })
-hl.workspace_rule({ workspace = "6", monitor = "HDMI-A-1" })
-hl.workspace_rule({ workspace = "7", monitor = "HDMI-A-1" })
-hl.workspace_rule({ workspace = "8", monitor = "HDMI-A-1", on_created_empty = "ticktick" })
-hl.workspace_rule({ workspace = "9", monitor = "HDMI-A-1", on_created_empty = "spotify" })
-hl.workspace_rule({ workspace = "10", monitor = "HDMI-A-1" })
+hl.workspace_rule({ workspace = "1", monitor = "{{ $primary }}", default = true, persistent = true })
+hl.workspace_rule({ workspace = "2", monitor = "{{ $secondary }}", persistent = true })
+hl.workspace_rule({ workspace = "3", monitor = "{{ $secondary }}" })
+hl.workspace_rule({ workspace = "4", monitor = "{{ $secondary }}" })
+hl.workspace_rule({ workspace = "5", monitor = "{{ $secondary }}" })
+hl.workspace_rule({ workspace = "6", monitor = "{{ $secondary }}" })
+hl.workspace_rule({ workspace = "7", monitor = "{{ $secondary }}" })
+hl.workspace_rule({ workspace = "8", monitor = "{{ $secondary }}", on_created_empty = "ticktick" })
+hl.workspace_rule({ workspace = "9", monitor = "{{ $secondary }}", on_created_empty = "spotify" })
+hl.workspace_rule({ workspace = "10", monitor = "{{ $secondary }}" })
 hl.workspace_rule({
     workspace   = "100",
-    monitor     = "DP-2",
+    monitor     = "{{ $primary }}",
     gaps_in     = 0,
     gaps_out    = 0,
     no_border   = true,
     no_rounding = true,
 })
 
-hl.workspace_rule({ workspace = "20", monitor = "DP-2", on_created_empty = terminal })
-hl.workspace_rule({ workspace = "30", monitor = "HDMI-A-1", on_created_empty = browser })
-hl.workspace_rule({ workspace = "40", monitor = "HDMI-A-1", on_created_empty = "gtk-launch discord" })
-hl.workspace_rule({ workspace = "50", monitor = "DP-2", on_created_empty = "gtk-launch steam" })
-hl.workspace_rule({ workspace = "60", monitor = "HDMI-A-1", on_created_empty = "gtk-launch com.fastmail.Fastmail" })
-hl.workspace_rule({ workspace = "70", monitor = "HDMI-A-1", on_created_empty = "obsidian" })
+hl.workspace_rule({ workspace = "20", monitor = "{{ $primary }}", on_created_empty = terminal })
+hl.workspace_rule({ workspace = "30", monitor = "{{ $secondary }}", on_created_empty = browser })
+hl.workspace_rule({ workspace = "40", monitor = "{{ $secondary }}", on_created_empty = "gtk-launch discord" })
+hl.workspace_rule({ workspace = "50", monitor = "{{ $primary }}", on_created_empty = "gtk-launch steam" })
+hl.workspace_rule({ workspace = "60", monitor = "{{ $secondary }}", on_created_empty = "gtk-launch com.fastmail.Fastmail" })
+hl.workspace_rule({ workspace = "70", monitor = "{{ $secondary }}", on_created_empty = "obsidian" })
+{{ else -}}
+-- No workspace rules on a single-display machine.
+--
+-- Every rule this file would otherwise emit pins a workspace to a named
+-- output, and workspace 1's default+persistent pin to a monitor that does not
+-- exist is what leaves a lone display with no usable workspace at login.
+-- Hyprland's own defaults are correct for one screen, so emit nothing.
+{{ end -}}

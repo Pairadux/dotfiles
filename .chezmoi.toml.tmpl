@@ -1,0 +1,11 @@
+# Rendered to ~/.config/chezmoi/chezmoi.toml by `chezmoi init`.
+#
+# Without this, a fresh init clones into ~/.local/share/chezmoi and every later
+# `chezmoi` invocation looks in the wrong place. Pinning sourceDir here means
+# the non-default ~/.dotfiles layout survives bringing up a new machine.
+#
+# NOTE: chezmoi refuses to start if two config files exist in that directory
+# ("multiple config files"). A machine that already has chezmoi.yaml there must
+# have it removed before running `chezmoi init`, or instead of it.
+sourceDir       = "{{ .chezmoi.homeDir }}/.dotfiles"
+persistentState = "{{ .chezmoi.homeDir }}/.local/state/chezmoi/chezmoistate.boltdb"

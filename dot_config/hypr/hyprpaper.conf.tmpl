@@ -1,0 +1,33 @@
+{{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
+{{- $primary := "" -}}
+{{- $secondary := "" -}}
+{{- range $machine.monitors -}}
+{{-   $role := dig "role" "" . -}}
+{{-   if eq $role "primary" }}{{ $primary = .output }}{{ else if eq $role "secondary" }}{{ $secondary = .output }}{{ end -}}
+{{- end -}}
+{{- /* Capability: a stacked primary+secondary pair, which is what the
+       top/bottom wallpaper slices produced by ~/.bin/wallpaper-ctl assume.
+       One display gets the unsliced source image instead. */ -}}
+{{- $split := and (ne $primary "") (ne $secondary "") -}}
+source = ~/.config/hypr/hyprpaper-wallpaper.conf
+
+{{ if $split -}}
+wallpaper {
+    monitor = {{ $secondary }}
+    path = $wallpaper_top
+    fit_mode = stretch
+}
+wallpaper {
+    monitor = {{ $primary }}
+    path = $wallpaper_bottom
+    fit_mode = stretch
+}
+{{ else -}}
+wallpaper {
+    monitor = {{ $primary }}
+    path = $wallpaper_main
+    fit_mode = cover
+}
+{{ end -}}
+ipc = on
+splash = false
