@@ -1,7 +1,3 @@
-{{- $homePath := "/home/austincgause" }}
-{{- if eq .chezmoi.os "darwin" }}
-{{-   $homePath = "/Users/austingause" }}
-{{- end -}}
 #!/usr/bin/env zsh
 
 ######################################## EXPORT ENVIRONMENT VARIABLE ########################################
@@ -111,4 +107,15 @@ if [[ "$(uname)" == "Darwin" ]]; then
     export PATH="/Applications/MEGAcmd.app/Contents/MacOS:$PATH"
 fi
 
-. "{{ $homePath }}/.local/share/bob/env/env.sh"
+# bob manages the neovim install, so a missing bob env means no nvim and a
+# broken $EDITOR. Warn rather than abort: a fresh machine still needs a usable
+# shell to fix itself with.
+#
+# The warning is gated on an interactive shell on purpose. .zshenv is sourced
+# for every zsh invocation, and unsolicited stderr in a non-interactive one
+# corrupts sftp/rsync-over-ssh sessions.
+if [[ -r "$HOME/.local/share/bob/env/env.sh" ]]; then
+    . "$HOME/.local/share/bob/env/env.sh"
+elif [[ -o interactive ]]; then
+    print -u2 -P "%F{red}zshenv:%f bob is not set up — install bob, then 'bob use stable'"
+fi

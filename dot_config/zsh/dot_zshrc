@@ -59,37 +59,66 @@ source "$ZDOTDIR/extras/aliases"
 # +---------+
 source "$ZDOTDIR/extras/scripts.zsh"
 
+# +----------------------+
+# | MISSING TOOL NOTICES |
+# +----------------------+
+# A fresh machine has none of the below until it is set up. Warn loudly and
+# carry on, instead of dying on a bare "command not found" partway through and
+# leaving a half-initialised shell that is awkward to repair from.
+_zsh_missing() {
+    print -u2 -P "%F{red}zshrc:%f $1 not found — $2"
+}
+
 # +-----+
 # | FZF |
 # +-----+
-source <(fzf --zsh)
+if (( $+commands[fzf] )); then
+    source <(fzf --zsh)
+else
+    _zsh_missing fzf "install fzf for its keybindings and completion"
+fi
 
 # +----------+
 # | Antidote |
 # +----------+
-source "$ZDOTDIR/.antidote/antidote.zsh"
-# antidote rebuilds .zsh_plugins.zsh through a fixed temp path, so shells starting at
-# the same time (tmux panes right after `antidote update`) clobber each other's temp
-# file and the losers end up sourcing no plugins at all. Serializing the load fixes it:
-# whoever waits finds the static file already fresh and skips the rebuild. The bundle
-# file doubles as the lock target — flock is advisory and never truncates it.
-zmodload zsh/system
-() {
-    local lockfd
-    zsystem flock -f lockfd -t 10 "$ZDOTDIR/.zsh_plugins.txt" 2>/dev/null
-    antidote load
-    (( lockfd )) && exec {lockfd}>&-
-}
+if [[ -r "$ZDOTDIR/.antidote/antidote.zsh" ]]; then
+    source "$ZDOTDIR/.antidote/antidote.zsh"
+    # antidote rebuilds .zsh_plugins.zsh through a fixed temp path, so shells starting at
+    # the same time (tmux panes right after `antidote update`) clobber each other's temp
+    # file and the losers end up sourcing no plugins at all. Serializing the load fixes it:
+    # whoever waits finds the static file already fresh and skips the rebuild. The bundle
+    # file doubles as the lock target — flock is advisory and never truncates it.
+    zmodload zsh/system
+    () {
+        local lockfd
+        zsystem flock -f lockfd -t 10 "$ZDOTDIR/.zsh_plugins.txt" 2>/dev/null
+        antidote load
+        (( lockfd )) && exec {lockfd}>&-
+    }
+else
+    _zsh_missing antidote "git clone --depth=1 https://github.com/mattmc3/antidote.git \$ZDOTDIR/.antidote"
+fi
 
 # +--------+
 # | PROMPT |
 # +--------+
-autoload -Uz promptinit && promptinit && prompt pure
+# pure ships in the antidote bundle, so a missing prompt is the visible symptom
+# of the block above having been skipped.
+autoload -Uz promptinit && promptinit
+if (( $+functions[prompt_pure_setup] )); then
+    prompt pure
+else
+    _zsh_missing "prompt pure" "check that antidote loaded \$ZDOTDIR/.zsh_plugins.txt"
+fi
 
 # +--------+
 # | ZOXIDE |
 # +--------+
-eval "$(zoxide init zsh)"
+if (( $+commands[zoxide] )); then
+    eval "$(zoxide init zsh)"
+else
+    _zsh_missing zoxide "install zoxide"
+fi
 
 # +---------+
 # | BINDING |
