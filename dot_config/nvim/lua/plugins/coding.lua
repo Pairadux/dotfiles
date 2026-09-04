@@ -37,7 +37,13 @@ return {
             'neovim/nvim-lspconfig',
             'nvim-treesitter/nvim-treesitter',
         },
-        opts = {},
+        -- go.nvim's `build` below installs the gopls *binary* (among ~20 others)
+        -- into $GOBIN, but it does not configure the server: lsp_cfg defaults to
+        -- false, and go.nvim's docs say to pick one owner rather than set gopls
+        -- up twice. gopls is owned by plugins/lsp/init.lua — Mason installs it
+        -- and blink's capabilities are merged there — so this stays false and
+        -- go.nvim is here for :GoTest, :GoAddTag, :GoImpl and friends.
+        opts = { lsp_cfg = false },
         ft = { 'go', 'gomod' },
         build = ':lua require("go.install").update_all_sync()',
     }, -- }}}

@@ -108,9 +108,48 @@ return {
             --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
             --  - settings (table): Override the default settings passed when initializing the server.
             --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+            --
+            --  NOTE: listing a server here does NOT install it. `ensure_installed`
+            --  further down is the only thing that installs anything (there is no
+            --  mason-lspconfig bridge), so a server registered here but missing from
+            --  that list fails to start with "<cmd> is not executable". Keep the two
+            --  lists in sync, and comment out both halves for languages not in use.
             local servers = {
-                clangd = {},
-                gopls = {},
+                gopls = {
+                    settings = {
+                        gopls = {
+                            -- Match conform's gofumpt, so LSP-side formatting can never
+                            -- disagree with `gw` / <leader>lf.
+                            gofumpt = true,
+                            staticcheck = true,
+                            completeUnimported = true,
+                            usePlaceholders = true,
+                            analyses = {
+                                nilness = true,
+                                unusedparams = true,
+                                unusedwrite = true,
+                                useany = true,
+                            },
+                            -- Populated so <leader>lh has something to toggle; inlay
+                            -- hints still start disabled.
+                            hints = {
+                                assignVariableTypes = true,
+                                compositeLiteralFields = true,
+                                compositeLiteralTypes = true,
+                                constantValues = true,
+                                functionTypeParameters = true,
+                                parameterNames = true,
+                                rangeVariableTypes = true,
+                            },
+                        },
+                    },
+                },
+                -- Unused for now — re-add the matching Mason package to
+                -- `ensure_installed` below when uncommenting.
+                -- clangd = {},           -- pairs with 'clangd'
+                -- svelte = {},           -- pairs with 'svelte-language-server'
+                -- ts_ls = {},            -- pairs with 'typescript-language-server'
+                -- rust_analyzer = {},    -- pairs with 'rust-analyzer' (or rustup's copy)
                 pyright = {
                     settings = {
                         pyright = {
@@ -119,9 +158,6 @@ return {
                     },
                 },
                 ruff = {},
-                svelte = {},
-                ts_ls = {},
-                rust_analyzer = {},
                 -- jdtls = {
                 --     cmd = {
                 --         '/opt/homebrew/opt/openjdk@23/bin/java',
@@ -232,6 +268,7 @@ return {
                 'shfmt',
                 'pyright',
                 'ruff',
+                'gopls',
                 'gofumpt',
                 'beautysh',
                 'google-java-format',
