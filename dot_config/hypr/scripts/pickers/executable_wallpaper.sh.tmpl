@@ -16,8 +16,9 @@
 
 source "$(dirname "$0")/_common.sh"
 
-WALLPAPER_DIR="$HOME/Cloud/Media/Pictures/wallpapers"
-WALLPAPER_CONF="$HOME/.config/hypr/hyprpaper-wallpaper.conf"
+{{ if eq .chezmoi.hostname "fuji" }}WALLPAPER_DIR="$HOME/Media/Pictures/Wallpapers"
+{{ else }}WALLPAPER_DIR="$HOME/Cloud/Media/Pictures/wallpapers"
+{{ end }}WALLPAPER_CONF="$HOME/.config/hypr/hyprpaper-wallpaper.conf"
 
 {{ if $split }}# Collect folders that have a valid <name>-wallpaper/{top,bottom}.png pair
 {{ else }}# Collect folders that have a flat <name>-wallpaper.png source
