@@ -421,10 +421,12 @@ hl.workspace_rule({ workspace = "50", monitor = "{{ $primary }}", on_created_emp
 hl.workspace_rule({ workspace = "60", monitor = "{{ $secondary }}", on_created_empty = "gtk-launch com.fastmail.Fastmail" })
 hl.workspace_rule({ workspace = "70", monitor = "{{ $secondary }}", on_created_empty = "obsidian" })
 {{ else -}}
--- No workspace rules on a single-display machine.
+-- Single display: no workspace is pinned to an output.
 --
--- Every rule this file would otherwise emit pins a workspace to a named
--- output, and workspace 1's default+persistent pin to a monitor that does not
--- exist is what leaves a lone display with no usable workspace at login.
--- Hyprland's own defaults are correct for one screen, so emit nothing.
+-- Every monitor-pinning rule is dropped here. Workspace 1's default+persistent
+-- pin to a monitor that does not exist is what leaves a lone display with no
+-- usable workspace at login, and Hyprland's own defaults are correct for one
+-- screen. The two launcher rules below carry no monitor, so they are safe.
+hl.workspace_rule({ workspace = "20", on_created_empty = terminal })
+hl.workspace_rule({ workspace = "30", on_created_empty = browser })
 {{ end -}}
