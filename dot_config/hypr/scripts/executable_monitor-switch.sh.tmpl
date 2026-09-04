@@ -1,0 +1,47 @@
+{{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
+{{- $primary := dict -}}
+{{- $secondary := dict -}}
+{{- $external := dict -}}
+{{- range $machine.monitors -}}
+{{-   $role := dig "role" "" . -}}
+{{-   if eq $role "primary" }}{{ $primary = . }}
+{{-   else if eq $role "secondary" }}{{ $secondary = . }}
+{{-   else if not (hasKey $external "output") }}{{ $external = . }}{{ end -}}
+{{- end -}}
+{{- /* This only means anything on a machine with a normal primary+secondary
+       layout plus a role-less display to switch over to. */ -}}
+{{- $applies := and (hasKey $primary "output") (hasKey $secondary "output") (hasKey $external "output") -}}
+{{- if $applies -}}
+#!/bin/bash
+MAIN_MONITOR="{{ $primary.output }}"
+SECONDARY_MONITOR="{{ $secondary.output }}" 
+EXTERNAL_MONITOR="{{ $external.output }}"
+
+# Check if external monitor is connected
+if hyprctl monitors | grep -q "$EXTERNAL_MONITOR"; then
+    # External monitor detected - disable your current monitors
+    hyprctl keyword monitor "$MAIN_MONITOR,disable"
+    hyprctl keyword monitor "$SECONDARY_MONITOR,disable"
+    # Enable external monitor with its preferred settings
+    hyprctl keyword monitor "$EXTERNAL_MONITOR,preferred,0x0,1"
+    # Set workspace 1 as default on external monitor
+    hyprctl keyword workspace "1,monitor:$EXTERNAL_MONITOR,default:true"
+else
+    # External monitor not detected - restore your normal setup
+    hyprctl keyword monitor "$MAIN_MONITOR,{{ $primary.mode }},{{ $primary.position }},{{ $primary.scale }}"
+    hyprctl keyword monitor "$SECONDARY_MONITOR,{{ $secondary.mode }},{{ $secondary.position }},{{ $secondary.scale }}{{ with dig "transform" 0 $secondary }},transform,{{ . }}{{ end }}"
+    # Restore original workspace assignments
+    hyprctl keyword workspace "1,monitor:$MAIN_MONITOR,default:true,persistent:true"
+    hyprctl keyword workspace "2,monitor:$SECONDARY_MONITOR,persistent:true"
+fi
+{{- else -}}
+#!/bin/bash
+# Not applicable on this machine.
+#
+# This script swaps between the built-in primary+secondary layout and a single
+# role-less external display. It needs all three declared in
+# .chezmoidata/machines.toml; this host declares {{ len $machine.monitors }}
+# monitor(s) and no such external, so there is nothing to switch between.
+echo "monitor-switch: not applicable on $(hostname)" >&2
+exit 0
+{{- end }}

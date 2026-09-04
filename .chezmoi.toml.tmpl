@@ -9,3 +9,9 @@
 # have it removed before running `chezmoi init`, or instead of it.
 sourceDir       = "{{ .chezmoi.homeDir }}/.dotfiles"
 persistentState = "{{ .chezmoi.homeDir }}/.local/state/chezmoi/chezmoistate.boltdb"
+
+# Secrets live here, outside the repo. promptStringOnce asks at `chezmoi init`
+# and never again; to change a value later, edit this generated file directly
+# (~/.config/chezmoi/chezmoi.toml) rather than re-running init.
+[data]
+    weatherApiKey = {{ promptStringOnce . "weatherApiKey" "WeatherAPI key for hyprpanel" "" | quote }}
