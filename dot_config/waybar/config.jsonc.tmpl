@@ -116,33 +116,33 @@
     },
 
     "pulseaudio": {
-        "format": "{icon}",
-        "format-muted": " ",
+        "format": "{icon} ",
+        "format-muted": "󰖁",
         "tooltip-format": "{icon}  {desc} // {volume}%",
         "scroll-step": 5,
         "format-icons": {
-            "headphone": " ",
-            "hands-free": " ",
-            "headset": " ",
-            "phone": " ",
-            "portable": " ",
-            "car": " ",
+            "headphone": "󰋋",
+            "hands-free": "󱡏",
+            "headset": "󰋎 ",
+            "phone": "",
+            "portable": "󱡏",
+            "car": "",
             "default": [
-                " ",
-                " ",
-                " "
+                "",
+                "󰖀",
+                "󰕾"
             ]
         },
         "on-click": "pavucontrol"
     },
 {{ if $laptop }}
     "backlight": {
-        "format": "{icon}",
+        "format": "{icon} ",
         "tooltip-format": "Backlight: {percent}%",
         "format-icons": [
-            "󰃞 ",
-            "󰃟 ",
-            "󰃠 "
+            "󰃞",
+            "󰃟",
+            "󰃠"
         ],
         "scroll-step": 5
     },
@@ -151,9 +151,9 @@
         "format": "󰈀 ",
         "format-wifi": "{icon} ",
         "format-icons": [
-            "󰤟 ",
-            "󰤢 ",
-            "󰤥 "
+            "󰤟",
+            "󰤢",
+            "󰤥"
         ],
         "format-ethernet": "󰈀 ",
         "format-linked": "󰈀 {ifname} (No IP)",
