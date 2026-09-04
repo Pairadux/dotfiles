@@ -31,10 +31,10 @@ configuration{
 // Scale the imported theme up. Element/icon sizes are em-based so they follow
 // the font; window width is fixed in the theme so it's bumped here too. Tune to taste.
 * {
-    font: "Monospace 13";
+    font: "Monospace 12";
 }
 window {
-    width: 800;
+    width: 700;
 }
 
 // Distinguish the prompt from the input: render the prompt as a filled accent
