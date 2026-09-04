@@ -2,6 +2,10 @@
 {{- if eq .chezmoi.os "darwin" }}
 {{-   $yPadding = 4 }}
 {{- end -}}
+{{- $fontSize := 14 }}
+{{- if eq .chezmoi.hostname "fuji" }}
+{{-   $fontSize = 12 }}
+{{- end -}}
 # +----------+
 # | KEYBINDS |
 # +----------+
@@ -29,7 +33,7 @@ font-style-bold         = ""
 font-style-italic       = "Medium Italic"  
 font-style-bold-italic  = "Bold Oblique"  
 
-font-size    = 14
+font-size    = {{ $fontSize }}
 font-thicken = true
 
 # +-------+
