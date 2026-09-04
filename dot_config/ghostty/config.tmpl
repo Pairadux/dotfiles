@@ -2,7 +2,6 @@
 {{- if eq .chezmoi.os "darwin" }}
 {{-   $yPadding = 4 }}
 {{- end -}}
-{{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
 # +----------+
 # | KEYBINDS |
 # +----------+
@@ -68,9 +67,4 @@ macos-custom-icon = ~/.config/ghostty/assets/ghostty-original.icns
 # +---------------+
 # | CURSOR SHADER |
 # +---------------+
-{{ if dig "ghostty_shader" true $machine -}}
 custom-shader = ~/.config/ghostty/shaders/cursor_warp.glsl
-{{ else -}}
-# Disabled via ghostty_shader in .chezmoidata/machines.toml. Flip it to true
-# once the shader is confirmed to compile on this machine's Mesa driver.
-{{ end -}}
