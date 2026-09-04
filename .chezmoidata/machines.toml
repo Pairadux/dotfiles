@@ -142,7 +142,7 @@ autostart = [
 output   = "eDP-1"
 mode     = "preferred"
 position = "0x0"
-scale    = 2
+scale    = 1.67
 role     = "primary"
 note     = "scale 2 is a starting value - tune against `hyprctl monitors` on the hardware"
 
