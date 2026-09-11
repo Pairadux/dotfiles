@@ -52,5 +52,18 @@ use_sudo = true
 
 
 
+[pre_commands]
+# Dart tooling rewrites the SDK's own pubspec.lock when it re-resolves deps.
+# `flutter upgrade` hard-resets and refuses on a dirty tree, so drop that
+# generated churn before the flutter step runs.
+"Reset Flutter SDK lockfile" = "git -C /home/austincgause/.local/share/flutter-sdk restore pubspec.lock"
+
+
+
 [commands]
+# Skips itself unless the last backup is older than 20h, so a re-run of topgrade
+# on the same day costs only a remote listing. Invoked by name rather than by
+# path so it survives ~/.bin moving again.
+"Zen profile backup" = "zen-backup"
+
 "Mason Update" = "nvim --headless -c \"lua vim.notify = function(msg) io.stderr:write(msg .. '\\n') end; require('lazy').load({plugins = {'nvim-lspconfig'}})\" -c MasonToolsUpdateSync -c quitall"
