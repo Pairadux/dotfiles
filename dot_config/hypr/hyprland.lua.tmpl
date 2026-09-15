@@ -450,4 +450,12 @@ hl.workspace_rule({ workspace = "70", monitor = "{{ $secondary }}", on_created_e
 -- screen. The two launcher rules below carry no monitor, so they are safe.
 hl.workspace_rule({ workspace = "20", on_created_empty = terminal })
 hl.workspace_rule({ workspace = "30", on_created_empty = browser })
+hl.workspace_rule({ workspace = "50", on_created_empty = "gtk-launch steam" })
+hl.workspace_rule({
+    workspace   = "100",
+    gaps_in     = 0,
+    gaps_out    = 0,
+    no_border   = true,
+    no_rounding = true,
+})
 {{ end -}}
