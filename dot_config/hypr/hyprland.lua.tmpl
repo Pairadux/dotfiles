@@ -212,6 +212,24 @@ hl.bind(mainMod .. " + LEFT", hl.dsp.exec_cmd("mpc prev"))
 hl.bind(mainMod .. " + UP", hl.dsp.exec_cmd("mpc volume +5"))
 hl.bind(mainMod .. " + DOWN", hl.dsp.exec_cmd("mpc volume -5"))
 
+-- Soundboard (pwsp)
+-- pwsp's own "universal hotkeys" read /dev/input/event* directly, which needs the
+-- `input` group and only picks up keyboards the daemon saw when it started. Going
+-- through the compositor instead needs no extra privileges and survives hotplug.
+-- Keys are slot names from `pwsp-cli get hotkeys`; the sound each slot plays stays
+-- configured in the pwsp GUI. Leave the slots' own key chords unset so a press
+-- cannot fire twice.
+local soundboard = {
+    F1 = "Goofy Running Sound Effect [qbnyaJAbP1U]",
+}
+
+for key, slot in pairs(soundboard) do
+    hl.bind(mainMod .. " + ALT + " .. key,
+        hl.dsp.exec_cmd('pwsp-cli action play-hotkey "' .. slot .. '"'))
+end
+
+hl.bind(mainMod .. " + ALT + BACKSPACE", hl.dsp.exec_cmd("pwsp-cli action stop"))
+
 hl.bind(mainMod .. " + V", hl.dsp.window.float())
 
 -- Toggle split orientation: side-by-side <-> top/bottom
