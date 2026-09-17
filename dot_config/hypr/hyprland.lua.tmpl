@@ -171,16 +171,6 @@ hl.animation({ leaf = "workspaces",  enabled = true, speed = 6,  bezier = "defau
 
 local mainMod = "SUPER"
 
--- The Voyager types arrow keys where hjkl sit, so the movement binds are mirrored
--- onto its arrows and the mpc binds are held back from it. Hyprland matches the
--- device per keypress, so no hotplug handling is needed: the mpc binds stay live
--- on every other keyboard, and the arrow movement binds simply never fire while
--- the Voyager is unplugged. Names are from `hyprctl devices`; QMK exposes two
--- keyboard interfaces and either one may carry the press.
-local voyager       = { "zsa-technology-labs-voyager", "zsa-technology-labs-voyager-keyboard" }
-local onVoyager     = { device = { inclusive = true, list = voyager } }
-local exceptVoyager = { device = { inclusive = false, list = voyager } }
-
 hl.bind(mainMod .. " + T", hl.dsp.focus({ workspace = 20 }))
 hl.bind(mainMod .. " + SHIFT + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.focus({ workspace = 30 }))
@@ -217,10 +207,10 @@ hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd(picker .. " note"))
 
 -- Media (mpc)
 hl.bind(mainMod .. " + ALT + SPACE", hl.dsp.exec_cmd("mpc toggle"))
-hl.bind(mainMod .. " + RIGHT", hl.dsp.exec_cmd("mpc next"), exceptVoyager)
-hl.bind(mainMod .. " + LEFT", hl.dsp.exec_cmd("mpc prev"), exceptVoyager)
-hl.bind(mainMod .. " + UP", hl.dsp.exec_cmd("mpc volume +5"), exceptVoyager)
-hl.bind(mainMod .. " + DOWN", hl.dsp.exec_cmd("mpc volume -5"), exceptVoyager)
+hl.bind(mainMod .. " + RIGHT", hl.dsp.exec_cmd("mpc next"))
+hl.bind(mainMod .. " + LEFT", hl.dsp.exec_cmd("mpc prev"))
+hl.bind(mainMod .. " + UP", hl.dsp.exec_cmd("mpc volume +5"))
+hl.bind(mainMod .. " + DOWN", hl.dsp.exec_cmd("mpc volume -5"))
 
 hl.bind(mainMod .. " + V", hl.dsp.window.float())
 
@@ -242,17 +232,6 @@ hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "l" }))
 hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }))
 hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }))
 hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }))
-
--- Same movement on the Voyager's arrow keys (see `voyager` above)
-hl.bind(mainMod .. " + LEFT", hl.dsp.focus({ direction = "l" }), onVoyager)
-hl.bind(mainMod .. " + RIGHT", hl.dsp.focus({ direction = "r" }), onVoyager)
-hl.bind(mainMod .. " + UP", hl.dsp.focus({ direction = "u" }), onVoyager)
-hl.bind(mainMod .. " + DOWN", hl.dsp.focus({ direction = "d" }), onVoyager)
-
-hl.bind(mainMod .. " + SHIFT + LEFT", hl.dsp.window.move({ direction = "l" }), onVoyager)
-hl.bind(mainMod .. " + SHIFT + RIGHT", hl.dsp.window.move({ direction = "r" }), onVoyager)
-hl.bind(mainMod .. " + SHIFT + UP", hl.dsp.window.move({ direction = "u" }), onVoyager)
-hl.bind(mainMod .. " + SHIFT + DOWN", hl.dsp.window.move({ direction = "d" }), onVoyager)
 
 -- Switch to / move window to workspaces 1-10
 for i = 1, 10 do
