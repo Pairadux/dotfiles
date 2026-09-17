@@ -9,39 +9,39 @@
 -- boot race loses them. Binding through the compositor needs no extra privileges
 -- and survives hotplug.
 --
--- Two chord banks, both emitted as single keys by the Voyager:
---   ALT + SHIFT + F1..F22
---   SUPER + ALT + SHIFT + F1..F24
+-- Two chord banks, both emitted as single keys by the Voyager, F1..F24 each:
+--   SUPER + ALT + SHIFT + F<n>
+--   SUPER + CTRL + SHIFT + F<n>
 --
--- Only assigned keys are bound. Hyprland grabs a chord globally, so an entry here
--- takes that chord away from every app -- leave a key out rather than parking a
--- placeholder on it. F13 and up are the safest: they exist on no standard
--- keyboard, so nothing else claims them. ALT + SHIFT + F1..F12 overlaps IntelliJ
--- (Shift+Alt+F10 Run..., Shift+Alt+F9 Debug...), so prefer the SUPER bank there.
+-- Both carry SUPER, which is what actually keeps a chord safe: apps leave SUPER
+-- to the compositor by convention, so the whole F1..F24 range is usable. Plain
+-- ALT+SHIFT is app territory (it collides with IntelliJ's Shift+Alt+F10 Run and
+-- Shift+Alt+F9 Debug), and CTRL+ALT+SHIFT sits one dropped modifier away from
+-- CTRL+ALT+F<n>, which Hyprland routes to switchVT.
 --
 -- Values are slot names from `pwsp-cli get hotkeys`. The sound each slot plays
--- stays configured in pwsp; only the trigger lives here. Leave the slots' own key
--- chords unset (`pwsp-cli action clear-hotkey-key "<slot>"`) so a press cannot
--- fire twice.
+-- stays configured in pwsp; only the trigger lives here. Add a line to bind a
+-- chord -- an unassigned one is left alone so a stray press cannot fire
+-- play-hotkey against a slot that does not exist. Leave the slots' own key chords
+-- unset (`pwsp-cli action clear-hotkey-key "<slot>"`) so a press cannot fire twice.
 --
 -- `hl` is a Hyprland global, so it needs no import; `mod` is passed in because
 -- mainMod is a local in hyprland.lua.
 
 local altShift = {
-    -- F13..F22 recommended here; F1..F12 collide with IDE shortcuts.
-}
-
-local metaAltShift = {
     F1 = "Goofy Running Sound Effect [qbnyaJAbP1U]",
 }
 
--- Stops playback; costs one slot out of the SUPER bank.
+local ctrlShift = {
+}
+
+-- Stops playback; costs one slot out of the ALT bank.
 local stopKey = "F24"
 
 return function(mod)
     local banks = {
-        ["ALT + SHIFT"]           = altShift,
-        [mod .. " + ALT + SHIFT"] = metaAltShift,
+        [mod .. " + ALT + SHIFT"]  = altShift,
+        [mod .. " + CTRL + SHIFT"] = ctrlShift,
     }
 
     for mods, slots in pairs(banks) do
