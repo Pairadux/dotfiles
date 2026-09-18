@@ -36,14 +36,68 @@
 -- mainMod is a local in hyprland.lua.
 
 local plain = {
-    F13 = "Goofy Running Sound Effect [qbnyaJAbP1U]",
+    F1 = "punch-gaming-sound-effect-hd_RzlG1GE",
+    F2 = "rizzbot-laugh",
+    F3 = "rizz-sound-effect",
+    F4 = "shocked-sound-effect",
+    F5 = "shut-up-lois",
+    F6 = "smoke-detector-beep",
+    F7 = "snore-mimimimimimi",
+    F8 = "spongebob-fail",
+    F9 = "tmp_7901-951678082",
+    F10 = "tuco-get-out",
+    F11 = "undertakers-bell_2UwFCIe",
+    F12 = "vine-boom",
+    F13 = "999-social-credit-siren",
+    F14 = "ack",
+    F15 = "among-us-role-reveal-sound",
+    F16 = "anime-ahh",
+    F17 = "applepay",
+    F18 = "awkward-cricket-sound-effect",
+    F19 = "baby-laughing-meme",
+    F20 = "ceeday-huh-sound-effect",
+    F21 = "core-sound-effect",
+    F22 = "correct",
+    F23 = "daddys-home",
+    F24 = "deg-deg-sussy",
+
+    -- UNBOUND: replace KEY with an F-key
+    -- KEY = "we-are-charlie-kirk-phone",
+    -- KEY = "what-a-good-boy",
+    -- KEY = "what-bottom-text-meme-sanctuary-guardian-sound-effect-hd",
+    -- KEY = "what-the-hell-meme-sound-effect",
+    -- KEY = "yippeeeeeeeeeeeeee",
+    -- KEY = "yo-phone-ringing-chino",
 }
 
 local meta = {
+    F1 = "dexter-meme",
+    F2 = "ding-sound-effect_2",
+    F3 = "faaah",
+    F4 = "fart-with-reverb",
+    F5 = "gah-dayum",
+    F6 = "gopgopgop",
+    F7 = "gta-v-notification",
+    F8 = "homer-lets-the-barts-out",
+    F9 = "i-farted-and-a-poopy-almost-slipped-out",
+    F10 = "indian-song",
+    F11 = "italian-brainrot-ringtone",
+    F12 = "let-her-go",
+    F13 = "lobotomy-sound-effect",
+    F14 = "long-brain-fart",
+    F15 = "man-snoring-meme_ctrllNn",
+    F16 = "m-e-o-w",
+    F17 = "no-no-wait-wait",
+    F18 = "oh-my-god-bro-oh-hell-nah-man",
+    F19 = "outro-song_oqu8zAg",
+    F20 = "perfect-fart",
+    F21 = "please-bro",
+    F22 = "pluh",
+    F23 = "prowler-sound-effect_6bXErot",
 }
 
--- Stops playback; costs one slot out of the SUPER bank.
-local stopKey = "F24"
+-- Stops playback; lives outside the banks, so it costs no F-key slot.
+local stopKey = "backspace"
 
 return function(mod)
     local banks = {
