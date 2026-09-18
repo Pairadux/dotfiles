@@ -35,6 +35,8 @@
 -- `hl` is a Hyprland global, so it needs no import; `mod` is passed in because
 -- mainMod is a local in hyprland.lua.
 
+-- F12 is deliberately absent from both banks: no key on the Voyager sends
+-- it, so a binding there could never fire.
 local plain = {
     F1 = "punch-gaming-sound-effect-hd_RzlG1GE",
     F2 = "rizzbot-laugh",
@@ -47,7 +49,6 @@ local plain = {
     F9 = "tmp_7901-951678082",
     F10 = "tuco-get-out",
     F11 = "undertakers-bell_2UwFCIe",
-    F12 = "vine-boom",
     F13 = "999-social-credit-siren",
     F14 = "ack",
     F15 = "among-us-role-reveal-sound",
@@ -62,10 +63,8 @@ local plain = {
     F24 = "deg-deg-sussy",
 
     -- UNBOUND: replace KEY with an F-key
-    -- KEY = "we-are-charlie-kirk-phone",
-    -- KEY = "what-a-good-boy",
-    -- KEY = "what-bottom-text-meme-sanctuary-guardian-sound-effect-hd",
-    -- KEY = "what-the-hell-meme-sound-effect",
+    -- KEY = "let-her-go",
+    -- KEY = "vine-boom",
     -- KEY = "yippeeeeeeeeeeeeee",
     -- KEY = "yo-phone-ringing-chino",
 }
@@ -82,7 +81,6 @@ local meta = {
     F9 = "i-farted-and-a-poopy-almost-slipped-out",
     F10 = "indian-song",
     F11 = "italian-brainrot-ringtone",
-    F12 = "let-her-go",
     F13 = "lobotomy-sound-effect",
     F14 = "long-brain-fart",
     F15 = "man-snoring-meme_ctrllNn",
@@ -94,11 +92,50 @@ local meta = {
     F21 = "please-bro",
     F22 = "pluh",
     F23 = "prowler-sound-effect_6bXErot",
-    F24 = "prowler-sound-effect_6bXErot",
+    period = "we-are-charlie-kirk-phone",
+    comma = "what-a-good-boy",
+    bracketleft = "what-bottom-text-meme-sanctuary-guardian-sound-effect-hd",
+    bracketright = "what-the-hell-meme-sound-effect",
 }
 
 -- Stops playback; lives outside the banks, so it costs no F-key slot.
 local stopKey = "backspace"
+
+
+-- This layout gives F13..F24 XF86* keysyms rather than F-key ones, and Hyprland's
+-- Lua config matches binds by keysym, so a bind written as F13 never fires.
+-- Binding by keycode is not the way out: the Lua parser stores code:N as
+-- NoSymbol+N and the match short-circuits on the keysym half, so it never fires
+-- for a key that has a keysym at all (hyprwm/Hyprland#14819). These are the
+-- keysyms the compiled keymap actually emits, so the tables above stay readable.
+local highF = {
+    F13 = "XF86Tools",
+    F14 = "XF86Launch5",
+    F15 = "XF86Launch6",
+    F16 = "XF86Launch7",
+    F17 = "XF86Launch8",
+    F18 = "XF86Launch9",
+    F19 = "F19",
+    F20 = "XF86AudioMicMute",
+    F21 = "XF86TouchpadToggle",
+    F22 = "XF86TouchpadOn",
+    F23 = "F23",
+    F24 = "F24",
+}
+
+-- FK23 and FK24 are typed PC_SHIFT_SUPER_LEVEL2 and PC_CONTROL_SUPER_LEVEL2, so
+-- holding SUPER shifts them to a second level and a different keysym arrives.
+local highFSuper = {
+    F23 = "XF86Assistant",
+    F24 = "XF86TouchpadToggle",
+}
+
+local function resolve(key, mods)
+    if mods ~= "" and highFSuper[key] then
+        return highFSuper[key]
+    end
+    return highF[key] or key
+end
 
 return function(mod)
     local banks = {
@@ -108,10 +145,10 @@ return function(mod)
 
     for mods, slots in pairs(banks) do
         for key, slot in pairs(slots) do
-            local chord = mods ~= "" and (mods .. " + " .. key) or key
+            local chord = mods ~= "" and (mods .. " + " .. resolve(key, mods)) or resolve(key, "")
             hl.bind(chord, hl.dsp.exec_cmd('pwsp-cli action play-hotkey "' .. slot .. '"'))
         end
     end
 
-    hl.bind(mod .. " + " .. stopKey, hl.dsp.exec_cmd("pwsp-cli action stop"))
+    hl.bind(mod .. " + " .. resolve(stopKey, mod), hl.dsp.exec_cmd("pwsp-cli action stop"))
 end
