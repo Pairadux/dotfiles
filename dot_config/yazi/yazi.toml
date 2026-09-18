@@ -14,10 +14,10 @@ image_alloc = 0
 
 [opener]
 edit = [
-	{ run = '$EDITOR "$@"', desc = "$EDITOR", block = true },
+	{ run = '$EDITOR %s', desc = "$EDITOR", block = true },
 ]
 play = [
-	{ run = 'mpv --force-window "$@"' },
+	{ run = 'mpv --force-window %s', orphan = true },
 ]
 
 # [open]
