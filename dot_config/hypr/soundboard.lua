@@ -94,6 +94,7 @@ local meta = {
     F21 = "please-bro",
     F22 = "pluh",
     F23 = "prowler-sound-effect_6bXErot",
+    F24 = "prowler-sound-effect_6bXErot",
 }
 
 -- Stops playback; lives outside the banks, so it costs no F-key slot.
