@@ -101,6 +101,52 @@ function M.squeeze_interior_whitespace()
     end
 end
 
+--- Split `key = value` into the key half (indent, key, `=` and trailing spacing)
+--- and the value half. Returns nil for a line that is not an assignment.
+local function split_assignment(line)
+    return line:match '^(%s*[^=]-=%s*)(.+)$'
+end
+
+--- Swap the value on the cursor's line with the nearest one above or below,
+--- leaving both keys where they are. Where a table's keys are fixed slots --
+--- soundboard.lua's F-keys, say -- only the values are really ordered, so moving
+--- the whole line carries the key along and reorders nothing. Blank lines and
+--- comments are stepped over; a line holding a brace ends the search, so a value
+--- cannot leave the table it lives in.
+--- @param step integer -1 to move up, 1 to move down
+local function move_value(step)
+    local row = vim.api.nvim_win_get_cursor(0)[1]
+    local line = vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1] or ''
+    local prefix, value = split_assignment(line)
+    if not prefix then
+        return
+    end
+
+    local last = vim.api.nvim_buf_line_count(0)
+    for target = row + step, step < 0 and 1 or last, step do
+        local candidate = vim.api.nvim_buf_get_lines(0, target - 1, target, false)[1] or ''
+        if candidate:find '[{}]' then
+            return
+        end
+        local target_prefix, target_value = split_assignment(candidate)
+        if target_prefix then
+            vim.api.nvim_buf_set_lines(0, row - 1, row, false, { prefix .. target_value })
+            vim.api.nvim_buf_set_lines(0, target - 1, target, false, { target_prefix .. value })
+            local col = math.min(vim.api.nvim_win_get_cursor(0)[2], #target_prefix + #value)
+            vim.api.nvim_win_set_cursor(0, { target, col })
+            return
+        end
+    end
+end
+
+function M.move_value_up()
+    move_value(-1)
+end
+
+function M.move_value_down()
+    move_value(1)
+end
+
 function M.open_todo()
     require('todo').open()
 end

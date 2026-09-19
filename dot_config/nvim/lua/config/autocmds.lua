@@ -122,3 +122,16 @@ autocmd('VimEnter', {
         end
     end,
 })
+
+-- Soundboard reordering: in hypr/soundboard.lua the F-key is a fixed slot and only
+-- the sound moves between them, so mini.move's line moves would drag the key along
+-- and change nothing. Shadow them here with a swap of just the value.
+autocmd({ 'BufReadPost', 'BufNewFile' }, {
+    desc = 'Move soundboard sounds between slots instead of moving lines',
+    pattern = '*/hypr/soundboard.lua',
+    callback = function(args)
+        local util = require 'util'
+        vim.keymap.set('n', '<M-j>', util.move_value_down, { buffer = args.buf, desc = 'Move sound down a slot' })
+        vim.keymap.set('n', '<M-k>', util.move_value_up, { buffer = args.buf, desc = 'Move sound up a slot' })
+    end,
+})
