@@ -101,10 +101,32 @@ function M.squeeze_interior_whitespace()
     end
 end
 
---- Split `key = value` into the key half (indent, key, `=` and trailing spacing)
---- and the value half. Returns nil for a line that is not an assignment.
+--- Split `key = value` into the key half (indent, key, `=` and trailing spacing),
+--- the bare key, and the value half. Returns nil for a line that is not an
+--- assignment; the key alone is nil for one whose key is not a plain identifier.
 local function split_assignment(line)
-    return line:match '^(%s*[^=]-=%s*)(.+)$'
+    local prefix, value = line:match '^(%s*[^=]-=%s*)(.+)$'
+    if not prefix then
+        return nil
+    end
+    return prefix, prefix:match '([%w_]+)%s*=%s*$', value
+end
+
+--- Line range of a top-level `local <name> = { ... }`, excluding its braces.
+--- @param lines string[] the whole buffer
+--- @param name string
+--- @return integer|nil first, integer|nil last
+local function table_range(lines, name)
+    local first
+    for i, line in ipairs(lines) do
+        if first then
+            if line:match '^}' then
+                return first, i - 1
+            end
+        elseif line:match('^local ' .. name .. ' = {%s*$') then
+            first = i + 1
+        end
+    end
 end
 
 --- Swap the value on the cursor's line with the nearest one above or below,
@@ -117,7 +139,7 @@ end
 local function move_value(step)
     local row = vim.api.nvim_win_get_cursor(0)[1]
     local line = vim.api.nvim_buf_get_lines(0, row - 1, row, false)[1] or ''
-    local prefix, value = split_assignment(line)
+    local prefix, _, value = split_assignment(line)
     if not prefix then
         return
     end
@@ -128,7 +150,7 @@ local function move_value(step)
         if candidate:find '[{}]' then
             return
         end
-        local target_prefix, target_value = split_assignment(candidate)
+        local target_prefix, _, target_value = split_assignment(candidate)
         if target_prefix then
             vim.api.nvim_buf_set_lines(0, row - 1, row, false, { prefix .. target_value })
             vim.api.nvim_buf_set_lines(0, target - 1, target, false, { target_prefix .. value })
@@ -139,12 +161,77 @@ local function move_value(step)
     end
 end
 
+--- Swap the value on the cursor's line with the one under the same key in an
+--- adjacent table. Banks are matched by key, not by position: `F17` trades with
+--- `F17`, and a key the other bank does not define is reported rather than
+--- guessed at, because that slot genuinely does not exist there. The cursor must
+--- be inside one of the named tables, so a value cannot cross out of them.
+--- @param banks string[] table names, in the order they appear in the file
+--- @param step integer -1 for the previous bank, 1 for the next
+local function swap_bank(banks, step)
+    local row = vim.api.nvim_win_get_cursor(0)[1]
+    local lines = vim.api.nvim_buf_get_lines(0, 0, -1, false)
+    local line = lines[row] or ''
+    -- A brace delimits a table rather than binding anything, so `local plain = {`
+    -- is not an entry that missed its bank -- it is not an entry at all.
+    if line:find '[{}]' then
+        return
+    end
+    local prefix, key, value = split_assignment(line)
+    if not key then
+        return
+    end
+
+    local ranges, from = {}, nil
+    for i, name in ipairs(banks) do
+        local first, last = table_range(lines, name)
+        if first then
+            ranges[i] = { first = first, last = last }
+            if row >= first and row <= last then
+                from = i
+            end
+        end
+    end
+    if not from then
+        vim.notify('Not in a sound bank', vim.log.levels.WARN)
+        return
+    end
+
+    local target_bank = banks[from + step]
+    local target_range = target_bank and ranges[from + step]
+    if not target_range then
+        return
+    end
+
+    for target = target_range.first, target_range.last do
+        local target_prefix, target_key, target_value = split_assignment(lines[target])
+        if target_key == key then
+            vim.api.nvim_buf_set_lines(0, row - 1, row, false, { prefix .. target_value })
+            vim.api.nvim_buf_set_lines(0, target - 1, target, false, { target_prefix .. value })
+            local col = math.min(vim.api.nvim_win_get_cursor(0)[2], #target_prefix + #value)
+            vim.api.nvim_win_set_cursor(0, { target, col })
+            return
+        end
+    end
+    vim.notify(('%s has no %s'):format(target_bank, key), vim.log.levels.WARN)
+end
+
 function M.move_value_up()
     move_value(-1)
 end
 
 function M.move_value_down()
     move_value(1)
+end
+
+--- @param banks string[] table names, in the order they appear in the file
+function M.swap_bank_next(banks)
+    swap_bank(banks, 1)
+end
+
+--- @param banks string[] table names, in the order they appear in the file
+function M.swap_bank_prev(banks)
+    swap_bank(banks, -1)
 end
 
 function M.open_todo()

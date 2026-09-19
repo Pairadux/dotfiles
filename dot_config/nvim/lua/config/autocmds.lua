@@ -125,13 +125,24 @@ autocmd('VimEnter', {
 
 -- Soundboard reordering: in hypr/soundboard.lua the F-key is a fixed slot and only
 -- the sound moves between them, so mini.move's line moves would drag the key along
--- and change nothing. Shadow them here with a swap of just the value.
+-- and change nothing. Shadow them here with a swap of just the value: <M-j>/<M-k>
+-- reorder within a bank, <M-h>/<M-l> trade a sound with the other bank's same key.
 autocmd({ 'BufReadPost', 'BufNewFile' }, {
     desc = 'Move soundboard sounds between slots instead of moving lines',
     pattern = '*/hypr/soundboard.lua',
     callback = function(args)
         local util = require 'util'
-        vim.keymap.set('n', '<M-j>', util.move_value_down, { buffer = args.buf, desc = 'Move sound down a slot' })
-        vim.keymap.set('n', '<M-k>', util.move_value_up, { buffer = args.buf, desc = 'Move sound up a slot' })
+        local banks = { 'plain', 'meta' }
+        local map = function(lhs, rhs, desc)
+            vim.keymap.set('n', lhs, rhs, { buffer = args.buf, desc = desc })
+        end
+        map('<M-j>', util.move_value_down, 'Move sound down a slot')
+        map('<M-k>', util.move_value_up, 'Move sound up a slot')
+        map('<M-l>', function()
+            util.swap_bank_next(banks)
+        end, 'Swap sound into the next bank')
+        map('<M-h>', function()
+            util.swap_bank_prev(banks)
+        end, 'Swap sound into the previous bank')
     end,
 })
