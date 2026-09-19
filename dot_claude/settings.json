@@ -14,9 +14,15 @@
   },
   "alwaysThinkingEnabled": true,
   "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-5": {
+      "effortLevel": "xhigh"
+    }
+  },
   "tui": "fullscreen",
   "theme": "dark-daltonized",
-  "fileCheckpointingEnabled": false,
   "preferredNotifChannel": "notifications_disabled",
-  "autoCompactEnabled": false
+  "autoCompactEnabled": false,
+  "fileCheckpointingEnabled": false,
+  "agentPushNotifEnabled": true
 }
