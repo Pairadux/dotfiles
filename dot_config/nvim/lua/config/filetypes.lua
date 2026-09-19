@@ -2,14 +2,16 @@
 ---
 --- chezmoi encodes target attributes in the source filename (`dot_`, `private_`,
 --- `executable_`, ...) and marks templates with a `.tmpl` suffix, so none of the
---- dotfiles repo matches Neovim's normal detection: `hyprland.lua.tmpl` is not
+--- dotfiles repo matches Neovim's normal detection: `machine.lua.tmpl` is not
 --- seen as Lua, `dot_zshenv.tmpl` is not seen as zsh. Rebuild the name chezmoi
 --- would render to, and detect against that instead.
 ---
---- The `{{ ... }}` markers still parse as errors in the base grammar. That is the
---- trade: roughly 90% of a template highlights correctly rather than none of it.
---- Files with no second extension (ghostty's `config.tmpl`) fall back to gotmpl,
---- which highlights the template syntax and leaves the body plain.
+--- The `{{ ... }}` markers still parse as errors in the base grammar. How much
+--- that costs depends entirely on how forgiving the grammar is: hyprlang, json
+--- and sh keep a well-formed root and highlight around the markers, so most of
+--- the file still colours. Lua does not -- see BRITTLE below. Files with no
+--- second extension (ghostty's `config.tmpl`) fall back to gotmpl, which
+--- highlights the template syntax and leaves the body plain.
 
 -- Attribute prefixes chezmoi strips when rendering a target. They stack, as in
 -- `private_dot_gnupg`, so peel until nothing more matches.
@@ -50,13 +52,41 @@ local function target_name(name)
     return (name:gsub('^dot_', '.', 1))
 end
 
-vim.filetype.add {
-    pattern = {
-        ['.*%.tmpl'] = function(path)
-            local base = target_name(vim.fs.basename(path):gsub('%.tmpl$', '', 1))
-            -- Match on the filename alone. Passing the buffer would let content
-            -- heuristics read the template source and guess from the `{{ }}`.
-            return vim.filetype.match { filename = base } or 'gotmpl'
-        end,
-    },
+--- Grammars strict enough that a single `{{ ... }}` collapses the whole parse to
+--- a top-level ERROR node. Every highlight query then misses and the buffer
+--- renders with no colour at all, which is strictly worse than treating the file
+--- as what it also is -- a Go template. Verified against the lua parser: a
+--- `.lua.tmpl` yields `root type = ERROR`, where hyprlang and json still yield
+--- their own root node.
+local BRITTLE = {
+    lua = true,
 }
+
+--- Filetype a chezmoi source file's rendered target would get.
+--- @param path string
+--- @return string|nil
+local function detect(path)
+    local name = vim.fs.basename(path)
+    local template = name:match('%.tmpl$') ~= nil
+    if template then
+        name = name:gsub('%.tmpl$', '', 1)
+    end
+    -- Match on the filename alone. Passing the buffer would let content
+    -- heuristics read the template source and guess from the `{{ }}`.
+    local ft = vim.filetype.match { filename = target_name(name) }
+    if template and (not ft or BRITTLE[ft]) then
+        return 'gotmpl'
+    end
+    return ft
+end
+
+-- Attribute prefixes are part of the source filename, so a plain `dot_zshenv`
+-- needs the same treatment as `dot_zshenv.tmpl` -- without this it matches
+-- nothing at all and opens with no filetype. Both patterns route to `detect`,
+-- so it does not matter which one wins for a file carrying a prefix AND .tmpl.
+local patterns = { ['.*%.tmpl'] = detect, ['dot_.*'] = detect }
+for _, prefix in ipairs(ATTR_PREFIXES) do
+    patterns[prefix .. '.*'] = detect
+end
+
+vim.filetype.add { pattern = patterns }

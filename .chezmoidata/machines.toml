@@ -1,16 +1,26 @@
 # Machine inventory — the single place a host's hardware facts are declared.
 #
-# Templates in this repo branch on the *capabilities* described here (is there
-# more than one display, is this a laptop, does it want a VA-API driver, does
-# it run gametrak), never on `.chezmoi.hostname`. Bringing up a new machine is
-# therefore a data change: add a `[machines.<hostname>]` block below and the
-# templates pick it up with no edits.
+# Consumers branch on the *capabilities* described here (is there more than one
+# display, is this a laptop, does it want a VA-API driver, does it run
+# gametrak), never on `.chezmoi.hostname`. Bringing up a new machine is
+# therefore a data change: add a `[machines.<hostname>]` block below and
+# everything picks it up with no edits.
 #
-# Preview another host's output from here. chezmoi has no flag to override
+# The derivation of those capabilities lives in ONE place,
+# .chezmoitemplates/machine, which returns them as JSON. A template consumes it
+# with a single line:
+#
+#   {{ $m := includeTemplate "machine" . | fromJson }}
+#
+# Most consumers are not templates at all. hyprland.lua and the hypr scripts are
+# plain lua and bash that read the generated machine.lua / scripts/machine.sh
+# and branch at runtime, so they keep their own syntax highlighting and tooling.
+#
+# Preview another host's facts. chezmoi has no flag to override
 # .chezmoi.hostname, so force the lookup key instead:
 #
 #   sed 's|index .machines .chezmoi.hostname|index .machines "fuji"|g' \
-#     dot_config/hypr/hyprland.lua.tmpl | chezmoi execute-template
+#     .chezmoitemplates/machine | chezmoi execute-template
 #
 # Check whether the current host has an entry at all (an unrecognised host
 # silently falls back to [fallback] below):
@@ -46,15 +56,16 @@
 #              monitor= field on window rules are only emitted when a machine
 #              declares BOTH roles — that is the "has a multi-monitor layout"
 #              capability. A single-display machine declares only "primary".
-#   note       optional; rendered as a comment above the generated line.
+#   note       optional; carried into machine.lua as a reminder for whoever
+#              reads the generated facts. Nothing renders it.
 
 # ---------------------------------------------------------------------------
 # Shared autostart command table. Machines reference these by key so the same
 # command is never spelled out twice.
 #
-# Keys that name a Lua local declared in hyprland.lua's PROGRAMS section (see
-# $luaLocals in hyprland.lua.tmpl) are emitted as that bare identifier instead
-# of a quoted string, so the two definitions cannot drift.
+# A key that also names a program local in hyprland.lua's PROGRAMS section is
+# looked up there first (see `autostartLocals`), so the local stays the single
+# definition of the command and the two cannot drift.
 # ---------------------------------------------------------------------------
 [autostart_commands]
 dbus            = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
