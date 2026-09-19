@@ -22,8 +22,8 @@
 --   meta+f11: 5        meta+f23: unbound     f11: g        f23: '
 --   meta+f12: t        meta+f24: unbound     f12: b        f24: caps
 --
---   meta+,: enter      meta+[: l_big
---   meta+.: space      meta+]: r_big
+--   meta+,: space      meta+[: l_big
+--   meta+.: enter      meta+]: r_big
 --
 -- Drawn as written above, except that single letters are capitalised and
 -- esc/alt/caps/enter/space/l_big/r_big get symbols.
@@ -85,8 +85,8 @@ local LAYOUT = {
         F22 = 'p',
         F23 = 'unbound',
         F24 = 'unbound',
-        comma = 'enter',
-        period = 'space',
+        comma = 'space',
+        period = 'enter',
         bracketleft = 'l_big',
         bracketright = 'r_big',
     },
