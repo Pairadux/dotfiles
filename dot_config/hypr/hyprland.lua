@@ -63,10 +63,7 @@ if machine.vaapi then
     hl.env("LIBVA_DRIVER_NAME", machine.vaapi)
 end
 hl.env("QT_STYLE_OVERRIDE", "kvantum")
-hl.env("XDG_DATA_DIRS",
-    "/var/lib/flatpak/exports/share:" ..
-    os.getenv("HOME") .. "/.local/share/flatpak/exports/share:" ..
-    "/usr/local/share:/usr/share")
+hl.env("XDG_DATA_DIRS", "/var/lib/flatpak/exports/share:" .. os.getenv("HOME") .. "/.local/share/flatpak/exports/share:" .. "/usr/local/share:/usr/share")
 -----------------------
 ---- LOOK AND FEEL ----
 -----------------------
