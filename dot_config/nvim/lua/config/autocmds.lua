@@ -116,7 +116,7 @@ autocmd('VimEnter', {
         if not vim.fs.root(vim.fn.getcwd(), 'project.godot') then
             return
         end
-        local pipe = vim.fn.stdpath('cache') .. '/server.pipe'
+        local pipe = vim.fn.stdpath 'cache' .. '/server.pipe'
         if not vim.uv.fs_stat(pipe) then
             pcall(vim.fn.serverstart, pipe)
         end
