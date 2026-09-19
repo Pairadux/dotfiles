@@ -1,12 +1,4 @@
-{{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
-{{- $primary := "" -}}
-{{- $secondary := "" -}}
-{{- range $machine.monitors -}}
-{{-   $role := dig "role" "" . -}}
-{{-   if eq $role "primary" }}{{ $primary = .output }}{{ else if eq $role "secondary" }}{{ $secondary = .output }}{{ end -}}
-{{- end -}}
-{{- $multihead := and (ne $primary "") (ne $secondary "") -}}
-{{- $laptop := $machine.laptop -}}
+{{- $m := includeTemplate "machine" . | fromJson -}}
 // waybar — the bar for machines that cannot run hyprpanel (Arch Linux ARM has
 // no hyprpanel package). Layout deliberately mirrors the hyprpanel bar so the
 // two machines feel the same: launcher + workspaces + window title on the left,
@@ -36,10 +28,10 @@
     ],
     "modules-right": [
         "pulseaudio",
-{{ if $laptop }}        "backlight",
+{{ if $m.laptop }}        "backlight",
 {{ end }}        "network",
         "bluetooth",
-{{ if $laptop }}        "battery",
+{{ if $m.laptop }}        "battery",
 {{ end }}        "tray",
         "clock"
     ],
@@ -76,11 +68,11 @@
             "100": "",
             "special": ""
         },
-{{ if $multihead }}        "persistent-workspaces": {
-            "{{ $primary }}": [
+{{ if $m.multihead }}        "persistent-workspaces": {
+            "{{ $m.primary }}": [
                 1
             ],
-            "{{ $secondary }}": [
+            "{{ $m.secondary }}": [
                 2
             ]
         },
@@ -134,7 +126,7 @@
         },
         "on-click": "pavucontrol"
     },
-{{ if $laptop }}
+{{ if $m.laptop }}
     "backlight": {
         "format": "{icon} ",
         "tooltip-format": "Backlight: {percent}%",
@@ -172,7 +164,7 @@
         "tooltip-format-connected": "{controller_alias}\n{device_enumerate}",
         "on-click": "blueman-manager"
     },
-{{ if $laptop }}
+{{ if $m.laptop }}
     "battery": {
         "states": {
             "warning": 30,
