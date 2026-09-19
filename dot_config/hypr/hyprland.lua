@@ -208,7 +208,7 @@ hl.bind(mainMod .. " + LEFT", hl.dsp.exec_cmd("mpc prev"))
 hl.bind(mainMod .. " + UP", hl.dsp.exec_cmd("mpc volume +5"))
 hl.bind(mainMod .. " + DOWN", hl.dsp.exec_cmd("mpc volume -5"))
 
-require("soundboard")(mainMod)
+require("soundboard").setup(mainMod)
 
 hl.bind(mainMod .. " + V", hl.dsp.window.float())
 

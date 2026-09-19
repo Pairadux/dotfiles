@@ -34,68 +34,75 @@
 --
 -- `hl` is a Hyprland global, so it needs no import; `mod` is passed in because
 -- mainMod is a local in hyprland.lua.
-
--- F12 is deliberately absent from both banks: no key on the Voyager sends
--- it, so a binding there could never fire.
 local plain = {
-    F1 = "punch-gaming-sound-effect-hd_RzlG1GE",
-    F2 = "rizzbot-laugh",
-    F3 = "rizz-sound-effect",
-    F4 = "shocked-sound-effect",
+    F1 = "outro-song",
+    F2 = "anime-ahh",
+    F3 = "rizzbot-laugh",
+    F4 = "shocked",
     F5 = "shut-up-lois",
-    F6 = "smoke-detector-beep",
-    F7 = "snore-mimimimimimi",
+    F6 = "fart-with-reverb",
+    F7 = "daddys-home",
     F8 = "spongebob-fail",
-    F9 = "tmp_7901-951678082",
-    F10 = "tuco-get-out",
-    F11 = "undertakers-bell_2UwFCIe",
-    F13 = "999-social-credit-siren",
-    F14 = "ack",
-    F15 = "among-us-role-reveal-sound",
-    F16 = "anime-ahh",
+    F9 = "faaah",
+    F10 = "vine-boom",
+    F11 = "gopgopgop",
+    F12 = "indian-song",
+    F13 = "ceeday-huh",
+    F14 = "no-no-wait-wait",
+    F15 = "among-us-role-reveal",
+    F16 = "m-e-o-w",
     F17 = "applepay",
-    F18 = "awkward-cricket-sound-effect",
-    F19 = "baby-laughing-meme",
-    F20 = "ceeday-huh-sound-effect",
-    F21 = "core-sound-effect",
-    F22 = "correct",
-    F23 = "daddys-home",
+    F18 = "lobotomy",
+    F19 = "let-her-go",
+    F20 = "baby-laughing-meme",
+    F21 = "please-bro",
+    F22 = "prowler",
+    F23 = "what-the-hell-meme",
     F24 = "deg-deg-sussy",
-
-    -- UNBOUND: replace KEY with an F-key
-    -- KEY = "let-her-go",
-    -- KEY = "vine-boom",
-    -- KEY = "yippeeeeeeeeeeeeee",
-    -- KEY = "yo-phone-ringing-chino",
 }
 
 local meta = {
-    F1 = "dexter-meme",
-    F2 = "ding-sound-effect_2",
-    F3 = "faaah",
-    F4 = "fart-with-reverb",
-    F5 = "gah-dayum",
-    F6 = "gopgopgop",
-    F7 = "gta-v-notification",
-    F8 = "homer-lets-the-barts-out",
-    F9 = "i-farted-and-a-poopy-almost-slipped-out",
-    F10 = "indian-song",
-    F11 = "italian-brainrot-ringtone",
-    F13 = "lobotomy-sound-effect",
-    F14 = "long-brain-fart",
-    F15 = "man-snoring-meme_ctrllNn",
-    F16 = "m-e-o-w",
-    F17 = "no-no-wait-wait",
-    F18 = "oh-my-god-bro-oh-hell-nah-man",
-    F19 = "outro-song_oqu8zAg",
-    F20 = "perfect-fart",
-    F21 = "please-bro",
-    F22 = "pluh",
-    F23 = "prowler-sound-effect_6bXErot",
-    period = "we-are-charlie-kirk-phone",
-    comma = "what-a-good-boy",
-    bracketleft = "what-bottom-text-meme-sanctuary-guardian-sound-effect-hd",
-    bracketright = "what-the-hell-meme-sound-effect",
+    F1 = "smoke-detector-beep",
+    F2 = "punch-gaming",
+    F3 = "talking-ben-saying-ben",
+    F4 = "rizz",
+    F5 = "talkingg-benn-laughh",
+    F6 = "we-are-charlie-kirk-phone",
+    F7 = "talking-benn-ughhh",
+    F8 = "core",
+    F9 = "talking-benn-yes",
+    F10 = "long-brain-fart",
+    F11 = "talking-bennnn-noo",
+    F12 = "tuco-get-out",
+    F13 = "i-farted-and-a-poopy-almost-slipped-out",
+    F14 = "yo-phone-ringing-chino",
+    F15 = "awkward-cricket",
+    F16 = "undertakers-bell",
+    F17 = "man-snoring-meme",
+    F18 = "italian-brainrot-ringtone",
+    F19 = "999-social-credit-siren",
+    F20 = "oh-my-god-bro-oh-hell-nah-man",
+    F21 = "what-a-good-boy",
+    F22 = "perfect-fart",
+    period = "ack",
+    comma = "pluh",
+    bracketleft = "wrong-answer-buzzer",
+    bracketright = "correct",
+}
+
+-- Slots pwsp knows about that nothing fires yet. Data rather than comments so the
+-- cheat sheet can list what is still free to bind, and so it cannot quietly rot.
+local unbound = {
+    "yippeeeeeeeeeeeeee",
+    "what-bottom-text-meme-sanctuary-guardian-sound",
+    "snore-mimimimimimi",
+    "ho-ho-ho-ben",
+    "dexter-meme",
+    "ding",
+    "gah-dayum",
+    "gta-v-notification",
+    "homer-lets-the-barts-out",
+    "talking-ben-sound",
 }
 
 -- Stops playback; lives outside the banks, so it costs no F-key slot.
@@ -137,7 +144,10 @@ local function resolve(key, mods)
     return highF[key] or key
 end
 
-return function(mod)
+--- Binds both banks and the stop key. Called from hyprland.lua, which owns
+--- mainMod; `hl` is a Hyprland global and only exists at that point.
+--- @param mod string
+local function setup(mod)
     local banks = {
         [""]  = plain,
         [mod] = meta,
@@ -152,3 +162,13 @@ return function(mod)
 
     hl.bind(mod .. " + " .. resolve(stopKey, mod), hl.dsp.exec_cmd("pwsp-cli action stop"))
 end
+
+-- The banks are exported so the cheat sheet can draw the same tables Hyprland
+-- binds from, instead of re-parsing this file.
+return {
+    plain = plain,
+    meta = meta,
+    unbound = unbound,
+    stopKey = stopKey,
+    setup = setup,
+}
