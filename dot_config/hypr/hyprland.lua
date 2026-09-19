@@ -33,6 +33,7 @@ local lockscreen  = "hyprlock"
 local pdfViewer   = "zathura"
 local noteTaker   = "~/.config/hypr/scripts/notetaker.sh"
 local picker      = "~/.config/hypr/scripts/picker.sh"
+local soundSheet  = "~/.config/hypr/scripts/soundboard-show.sh"
 
 -------------------
 ---- AUTOSTART ----
@@ -210,6 +211,9 @@ hl.bind(mainMod .. " + DOWN", hl.dsp.exec_cmd("mpc volume -5"))
 
 require("soundboard").setup(mainMod)
 
+-- Cheat sheet for the banks above, drawn from the same tables.
+hl.bind(mainMod .. " + SHIFT + slash", hl.dsp.exec_cmd(soundSheet))
+
 hl.bind(mainMod .. " + V", hl.dsp.window.float())
 
 -- Toggle split orientation: side-by-side <-> top/bottom
@@ -275,6 +279,16 @@ hl.window_rule({
     float  = true,
     center = true,
     size   = { 1000, 700 },
+})
+
+-- Soundboard cheat sheet
+hl.window_rule({
+    name  = "soundboard-cheatsheet",
+    match = { title = "^(Soundboard Cheat Sheet)$" },
+
+    float  = true,
+    center = true,
+    size   = "80% 69%",
 })
 
 -- Mega
