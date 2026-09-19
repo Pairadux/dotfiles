@@ -1,0 +1,10 @@
+{
+    "$schema": "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json",
+
+    "//": "Hyprland's lua config, not Neovim's. The `hl` global and its whole API come from the stubs below, which ship with the hyprland package -- loading them is what silences `Undefined global hl` AND gives real completion and typo checking on hl.*. Hyprland embeds Lua 5.4/5.5 (it links liblua.so.5.5), NOT LuaJIT, so `f:read('a')` is valid here.",
+    "//chezmoi": "Source-tree only: chezmoi ignores dot-prefixed files in its source directory, so this is never applied to $HOME. It exists so lua_ls picks THIS directory as the workspace root when editing the config here.",
+
+    "runtime.version": "Lua 5.4",
+    "workspace.library": ["/usr/share/hypr/stubs"],
+    "workspace.checkThirdParty": false
+}
