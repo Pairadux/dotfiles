@@ -1,0 +1,44 @@
+{{- /*
+   Derives this host's capability facts from .chezmoidata/machines.toml and
+   returns them as JSON. Every template that needs them starts with:
+
+       {{ $m := includeTemplate "machine" . | fromJson }}
+
+   so the derivation below exists exactly once instead of being pasted into
+   each consumer. Keys:
+
+     hostname    the looked-up key, or "fallback" when the host is unknown
+     laptop      bool
+     primary     output name of the "primary" role, "" if none declared
+     secondary   output name of the "secondary" role, "" if none declared
+     external    first role-less monitor, {} if none
+     multihead   both primary and secondary declared -- the "has a real
+                 multi-monitor layout" capability that gates workspace pinning,
+                 per-window monitor= fields and split wallpapers
+     gametrak    gametrak autostarts here, so games.conf exists
+     monitors    the raw ordered list, unchanged
+*/ -}}
+{{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
+{{- $primary := dict -}}
+{{- $secondary := dict -}}
+{{- $external := dict -}}
+{{- range $machine.monitors -}}
+{{-   $role := dig "role" "" . -}}
+{{-   if eq $role "primary" }}{{ $primary = . }}
+{{-   else if eq $role "secondary" }}{{ $secondary = . }}
+{{-   else if not (hasKey $external "output") }}{{ $external = . }}{{ end -}}
+{{- end -}}
+{{- dict
+      "hostname"  (ternary .chezmoi.hostname "fallback" (hasKey .machines .chezmoi.hostname))
+      "laptop"    $machine.laptop
+      "arch"      (dig "arch" "unknown" $machine)
+      "vaapi"     (dig "vaapi_driver" "" $machine)
+      "primary"   (dig "output" "" $primary)
+      "secondary" (dig "output" "" $secondary)
+      "external"  $external
+      "multihead" (and (hasKey $primary "output") (hasKey $secondary "output"))
+      "gametrak"  (has "gametrak" $machine.autostart)
+      "monitors"  $machine.monitors
+      "autostart" $machine.autostart
+      "commands"  .autostart_commands
+    | toJson -}}
