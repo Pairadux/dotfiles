@@ -30,6 +30,9 @@
 #                 GPU whose driver needs forcing).
 #   autostart     ordered list of keys into [autostart_commands] below. Order
 #                 is the exec order, so `dbus` stays first.
+#   wallpaper_dir wallpaper library, relative to $HOME. The picker expects a
+#                 <name>/ folder per wallpaper; see the wallpaper picker for the
+#                 slice layout a multi-monitor machine needs.
 #   monitors      ordered list of displays; see the monitor keys below.
 #
 # Monitor keys
@@ -71,9 +74,10 @@ gametrak        = "gametrak"
 # archlinux — x86_64 desktop, AMD GPU, three displays.
 # ---------------------------------------------------------------------------
 [machines.archlinux]
-arch         = "x86_64"
-laptop       = false
-vaapi_driver = "radeonsi"
+arch          = "x86_64"
+laptop        = false
+vaapi_driver  = "radeonsi"
+wallpaper_dir = "Cloud/Media/Pictures/wallpapers"
 autostart = [
     "dbus",
     "lockscreen",
@@ -123,8 +127,9 @@ note      = "TEMP VERTICAL MONITOR"
 # lock on start.
 # ---------------------------------------------------------------------------
 [machines.fuji]
-arch   = "aarch64"
-laptop = true
+arch          = "aarch64"
+laptop        = true
+wallpaper_dir = "Media/Pictures/Wallpapers"
 # vaapi_driver deliberately unset: Asahi's GPU stack needs no LIBVA override,
 # and radeonsi would be actively wrong here.
 autostart = [
@@ -154,8 +159,9 @@ note     = "scale 2 is a starting value - tune against `hyprctl monitors` on the
 # are running on the fallback.
 # ---------------------------------------------------------------------------
 [fallback]
-arch   = "unknown"
-laptop = false
+arch          = "unknown"
+laptop        = false
+wallpaper_dir = "Media/Pictures/Wallpapers"
 autostart = [
     "dbus",
     "nm-applet",

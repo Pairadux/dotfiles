@@ -16,6 +16,7 @@
                  multi-monitor layout" capability that gates workspace pinning,
                  per-window monitor= fields and split wallpapers
      gametrak    gametrak autostarts here, so games.conf exists
+     wallpapers  wallpaper library, relative to $HOME
      monitors    the raw ordered list, unchanged
 */ -}}
 {{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
@@ -37,7 +38,8 @@
       "secondary" (dig "output" "" $secondary)
       "external"  $external
       "multihead" (and (hasKey $primary "output") (hasKey $secondary "output"))
-      "gametrak"  (has "gametrak" $machine.autostart)
+      "gametrak"   (has "gametrak" $machine.autostart)
+      "wallpapers" (dig "wallpaper_dir" "" $machine)
       "monitors"  $machine.monitors
       "autostart" $machine.autostart
       "commands"  .autostart_commands
