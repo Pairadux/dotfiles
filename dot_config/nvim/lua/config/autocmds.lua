@@ -127,8 +127,10 @@ autocmd('VimEnter', {
 -- the sound moves between them, so mini.move's line moves would drag the key along
 -- and change nothing. Shadow them here with a swap of just the value: <M-j>/<M-k>
 -- reorder within a bank, <M-h>/<M-l> trade a sound with the other bank's same key.
+-- The banks name F-keys the board does not print, so the keycap hints label each
+-- slot with the key that actually fires it.
 autocmd({ 'BufReadPost', 'BufNewFile' }, {
-    desc = 'Move soundboard sounds between slots instead of moving lines',
+    desc = 'Soundboard slot moves and keycap hints',
     pattern = '*/hypr/soundboard.lua',
     callback = function(args)
         local util = require 'util'
@@ -144,5 +146,7 @@ autocmd({ 'BufReadPost', 'BufNewFile' }, {
         map('<M-h>', function()
             util.swap_bank_prev(banks)
         end, 'Swap sound into the previous bank')
+
+        require('soundboard').attach(args.buf)
     end,
 })

@@ -216,6 +216,12 @@ local function swap_bank(banks, step)
     vim.notify(('%s has no %s'):format(target_bank, key), vim.log.levels.WARN)
 end
 
+-- Shared with the soundboard keycap hints so both agree on what counts as an
+-- entry and where a bank begins and ends: a hint drawn beside a line the swaps
+-- will not touch would be lying about which key plays what.
+M.split_assignment = split_assignment
+M.table_range = table_range
+
 function M.move_value_up()
     move_value(-1)
 end
