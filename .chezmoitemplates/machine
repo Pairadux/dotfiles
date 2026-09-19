@@ -11,6 +11,9 @@
      laptop      bool
      primary     output name of the "primary" role, "" if none declared
      secondary   output name of the "secondary" role, "" if none declared
+     primary_mon  the whole "primary" monitor entry, {} if none declared
+     secondary_mon  ditto for "secondary" -- consumers that need mode/position/
+                 scale/transform read these instead of re-walking .monitors
      external    first role-less monitor, {} if none
      multihead   both primary and secondary declared -- the "has a real
                  multi-monitor layout" capability that gates workspace pinning,
@@ -36,6 +39,8 @@
       "vaapi"     (dig "vaapi_driver" "" $machine)
       "primary"   (dig "output" "" $primary)
       "secondary" (dig "output" "" $secondary)
+      "primary_mon"   $primary
+      "secondary_mon" $secondary
       "external"  $external
       "multihead" (and (hasKey $primary "output") (hasKey $secondary "output"))
       "gametrak"   (has "gametrak" $machine.autostart)

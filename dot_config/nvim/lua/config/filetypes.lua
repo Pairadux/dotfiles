@@ -6,12 +6,15 @@
 --- seen as Lua, `dot_zshenv.tmpl` is not seen as zsh. Rebuild the name chezmoi
 --- would render to, and detect against that instead.
 ---
---- The `{{ ... }}` markers still parse as errors in the base grammar. How much
---- that costs depends entirely on how forgiving the grammar is: hyprlang, json
---- and sh keep a well-formed root and highlight around the markers, so most of
---- the file still colours. Lua does not -- see BRITTLE below. Files with no
---- second extension (ghostty's `config.tmpl`) fall back to gotmpl, which
---- highlights the template syntax and leaves the body plain.
+--- The `{{ ... }}` markers still parse as errors in the base grammar, and how
+--- much that costs scales with how many of them there are. A handful leaves a
+--- well-formed root and highlights fine; enough of them exhausts the parser's
+--- error recovery, the root itself becomes an ERROR node, every highlight query
+--- misses and the buffer renders with no colour at all. Keep the template logic
+--- in a file thin enough to stay under that threshold -- if a template needs
+--- real control flow, that is a sign the logic belongs in the target language.
+--- Files with no second extension (ghostty's `config.tmpl`) fall back to gotmpl,
+--- which highlights the template syntax and leaves the body plain.
 
 -- Attribute prefixes chezmoi strips when rendering a target. They stack, as in
 -- `private_dot_gnupg`, so peel until nothing more matches.
@@ -52,16 +55,6 @@ local function target_name(name)
     return (name:gsub('^dot_', '.', 1))
 end
 
---- Grammars strict enough that a single `{{ ... }}` collapses the whole parse to
---- a top-level ERROR node. Every highlight query then misses and the buffer
---- renders with no colour at all, which is strictly worse than treating the file
---- as what it also is -- a Go template. Verified against the lua parser: a
---- `.lua.tmpl` yields `root type = ERROR`, where hyprlang and json still yield
---- their own root node.
-local BRITTLE = {
-    lua = true,
-}
-
 --- Filetype a chezmoi source file's rendered target would get.
 --- @param path string
 --- @return string|nil
@@ -74,7 +67,7 @@ local function detect(path)
     -- Match on the filename alone. Passing the buffer would let content
     -- heuristics read the template source and guess from the `{{ }}`.
     local ft = vim.filetype.match { filename = target_name(name) }
-    if template and (not ft or BRITTLE[ft]) then
+    if template and not ft then
         return 'gotmpl'
     end
     return ft
