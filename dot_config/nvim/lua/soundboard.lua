@@ -24,6 +24,9 @@
 --
 --   meta+,: enter      meta+[: l_big
 --   meta+.: space      meta+]: r_big
+--
+-- Drawn as written above, except that single letters are capitalised and
+-- esc/alt/caps/enter/space/l_big/r_big get symbols.
 
 local M = {}
 
@@ -89,14 +92,34 @@ local LAYOUT = {
     },
 }
 
---- Tokens that read better as their symbol than as their name.
+--- Tokens that read better as their symbol than as their name. Every one of
+--- these is present in FiraCode Nerd Font Mono, checked rather than assumed.
 local SYMBOLS = {
+    esc = '⎋',
+    alt = '⎇',
     caps = '↑',
     enter = '⏎',
     space = '␣',
     l_big = '←',
     r_big = '→',
 }
+
+--- Caps take Comment's colour but never its italics. Italics are a separate font
+--- family (VictorMono here, against FiraCode for upright), and it has no glyph
+--- for several of these symbols -- the terminal falls back to some other font
+--- mid-line and the column stops lining up.
+local function define_highlights()
+    for name, source in pairs { SoundboardKeycap = 'Comment', SoundboardKeycapUnbound = 'DiagnosticWarn' } do
+        local hl = vim.api.nvim_get_hl(0, { name = source, link = false })
+        vim.api.nvim_set_hl(0, name, { fg = hl.fg, italic = false })
+    end
+end
+
+define_highlights()
+vim.api.nvim_create_autocmd('ColorScheme', {
+    desc = 'Keep the soundboard keycap hints upright across colourscheme changes',
+    callback = define_highlights,
+})
 
 --- How a cap is drawn: a symbol where one exists, capitals for the letters so
 --- they stand out from the sounds, and otherwise exactly what the layout records,
@@ -144,7 +167,7 @@ function M.render(buf)
         vim.api.nvim_buf_set_extmark(buf, ns, hint.row - 1, 0, {
             virt_text = {
                 { string.rep(' ', column - hint.width + 2) },
-                { cap(hint.raw), hint.raw == 'unbound' and 'DiagnosticWarn' or 'Comment' },
+                { cap(hint.raw), hint.raw == 'unbound' and 'SoundboardKeycapUnbound' or 'SoundboardKeycap' },
             },
             virt_text_pos = 'eol',
             hl_mode = 'combine',
