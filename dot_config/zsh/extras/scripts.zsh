@@ -211,3 +211,54 @@ zle -N _navi_widget
 # }
 # zle -N _mark_expansion
 # bindkey "^g" _mark_expansion# }}}
+
+# Soundboard (pwsp) loudness as a percentage: `set-soundboard-volume 25`.
+# No argument prints the current level.
+#
+# pwsp-cli only has a runtime setter, so the daemon's own config is edited too --
+# without that the level resets the next time the daemon restarts. Percentages
+# because pwsp speaks 0.0-1.0; anything above 100% amplifies, so this refuses it
+# and leaves that to a direct pwsp-cli call.
+set-soundboard-volume() {
+    local config="${XDG_CONFIG_HOME:-$HOME/.config}/pwsp/daemon.json"
+
+    if (( $# == 0 )); then
+        local raw
+        if ! raw=$(pwsp-cli get volume-multiplier 2>/dev/null); then
+            echo "set-soundboard-volume: pwsp is not running" >&2
+            return 1
+        fi
+        printf '%g%%\n' $(( ${raw##*: } * 100 ))
+        return 0
+    fi
+
+    if [[ ! $1 =~ '^[0-9]+(\.[0-9]+)?$' ]] || (( $1 > 100 )); then
+        echo "usage: set-soundboard-volume [0-100]" >&2
+        return 1
+    fi
+
+    local value=$(printf '%g' $(( $1 / 100.0 )))
+
+    if ! pwsp-cli set volume-multiplier "$value" > /dev/null 2>&1; then
+        echo "set-soundboard-volume: pwsp is not running, saving the default anyway" >&2
+    fi
+
+    if [[ ! -f $config ]]; then
+        echo "set-soundboard-volume: $config does not exist" >&2
+        return 1
+    fi
+
+    # Staged beside the config so the replace is atomic and keeps its mode -- a
+    # half-written daemon.json would cost the output device and the hotkeys.
+    local tmp
+    tmp=$(mktemp "$config.XXXXXX") || return 1
+    if jq --argjson v "$value" '.default_volume_multiplier = $v' "$config" > "$tmp"; then
+        chmod --reference="$config" "$tmp"
+        mv -- "$tmp" "$config"
+        printf 'soundboard volume %g%%\n' "$1"
+    else
+        rm -f -- "$tmp"
+        echo "set-soundboard-volume: could not update $config" >&2
+        return 1
+    fi
+}
