@@ -1,0 +1,9 @@
+// Restore notification popup margins. Upstream popups.scss declares `margin`
+// twice on .notification-card: `0.45em`, then
+// `if($notification-enableShadow, $notification-shadowMargins, 0px)`. With
+// shadows off (the default) the second wins and collapses the margin to 0px,
+// so the card sits flush against the screen edge. 10px matches the
+// `offset = 10x10` dunst used to run with.
+.notification-card {
+    margin: 10px;
+}
