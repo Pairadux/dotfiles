@@ -71,7 +71,7 @@
 dbus            = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 lockscreen      = "hyprlock"
 nm-applet       = "nm-applet"
-dunst           = "dunst"
+dunst           = "systemctl --user start dunst.service"
 hyprpaper       = "hyprpaper"
 hyprpanel       = "hyprpanel"
 waybar          = "waybar"

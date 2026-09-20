@@ -14,7 +14,10 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    follow = keyboard
+    # Pin to the primary display instead of chasing focus. `monitor` is only
+    # honoured when follow = none. Index 0 is DP-2 on archlinux, the panel on fuji.
+    monitor = 0
+    follow = none
 
     ### Geometry ###
 
@@ -30,7 +33,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 10x10
+    offset = (10, 10)
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
