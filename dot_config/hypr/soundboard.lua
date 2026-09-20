@@ -46,7 +46,7 @@ local plain = {
     F9 = "faaah",
     F10 = "vine-boom",
     F11 = "gopgopgop",
-    F12 = "indian-song",
+    F12 = "fnaf2-jumpscare",
     F13 = "ceeday-huh",
     F14 = "no-no-wait-wait",
     F15 = "hes-grippin-me",
@@ -80,6 +80,11 @@ local plain = {
     -- KEY = "fnaf2-jumpscare",
     -- KEY = "i-farted-and-a-poopy-almost-slipped-out",
     -- KEY = "what-the-hell-meme",
+    -- KEY = "among-us-role-reveal",
+    -- KEY = "italian-brainrot-ringtone",
+    -- KEY = "undertakers-bell",
+    -- KEY = "yo-phone-ringing-chino",
+    -- KEY = "indian-song",
 }
 
 local meta = {
