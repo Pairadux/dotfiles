@@ -44,6 +44,13 @@
 #                 <name>/ folder per wallpaper; see the wallpaper picker for the
 #                 slice layout a multi-monitor machine needs.
 #   monitors      ordered list of displays; see the monitor keys below.
+#   dunst_monitor index of the primary display in dunst's OWN output list.
+#                 dunst numbers Wayland outputs by advertisement order,
+#                 which matches neither `monitors` below nor the ids from
+#                 `hyprctl monitors`, and it rejects output names on
+#                 Wayland ("No digits found"). So it cannot be derived --
+#                 find it by trial and record it here. Omit on single-head
+#                 machines, where the default 0 is already correct.
 #
 # Monitor keys
 #   output     connector name as reported by `hyprctl monitors`.
@@ -89,6 +96,7 @@ arch          = "x86_64"
 laptop        = false
 vaapi_driver  = "radeonsi"
 wallpaper_dir = "Cloud/Media/Pictures/wallpapers"
+dunst_monitor = 1
 autostart = [
     "dbus",
     "lockscreen",

@@ -20,6 +20,8 @@
                  per-window monitor= fields and split wallpapers
      gametrak    gametrak autostarts here, so games.conf exists
      wallpapers  wallpaper library, relative to $HOME
+     dunst_monitor  index of the primary display in dunst's own output list,
+                 0 unless the machine declares otherwise
      monitors    the raw ordered list, unchanged
 */ -}}
 {{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
@@ -45,6 +47,7 @@
       "multihead" (and (hasKey $primary "output") (hasKey $secondary "output"))
       "gametrak"   (has "gametrak" $machine.autostart)
       "wallpapers" (dig "wallpaper_dir" "" $machine)
+      "dunst_monitor" (dig "dunst_monitor" 0 $machine)
       "monitors"  $machine.monitors
       "autostart" $machine.autostart
       "commands"  .autostart_commands
