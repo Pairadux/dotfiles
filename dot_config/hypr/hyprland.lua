@@ -262,6 +262,7 @@ hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(picker .. " clipboard"), desc
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(picker .. " playlist"), desc("Pickers: Playlist"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd(picker .. " note"), desc("Pickers: Notes"))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(picker .. " wallpaper"), desc("Pickers: Wallpaper"))
+hl.bind(mainMod .. " + SHIFT + apostrophe", hl.dsp.exec_cmd(picker .. " soundboard"), desc("Pickers: Play any sound"))
 
 -- Hyprshot
 hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"), desc("Screenshots: Whole monitor"))

@@ -47,6 +47,7 @@ sheet=$(awk -F'\t' '
     function pretty(k) {
         if (k == "slash") return "/"
         if (k == "minus") return "-"
+        if (k == "apostrophe") return "\047"
         if (k == "mouse:272") return "LMB"
         if (k == "mouse:273") return "RMB"
         if (length(k) > 1) return toupper(substr(k, 1, 1)) tolower(substr(k, 2))
