@@ -135,7 +135,7 @@ hl.config({
         kb_layout  = "us",
         kb_variant = "",
         kb_model   = "",
-        -- kb_options = "ctrl:nocaps",
+        kb_options = "ctrl:nocaps",
         kb_rules   = "",
 
         follow_mouse  = 1,
@@ -152,6 +152,11 @@ hl.config({
         hide_on_key_press = true,
     },
 })
+
+-- The Voyager handles its own layout, so keep a real Caps Lock there.
+for _, name in ipairs({ "zsa-technology-labs-voyager", "zsa-technology-labs-voyager-keyboard" }) do
+    hl.device({ name = name, kb_options = "caps:capslock" })
+end
 
 hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
 
