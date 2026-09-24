@@ -296,15 +296,38 @@ local function legend()
     end
 end
 
---- Slots pwsp holds that no key fires yet.
+--- Slots pwsp holds that no key fires yet, asked of the daemon rather than kept by
+--- hand so a newly added sound shows up here without touching the config. Empty if
+--- the daemon is not running. The reply is `true : {json}`; slot names are the only
+--- field needed, so they are matched out instead of pulling in a JSON parser.
+--- @return string[]
+local function unbound()
+    local bound = {}
+    for _, bank in ipairs({ board.plain, board.meta }) do
+        for _, slot in pairs(bank) do bound[slot] = true end
+    end
+
+    local pipe = io.popen("pwsp-cli get hotkeys 2>/dev/null")
+    local reply = pipe and pipe:read("a") or ""
+    if pipe then pipe:close() end
+
+    local free = {}
+    for slot in reply:gmatch('"slot":"([^"]+)"') do
+        if not bound[slot] then free[#free + 1] = slot end
+    end
+    table.sort(free)
+    return free
+end
+
 --- @param top number
 --- @return number bottom
 local function freeSlots(top)
-    if #board.unbound == 0 then return top end
+    local free = unbound()
+    if #free == 0 then return top end
     text(0, top, "UNASSIGNED", 22, MUTED, { anchor = "start", weight = 700, spacing = "3" })
 
     local x, y, pad, gap = 0, top + 30, 18, 12
-    for _, slot in ipairs(board.unbound) do
+    for _, slot in ipairs(free) do
         local w = width(slot, 20) + pad * 2
         if x + w > BOARD_W then
             x, y = 0, y + 52

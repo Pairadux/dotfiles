@@ -59,32 +59,6 @@ local plain = {
     F22 = "prowler",
     F23 = "redvid_io_tom_proudly_eats_his_diarrhea_hd",
     F24 = "deg-deg-sussy",
-
-    -- UNBOUND: replace KEY with an F-key
-    -- KEY = "dexter-meme",
-    -- KEY = "ding",
-    -- KEY = "gah-dayum",
-    -- KEY = "gta-v-notification",
-    -- KEY = "ho-ho-ho-ben",
-    -- KEY = "homer-lets-the-barts-out",
-    -- KEY = "we-are-charlie-kirk-phone",
-    -- KEY = "yippeeeeeeeeeeeeee",
-    -- KEY = "999-social-credit-siren",
-    -- KEY = "ack",
-    -- KEY = "applepay",
-    -- KEY = "core",
-    -- KEY = "man-snoring-meme",
-    -- KEY = "punch-gaming",
-    -- KEY = "shocked",
-    -- KEY = "talking-ben-sound",
-    -- KEY = "fnaf2-jumpscare",
-    -- KEY = "i-farted-and-a-poopy-almost-slipped-out",
-    -- KEY = "what-the-hell-meme",
-    -- KEY = "among-us-role-reveal",
-    -- KEY = "italian-brainrot-ringtone",
-    -- KEY = "undertakers-bell",
-    -- KEY = "yo-phone-ringing-chino",
-    -- KEY = "indian-song",
 }
 
 local meta = {
@@ -114,21 +88,6 @@ local meta = {
     comma = "pluh",
     bracketleft = "wrong-answer-buzzer",
     bracketright = "correct",
-}
-
--- Slots pwsp knows about that nothing fires yet. Data rather than comments so the
--- cheat sheet can list what is still free to bind, and so it cannot quietly rot.
-local unbound = {
-    "yippeeeeeeeeeeeeee",
-    "what-bottom-text-meme-sanctuary-guardian-sound",
-    "snore-mimimimimimi",
-    "ho-ho-ho-ben",
-    "dexter-meme",
-    "ding",
-    "gah-dayum",
-    "gta-v-notification",
-    "homer-lets-the-barts-out",
-    "talking-ben-sound",
 }
 
 -- Stops playback; lives outside the banks, so it costs no F-key slot.
@@ -194,7 +153,6 @@ end
 return {
     plain = plain,
     meta = meta,
-    unbound = unbound,
     stopKey = stopKey,
     setup = setup,
 }
