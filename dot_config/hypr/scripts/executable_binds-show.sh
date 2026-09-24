@@ -12,6 +12,10 @@
 # Consecutive rows in a group with the same description collapse into one, so
 # H/L/K/J or 1..0 read as a single line. Rofi's font is monospace, so padding
 # with spaces is enough to line the columns up.
+#
+# The shared rofi theme is a launcher: 700px wide, seven rows. Here the point is
+# to see everything at once, so the sheet overrides it with two columns tall
+# enough to hold every row, filled top to bottom so a group reads down the page.
 
 source "$(dirname -- "$(readlink -f -- "$0")")/pickers/_common.sh"
 
@@ -40,7 +44,7 @@ sheet=$(awk -F'\t' '
     }
     function pretty(k) {
         if (k == "slash") return "/"
-        if (k == "grave") return "`"
+        if (k == "minus") return "-"
         if (k == "mouse:272") return "LMB"
         if (k == "mouse:273") return "RMB"
         if (length(k) > 1) return toupper(substr(k, 1, 1)) tolower(substr(k, 2))
@@ -72,4 +76,8 @@ sheet=$(awk -F'\t' '
     END { flush() }
 ' <<< "$rows")
 
-"${ROFI_DMENU[@]}" -markup-rows -no-custom -p " Keybinds" <<< "$sheet" > /dev/null
+count=$(wc -l <<< "$sheet")
+lines=$(( (count + 1) / 2 ))
+"${ROFI_DMENU[@]}" -markup-rows -no-custom -p " Keybinds" \
+    -theme-str "window { width: 1300px; } listview { columns: 2; lines: $lines; flow: vertical; }" \
+    <<< "$sheet" > /dev/null

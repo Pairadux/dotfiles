@@ -246,8 +246,8 @@ for i = 1, 10 do
     local key = i % 10
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }), desc("Workspaces: Move window to 1-10"))
 end
-hl.bind(mainMod .. " + grave", hl.dsp.workspace.toggle_special("magic"), desc("Workspaces: Toggle scratchpad"))
-hl.bind(mainMod .. " + SHIFT + grave", hl.dsp.window.move({ workspace = "special:magic" }), desc("Workspaces: Move window to scratchpad"))
+hl.bind(mainMod .. " + minus", hl.dsp.workspace.toggle_special("magic"), desc("Workspaces: Toggle scratchpad"))
+hl.bind(mainMod .. " + SHIFT + minus", hl.dsp.window.move({ workspace = "special:magic" }), desc("Workspaces: Move window to scratchpad"))
 
 -- Media (mpc)
 hl.bind(mainMod .. " + ALT + SPACE", hl.dsp.exec_cmd("mpc toggle"), desc("Media: Play/pause"))
