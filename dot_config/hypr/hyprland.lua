@@ -189,12 +189,12 @@ local function desc(text)
 end
 
 -- Apps
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu), desc("Apps: Launcher"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager), desc("Apps: File manager"))
-hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd(pdfViewer), desc("Apps: PDF viewer"))
-hl.bind(mainMod .. " + N", hl.dsp.exec_cmd(noteTaker), desc("Apps: Quick note"))
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("qimgv"), desc("Apps: Image viewer"))
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("nwg-drawer -nofs -ovl -wm hyprland -k -c 8 -is 64 -spacing 16"), desc("Apps: App drawer"))
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu),        desc("Apps: Launcher"))
+hl.bind(mainMod .. " + E",     hl.dsp.exec_cmd(fileManager), desc("Apps: File manager"))
+hl.bind(mainMod .. " + Z",     hl.dsp.exec_cmd(pdfViewer),   desc("Apps: PDF viewer"))
+hl.bind(mainMod .. " + N",     hl.dsp.exec_cmd(noteTaker),   desc("Apps: Quick note"))
+hl.bind(mainMod .. " + Q",     hl.dsp.exec_cmd("qimgv"),     desc("Apps: Image viewer"))
+hl.bind(mainMod .. " + A",     hl.dsp.exec_cmd("nwg-drawer -nofs -ovl -wm hyprland -k -c 8 -is 64 -spacing 16"), desc("Apps: App drawer"))
 
 -- Named workspaces: the letter goes there, SHIFT + the letter sends the window
 -- there. Each one spawns its app when first opened empty (see workspace rules), so
@@ -216,25 +216,25 @@ for _, n in ipairs(named) do
 end
 
 -- Windows
-hl.bind(mainMod .. " + C", hl.dsp.window.close(), desc("Windows: Close"))
-hl.bind(mainMod .. " + H", hl.dsp.focus({ direction = "l" }), desc("Windows: Focus left/right/up/down"))
-hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "r" }), desc("Windows: Focus left/right/up/down"))
-hl.bind(mainMod .. " + K", hl.dsp.focus({ direction = "u" }), desc("Windows: Focus left/right/up/down"))
-hl.bind(mainMod .. " + J", hl.dsp.focus({ direction = "d" }), desc("Windows: Focus left/right/up/down"))
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "l" }), desc("Windows: Move left/right/up/down"))
-hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "r" }), desc("Windows: Move left/right/up/down"))
-hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "u" }), desc("Windows: Move left/right/up/down"))
-hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "d" }), desc("Windows: Move left/right/up/down"))
+hl.bind(mainMod .. " + C",             hl.dsp.window.close(),                             desc("Windows: Close"))
+hl.bind(mainMod .. " + H",             hl.dsp.focus({ direction = "l" }),                 desc("Windows: Focus left/right/up/down"))
+hl.bind(mainMod .. " + L",             hl.dsp.focus({ direction = "r" }),                 desc("Windows: Focus left/right/up/down"))
+hl.bind(mainMod .. " + K",             hl.dsp.focus({ direction = "u" }),                 desc("Windows: Focus left/right/up/down"))
+hl.bind(mainMod .. " + J",             hl.dsp.focus({ direction = "d" }),                 desc("Windows: Focus left/right/up/down"))
+hl.bind(mainMod .. " + SHIFT + H",     hl.dsp.window.move({ direction = "l" }),           desc("Windows: Move left/right/up/down"))
+hl.bind(mainMod .. " + SHIFT + L",     hl.dsp.window.move({ direction = "r" }),           desc("Windows: Move left/right/up/down"))
+hl.bind(mainMod .. " + SHIFT + K",     hl.dsp.window.move({ direction = "u" }),           desc("Windows: Move left/right/up/down"))
+hl.bind(mainMod .. " + SHIFT + J",     hl.dsp.window.move({ direction = "d" }),           desc("Windows: Move left/right/up/down"))
 -- ALT + Tab remake but only works inside workspace
-hl.bind(mainMod .. " + Tab", hl.dsp.window.cycle_next(), desc("Windows: Cycle in workspace"))
-hl.bind(mainMod .. " + Tab", hl.dsp.window.bring_to_top())
-hl.bind(mainMod .. " + V", hl.dsp.window.float(), desc("Windows: Toggle floating"))
-hl.bind(mainMod .. " + HOME", hl.dsp.window.fullscreen({ mode = "maximized" }), desc("Windows: Maximize"))
-hl.bind(mainMod .. " + SHIFT + HOME", hl.dsp.window.fullscreen({ mode = "fullscreen" }), desc("Windows: Fullscreen"))
+hl.bind(mainMod .. " + Tab",           hl.dsp.window.cycle_next(),                        desc("Windows: Cycle in workspace"))
+hl.bind(mainMod .. " + Tab",           hl.dsp.window.bring_to_top())
+hl.bind(mainMod .. " + V",             hl.dsp.window.float(),                             desc("Windows: Toggle floating"))
+hl.bind(mainMod .. " + HOME",          hl.dsp.window.fullscreen({ mode = "maximized" }),  desc("Windows: Maximize"))
+hl.bind(mainMod .. " + SHIFT + HOME",  hl.dsp.window.fullscreen({ mode = "fullscreen" }), desc("Windows: Fullscreen"))
 -- Toggle split orientation: side-by-side <-> top/bottom
-hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.layout("togglesplit"), desc("Windows: Toggle split direction"))
-hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true, description = "Windows: Drag to move" })
-hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true, description = "Windows: Drag to resize" })
+hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.layout("togglesplit"),                      desc("Windows: Toggle split direction"))
+hl.bind(mainMod .. " + mouse:272",     hl.dsp.window.drag(),   { mouse = true, description = "Windows: Drag to move" })
+hl.bind(mainMod .. " + mouse:273",     hl.dsp.window.resize(), { mouse = true, description = "Windows: Drag to resize" })
 
 -- Numbered workspaces 1-10, and the special (scratchpad) one. Two loops rather
 -- than one, so each set is a consecutive run the sheet can collapse to a row.
@@ -246,35 +246,35 @@ for i = 1, 10 do
     local key = i % 10
     hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }), desc("Workspaces: Move window to 1-10"))
 end
-hl.bind(mainMod .. " + minus", hl.dsp.workspace.toggle_special("magic"), desc("Workspaces: Toggle scratchpad"))
+
+hl.bind(mainMod .. " + minus",         hl.dsp.workspace.toggle_special("magic"),            desc("Workspaces: Toggle scratchpad"))
 hl.bind(mainMod .. " + SHIFT + minus", hl.dsp.window.move({ workspace = "special:magic" }), desc("Workspaces: Move window to scratchpad"))
 
 -- Media (mpc)
-hl.bind(mainMod .. " + ALT + SPACE", hl.dsp.exec_cmd("mpc toggle"), desc("Media: Play/pause"))
-hl.bind(mainMod .. " + RIGHT", hl.dsp.exec_cmd("mpc next"), desc("Media: Next track"))
-hl.bind(mainMod .. " + LEFT", hl.dsp.exec_cmd("mpc prev"), desc("Media: Previous track"))
-hl.bind(mainMod .. " + UP", hl.dsp.exec_cmd("mpc volume +5"), desc("Media: Volume up"))
-hl.bind(mainMod .. " + DOWN", hl.dsp.exec_cmd("mpc volume -5"), desc("Media: Volume down"))
+hl.bind(mainMod .. " + ALT + SPACE", hl.dsp.exec_cmd("mpc toggle"),    desc("Media: Play/pause"))
+hl.bind(mainMod .. " + RIGHT",       hl.dsp.exec_cmd("mpc next"),      desc("Media: Next track"))
+hl.bind(mainMod .. " + LEFT",        hl.dsp.exec_cmd("mpc prev"),      desc("Media: Previous track"))
+hl.bind(mainMod .. " + UP",          hl.dsp.exec_cmd("mpc volume +5"), desc("Media: Volume up"))
+hl.bind(mainMod .. " + DOWN",        hl.dsp.exec_cmd("mpc volume -5"), desc("Media: Volume down"))
 
 -- Picker
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd(picker), desc("Pickers: All pickers"))
-hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd(picker .. " clipboard"), desc("Pickers: Clipboard history"))
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd(picker .. " playlist"), desc("Pickers: Playlist"))
-hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd(picker .. " note"), desc("Pickers: Notes"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd(picker .. " wallpaper"), desc("Pickers: Wallpaper"))
+hl.bind(mainMod .. " + P",                  hl.dsp.exec_cmd(picker),                  desc("Pickers: All pickers"))
+hl.bind(mainMod .. " + SHIFT + C",          hl.dsp.exec_cmd(picker .. " clipboard"),  desc("Pickers: Clipboard history"))
+hl.bind(mainMod .. " + SHIFT + P",          hl.dsp.exec_cmd(picker .. " playlist"),   desc("Pickers: Playlist"))
+hl.bind(mainMod .. " + SHIFT + N",          hl.dsp.exec_cmd(picker .. " note"),       desc("Pickers: Notes"))
+hl.bind(mainMod .. " + SHIFT + W",          hl.dsp.exec_cmd(picker .. " wallpaper"),  desc("Pickers: Wallpaper"))
 hl.bind(mainMod .. " + SHIFT + apostrophe", hl.dsp.exec_cmd(picker .. " soundboard"), desc("Pickers: Play any sound"))
 
 -- Hyprshot
-hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m output"), desc("Screenshots: Whole monitor"))
-hl.bind(mainMod .. " + PRINT", hl.dsp.exec_cmd("hyprshot -m window"), desc("Screenshots: Window"))
+hl.bind("PRINT",                       hl.dsp.exec_cmd("hyprshot -m output"), desc("Screenshots: Whole monitor"))
+hl.bind(mainMod .. " + PRINT",         hl.dsp.exec_cmd("hyprshot -m window"), desc("Screenshots: Window"))
 hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"), desc("Screenshots: Region"))
 
 require("soundboard").setup(mainMod)
 
 -- Cheat sheets: this section, and the soundboard banks drawn from the same tables.
-hl.bind(mainMod .. " + slash", hl.dsp.exec_cmd(bindSheet), desc("Help: Keybinds"))
+hl.bind(mainMod .. " + slash",         hl.dsp.exec_cmd(bindSheet),  desc("Help: Keybinds"))
 hl.bind(mainMod .. " + SHIFT + slash", hl.dsp.exec_cmd(soundSheet), desc("Help: Soundboard"))
-
 hl.bind(mainMod .. " + SHIFT + PAUSE", hl.dsp.exec_cmd(lockscreen), desc("Session: Lock screen"))
 
 --------------------------------
