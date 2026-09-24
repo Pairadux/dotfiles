@@ -16,6 +16,8 @@
 # The shared rofi theme is a launcher: 700px wide, seven rows. Here the point is
 # to see everything at once, so the sheet overrides it with two columns tall
 # enough to hold every row, filled top to bottom so a group reads down the page.
+# The columns split at the group boundary nearest the middle, with the left one
+# padded out, so no group is ever broken across the two.
 
 source "$(dirname -- "$(readlink -f -- "$0")")/pickers/_common.sh"
 
@@ -76,8 +78,24 @@ sheet=$(awk -F'\t' '
     END { flush() }
 ' <<< "$rows")
 
-count=$(wc -l <<< "$sheet")
-lines=$(( (count + 1) / 2 ))
+mapfile -t entries <<< "$sheet"
+
+# Groups are separated by a blank row; the right column starts on the header
+# after the one that leaves the taller column shortest.
+split=$(( ${#entries[@]} + 1 )) lines=${#entries[@]}
+for i in "${!entries[@]}"; do
+    [[ -z "${entries[i]}" ]] || continue
+    right=$(( ${#entries[@]} - i - 1 ))
+    tallest=$(( i > right ? i : right ))
+    if (( tallest < lines )); then
+        split=$(( i + 1 )) lines=$tallest
+    fi
+done
+
+left=("${entries[@]:0:split-1}")
+while (( ${#left[@]} < lines )); do left+=(""); done
+sheet=$(printf '%s\n' "${left[@]}" "${entries[@]:split}")
+
 "${ROFI_DMENU[@]}" -markup-rows -no-custom -p " Keybinds" \
     -theme-str "window { width: 1300px; } listview { columns: 2; lines: $lines; flow: vertical; }" \
     <<< "$sheet" > /dev/null
