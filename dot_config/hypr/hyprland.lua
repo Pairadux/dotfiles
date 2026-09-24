@@ -286,16 +286,6 @@ hl.window_rule({
     size   = { 1000, 700 },
 })
 
--- Soundboard cheat sheet
-hl.window_rule({
-    name  = "soundboard-cheatsheet",
-    match = { title = "^(Soundboard Cheat Sheet)$" },
-
-    float  = true,
-    center = true,
-    size   = "80% 69%",
-})
-
 -- Mega
 hl.window_rule({
     name  = "mega",
