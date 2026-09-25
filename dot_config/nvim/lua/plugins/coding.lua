@@ -43,7 +43,12 @@ return {
         -- up twice. gopls is owned by plugins/lsp/init.lua — Mason installs it
         -- and blink's capabilities are merged there — so this stays false and
         -- go.nvim is here for :GoTest, :GoAddTag, :GoImpl and friends.
-        opts = { lsp_cfg = false },
+        -- lsp_inlay_hints defaults to on and enables hints globally, not just
+        -- for Go; keep them off so <leader>lh stays the only switch.
+        opts = {
+            lsp_cfg = false,
+            lsp_inlay_hints = { enable = false },
+        },
         ft = { 'go', 'gomod' },
         build = ':lua require("go.install").update_all_sync()',
     }, -- }}}
