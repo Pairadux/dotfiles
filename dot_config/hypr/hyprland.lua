@@ -425,15 +425,15 @@ if machine.multihead then
     -- workspace 1 default+persistent to an output that does not exist is what
     -- leaves a lone screen with no usable workspace at login, and Hyprland's
     -- own defaults are already correct there.
-    hl.workspace_rule({ workspace = "1", monitor = machine.primary, default = true, persistent = true })
-    hl.workspace_rule({ workspace = "2", monitor = machine.secondary, persistent = true })
-    hl.workspace_rule({ workspace = "3", monitor = machine.secondary })
-    hl.workspace_rule({ workspace = "4", monitor = machine.secondary })
-    hl.workspace_rule({ workspace = "5", monitor = machine.secondary })
-    hl.workspace_rule({ workspace = "6", monitor = machine.secondary })
-    hl.workspace_rule({ workspace = "7", monitor = machine.secondary })
-    hl.workspace_rule({ workspace = "8", monitor = machine.secondary, on_created_empty = "ticktick" })
-    hl.workspace_rule({ workspace = "9", monitor = machine.secondary, on_created_empty = "spotify" })
+    hl.workspace_rule({ workspace = "1",  monitor = machine.primary, default = true, persistent = true })
+    hl.workspace_rule({ workspace = "2",  monitor = machine.secondary, persistent = true })
+    hl.workspace_rule({ workspace = "3",  monitor = machine.secondary })
+    hl.workspace_rule({ workspace = "4",  monitor = machine.secondary })
+    hl.workspace_rule({ workspace = "5",  monitor = machine.secondary })
+    hl.workspace_rule({ workspace = "6",  monitor = machine.secondary })
+    hl.workspace_rule({ workspace = "7",  monitor = machine.secondary })
+    hl.workspace_rule({ workspace = "8",  monitor = machine.secondary, on_created_empty = "ticktick" })
+    hl.workspace_rule({ workspace = "9",  monitor = machine.secondary, on_created_empty = "spotify" })
     hl.workspace_rule({ workspace = "10", monitor = machine.secondary })
 end
 
