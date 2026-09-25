@@ -215,8 +215,8 @@ for _, n in ipairs(named) do
         desc("Named workspaces: Move window to " .. n.name))
 end
 
-hl.bind(mainMod .. " + ALT + T", hl.dsp.exec_cmd(terminal), desc("Spawn Terminal"))
-hl.bind(mainMod .. " + ALT + B", hl.dsp.exec_cmd(browser),  desc("Spawn Terminal"))
+hl.bind(mainMod .. " + CTRL + T", hl.dsp.exec_cmd(terminal), desc("Spawn Terminal"))
+hl.bind(mainMod .. " + CTRL + B", hl.dsp.exec_cmd(browser),  desc("Spawn Terminal"))
 
 -- Windows
 hl.bind(mainMod .. " + C",             hl.dsp.window.close(),                             desc("Windows: Close"))
