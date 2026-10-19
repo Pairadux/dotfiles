@@ -101,6 +101,8 @@ local plain = {
     -- KEY = "yooooooooooooooooooooooooo",
     -- KEY = "yo-phone-ringing-chino",
     -- KEY = "dbd_check_start",
+    -- KEY = "having-sex-w-everyone",
+    -- KEY = "i-just-hit-the-jackpot",
 }
 
 local meta = {
