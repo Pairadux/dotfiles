@@ -87,6 +87,7 @@ alias nv='nvim'
 # | MISC  |
 # *-------*
 alias switch-to-mac='sudo asahi-bless --set-boot 1 --next'
+alias update='aur-maint-check && topgrade'
 
 # *---------*
 # | CLAUDE  |
