@@ -119,3 +119,7 @@ if [[ -r "$HOME/.local/share/bob/env/env.sh" ]]; then
 elif [[ -o interactive ]]; then
     print -u2 -P "%F{red}zshenv:%f bob is not set up — install bob, then 'bob use stable'"
 fi
+
+# deadlock
+export DL="$HOME/.local/share/Steam/steamapps/common/Deadlock"
+export CSDK="$HOME/modding/deadlock/Reduced_CSDK_12"

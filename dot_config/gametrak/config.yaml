@@ -33,6 +33,8 @@ games:
       name: Baldur's Gate 3
     - class: bg3_dx11.exe
       name: Baldur's Gate 3
+    - class: minecraft.windows.exe
+      name: Minecraft
 settings:
     notifications: true
     log_sessions: true
