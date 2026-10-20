@@ -278,7 +278,8 @@ require("soundboard").setup(mainMod)
 -- Cheat sheets: this section, and the soundboard banks drawn from the same tables.
 hl.bind(mainMod .. " + slash",         hl.dsp.exec_cmd(bindSheet),  desc("Help: Keybinds"))
 hl.bind(mainMod .. " + SHIFT + slash", hl.dsp.exec_cmd(soundSheet), desc("Help: Soundboard"))
-hl.bind(mainMod .. " + SHIFT + PAUSE", hl.dsp.exec_cmd(lockscreen), desc("Session: Lock screen"))
+
+hl.bind(mainMod .. " + SHIFT + Escape", hl.dsp.exec_cmd(lockscreen), desc("Session: Lock screen"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
