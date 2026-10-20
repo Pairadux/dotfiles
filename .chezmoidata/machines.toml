@@ -89,9 +89,9 @@ mega-status     = "systemctl --user start mega-status"
 gametrak        = "gametrak"
 
 # ---------------------------------------------------------------------------
-# archlinux — x86_64 desktop, AMD GPU, three displays.
+# mutsu — x86_64 desktop, AMD GPU, three displays.
 # ---------------------------------------------------------------------------
-[machines.archlinux]
+[machines.mutsu]
 arch          = "x86_64"
 laptop        = false
 vaapi_driver  = "radeonsi"
@@ -111,14 +111,14 @@ autostart = [
     "gametrak",
 ]
 
-[[machines.archlinux.monitors]]
+[[machines.mutsu.monitors]]
 output   = "DP-2"
 mode     = "2560x1440@144"
 position = "0x0"
 scale    = 1
 role     = "primary"
 
-[[machines.archlinux.monitors]]
+[[machines.mutsu.monitors]]
 output    = "HDMI-A-1"
 mode      = "1920x1080"
 position  = "320x-1080"
@@ -126,7 +126,7 @@ scale     = 1
 transform = 2
 role      = "secondary"
 
-[[machines.archlinux.monitors]]
+[[machines.mutsu.monitors]]
 output    = "HDMI-A-2"
 mode      = "1920x1080"
 position  = "-720x0"
