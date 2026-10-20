@@ -283,3 +283,10 @@ copy() {
     setopt local_options pipefail
     cat -- "$@" | "${clip[@]}"
 }
+
+portal() {
+  tailscale down
+  xdg-open http://neverssl.com
+  read -r "?Log in to the portal, then press Enter... "
+  tailscale up
+}
