@@ -262,3 +262,24 @@ set-soundboard-volume() {
         return 1
     fi
 }
+
+# Copy stdin or the given files to whichever clipboard tool this machine has:
+# `copy file.txt` or `cat file.txt | copy`.
+copy() {
+    local -a clip
+    if [[ -n $WAYLAND_DISPLAY ]] && (( $+commands[wl-copy] )); then
+        clip=(wl-copy)
+    elif (( $+commands[pbcopy] )); then
+        clip=(pbcopy)
+    elif (( $+commands[xclip] )); then
+        clip=(xclip -selection clipboard)
+    elif (( $+commands[xsel] )); then
+        clip=(xsel --clipboard --input)
+    else
+        echo "copy: no clipboard tool found (wl-copy, pbcopy, xclip, xsel)" >&2
+        return 1
+    fi
+
+    setopt local_options pipefail
+    cat -- "$@" | "${clip[@]}"
+}
