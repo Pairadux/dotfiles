@@ -88,6 +88,7 @@ hyprpolkitagent = "systemctl --user start hyprpolkitagent"
 mega-status     = "systemctl --user start mega-status"
 gametrak        = "gametrak"
 sunshine        = "systemctl --user start app-dev.lizardbyte.app.Sunshine"
+hypridle        = "hypridle"
 
 # ---------------------------------------------------------------------------
 # mutsu — x86_64 desktop, AMD GPU, three displays.
@@ -162,6 +163,7 @@ autostart = [
     "cliphist-text",
     "cliphist-image",
     "hyprpolkitagent",
+    "hypridle",
 ]
 
 [[machines.fuji.monitors]]
