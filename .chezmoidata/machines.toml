@@ -156,6 +156,7 @@ wallpaper_dir = "Media/Pictures/Wallpapers"
 # and radeonsi would be actively wrong here.
 autostart = [
     "dbus",
+    "lockscreen",
     "nm-applet",
     "dunst",
     "hyprpaper",
