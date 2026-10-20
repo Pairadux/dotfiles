@@ -87,6 +87,7 @@ cliphist-image  = "wl-paste --type image --watch cliphist store"
 hyprpolkitagent = "systemctl --user start hyprpolkitagent"
 mega-status     = "systemctl --user start mega-status"
 gametrak        = "gametrak"
+sunshine        = "systemctl --user start app-dev.lizardbyte.app.Sunshine"
 
 # ---------------------------------------------------------------------------
 # mutsu — x86_64 desktop, AMD GPU, three displays.
@@ -109,6 +110,7 @@ autostart = [
     "hyprpolkitagent",
     "mega-status",
     "gametrak",
+    "sunshine",
 ]
 
 [[machines.mutsu.monitors]]
