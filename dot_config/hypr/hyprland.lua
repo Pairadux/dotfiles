@@ -35,6 +35,7 @@ local noteTaker   = "~/.config/hypr/scripts/notetaker.sh"
 local picker      = "~/.config/hypr/scripts/picker.sh"
 local soundSheet  = "~/.config/hypr/scripts/soundboard-show.sh"
 local bindSheet   = "~/.config/hypr/scripts/binds-show.sh"
+local streamDisp  = "~/.config/hypr/scripts/stream-display.sh"
 
 -------------------
 ---- AUTOSTART ----
@@ -281,6 +282,9 @@ hl.bind(mainMod .. " + slash",         hl.dsp.exec_cmd(bindSheet),  desc("Help: 
 hl.bind(mainMod .. " + SHIFT + slash", hl.dsp.exec_cmd(soundSheet), desc("Help: Soundboard"))
 
 hl.bind(mainMod .. " + SHIFT + Escape", hl.dsp.exec_cmd(lockscreen), desc("Session: Lock screen"))
+-- Sunshine only runs its undo when the app is quit, not on a bare disconnect,
+-- which would otherwise leave the desk with every display off.
+hl.bind(mainMod .. " + CTRL + Escape", hl.dsp.exec_cmd(streamDisp .. " stop"), desc("Session: Restore monitors after streaming"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
