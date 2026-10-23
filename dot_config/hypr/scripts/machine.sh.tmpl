@@ -11,16 +11,7 @@ MACHINE_LAPTOP={{ $m.laptop }}
 MACHINE_MULTIHEAD={{ $m.multihead }}
 
 MACHINE_PRIMARY={{ $m.primary | quote }}
-MACHINE_PRIMARY_MODE={{ dig "mode" "" $m.primary_mon | quote }}
-MACHINE_PRIMARY_POSITION={{ dig "position" "" $m.primary_mon | quote }}
-MACHINE_PRIMARY_SCALE={{ dig "scale" "" $m.primary_mon | quote }}
-
 MACHINE_SECONDARY={{ $m.secondary | quote }}
-MACHINE_SECONDARY_MODE={{ dig "mode" "" $m.secondary_mon | quote }}
-MACHINE_SECONDARY_POSITION={{ dig "position" "" $m.secondary_mon | quote }}
-MACHINE_SECONDARY_SCALE={{ dig "scale" "" $m.secondary_mon | quote }}
-MACHINE_SECONDARY_TRANSFORM={{ dig "transform" "" $m.secondary_mon | quote }}
-
 MACHINE_EXTERNAL={{ dig "output" "" $m.external | quote }}
 
 # Wallpaper library, relative to $HOME (expanded when this file is sourced).
