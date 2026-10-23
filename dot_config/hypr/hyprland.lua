@@ -272,6 +272,7 @@ hl.bind(mainMod .. " + SHIFT + apostrophe", hl.dsp.exec_cmd(picker .. " soundboa
 hl.bind("PRINT",                       hl.dsp.exec_cmd("hyprshot -m output"), desc("Screenshots: Whole monitor"))
 hl.bind(mainMod .. " + PRINT",         hl.dsp.exec_cmd("hyprshot -m window"), desc("Screenshots: Window"))
 hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"), desc("Screenshots: Region"))
+hl.bind(mainMod .. " + ALT + S", hl.dsp.exec_cmd("hyprshot -m region"), desc("Screenshots: Region"))
 
 require("soundboard").setup(mainMod)
 
