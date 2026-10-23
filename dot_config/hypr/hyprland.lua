@@ -383,6 +383,17 @@ if machine.gametrak then
     end
 end
 
+-- Moonlight streams. The launcher hides itself while streaming and the stream
+-- window is titled "<host> - Moonlight", so the title keeps the launcher out.
+hl.window_rule({
+    name  = "moonlight-stream",
+    match = { class = "^(com\\.moonlight_stream\\.Moonlight)$", title = "^(.* - Moonlight)$" },
+
+    workspace  = "100",
+    monitor    = pin(machine.primary),
+    fullscreen = true,
+})
+
 -- GIMP
 hl.window_rule({
     name  = "gimp-dialogs",
