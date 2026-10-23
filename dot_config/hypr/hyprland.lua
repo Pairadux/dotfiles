@@ -216,7 +216,7 @@ for _, n in ipairs(named) do
 end
 
 hl.bind(mainMod .. " + CTRL + T", hl.dsp.exec_cmd(terminal), desc("Spawn Terminal"))
-hl.bind(mainMod .. " + CTRL + B", hl.dsp.exec_cmd(browser),  desc("Spawn Terminal"))
+hl.bind(mainMod .. " + CTRL + B", hl.dsp.exec_cmd(browser),  desc("Spawn Browser"))
 
 -- Windows
 hl.bind(mainMod .. " + C",             hl.dsp.window.close(),                             desc("Windows: Close"))
