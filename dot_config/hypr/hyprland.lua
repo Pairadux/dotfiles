@@ -199,7 +199,8 @@ hl.bind(mainMod .. " + A",     hl.dsp.exec_cmd("nwg-drawer -nofs -ovl -wm hyprla
 
 -- Named workspaces: the letter goes there, SHIFT + the letter sends the window
 -- there. Each one spawns its app when first opened empty (see workspace rules), so
--- a second instance is a job for the launcher.
+-- a second instance is CTRL + the letter for the terminal and browser, and a job
+-- for the launcher otherwise.
 local named = {
     { key = "T", ws = 20, name = "terminal" },
     { key = "B", ws = 30, name = "browser" },
@@ -216,8 +217,8 @@ for _, n in ipairs(named) do
         desc("Named workspaces: Move window to " .. n.name))
 end
 
-hl.bind(mainMod .. " + CTRL + T", hl.dsp.exec_cmd(terminal), desc("Spawn Terminal"))
-hl.bind(mainMod .. " + CTRL + B", hl.dsp.exec_cmd(browser),  desc("Spawn Browser"))
+hl.bind(mainMod .. " + CTRL + T", hl.dsp.exec_cmd(terminal), desc("Named workspaces: Spawn another terminal"))
+hl.bind(mainMod .. " + CTRL + B", hl.dsp.exec_cmd(browser),  desc("Named workspaces: Spawn another browser"))
 
 -- Windows
 hl.bind(mainMod .. " + C",             hl.dsp.window.close(),                             desc("Windows: Close"))
