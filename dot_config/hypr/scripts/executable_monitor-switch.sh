@@ -1,6 +1,10 @@
 #!/bin/bash
-# Swap between the built-in primary+secondary layout and a single role-less
+# Toggle between the built-in primary+secondary layout and a single role-less
 # external display.
+#
+# Toggles on whether the primary is currently up rather than on whether the
+# external is connected, so it still swaps back when the external's port is
+# also driving an everyday display.
 #
 # Needs all three declared in .chezmoidata/machines.toml: a machine without a
 # primary+secondary pair plus a role-less external has nothing to switch
@@ -13,23 +17,22 @@ if [[ "$MACHINE_MULTIHEAD" != true || -z "$MACHINE_EXTERNAL" ]]; then
     exit 0
 fi
 
-if hyprctl monitors | grep -q "$MACHINE_EXTERNAL"; then
-    # External monitor detected - disable the built-in pair
-    hyprctl keyword monitor "$MACHINE_PRIMARY,disable"
-    hyprctl keyword monitor "$MACHINE_SECONDARY,disable"
-    # Enable external monitor with its preferred settings
-    hyprctl keyword monitor "$MACHINE_EXTERNAL,preferred,0x0,1"
-    # Set workspace 1 as default on external monitor
-    hyprctl keyword workspace "1,monitor:$MACHINE_EXTERNAL,default:true"
+if hyprctl monitors | grep -q "^Monitor $MACHINE_PRIMARY "; then
+    if ! hyprctl monitors all | grep -q "^Monitor $MACHINE_EXTERNAL "; then
+        echo "monitor-switch: $MACHINE_EXTERNAL is not connected" >&2
+        exit 1
+    fi
+
+    # Bring the external up before the pair goes down, so Hyprland is never
+    # left with no monitor at all.
+    hyprctl eval "
+        hl.monitor({ output = '$MACHINE_EXTERNAL', mode = 'preferred', position = '0x0', scale = 1 })
+        hl.monitor({ output = '$MACHINE_PRIMARY', disabled = true })
+        hl.monitor({ output = '$MACHINE_SECONDARY', disabled = true })
+        hl.workspace_rule({ workspace = '1', monitor = '$MACHINE_EXTERNAL', default = true })
+    "
 else
-    # External monitor not detected - restore the normal setup
-    hyprctl keyword monitor "$MACHINE_PRIMARY,$MACHINE_PRIMARY_MODE,$MACHINE_PRIMARY_POSITION,$MACHINE_PRIMARY_SCALE"
-
-    secondary="$MACHINE_SECONDARY,$MACHINE_SECONDARY_MODE,$MACHINE_SECONDARY_POSITION,$MACHINE_SECONDARY_SCALE"
-    [[ -n "$MACHINE_SECONDARY_TRANSFORM" ]] && secondary="$secondary,transform,$MACHINE_SECONDARY_TRANSFORM"
-    hyprctl keyword monitor "$secondary"
-
-    # Restore original workspace assignments
-    hyprctl keyword workspace "1,monitor:$MACHINE_PRIMARY,default:true,persistent:true"
-    hyprctl keyword workspace "2,monitor:$MACHINE_SECONDARY,persistent:true"
+    # Rules set through eval only live until a reload, which re-applies the
+    # config's own monitor and workspace rules.
+    hyprctl reload
 fi
