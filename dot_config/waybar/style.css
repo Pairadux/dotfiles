@@ -185,6 +185,13 @@ window#waybar.empty #window {
   font-size: 18px;
 }
 
+/* The wifi fan tapers to a point, so equal padding reads as a wider gap on
+   either side of it than around the solid icons. Pull its neighbours in. */
+#network.wifi,
+#network.disconnected {
+  padding: 0 8px;
+}
+
 #network.disconnected {
   color: @red;
 }
