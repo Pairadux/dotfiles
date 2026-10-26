@@ -91,7 +91,19 @@
     "hyprland/window": {
         "format": "⊣ {class} ⊢",
         "max-length": 120,
-        "icon": false
+        "icon": false,
+        // A class is the app ID, often reverse-DNS; show the app's name instead.
+        // Each rule has to match the whole formatted label, ignoring case.
+        "rewrite": {
+            "⊣ com\\.mitchellh\\.ghostty ⊢": "⊣ Ghostty ⊢",
+            "⊣ zen(-alpha|-beta|-browser)? ⊢": "⊣ Zen Browser ⊢",
+            "⊣ org\\.pulseaudio\\.pavucontrol ⊢": "⊣ Volume Control ⊢",
+            "⊣ blueman-manager ⊢": "⊣ Bluetooth Manager ⊢",
+            "⊣ nm-connection-editor ⊢": "⊣ Network Connections ⊢",
+            "⊣ com\\.moonlight_stream\\.moonlight ⊢": "⊣ Moonlight ⊢",
+            "⊣ keymapp ⊢": "⊣ Keymapp ⊢",
+            "⊣ steam ⊢": "⊣ Steam ⊢"
+        }
     },
 
     // Hovering a level icon slides its percentage out beside it, so the number
