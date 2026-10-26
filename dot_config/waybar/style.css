@@ -178,6 +178,14 @@ window#waybar.empty #window {
   font-size: 18px;
 }
 
+/* The percentage a level drawer slides out: text-sized rather than icon-sized,
+   and tucked up against the icon it belongs to. */
+#pulseaudio.level,
+#backlight.level {
+  font-size: 15px;
+  padding-right: 0;
+}
+
 #network {
   color: @fg;
   font-size: 18px;

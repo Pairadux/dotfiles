@@ -27,8 +27,8 @@
         "hyprland/window"
     ],
     "modules-right": [
-        "pulseaudio",
-{{ if $m.laptop }}        "backlight",
+        "group/volume",
+{{ if $m.laptop }}        "group/brightness",
 {{ end }}        "network",
         "bluetooth",
 {{ if $m.laptop }}        "battery",
@@ -106,6 +106,21 @@
         }
     },
 
+    // Hovering a level icon slides its percentage out beside it, so the number
+    // is visible while scrolling. The drawer opens leftward so the icon stays
+    // put under the cursor on this right-aligned cluster.
+    "group/volume": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "pulseaudio",
+            "pulseaudio#level"
+        ]
+    },
+
     "pulseaudio": {
         "format": "{icon} ",
         "format-muted": "󰖁",
@@ -133,7 +148,30 @@
         },
         "on-click": "pavucontrol"
     },
+
+    // The number the volume drawer slides out. It scrolls like the icon, since
+    // the cursor often ends up on it once it is revealed.
+    "pulseaudio#level": {
+        "format": "{volume}%",
+        "format-muted": "{volume}%",
+        "tooltip": false,
+        "smooth-scrolling-threshold": 5,
+        "on-scroll-up": "~/.config/waybar/scripts/snap-step.sh volume 5",
+        "on-scroll-down": "~/.config/waybar/scripts/snap-step.sh volume -5"
+    },
 {{ if $m.laptop }}
+    "group/brightness": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 300,
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "backlight",
+            "backlight#level"
+        ]
+    },
+
     "backlight": {
         "format": "{icon} ",
         "tooltip-format": "Backlight: {percent}%",
@@ -143,6 +181,14 @@
             "󰃠"
         ],
         // Same trackpad flood and grid snapping as pulseaudio above.
+        "smooth-scrolling-threshold": 5,
+        "on-scroll-up": "~/.config/waybar/scripts/snap-step.sh brightness 5",
+        "on-scroll-down": "~/.config/waybar/scripts/snap-step.sh brightness -5"
+    },
+
+    "backlight#level": {
+        "format": "{percent}%",
+        "tooltip": false,
         "smooth-scrolling-threshold": 5,
         "on-scroll-up": "~/.config/waybar/scripts/snap-step.sh brightness 5",
         "on-scroll-down": "~/.config/waybar/scripts/snap-step.sh brightness -5"
