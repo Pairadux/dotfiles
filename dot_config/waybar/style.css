@@ -36,7 +36,10 @@
    ------------------------------------------------------ */
 
 * {
-  font-family: "FiraCode Nerd Font", "FiraCode Mono", monospace;
+  /* Propo gives each icon an advance as wide as its glyph. The plain Nerd Font
+     gives every icon one cell and lets it overflow, so GTK spaces icons by
+     cell rather than by what is drawn and the gaps come out uneven. */
+  font-family: "FiraCode Nerd Font Propo", "FiraCode Nerd Font", monospace;
   font-weight: bold;
   font-size: 16px;
   /* kill GTK's default button chrome everywhere */
@@ -161,7 +164,7 @@ window#waybar.empty #window {
 #battery,
 #clock {
   font-weight: normal;
-  padding: 0 6px;
+  padding: 0 11px;
 }
 
 #pulseaudio {
@@ -235,6 +238,4 @@ window#waybar.empty #window {
   color: @fg;
   font-size: 15px;
   font-weight: 900;
-  padding-left: 6px;
-  padding-right: 6px;
 }
