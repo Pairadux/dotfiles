@@ -110,7 +110,14 @@
         "format": "{icon} ",
         "format-muted": "󰖁",
         "tooltip-format": "{icon}  {desc} // {volume}%",
-        "scroll-step": 5,
+        // The default threshold of 0 fires a full step on every tiny trackpad
+        // delta, so one swipe floods dozens of steps that keep landing after
+        // the fingers stop. Make the travel accumulate before each step.
+        "smooth-scrolling-threshold": 5,
+        // snap-step keeps the level on multiples of 5, which the built-in
+        // scroll-step cannot.
+        "on-scroll-up": "~/.config/waybar/scripts/snap-step.sh volume 5",
+        "on-scroll-down": "~/.config/waybar/scripts/snap-step.sh volume -5",
         "format-icons": {
             "headphone": "󰋋",
             "hands-free": "󱡏",
@@ -135,7 +142,10 @@
             "󰃟",
             "󰃠"
         ],
-        "scroll-step": 5
+        // Same trackpad flood and grid snapping as pulseaudio above.
+        "smooth-scrolling-threshold": 5,
+        "on-scroll-up": "~/.config/waybar/scripts/snap-step.sh brightness 5",
+        "on-scroll-down": "~/.config/waybar/scripts/snap-step.sh brightness -5"
     },
 {{ end }}
     "network": {
