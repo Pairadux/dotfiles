@@ -231,28 +231,6 @@ window#waybar.empty #window {
   }
 }
 
-#tray {
-  padding: 0 6px;
-}
-
-#tray > .passive {
-  -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-}
-
-#tray menu * {
-  min-height: 16px;
-  font-size: 13px;
-  color: @purple;
-}
-
-#tray menu separator {
-  min-height: 10px;
-}
-
 #clock {
   color: @fg;
   font-size: 15px;

@@ -26,14 +26,15 @@
     "modules-center": [
         "hyprland/window"
     ],
+    // No tray: its only item is nm-applet, which duplicates the network
+    // module, and waybar cannot hide a single item (hyprpanel ignores it).
     "modules-right": [
         "group/volume",
 {{ if $m.laptop }}        "group/brightness",
 {{ end }}        "network",
         "bluetooth",
 {{ if $m.laptop }}        "battery",
-{{ end }}        "tray",
-        "clock"
+{{ end }}        "clock"
     ],
 
     "custom/power": {
@@ -242,11 +243,6 @@
         "interval": 30
     },
 {{ end }}
-    "tray": {
-        "icon-size": 16,
-        "spacing": 8
-    },
-
     "clock": {
         "format": "{:%a %b %d  %I:%M %p}",
         "tooltip-format": "<tt>{calendar}</tt>",
