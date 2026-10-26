@@ -1,8 +1,8 @@
 {{- $m := includeTemplate "machine" . | fromJson -}}
 // waybar — the bar for machines that cannot run hyprpanel (Arch Linux ARM has
-// no hyprpanel package). Layout deliberately mirrors the hyprpanel bar so the
-// two machines feel the same: launcher + workspaces + window title on the left,
-// media in the middle, status cluster on the right.
+// no hyprpanel package). Layout follows the hyprpanel bar so the two machines
+// feel alike: power + workspaces on the left, status cluster on the right. With
+// no media module, the focused app takes the middle instead.
 //
 // Battery and backlight are emitted only on laptops; workspace pinning only on
 // a machine that actually has two displays. Both come from machines.toml.
@@ -92,19 +92,6 @@
         "format": "⊣ {class} ⊢",
         "max-length": 120,
         "icon": false
-    },
-
-    "mpris": {
-        "format": "{player_icon}  {dynamic}",
-        "format-paused": "<span color='#545c7e'>{status_icon} {dynamic}</span>",
-        "max-length": 50,
-        "player-icons": {
-            "default": "",
-            "mpv": " "
-        },
-        "status-icons": {
-            "paused": ""
-        }
     },
 
     // Hovering a level icon slides its percentage out beside it, so the number

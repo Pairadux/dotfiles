@@ -130,6 +130,10 @@ tooltip label {
   color: @green;
 }
 
+/* ------------------------------------------------------
+   4) Center
+   ------------------------------------------------------ */
+
 #window {
   color: @dim;
   font-weight: normal;
@@ -138,19 +142,6 @@ tooltip label {
 /* Empty workspace: hyprland/window emits nothing, so drop the padding too. */
 window#waybar.empty #window {
   padding: 0;
-}
-
-/* ------------------------------------------------------
-   4) Center
-   ------------------------------------------------------ */
-
-#mpris {
-  color: @fg;
-  padding: 0 6px;
-}
-
-#mpris.paused {
-  color: @dim;
 }
 
 /* ------------------------------------------------------
