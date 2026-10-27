@@ -109,7 +109,7 @@ autostart = [
     "nm-applet",
     "dunst",
     "hyprpaper",
-    "hyprpanel",
+    "waybar",
     "cliphist-text",
     "cliphist-image",
     "hyprpolkitagent",
