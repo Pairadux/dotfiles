@@ -19,6 +19,7 @@
      wallpapers  wallpaper library, relative to $HOME
      dunst_monitor  index of the primary display in dunst's own output list,
                  0 unless the machine declares otherwise
+     tray        the bar shows a system tray
      monitors    the raw ordered list, unchanged
 */ -}}
 {{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
@@ -43,6 +44,7 @@
       "gametrak"   (has "gametrak" $machine.autostart)
       "wallpapers" (dig "wallpaper_dir" "" $machine)
       "dunst_monitor" (dig "dunst_monitor" 0 $machine)
+      "tray"      (dig "tray" false $machine)
       "monitors"  $machine.monitors
       "autostart" $machine.autostart
       "commands"  .autostart_commands

@@ -1,12 +1,16 @@
 {{- $m := includeTemplate "machine" . | fromJson -}}
-// waybar — the bar for machines that cannot run hyprpanel (Arch Linux ARM has
-// no hyprpanel package). Layout follows the hyprpanel bar so the two machines
-// feel alike: power + workspaces on the left, status cluster on the right. With
-// no media module, the focused app takes the middle instead.
+// waybar — the bar on every machine. Layout follows the hyprpanel bar it
+// replaced: power menu + workspaces on the left, the focused app in the middle,
+// status cluster on the right.
 //
-// Battery and backlight are emitted only on laptops; workspace pinning only on
-// a machine that actually has two displays. Both come from machines.toml.
+// Battery and backlight are emitted only on laptops, the tray only where a
+// machine asks for it, and workspace pinning only on a machine that actually
+// has two displays. All of it comes from machines.toml.
 {
+{{- with dig "output" "" $m.external }}
+    // The role-less extra display gets no bar.
+    "output": ["!{{ . }}", "*"],
+{{- end }}
     "layer": "top",
     "position": "top",
     "fixed-center": true,
@@ -26,23 +30,23 @@
     "modules-center": [
         "hyprland/window"
     ],
-    // No tray: its only item is nm-applet, which duplicates the network
-    // module, and waybar cannot hide a single item (hyprpanel ignores it).
+    // The tray is opt-in per machine: waybar cannot hide a single item, and on
+    // a machine whose only item is nm-applet it just duplicates the network
+    // module.
     "modules-right": [
         "group/volume",
 {{ if $m.laptop }}        "group/brightness",
 {{ end }}        "network",
         "bluetooth",
 {{ if $m.laptop }}        "battery",
+{{ end }}{{ if $m.tray }}        "tray",
 {{ end }}        "clock"
     ],
 
     "custom/power": {
-        "format": "⏻",
-        "tooltip-format": "left-click: shutdown\nmiddle-click: suspend\nright-click: reboot",
-        "on-click": "shutdown now",
-        "on-click-right": "reboot",
-        "on-click-middle": "systemctl suspend"
+        "format": "󰣇",
+        "tooltip-format": "Power menu",
+        "on-click": "~/.config/hypr/scripts/picker.sh power"
     },
 
     "hyprland/workspaces": {
@@ -241,6 +245,11 @@
         ],
         "tooltip-format": "{capacity}% — {timeTo}\nPower draw: {power}W",
         "interval": 30
+    },
+{{ end }}{{ if $m.tray }}
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
     },
 {{ end }}
     "clock": {
