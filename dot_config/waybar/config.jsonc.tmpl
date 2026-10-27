@@ -124,7 +124,13 @@
         "status-icons": {
             "paused": "󰏤"
         },
-        "tooltip-format": "{player}: {title}\n{artist} — {album}"
+        "tooltip-format": "{player}: {title}\n{artist} — {album}",
+        // Scroll steps mpd's own volume, the same as SUPER + UP/DOWN. Not
+        // through MPRIS: mpd-mpris never refreshes its Volume property after an
+        // mpc change, so stepping from what it reports drifts.
+        "smooth-scrolling-threshold": 5,
+        "on-scroll-up": "mpc -q volume +5",
+        "on-scroll-down": "mpc -q volume -5"
     },
 
     // Hovering a level icon slides its percentage out beside it, so the number
