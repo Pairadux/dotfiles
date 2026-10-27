@@ -51,9 +51,9 @@
 #                 Wayland ("No digits found"). So it cannot be derived --
 #                 find it by trial and record it here. Omit on single-head
 #                 machines, where the default 0 is already correct.
-#   tray          true shows a system tray on the bar. Omit it where the only
-#                 tray item would be nm-applet, which the network module
-#                 already covers.
+#   tray          true shows a system tray on the bar, and nm-applet's icon
+#                 in it replaces the bar's network module. Omit it where
+#                 nm-applet would be the only tray item.
 #
 # Monitor keys
 #   output     connector name as reported by `hyprctl monitors`.
