@@ -1,4 +1,9 @@
 {{- $m := includeTemplate "machine" . | fromJson -}}
+{{- /* While Sunshine streams, stream-display.sh swaps the desk for a single
+       headless STREAM output that stands in for the primary display, so it
+       gets the primary's lock screen too. hyprlock skips widgets for an
+       output that isn't connected. */ -}}
+{{- $primaries := list $m.primary "STREAM" -}}
 source = ~/.config/hypr/hyprpaper-wallpaper.conf
 source = ~/.config/hypr/fonts.conf
 
@@ -20,19 +25,11 @@ background {
     vibrancy = 0.1696
     vibrancy_darkness = 0.0
 }
+{{ end -}}
+{{ range $primaries -}}
 background {
-    monitor = {{ $m.primary }}
-    path = $wallpaper_bottom
-    blur_passes = 3
-    contrast = 0.8916
-    brightness = 0.8172
-    vibrancy = 0.1696
-    vibrancy_darkness = 0.0
-}
-{{ else -}}
-background {
-    monitor = {{ $m.primary }}
-    path = $wallpaper_main
+    monitor = {{ . }}
+    path = {{ if $m.multihead }}$wallpaper_bottom{{ else }}$wallpaper_main{{ end }}
     blur_passes = 3
     contrast = 0.8916
     brightness = 0.8172
@@ -44,10 +41,10 @@ background {
 general {
     hide_cursor = false
 }
-
+{{ range $primaries }}
 # INPUT FIELD
 input-field {
-    monitor = {{ $m.primary }}
+    monitor = {{ . }}
     size = 250, 60
     outline_thickness = 2
     dots_size = 0.2 # Scale of input-field height, 0.2 - 0.8
@@ -69,7 +66,7 @@ input-field {
 
 # TIME
 label {
-    monitor = {{ $m.primary }}
+    monitor = {{ . }}
     text = cmd[update:1000] echo "$(date +"%-I:%M%p")"
     color = $fg
     font_size = 120
@@ -81,7 +78,7 @@ label {
 
 # USER
 label {
-    monitor = {{ $m.primary }}
+    monitor = {{ . }}
     text = Hi there, $USER
     color = $fg
     font_size = 25
@@ -90,3 +87,4 @@ label {
     halign = center
     valign = center
 }
+{{ end -}}
