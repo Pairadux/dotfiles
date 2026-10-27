@@ -22,13 +22,34 @@ hypr() {
     hyprctl --instance 0 "$@"
 }
 
+# Scale a WIDTH HEIGHT mode to about 1080 logical pixels tall, so a high-DPI
+# client gets the text size a 1080p one does. Hyprland only takes a scale that
+# divides the mode into whole logical pixels, and otherwise swaps in the
+# nearest one behind a warning, so run that same 1/120-step search here.
+client_scale() {
+    awk -v w="$1" -v h="$2" '
+        function clean(n) { return n >= 120 && w / (n / 120) == int(w / (n / 120)) && h / (n / 120) == int(h / (n / 120)) }
+        BEGIN {
+            base = int(h / 1080 * 120 + 0.5)
+            if (base < 120) base = 120
+            for (i = 0; i < 90; i++) {
+                if (clean(base + i)) { print (base + i) / 120; exit }
+                if (clean(base - i)) { print (base - i) / 120; exit }
+            }
+            print 1
+        }'
+}
+
 case "$1" in
     start)
-        mode="${SUNSHINE_CLIENT_WIDTH:-1920}x${SUNSHINE_CLIENT_HEIGHT:-1080}@${SUNSHINE_CLIENT_FPS:-60}"
+        width="${SUNSHINE_CLIENT_WIDTH:-1920}"
+        height="${SUNSHINE_CLIENT_HEIGHT:-1080}"
+        mode="${width}x${height}@${SUNSHINE_CLIENT_FPS:-60}"
+        scale=$(client_scale "$width" "$height")
 
         # A session that ended without its undo leaves the output behind.
         hypr monitors | grep -q "^Monitor $OUTPUT " || hypr output create headless "$OUTPUT"
-        hypr eval "hl.monitor({ output = '$OUTPUT', mode = '$mode', position = 'auto', scale = 1 })"
+        hypr eval "hl.monitor({ output = '$OUTPUT', mode = '$mode', position = 'auto', scale = $scale })"
 
         # Disable the rest only once the virtual output is up, so Hyprland is
         # never left with no monitor at all.
