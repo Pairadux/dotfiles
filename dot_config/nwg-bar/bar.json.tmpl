@@ -1,0 +1,31 @@
+{{- /* nwg-bar splits each exec on spaces and runs it without a shell, so a
+       command can't use quotes or pipes: the Lua passed to hyprctl eval has
+       to stay free of spaces. The underscore in each label makes the next
+       letter an Alt shortcut. */ -}}
+[
+  {
+    "label": "_Lock",
+    "exec": "hyprlock",
+    "icon": "{{ .chezmoi.homeDir }}/.config/nwg-bar/icons/lock.png"
+  },
+  {
+    "label": "_Suspend",
+    "exec": "systemctl suspend",
+    "icon": "{{ .chezmoi.homeDir }}/.config/nwg-bar/icons/suspend.png"
+  },
+  {
+    "label": "Log _out",
+    "exec": "hyprctl eval hl.dispatch(hl.dsp.exit())",
+    "icon": "{{ .chezmoi.homeDir }}/.config/nwg-bar/icons/logout.png"
+  },
+  {
+    "label": "_Reboot",
+    "exec": "systemctl reboot",
+    "icon": "{{ .chezmoi.homeDir }}/.config/nwg-bar/icons/reboot.png"
+  },
+  {
+    "label": "Shut _down",
+    "exec": "systemctl poweroff",
+    "icon": "{{ .chezmoi.homeDir }}/.config/nwg-bar/icons/shutdown.png"
+  }
+]

@@ -1,0 +1,47 @@
+/*
+  Tokyo Night — nwg-bar power menu
+  -----------------------------------------
+  Matches waybar: the same slab and red border (Hyprland's active window
+  border), with buttons that light up like waybar's pills. The icons are
+  rendered from the Nerd Font glyphs the bar uses, coloured by how drastic
+  the action is: blue, purple, yellow, orange, red.
+*/
+
+window {
+  background-color: transparent;
+}
+
+#outer-box {
+  margin: 0;
+}
+
+#inner-box {
+  background-color: #1a1b26;
+  border: 2px solid #f7768e;
+  border-radius: 12px;
+  padding: 10px;
+  margin: 0;
+}
+
+button,
+image {
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+
+button {
+  color: #a9b1d6;
+  font-family: "FiraCode Nerd Font Propo", "FiraCode Nerd Font", monospace;
+  font-size: 15px;
+  padding: 14px 20px 10px 20px;
+  margin: 4px;
+  border-radius: 10px;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+button:hover,
+button:focus {
+  background-color: #24283b;
+  color: #c0caf5;
+}
