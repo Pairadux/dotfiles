@@ -3,8 +3,9 @@
   -----------------------------------------
   background:       #1a1b26
   secondary bg:     #16161e
+  pill bg:          #24283b
   accent bg:        #292e42
-  border color:     #414868
+  border color:     #f7768e  (Hyprland's active window border)
   foreground:       #c0caf5
   dim text:         #545c7e
   red:              #f7768e
@@ -15,12 +16,14 @@
   cyan:             #7dcfff
   teal:             #73daca
 
-  Structure mirrors hyprpanel's bar: a floating rounded slab, flat modules with
-  no per-module chrome, colour used only to tell the status cluster apart.
+  Structure follows hyprpanel's bar: a floating rounded slab with each module
+  on its own soft pill, colour used only to tell the status cluster apart.
 */
 
 @define-color bg        #1a1b26;
 @define-color bg_alt    #16161e;
+@define-color pill      #24283b;
+@define-color accent_bg #292e42;
 @define-color border    #f7768e;
 @define-color fg        #c0caf5;
 @define-color dim       #545c7e;
@@ -61,16 +64,24 @@ window#waybar {
 }
 
 window#waybar>box {
-  padding: 6px;
+  padding: 5px;
 }
 
-/* Edge padding lives here rather than in custom/padd spacer modules. */
-.modules-left {
-  padding-left: 10px;
-}
-
-.modules-right {
-  padding-right: 10px;
+/* Every module sits on its own pill. A drawer group gets one pill around the
+   icon and the level it slides out, so the two read as one control. */
+#custom-power,
+#workspaces,
+#window,
+#volume,
+#brightness,
+#network,
+#bluetooth,
+#battery,
+#tray,
+#clock {
+  background: @pill;
+  border-radius: 7px;
+  margin: 0 3px;
 }
 
 tooltip {
@@ -91,9 +102,10 @@ tooltip label {
    ------------------------------------------------------ */
 
 #custom-power {
-  color: @fg;
+  color: @blue;
+  font-size: 18px;
   font-weight: normal;
-  padding: 0 6px 0 6px;
+  padding: 0 13px 0 11px;
 }
 
 #custom-power:hover {
@@ -101,15 +113,16 @@ tooltip label {
 }
 
 #workspaces {
-  background: transparent;
   color: @dim;
+  padding: 0 3px;
 }
 
 #workspaces button {
   background: transparent;
   color: @dim;
   padding: 0 6px;
-  border-radius: 6px;
+  margin: 3px 0;
+  border-radius: 5px;
   transition: color 0.2s ease, background 0.2s ease;
 }
 
@@ -126,7 +139,7 @@ tooltip label {
 }
 
 #workspaces button:hover {
-  background: @bg_alt;
+  background: @accent_bg;
   color: @green;
 }
 
@@ -137,11 +150,14 @@ tooltip label {
 #window {
   color: @dim;
   font-weight: normal;
+  padding: 0 12px;
 }
 
-/* Empty workspace: hyprland/window emits nothing, so drop the padding too. */
+/* Empty workspace: hyprland/window emits nothing, so drop its pill too. */
 window#waybar.empty #window {
+  background: transparent;
   padding: 0;
+  margin: 0;
 }
 
 /* ------------------------------------------------------
@@ -156,6 +172,34 @@ window#waybar.empty #window {
 #clock {
   font-weight: normal;
   padding: 0 11px;
+}
+
+#tray {
+  padding: 0 11px;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+}
+
+/* Tray menus are GTK menus, so they take this stylesheet rather than the
+   app's own look. */
+#tray menu {
+  background: @bg;
+  color: @fg;
+  font-weight: normal;
+  border: 1px solid @accent_bg;
+  border-radius: 6px;
+  padding: 4px;
+}
+
+#tray menu menuitem {
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+#tray menu menuitem:hover {
+  background: @pill;
 }
 
 #pulseaudio {
