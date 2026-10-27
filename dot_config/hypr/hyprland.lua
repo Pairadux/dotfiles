@@ -17,8 +17,37 @@ end
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 
-for _, m in ipairs(machine.monitors) do
-    hl.monitor({ output = m.output, mode = m.mode, position = m.position, scale = m.scale, transform = m.transform })
+--- The virtual display stream-display.sh swapped in while Sunshine streams, or
+--- nil. It leaves the client's mode in a runtime file; the output is checked
+--- too, since the file outlives a Hyprland restart and the output does not.
+--- @return table|nil
+local function active_stream()
+    local state = loadfile(os.getenv("XDG_RUNTIME_DIR") .. "/stream-display.lua")
+    local stream = state and state()
+    if stream and hl.get_monitor(stream.output) then
+        return stream
+    end
+end
+
+-- Applying the stream layout here, rather than only from the script, is what
+-- keeps a reload mid-stream from lighting the desk back up.
+local stream = active_stream()
+if stream then
+    hl.monitor({ output = stream.output, mode = stream.mode, position = "auto", scale = stream.scale })
+    -- get_monitors only lists enabled outputs, so the configured ones are named
+    -- as well, or a reload would re-enable those already switched off.
+    for _, m in ipairs(machine.monitors) do
+        hl.monitor({ output = m.output, disabled = true })
+    end
+    for _, m in ipairs(hl.get_monitors()) do
+        if m.name ~= stream.output then
+            hl.monitor({ output = m.name, disabled = true })
+        end
+    end
+else
+    for _, m in ipairs(machine.monitors) do
+        hl.monitor({ output = m.output, mode = m.mode, position = m.position, scale = m.scale, transform = m.transform })
+    end
 end
 
 ---------------------

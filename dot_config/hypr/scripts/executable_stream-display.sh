@@ -13,8 +13,13 @@
 # capture with `capture = wlr` and no `output_name`: KMS cannot see a headless
 # output, and once the physical displays are off the virtual one is the only
 # output, so Sunshine's default of the first output is the right one.
+#
+# The layout itself is applied by hyprland.lua, which reads STATE on every
+# reload: a reload mid-stream then keeps the stream instead of re-enabling the
+# physical displays, and this script only has to set or clear the state.
 
 OUTPUT="STREAM"
+STATE="$XDG_RUNTIME_DIR/stream-display.lua"
 
 # Sunshine runs as a systemd user service, which never gets
 # HYPRLAND_INSTANCE_SIGNATURE, so address the running instance explicitly.
@@ -49,11 +54,16 @@ case "$1" in
 
         # A session that ended without its undo leaves the output behind.
         hypr monitors | grep -q "^Monitor $OUTPUT " || hypr output create headless "$OUTPUT"
-        hypr eval "hl.monitor({ output = '$OUTPUT', mode = '$mode', position = 'auto', scale = $scale })"
 
-        # Disable the rest only once the virtual output is up, so Hyprland is
-        # never left with no monitor at all.
-        hypr eval "for _, m in ipairs(hl.get_monitors()) do if m.name ~= '$OUTPUT' then hl.monitor({ output = m.name, disabled = true }) end end"
+        # The config only applies the layout once it sees the virtual output, so
+        # wait for it before reloading. That also means Hyprland is never left
+        # with no monitor at all.
+        for _ in {1..20}; do
+            hypr monitors | grep -q "^Monitor $OUTPUT " && break
+            sleep 0.1
+        done
+        echo "return { output = '$OUTPUT', mode = '$mode', scale = $scale }" > "$STATE"
+        hypr reload
 
         # hyprpaper only covers the outputs its config names, so hand the
         # virtual one the primary display's wallpaper: the bottom slice of a
@@ -66,8 +76,7 @@ case "$1" in
         done
         ;;
     stop)
-        # The rules set above only live until a reload, which re-applies the
-        # config's own monitor rules and so re-enables the physical displays.
+        rm -f "$STATE"
         hypr reload
 
         # Same ordering concern as start: wait for a physical display to come
