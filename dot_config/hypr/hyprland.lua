@@ -236,6 +236,7 @@ hl.bind(mainMod .. " + Tab",           hl.dsp.window.bring_to_top())
 hl.bind(mainMod .. " + V",             hl.dsp.window.float(),                             desc("Windows: Toggle floating"))
 hl.bind(mainMod .. " + HOME",          hl.dsp.window.fullscreen({ mode = "maximized" }),  desc("Windows: Maximize"))
 hl.bind(mainMod .. " + SHIFT + HOME",  hl.dsp.window.fullscreen({ mode = "fullscreen" }), desc("Windows: Fullscreen"))
+hl.bind(mainMod .. " + SHIFT + UP",    hl.dsp.window.fullscreen({ mode = "fullscreen" }), desc("Windows: Fullscreen"))
 -- Toggle split orientation: side-by-side <-> top/bottom
 hl.bind(mainMod .. " + SHIFT + SPACE", hl.dsp.layout("togglesplit"),                      desc("Windows: Toggle split direction"))
 hl.bind(mainMod .. " + mouse:272",     hl.dsp.window.drag(),   { mouse = true, description = "Windows: Drag to move" })
