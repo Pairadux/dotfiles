@@ -46,7 +46,7 @@
      cell rather than by what is drawn and the gaps come out uneven. */
   font-family: "FiraCode Nerd Font Propo", "FiraCode Nerd Font", monospace;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 15px;
   /* kill GTK's default button chrome everywhere */
   box-shadow: none;
   text-shadow: none;
@@ -66,7 +66,7 @@ window#waybar {
 }
 
 window#waybar>box {
-  padding: 6px;
+  padding: 5px;
 }
 
 /* Every module sits on its own pill. A drawer group gets one pill around the
@@ -106,7 +106,7 @@ tooltip label {
 
 #custom-power {
   color: @blue;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: normal;
   padding: 0 14px 0 12px;
 }
@@ -124,7 +124,7 @@ tooltip label {
   background: transparent;
   color: @dim;
   padding: 0 8px;
-  margin: 4px 1px;
+  margin: 3px 1px;
   border-radius: 6px;
   transition: color 0.2s ease, background 0.2s ease;
 }
@@ -217,7 +217,7 @@ window#waybar.empty #window {
 
 #pulseaudio {
   color: @blue;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 #pulseaudio.muted {
@@ -226,20 +226,20 @@ window#waybar.empty #window {
 
 #backlight {
   color: @yellow;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 /* The percentage a level drawer slides out: text-sized rather than icon-sized,
    and tucked up against the icon it belongs to. */
 #pulseaudio.level,
 #backlight.level {
-  font-size: 15px;
+  font-size: 14px;
   padding-right: 0;
 }
 
 #network {
   color: @fg;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 /* The wifi fan tapers to a point, so equal padding reads as a wider gap on
@@ -255,7 +255,7 @@ window#waybar.empty #window {
 
 #bluetooth {
   color: @cyan;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 #bluetooth.disabled,
@@ -265,7 +265,7 @@ window#waybar.empty #window {
 
 #battery {
   color: @green;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 #battery.charging,
@@ -291,6 +291,22 @@ window#waybar.empty #window {
 
 #clock {
   color: @fg;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 900;
+}
+
+/* ------------------------------------------------------
+   6) Text baseline
+   ------------------------------------------------------ */
+
+/* FiraCode's line box leaves room for descenders, so capitals and digits sit
+   above the middle of a pill while the icons sit centred. Nudge the text-only
+   labels down to match. Last in the file so it wins over each module's own
+   padding shorthand. */
+#window,
+#mpris,
+#clock,
+#pulseaudio.level,
+#backlight.level {
+  padding-top: 2px;
 }
