@@ -84,7 +84,7 @@ window#waybar>box {
 #clock {
   background: @pill;
   border-radius: 8px;
-  margin: 0 4px;
+  margin: 0 3px;
 }
 
 tooltip {
@@ -108,7 +108,7 @@ tooltip label {
   color: @blue;
   font-size: 18px;
   font-weight: normal;
-  padding: 0 16px 0 14px;
+  padding: 0 14px 0 12px;
 }
 
 #custom-power:hover {
@@ -117,13 +117,13 @@ tooltip label {
 
 #workspaces {
   color: @dim;
-  padding: 0 5px;
+  padding: 0 4px;
 }
 
 #workspaces button {
   background: transparent;
   color: @dim;
-  padding: 0 10px;
+  padding: 0 8px;
   margin: 4px 1px;
   border-radius: 6px;
   transition: color 0.2s ease, background 0.2s ease;
@@ -153,17 +153,13 @@ tooltip label {
 #window {
   color: @fg_soft;
   font-weight: normal;
-  padding: 0 15px;
-}
-
-#window image {
-  margin-right: 9px;
+  padding: 0 13px;
 }
 
 #mpris {
   color: @purple;
   font-weight: normal;
-  padding: 0 15px;
+  padding: 0 13px;
 }
 
 #mpris.paused {
@@ -188,11 +184,11 @@ window#waybar.empty #window {
 #battery,
 #clock {
   font-weight: normal;
-  padding: 0 14px;
+  padding: 0 12px;
 }
 
 #tray {
-  padding: 0 14px;
+  padding: 0 12px;
 }
 
 #tray > .needs-attention {
