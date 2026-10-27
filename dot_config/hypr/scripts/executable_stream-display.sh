@@ -33,6 +33,16 @@ case "$1" in
         # Disable the rest only once the virtual output is up, so Hyprland is
         # never left with no monitor at all.
         hypr eval "for _, m in ipairs(hl.get_monitors()) do if m.name ~= '$OUTPUT' then hl.monitor({ output = m.name, disabled = true }) end end"
+
+        # hyprpaper only covers the outputs its config names, so hand the
+        # virtual one the primary display's wallpaper: the bottom slice of a
+        # stacked pair, or the whole image on a single display. It rejects an
+        # output it has not seen yet, so retry until the new one reaches it.
+        wallpaper=$(sed -nE 's/^\$wallpaper_(bottom|main) = //p' "$HOME/.config/hypr/hyprpaper-wallpaper.conf")
+        for _ in {1..20}; do
+            hypr hyprpaper wallpaper "$OUTPUT,$wallpaper" && break
+            sleep 0.1
+        done
         ;;
     stop)
         # The rules set above only live until a reload, which re-applies the
