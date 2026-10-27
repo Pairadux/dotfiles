@@ -7,6 +7,7 @@
   accent bg:        #292e42
   border color:     #f7768e  (Hyprland's active window border)
   foreground:       #c0caf5
+  soft text:        #a9b1d6
   dim text:         #545c7e
   red:              #f7768e
   green:            #9ece6a
@@ -26,6 +27,7 @@
 @define-color accent_bg #292e42;
 @define-color border    #f7768e;
 @define-color fg        #c0caf5;
+@define-color fg_soft   #a9b1d6;
 @define-color dim       #545c7e;
 @define-color red       #f7768e;
 @define-color green     #9ece6a;
@@ -64,7 +66,7 @@ window#waybar {
 }
 
 window#waybar>box {
-  padding: 5px;
+  padding: 6px;
 }
 
 /* Every module sits on its own pill. A drawer group gets one pill around the
@@ -72,6 +74,7 @@ window#waybar>box {
 #custom-power,
 #workspaces,
 #window,
+#mpris,
 #volume,
 #brightness,
 #network,
@@ -80,8 +83,8 @@ window#waybar>box {
 #tray,
 #clock {
   background: @pill;
-  border-radius: 7px;
-  margin: 0 3px;
+  border-radius: 8px;
+  margin: 0 4px;
 }
 
 tooltip {
@@ -105,7 +108,7 @@ tooltip label {
   color: @blue;
   font-size: 18px;
   font-weight: normal;
-  padding: 0 13px 0 11px;
+  padding: 0 16px 0 14px;
 }
 
 #custom-power:hover {
@@ -114,15 +117,15 @@ tooltip label {
 
 #workspaces {
   color: @dim;
-  padding: 0 3px;
+  padding: 0 5px;
 }
 
 #workspaces button {
   background: transparent;
   color: @dim;
-  padding: 0 6px;
-  margin: 3px 0;
-  border-radius: 5px;
+  padding: 0 10px;
+  margin: 4px 1px;
+  border-radius: 6px;
   transition: color 0.2s ease, background 0.2s ease;
 }
 
@@ -148,9 +151,23 @@ tooltip label {
    ------------------------------------------------------ */
 
 #window {
-  color: @dim;
+  color: @fg_soft;
   font-weight: normal;
-  padding: 0 12px;
+  padding: 0 15px;
+}
+
+#window image {
+  margin-right: 9px;
+}
+
+#mpris {
+  color: @purple;
+  font-weight: normal;
+  padding: 0 15px;
+}
+
+#mpris.paused {
+  color: @fg_soft;
 }
 
 /* Empty workspace: hyprland/window emits nothing, so drop its pill too. */
@@ -171,11 +188,11 @@ window#waybar.empty #window {
 #battery,
 #clock {
   font-weight: normal;
-  padding: 0 11px;
+  padding: 0 14px;
 }
 
 #tray {
-  padding: 0 11px;
+  padding: 0 14px;
 }
 
 #tray > .needs-attention {
