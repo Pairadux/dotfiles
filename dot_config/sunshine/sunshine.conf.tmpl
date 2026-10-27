@@ -1,0 +1,5 @@
+capture = wlr
+encoder = vaapi
+global_prep_cmd = [{"do":"{{ .chezmoi.homeDir }}/.config/hypr/scripts/stream-display.sh start","undo":"{{ .chezmoi.homeDir }}/.config/hypr/scripts/stream-display.sh stop"}]
+origin_web_ui_allowed = pc
+upnp = disabled
