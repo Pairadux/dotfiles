@@ -261,7 +261,6 @@ return {
             local ensure_installed = {
                 'bash-language-server',
                 'lua-language-server',
-                'hyprls',
                 'stylua',
                 'prettier',
                 'clang-format',
@@ -276,6 +275,12 @@ return {
                 'golangci-lint',
                 'gdtoolkit', -- provides the gdformat binary (gdlint also installed, unused)
             }
+            -- Mason has no Linux arm64 build of hyprls, so there it comes from the
+            -- AUR `hyprls` package and is found on PATH. Only Linux reports
+            -- `aarch64` (macOS says `arm64`), so Apple Silicon Macs keep Mason's.
+            if vim.uv.os_uname().machine ~= 'aarch64' then
+                table.insert(ensure_installed, 'hyprls')
+            end
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
         end,
     },
