@@ -52,14 +52,6 @@ use_sudo = true
 
 
 
-[pre_commands]
-# Dart tooling rewrites the SDK's own pubspec.lock when it re-resolves deps.
-# `flutter upgrade` hard-resets and refuses on a dirty tree, so drop that
-# generated churn before the flutter step runs.
-"Reset Flutter SDK lockfile" = "git -C $HOME/.local/share/flutter-sdk cat-file -e HEAD:pubspec.lock && { git -C $HOME/.local/share/flutter-sdk diff --quiet -- pubspec.lock && git -C $HOME/.local/share/flutter-sdk diff --cached --quiet -- pubspec.lock; } || git -C $HOME/.local/share/flutter-sdk restore pubspec.lock; true"
-
-
-
 [commands]
 # Skips itself unless the last backup is older than 20h, so a re-run of topgrade
 # on the same day costs only a remote listing. Invoked by name rather than by
