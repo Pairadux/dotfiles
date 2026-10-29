@@ -2,6 +2,11 @@
 
 ######################################## EXPORT ENVIRONMENT VARIABLE ########################################
 
+# Shells under Hyprland inherit ZDOTDIR, so zsh looks for $ZDOTDIR/.zshenv —
+# a symlink back to this file. That makes it run in every shell, nested ones
+# included, so everything below must be safe to re-run: dedup PATH up front.
+typeset -U path
+
 # XDG
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -52,7 +57,7 @@ export HOMEBREW_NO_ENV_HINTS=true
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+export FZF_DEFAULT_OPTS="\
     --highlight-line \
     --info=inline-right \
     --layout=reverse \
