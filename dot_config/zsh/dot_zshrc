@@ -3,7 +3,9 @@
 # +-----------+
 # | PROFILING |
 # +-----------+
-zmodload zsh/zprof
+# Opt-in, since zprof times every function call for the life of the shell:
+# start one with `ZPROF=1 zsh`, then run `zprof` in it.
+[[ -n $ZPROF ]] && zmodload zsh/zprof
 
 # +------+
 # | OPTS |
