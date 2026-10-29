@@ -126,8 +126,9 @@ if [[ $OSTYPE == darwin* ]]; then
     export PATH="/Applications/MEGAcmd.app/Contents/MacOS:$PATH"
 fi
 
-# bob manages the neovim install, so a missing bob env means no nvim and a
-# broken $EDITOR. Warn rather than abort: a fresh machine still needs a usable
+# bob manages the neovim install where it's set up. Without it, warn only if no
+# other nvim is on PATH (e.g. a distro package), since that's what leaves
+# $EDITOR broken. Warn rather than abort: a fresh machine still needs a usable
 # shell to fix itself with.
 #
 # The warning is gated on an interactive shell on purpose. .zshenv is sourced
@@ -135,8 +136,8 @@ fi
 # corrupts sftp/rsync-over-ssh sessions.
 if [[ -r "$HOME/.local/share/bob/env/env.sh" ]]; then
     . "$HOME/.local/share/bob/env/env.sh"
-elif [[ -o interactive ]]; then
-    print -u2 -P "%F{red}zshenv:%f bob is not set up — install bob, then 'bob use stable'"
+elif [[ -o interactive ]] && ! command -v nvim >/dev/null; then
+    print -u2 -P "%F{red}zshenv:%f nvim not found — install bob, then 'bob use stable'"
 fi
 
 # deadlock

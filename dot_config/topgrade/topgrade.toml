@@ -9,7 +9,9 @@
 pre_sudo = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["gcloud", "self_update"]
+# pnpm: no global packages, and pnpm refuses `root -g` while its global bin
+# dir is off PATH, so the step only ever fails.
+disable = ["gcloud", "self_update", "pnpm"]
 
 # Display the time in step titles (default: true)
 display_time = true
@@ -49,14 +51,6 @@ use_sudo = false
 [flatpak]
 # Use sudo for system-wide flatpak updates
 use_sudo = true
-
-
-
-[pre_commands]
-# Dart tooling rewrites the SDK's own pubspec.lock when it re-resolves deps.
-# `flutter upgrade` hard-resets and refuses on a dirty tree, so drop that
-# generated churn before the flutter step runs.
-"Reset Flutter SDK lockfile" = "git -C $HOME/.local/share/flutter-sdk cat-file -e HEAD:pubspec.lock && { git -C $HOME/.local/share/flutter-sdk diff --quiet -- pubspec.lock && git -C $HOME/.local/share/flutter-sdk diff --cached --quiet -- pubspec.lock; } || git -C $HOME/.local/share/flutter-sdk restore pubspec.lock; true"
 
 
 

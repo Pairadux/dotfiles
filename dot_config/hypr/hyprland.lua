@@ -227,7 +227,7 @@ hl.bind(mainMod .. " + Q",     hl.dsp.exec_cmd("qimgv"),     desc("Apps: Image v
 hl.bind(mainMod .. " + A",     hl.dsp.exec_cmd("nwg-drawer -nofs -ovl -wm hyprland -k -c 8 -is 64 -spacing 16"), desc("Apps: App drawer"))
 
 -- Named workspaces: the letter goes there, SHIFT + the letter sends the window
--- there. Each one spawns its app when first opened empty (see workspace rules), so
+-- there. Each one spawns its app when first opened empty (see spawnOnEmpty), so
 -- a second instance is CTRL + the letter for the terminal and browser, and a job
 -- for the launcher otherwise.
 local named = {
@@ -480,22 +480,46 @@ if machine.multihead then
     hl.workspace_rule({ workspace = "5",  monitor = machine.secondary })
     hl.workspace_rule({ workspace = "6",  monitor = machine.secondary })
     hl.workspace_rule({ workspace = "7",  monitor = machine.secondary })
-    hl.workspace_rule({ workspace = "8",  monitor = machine.secondary, on_created_empty = "ticktick" })
-    hl.workspace_rule({ workspace = "9",  monitor = machine.secondary, on_created_empty = "spotify" })
+    hl.workspace_rule({ workspace = "8",  monitor = machine.secondary })
+    hl.workspace_rule({ workspace = "9",  monitor = machine.secondary })
     hl.workspace_rule({ workspace = "10", monitor = machine.secondary })
 end
 
 -- Named launcher workspaces. pin() collapses to nil on a single display, so
 -- these carry no monitor there and stay safe.
-hl.workspace_rule({ workspace = "20", monitor = pin(machine.primary), on_created_empty = terminal })
-hl.workspace_rule({ workspace = "30", monitor = pin(machine.secondary), on_created_empty = browser })
-hl.workspace_rule({ workspace = "50", monitor = pin(machine.primary), on_created_empty = "gtk-launch steam" })
+hl.workspace_rule({ workspace = "20", monitor = pin(machine.primary) })
+hl.workspace_rule({ workspace = "30", monitor = pin(machine.secondary) })
+hl.workspace_rule({ workspace = "50", monitor = pin(machine.primary) })
 
 if machine.multihead then
-    hl.workspace_rule({ workspace = "40", monitor = machine.secondary, on_created_empty = "gtk-launch discord" })
-    hl.workspace_rule({ workspace = "60", monitor = machine.secondary, on_created_empty = "gtk-launch com.fastmail.Fastmail" })
-    hl.workspace_rule({ workspace = "70", monitor = machine.secondary, on_created_empty = "obsidian" })
+    hl.workspace_rule({ workspace = "40", monitor = machine.secondary })
+    hl.workspace_rule({ workspace = "60", monitor = machine.secondary })
+    hl.workspace_rule({ workspace = "70", monitor = machine.secondary })
 end
+
+-- The app each workspace spawns when it is first opened empty, by workspace id.
+local spawnOnEmpty = {
+    [20] = terminal,
+    [30] = browser,
+    [50] = "gtk-launch steam",
+}
+if machine.multihead then
+    spawnOnEmpty[8]  = "ticktick"
+    spawnOnEmpty[9]  = "spotify"
+    spawnOnEmpty[40] = "gtk-launch discord"
+    spawnOnEmpty[60] = "gtk-launch com.fastmail.Fastmail"
+    spawnOnEmpty[70] = "obsidian"
+end
+
+-- Stands in for the on_created_empty workspace rule, deprecated in 0.57.
+-- "silent" lands the app on its workspace without dragging focus back there if
+-- you have already moved on.
+hl.on("workspace.created", function(ws)
+    local cmd = spawnOnEmpty[ws.id]
+    if cmd and ws.is_empty then
+        hl.exec_cmd(cmd, { workspace = ws.addressable_name .. " silent" })
+    end
+end)
 
 hl.workspace_rule({
     workspace   = "100",
