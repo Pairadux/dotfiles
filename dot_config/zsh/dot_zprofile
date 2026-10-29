@@ -8,14 +8,11 @@ if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-clou
 if [ -f "/etc/profile.d/google-cloud-cli.sh" ]; then . "/etc/profile.d/google-cloud-cli.sh"; fi
 
 # brew (must be here to override system path_helper)
-if [[ "$(uname)" == "Darwin" ]]; then
+if [[ $OSTYPE == darwin* ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# cargo
-[ -s "$HOME/.cargo/env" ] && \. "$HOME/.cargo/env"
-
 # hyprland
-if [ -z "$DISPLAY" ] && [ "$(tty)" = "/dev/tty1" ]; then
+if [ -z "$DISPLAY" ] && [ "$TTY" = "/dev/tty1" ]; then
     exec start-hyprland
 fi

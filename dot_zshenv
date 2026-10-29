@@ -117,7 +117,7 @@ export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOBIN:$PATH"
 }
 
 # pagers
-if [[ "$(uname)" == "Darwin" ]]; then
+if [[ $OSTYPE == darwin* ]]; then
     export LESSOPEN="| /opt/homebrew/bin/src-hilite-lesspipe.sh %s"
     export LESS='-R '
     export MANPAGER="less -R"

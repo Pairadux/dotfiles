@@ -40,7 +40,7 @@ source "$ZDOTDIR/extras/zstyles"
 # | FPATH |
 # +-------+
 fpath+=("$ZDOTDIR/completions")
-if [[ "$(uname)" = "Darwin" ]]; then
+if [[ $OSTYPE == darwin* ]]; then
     fpath+=($(brew --prefix)/share/zsh/site-functions)
 fi
 
