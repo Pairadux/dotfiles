@@ -115,6 +115,20 @@ else
     _zsh_missing zoxide "install zoxide"
 fi
 
+# +-----+
+# | NVM |
+# +-----+
+# .zshenv already puts the default node on PATH, so nvm.sh only loads the
+# first time nvm itself is run.
+if [[ -r $NVM_DIR/nvm.sh ]]; then
+    nvm() {
+        unfunction nvm
+        source "$NVM_DIR/nvm.sh" --no-use
+        [[ -r $NVM_DIR/bash_completion ]] && source "$NVM_DIR/bash_completion"
+        nvm "$@"
+    }
+fi
+
 # +---------+
 # | BINDING |
 # +---------+

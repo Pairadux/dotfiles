@@ -102,6 +102,20 @@ export NVM_DIR="$XDG_DATA_HOME/nvm"
 # path
 export PATH="$HOME/.bin:$HOME/.local/bin:$HOME/.cargo/bin:$GOBIN:$PATH"
 
+# nvm: sourcing nvm.sh costs ~90ms, so put the default node on PATH directly
+# and leave the nvm function to lazy-load in .zshrc. Aliases can chain
+# (lts/* -> lts/jod -> v22.x); the walk is bounded so a cycle can't hang every
+# shell. Stale nvm entries inherited from the login session are dropped.
+() {
+    local ver=default i
+    for i in {1..5}; do
+        [[ -f $NVM_DIR/alias/$ver ]] || break
+        ver=$(<$NVM_DIR/alias/$ver)
+    done
+    local -a node=($NVM_DIR/versions/node/v${ver#v}(|.*)(N/nOn))
+    (( $#node )) && path=($node[1]/bin ${path:#$NVM_DIR/*})
+}
+
 # pagers
 if [[ "$(uname)" == "Darwin" ]]; then
     export LESSOPEN="| /opt/homebrew/bin/src-hilite-lesspipe.sh %s"
