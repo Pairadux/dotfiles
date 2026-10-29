@@ -31,9 +31,9 @@ reload_aliases() {
     source $ZDOTDIR/extras/aliases
 }
 
+# ez-compinit owns the dump's path and flags, so let it do the rebuild
 reload_comp() {
-    rm -f $XDG_CACHE_HOME/zsh/zcompdump
-    autoload -U compinit; compinit
+    run-compinit -f
 }
 
 # JD script using fzf
