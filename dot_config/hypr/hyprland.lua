@@ -517,7 +517,7 @@ end
 hl.on("workspace.created", function(ws)
     local cmd = spawnOnEmpty[ws.id]
     if cmd and ws.is_empty then
-        hl.exec_cmd(cmd, { workspace = ws.addressable_name .. " silent" })
+        hl.exec_cmd(cmd, { workspace = ws.id .. " silent" })
     end
 end)
 
