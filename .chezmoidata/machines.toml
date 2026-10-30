@@ -92,6 +92,9 @@ mega-status     = "systemctl --user start mega-status"
 gametrak        = "gametrak"
 sunshine        = "systemctl --user start app-dev.lizardbyte.app.Sunshine"
 hypridle        = "hypridle"
+# GSR's own startup option now writes an XDG autostart entry, which nothing in
+# this session runs, so it is started here instead.
+gsr-ui          = "flatpak run com.dec05eba.gpu_screen_recorder gsr-ui"
 
 # ---------------------------------------------------------------------------
 # mutsu — x86_64 desktop, AMD GPU, three displays.
@@ -116,6 +119,7 @@ autostart = [
     "mega-status",
     "gametrak",
     "sunshine",
+    "gsr-ui",
 ]
 
 [[machines.mutsu.monitors]]
