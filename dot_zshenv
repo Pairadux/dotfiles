@@ -143,3 +143,6 @@ fi
 # deadlock
 export DL="$HOME/.local/share/Steam/steamapps/common/Deadlock"
 export CSDK="$HOME/modding/deadlock/Reduced_CSDK_12"
+
+#ssh
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
