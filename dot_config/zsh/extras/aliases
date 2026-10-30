@@ -89,6 +89,7 @@ alias nv='nvim'
 alias switch-to-mac='sudo asahi-bless --set-boot 1 --next'
 alias update='aur-maint-check && topgrade'
 alias wake='ssh hokuto wake && until tailscale ping -c 1 --timeout 3s mutsu >/dev/null 2>&1; do sleep 5; done && echo "mutsu is up"'
+alias wifireset='sudo modprobe -r brcmfmac_wcc brcmfmac && sudo modprobe brcmfmac'
 
 # *---------*
 # | CLAUDE  |
