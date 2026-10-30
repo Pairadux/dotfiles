@@ -511,11 +511,11 @@ if machine.multihead then
     spawnOnEmpty[70] = "obsidian"
 end
 
--- Stands in for the on_created_empty workspace rule, deprecated in 0.57. This
--- fires once the switch has landed, so a plain exec gets the new workspace as
--- its initial workspace (misc:initial_workspace_tracking): the app opens there
--- focused, or quietly if you have already moved on. A "silent" workspace rule
--- would never focus it.
+-- Stands in for the on_created_empty workspace rule, deprecated in 0.57. As of
+-- 0.57 this fires once the switch has landed (0.56 fired it before), so a plain
+-- exec gets the new workspace as its initial workspace
+-- (misc:initial_workspace_tracking): the app opens there focused, or quietly if
+-- you have already moved on. A "silent" workspace rule would never focus it.
 hl.on("workspace.created", function(ws)
     local cmd = spawnOnEmpty[ws.id]
     if cmd and ws.is_empty then
