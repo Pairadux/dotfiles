@@ -112,13 +112,13 @@ gphoto2 --list-folders
 gphoto2 --delete-all-files --folder <folder> --recurse
 
 # Browse Nikon JPEG imports
-ls ~/Cloud/Media/Pictures/Nikon/JPEG/
+ls ~/Pictures/Nikon/JPEG/
 
 # Browse Nikon RAW imports
-ls ~/Cloud/Media/Pictures/Nikon/RAW/
+ls ~/Pictures/Nikon/RAW/
 
 # Show import sizes by date
-du -sh ~/Cloud/Media/Pictures/Nikon/JPEG/*/ ~/Cloud/Media/Pictures/Nikon/RAW/*/
+du -sh ~/Pictures/Nikon/JPEG/*/ ~/Pictures/Nikon/RAW/*/
 
 $ folder: gphoto2 --list-folders 2>/dev/null | grep -oP "'/[^']+" | sed "s/^'//"
 
