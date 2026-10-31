@@ -264,9 +264,6 @@ let g:WhichKeyDesc_vim_reload = "<leader>vr Reload ideavimrc"
 "   <leader>fh                highlight-group picker — colorscheme debug tool
 "   <leader>ii                nerd-font icon picker — no equivalent
 "   <leader>fm                markdown-scoped file picker — no scoped action
-"   <localleader>nf / ng      ~/Cloud/Notes picker — add Notes as a content
-"                             root and use a custom scope in Find in Path, or
-"                             keep a second project window open on it
 "   ga / gA                   mini.align — nothing in IdeaVim or IntelliJ
 "   <leader>ib / <leader>it   comment rule / boxed title — use Live Templates
 "   s / S / r / R             flash.nvim — `set sneak` gets you s{char}{char};

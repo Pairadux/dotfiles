@@ -43,9 +43,8 @@ alias dots='cd ~/.dotfiles && clear'
 alias down='cd ~/Downloads && clear'
 alias docs='cd ~/Documents && clear'
 alias dev='cd $XDG_PROJECTS_DIR && clear'
-alias cloud='cd ~/Cloud && clear'
 alias music='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/Music && clear'
-# alias jdex='cd ~/Cloud/00-09\ System/00\ System\ Management/00.00\ JDex && clear'
+# alias jdex='cd ~/JD/00-09\ System/00\ System\ Management/00.00\ JDex && clear'
 
 # *------*
 # | BAT  |
@@ -68,7 +67,7 @@ alias ca='chezmoi apply'
 # *--------------------*
 # | PACINFO CHEATSHEET |
 # *--------------------*
-alias pacinfo='mdcat ~/Cloud/00-09\ System/00\ System\ Management/00.00\ JDex/10.01\ Inbox/40.01\ Pacinfo.md'
+alias pacinfo='mdcat ~/JD/00-09\ System/00\ System\ Management/00.00\ JDex/10.01\ Inbox/40.01\ Pacinfo.md'
 
 # *--------*
 # | CLEAR  |

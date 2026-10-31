@@ -21,7 +21,7 @@ return {
     opts = {
         bigfile = { enabled = false },
         dashboard = {
-            enabled = vim.fn.getcwd() ~= vim.fn.expand('~') .. "/Cloud/Notes",
+            enabled = true,
             preset = {
                 keys = {
                     { icon = ' ', key = 'f', desc = 'Find File', action = ":lua Snacks.dashboard.pick('files')" },
@@ -99,8 +99,6 @@ return {
         { '<leader>fm',      function() require('snacks').picker.files { ft = 'md' }                             end, desc = '[F]ind [M]arkdown', },
         { '<leader>ii',      function() require('snacks').picker.icons { layout = { preset = 'default' } }       end, desc = '[I]nsert [I]cons', },
         { '<leader>fh',      function() require('snacks').picker.highlights()                                    end, desc = '[F]ind [H]ighlights', },
-        { '<localleader>nf', function() require('snacks').picker.files { cwd = vim.fn.expand('~/Cloud/Notes/') } end, desc = '[N]eorg [F]ind' },
-        { '<localleader>ng', function() require('snacks').picker.grep  { cwd = vim.fn.expand('~/Cloud/Notes/') } end, desc = '[N]eorg [G]rep' },
         -- Other
         { '<C-c>',      function() require('snacks').bufdelete() end,               desc = 'Buffer Close', },
         { '<leader>.',  function() require('snacks').scratch() end,                 desc = 'Scratch', },
