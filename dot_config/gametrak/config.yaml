@@ -44,3 +44,5 @@ settings:
     hyprland_conf: /home/pairadux/.config/gametrak/games.conf
     state_file: /home/pairadux/.local/state/gametrak/active.json
     min_session_mins: 15
+logbook:
+    enabled: true
