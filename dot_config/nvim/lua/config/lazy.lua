@@ -25,7 +25,7 @@ require('lazy').setup {
     },
 
     dev = {
-        path = '~/Dev/nvim-plugins',
+        path = '~/Dev/nv-plugins',
         -- patterns = { 'Pairadux' },
     },
 
