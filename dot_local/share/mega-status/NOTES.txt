@@ -1,0 +1,123 @@
+mega-status — built and verified 2026-08-22
+===========================================
+
+Goal (met)
+----------
+Wayland-native tray icon for HyprPanel showing MEGA sync state, as a
+StatusNotifierItem app (HyprPanel's own custom modules are poll-only —
+confirmed in src, so a custom module could not be event-driven).
+
+Shipped architecture
+--------------------
+- One inotify watch on ~/.megaCmd/ (IN_MODIFY) — kernel-driven activity bell
+- On event: coalescing 200ms debounce, then probe `mega-sync`
+- Oracle is `mega-sync`, NOT `mega-transfers` (see "oracle swap" below)
+- Parse: --output-cols=LOCALPATH,RUN_STATE,STATUS,ERROR --col-separator=,
+  fed straight to csv.DictReader
+- Three states, worst-first precedence:
+    degraded (amber #E8A33D + "!")  ERROR != NO, RUN_STATE != Running,
+                                    mega-cmd-server absent, or open sync-issues
+    syncing  (white #FFFFFF)        STATUS in Syncing/Pending/Processing/NONE
+    synced   (muted brick #A6453F)  all Synced AND no sync issues
+- Hover tooltip lists per-sync detail, e.g. "JD: synced / Notes: pending"
+- Read-only invariant: never writes ~/.megaCmd or sync folders, and never
+  passes a mutating flag (-d/-p/-e, --enable-warning/--disable-warning)
+
+The oracle swap — why not mega-transfers
+----------------------------------------
+The original plan used `mega-transfers --summary` and inferred "syncing" from
+NUM DOWNLOADS/UPLOADS > 0. Verified wrong by live test: uploading a 7.8 MB file
+made mega-sync report STATUS=Pending and *never* Syncing, i.e. zero in-flight
+transfers for the whole visible window. mega-transfers would have kept the icon
+red through the entire upload. mega-sync reports the engine's own state, exposes
+ERROR/RUN_STATE for a real "needs attention" state, and parses as clean CSV.
+Cost ~10ms/call vs ~2ms — irrelevant at event rates.
+
+Two deliberate timers (everything else is event-driven)
+--------------------------------------------------------
+1. 200ms debounce is COALESCING, not resetting. A resetting debounce would be
+   starved by continuous transfer chatter and never fire. Verified: 5 bells
+   folded into 1 scheduled check.
+2. SETTLE_MS=1000 re-check runs ONLY while state is syncing, and stops the
+   moment it drains. The bell proves work started but nothing guarantees a
+   final event lands after the last transfer, which would latch the icon on
+   "syncing" forever. Deliberately NOT armed while degraded — a broken sync can
+   persist for hours and that would be real polling. At rest: zero timers.
+
+mega-cmd-server is never auto-started
+-------------------------------------
+/usr/bin/mega-sync is just `mega-exec sync "$@"`, and the mega-* client wrappers
+SPAWN mega-cmd-server when it is absent. So server liveness is confirmed by
+scanning /proc for comm == mega-cmd-server before any command runs. Server down
+=> amber cloud, zero commands invoked. A server you stopped stays stopped.
+Recovery is still event-driven: a restarted server writes statecache, ringing
+the bell.
+
+Files
+-----
+- Code:    ~/.local/share/mega-status/mega_status.py
+- Icons:   ~/.local/share/mega-status/icons/{synced,syncing,degraded}.svg
+- Systemd: ~/.config/systemd/user/mega-status.service
+- All of the above are chezmoi-managed (since 2026-10-31): edit the sources
+  under ~/.dotfiles/dot_local/share/mega-status/ and
+  ~/.dotfiles/dot_config/systemd/user/, then `chezmoi apply`.
+- Autostart: hyprland.lua, NOT hyprland.conf. Hyprland runs the LUA config on
+  this machine; hyprland.conf is a legacy mirror that is never read. The live
+  command is `mega-status` in [autostart_commands] of
+  ~/.dotfiles/.chezmoidata/machines.toml, run only on machines whose autostart
+  list names it (mutsu). hyprland.conf keeps a matching (inert) exec-once line
+  by hand.
+  Verify the spawn path without rebooting:
+    hyprctl dispatch 'hl.dsp.exec_cmd("systemctl --user start mega-status")'
+
+Debugging
+---------
+  systemctl --user restart mega-status
+  journalctl --user -u mega-status -f
+  MEGA_STATUS_LOG_LEVEL=DEBUG   # traces every activity bell and probe result
+                                # (set via a systemd drop-in when needed)
+
+Verified facts (so we don't re-check next time)
+-----------------------------------------------
+- graphical-session.target was INACTIVE when this was built, so
+  `systemctl --user enable` did NOT autostart it — hence exec-once. It is
+  active as of 2026-10-31, so an enabled unit now starts too; keep the unit
+  disabled or it runs alongside the autostart (gametrak ran twice that way).
+- hyprland.conf line 36 runs dbus-update-activation-environment --systemd,
+  which is why the user service inherits WAYLAND_DISPLAY and can reach the
+  display. Without that the GTK indicator would fail to start.
+- libayatana registers at :N/org/ayatana/NotificationItem/mega_status, NOT at
+  the org.kde.StatusNotifierItem-PID-N name. Check registration with:
+    busctl --user get-property org.kde.StatusNotifierWatcher \
+      /StatusNotifierWatcher org.kde.StatusNotifierWatcher \
+      RegisteredStatusNotifierItems
+- Default megaignore excludes ALL dotfiles (-:.*), plus -:00.00* and -:90-99*
+  (Johnny Decimal). A dotfile probe will never sync — test with a visible name.
+- /proc/sys/fs/inotify/max_user_watches = 524288 (huge headroom)
+- mega-cmd-server holds its own inotify fd — it watches folders for us; we do
+  not duplicate that (recursive watching would need ~1100 watches).
+
+Hover tooltips do not work under HyprPanel (AstalTray bug)
+----------------------------------------------------------
+The SNI ToolTip property is set correctly and NewToolTip IS emitted (verified
+on the bus). AstalTray reads ToolTip once when it creates the tray item and
+never re-reads it, so hover text freezes at whatever was true at item creation.
+Measured with a long-lived AstalTray observer: icon notifies=4, tooltip
+notifies=0. A controlled probe app then confirmed NOTHING triggers a re-read:
+tooltip alone, tooltip+title, tooltip+icon, and a full Passive->Active status
+toggle all produced 0 refreshes.
+=> The MENU is the live detail surface (dbusmenu pushes updates properly):
+   header + one row per sync, updated in _update_detail_items().
+   The tooltip is still published, and is live/correct for other SNI hosts
+   (waybar etc). Fixing hover would require patching libastal-tray.
+
+Ruled out (do not revisit)
+--------------------------
+- HyprPanel custom modules: poll-only (verified in source)
+- mega-cmd: no D-Bus, no notifications API, no streaming transfer command
+- Log-tailing megacmdserver.log: records sync setup only, not transfer activity
+- Recursive folder inotify: ~1100 watches, redundant with mega-cmd's own
+- Pure inotify-on-~/.megaCmd with no oracle: false positives from idle SQLite
+  bookkeeping (WAL checkpoints)
+- MEGA SDK Python bindings: separate auth from mega-cmd, AUR-only, heavy
+- MEGAsync desktop app: full Qt GUI daemon, would replace the mega-cmd setup
