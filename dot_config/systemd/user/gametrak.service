@@ -1,0 +1,12 @@
+[Unit]
+Description=Game Session Tracker for Hyprland
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.go/bin/gametrak
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

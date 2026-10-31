@@ -1,0 +1,15 @@
+[Unit]
+Description=MEGA sync status tray icon
+Documentation=file:%h/.local/share/mega-status/NOTES.txt
+PartOf=graphical-session.target
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 %h/.local/share/mega-status/mega_status.py
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

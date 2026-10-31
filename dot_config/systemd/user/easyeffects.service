@@ -1,0 +1,12 @@
+[Unit]
+Description=EasyEffects audio processing
+After=pipewire.service pipewire-pulse.service wireplumber.service
+Wants=pipewire.service
+
+[Service]
+ExecStart=/usr/bin/easyeffects --gapplication-service
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target
