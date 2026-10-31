@@ -4,12 +4,11 @@ light = "tokyo-night"
 
 [icon]
 append_dirs = [
-    { name = "Archive", text = "" },
-    { name = "Cloud", text = "" },
-    { name = "Projects", text = "" },
-    { name = "Notes", text = "" },
-    { name = "Audio", text = "" },
-    { name = "Media", text = "󱧺" },
-    { name = "Games", text = "󰖺" },
-    { name = "JDex", text = "󱪹" },
+    { name = "Archive",   text = "" },
+    { name = "Audio",     text = "" },
+    { name = "Games",     text = "󰖺" },
+    { name = "GamesNVMe", text = "󰺵" },
+    { name = "JD",        text = "󰪶" },
+    { name = "Projects",  text = "" },
+    { name = "Vault",     text = "󰩪" },
 ]
