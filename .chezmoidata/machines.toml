@@ -89,7 +89,7 @@ cliphist-text   = "wl-paste --type text --watch cliphist store"
 cliphist-image  = "wl-paste --type image --watch cliphist store"
 hyprpolkitagent = "systemctl --user start hyprpolkitagent"
 mega-status     = "systemctl --user start mega-status"
-gametrak        = "gametrak"
+gametrak        = "systemctl --user start gametrak"
 sunshine        = "systemctl --user start app-dev.lizardbyte.app.Sunshine"
 hypridle        = "hypridle"
 # GSR's own startup option now writes an XDG autostart entry, which nothing in
