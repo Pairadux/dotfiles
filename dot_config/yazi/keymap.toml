@@ -11,9 +11,12 @@ prepend_keymap = [
     { on = [ "g", "d", "c" ], run = "cd ~/Documents",   desc = "cd Docs"  },
     { on = [ "g", "d", "w" ], run = "cd ~/Downloads",   desc = "cd Down"  },
     { on = [ "g", "c" ],      run = "cd ~/Cloud",       desc = "cd Cloud" },
-    { on = [ "g", "n" ],      run = "cd ~/Cloud/Notes", desc = "cd Notes" },
     { on = [ "g", "j" ],      run = "cd ~/Cloud/JD",    desc = "cd JDex"  },
+
+    { on = [ "g", "m" ],      run = "cd '~/Music'", desc = "cd Music"  },
+    { on = [ "g", "p" ],      run = "cd '~/Pictures'", desc = "cd Pictures"  },
+    { on = [ "g", "v" ],      run = "cd '~/Videos'", desc = "cd Videos"  },
+
     { on = [ "g", "a" ],      run = "cd '~/Cloud/JD/30-39 Academia/34 Undergrad (BS CS) (VSU)'", desc = "cd Academia"  },
-    { on = [ "g", "m" ],      run = "cd '~/Cloud/Media'", desc = "cd Media"  },
 
 ]
