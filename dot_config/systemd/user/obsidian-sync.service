@@ -1,0 +1,18 @@
+[Unit]
+Description=Obsidian Headless Continuous Sync Daemon
+# Only wait for basic network setup and the online IP target
+After=network.target network-online.target
+# Give up after 5 failed starts in 10 minutes instead of retrying forever, and say so
+StartLimitIntervalSec=10min
+StartLimitBurst=5
+OnFailure=notify-failure@%n.service
+
+[Service]
+Type=simple
+ExecStart=%h/.bin/run-obsidian-sync.sh
+WorkingDirectory=%h/Vault
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target

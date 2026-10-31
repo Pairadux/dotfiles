@@ -1,0 +1,8 @@
+[Unit]
+Description=Desktop notification that %i failed
+
+[Service]
+Type=oneshot
+# OnFailure= also fires on each attempt Restart= retries; only notify once it has given up
+ExecCondition=/usr/bin/systemctl --user is-failed --quiet %i
+ExecStart=/usr/bin/notify-send --urgency=critical --app-name=systemd "%i failed" "Stopped retrying. See: journalctl --user -u %i"
