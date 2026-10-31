@@ -65,6 +65,7 @@ local picker      = "~/.config/hypr/scripts/picker.sh"
 local soundSheet  = "~/.config/hypr/scripts/soundboard-show.sh"
 local bindSheet   = "~/.config/hypr/scripts/binds-show.sh"
 local streamDisp  = "~/.config/hypr/scripts/stream-display.sh"
+local mpdVolume   = "~/.config/hypr/scripts/mpd-volume.sh"
 
 -------------------
 ---- AUTOSTART ----
@@ -286,11 +287,11 @@ hl.bind(mainMod .. " + minus",         hl.dsp.workspace.toggle_special("magic"),
 hl.bind(mainMod .. " + SHIFT + minus", hl.dsp.window.move({ workspace = "special:magic" }), desc("Workspaces: Move window to scratchpad"))
 
 -- Media (mpc)
-hl.bind(mainMod .. " + ALT + SPACE", hl.dsp.exec_cmd("mpc toggle"),    desc("Media: Play/pause"))
-hl.bind(mainMod .. " + RIGHT",       hl.dsp.exec_cmd("mpc next"),      desc("Media: Next track"))
-hl.bind(mainMod .. " + LEFT",        hl.dsp.exec_cmd("mpc prev"),      desc("Media: Previous track"))
-hl.bind(mainMod .. " + UP",          hl.dsp.exec_cmd("mpc volume +5"), desc("Media: Volume up"))
-hl.bind(mainMod .. " + DOWN",        hl.dsp.exec_cmd("mpc volume -5"), desc("Media: Volume down"))
+hl.bind(mainMod .. " + ALT + SPACE", hl.dsp.exec_cmd("mpc toggle"),       desc("Media: Play/pause"))
+hl.bind(mainMod .. " + RIGHT",       hl.dsp.exec_cmd("mpc next"),         desc("Media: Next track"))
+hl.bind(mainMod .. " + LEFT",        hl.dsp.exec_cmd("mpc prev"),         desc("Media: Previous track"))
+hl.bind(mainMod .. " + UP",          hl.dsp.exec_cmd(mpdVolume .. " +5"), desc("Media: Volume up"))
+hl.bind(mainMod .. " + DOWN",        hl.dsp.exec_cmd(mpdVolume .. " -5"), desc("Media: Volume down"))
 
 -- Picker
 hl.bind(mainMod .. " + P",                  hl.dsp.exec_cmd(picker),                  desc("Pickers: All pickers"))
