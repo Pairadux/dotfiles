@@ -18,6 +18,7 @@ export XDG_DOCUMENTS_DIR="$HOME/Documents"
 export XDG_PICTURES_DIR="$HOME/Cloud/Media/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Cloud/Media/Videos"
 export XDG_MUSIC_DIR="$HOME/Cloud/Media/Music"
+export XDG_PROJECTS_DIR="$HOME/Projects"
 
 # SSH
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
@@ -85,7 +86,7 @@ export FZF_ALT_C_COMMAND="{ fd --type d --max-depth 4 \
     --exclude Pictures \
     --exclude Public \
     --exclude Archive \
-    --exclude 'Dev/_*' \
+    --exclude 'Projects/_*' \
     --exclude 'Creative Cloud Files' \
     --exclude google-cache-sdk; \
     fd --type d --max-depth 3 . .dotfiles .config 2>/dev/null; }"

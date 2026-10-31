@@ -6,7 +6,7 @@ light = "tokyo-night"
 append_dirs = [
     { name = "Archive", text = "" },
     { name = "Cloud", text = "" },
-    { name = "Dev", text = "" },
+    { name = "Projects", text = "" },
     { name = "Notes", text = "" },
     { name = "Audio", text = "" },
     { name = "Media", text = "󱧺" },

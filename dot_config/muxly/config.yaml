@@ -1,7 +1,7 @@
 # Configuration for muxly
 #
 # scan_dirs: Directories to scan for projects (supports depth per directory)
-#   Example: - path: ~/Dev
+#   Example: - path: ~/Projects
 #            - path: ~/.config
 #              depth: 2
 #              alias: config
@@ -32,10 +32,10 @@ scan_dirs:
     - path: ~/.dotfiles/dot_config
       alias: "Config"
 
-    - path: ~/Dev
+    - path: ~/Projects
       template: "edit-ai-x"
 
-    # - path: ~/Dev/CS-Homework
+    # - path: ~/Projects/CS-Homework
 
 # +------------+
 # | ENTRY-DIRS |
@@ -54,9 +54,9 @@ entry_dirs:
 # | IGNORE-DIRS |
 # +-------------+
 ignore_dirs:
-    - ~/Dev/_practice
-    - ~/Dev/_archive
-    - ~/Dev/CS-Homework
+    - ~/Projects/_practice
+    - ~/Projects/_archive
+    - ~/Projects/CS-Homework
 
 # +-----------+
 # | TEMPLATES |
