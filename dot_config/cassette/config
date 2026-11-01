@@ -152,3 +152,22 @@ seconds = 30
 #     audio is gone.
 #
 clips = ~/Audio/cassette
+
+
+# ---------------------------------------------------------------------------
+# preview: how much audio cassette-trim plays after you move an edge
+# ---------------------------------------------------------------------------
+#   A number of seconds, 0 or more; decimals are fine. 0 turns previews off.
+#
+#   Default: 0.5
+#
+#   - Moving the left edge plays this much audio starting at the edge.
+#     Moving the right edge plays this much audio leading up to it, so you
+#     hear exactly where the cut lands.
+#   - Nothing plays while an edge is moving. The preview starts once the
+#     edge has stayed put for half a second, so several quick adjustments
+#     only play once. Moving an edge again stops a preview that is playing.
+#   - Only cassette-trim reads this; a running trim window keeps the value
+#     it started with.
+#
+preview = 0.5
