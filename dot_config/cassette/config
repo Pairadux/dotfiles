@@ -1,0 +1,154 @@
+# cassette settings
+# =================
+#
+# Every cassette program reads this file: the daemon, `cassette play` and
+# `cassette list`, cassette-trim and cassette-tray. That is how they all
+# agree, for example on where clips are.
+#
+# SYNTAX
+#   - One `key = value` per line; spaces around `=` are optional.
+#   - Values are used literally: no quotes, no $VARIABLES, and no comment
+#     after a value (a `#` there becomes part of the value). Comments go on
+#     their own line.
+#   - Only a leading `~/` in `clips` is expanded, to your home folder.
+#   - A key that is left out or commented out uses its default.
+#   - Any mistake (unknown or misspelled key, empty value, bad number,
+#     relative path) makes every cassette program refuse to run and name
+#     the line. `cassette status` is a quick way to check.
+#
+# APPLYING CHANGES
+#   Nothing reloads by itself. After editing, restart both services:
+#
+#     systemctl --user restart cassette cassette-tray
+#
+#   Restarting the daemon empties the buffer: the next clip only holds audio
+#   recorded since the restart. The same happens when you pause and resume
+#   from the tray.
+#
+# FINDING NODE NAMES (for mic and output)
+#   The node name is the second column of:
+#
+#     pactl list short sources   # microphones (skip the *.monitor lines)
+#     pactl list short sinks     # outputs
+#
+#   In qpwgraph or `wpctl status`, cassette's own recorders show up as
+#   cassette-mic and cassette-output.
+#
+# THIS MACHINE (mutsu)
+#   Audio chain: QuadCast -> EasyEffects -> PWSP Virtual Mic -> apps. Apps
+#   play into EasyEffects' sink, which outputs to the HyperX headset. pwsp
+#   plays soundboard sounds straight to the headset.
+#
+#   Current setup: only Discord is recorded (other people plus Discord's own
+#   sounds). Your voice and the soundboard are not; see `mic` below to add
+#   them. For this to work:
+#     - Discord's Output Device (User Settings > Voice & Video) must be
+#       "Discord". If it is set to Default, Discord bypasses discord_sink
+#       and clips are silent even though `cassette status` looks normal.
+#     - The "Discord" sink comes from
+#       ~/.config/pipewire/pipewire.conf.d/discord-sink.conf (in chezmoi).
+#       It only exists after PipeWire has restarted (log out and in once).
+#
+#   The tray (left click) pauses by stopping the daemon. It stays paused
+#   until you resume, or until your next login, when the service starts
+#   again.
+
+
+# ---------------------------------------------------------------------------
+# mic: the microphone to record
+# ---------------------------------------------------------------------------
+#   default   the system's default input, following it if you change it
+#   off       don't record a microphone
+#   <node>    exactly this PipeWire source, e.g. easyeffects_source
+#
+#   Default: default
+#
+#   Gotchas:
+#   - While a mic is recorded it stays open, so "mic in use" indicators stay
+#     on. Nothing is written to disk until you clip.
+#   - A <node> is recorded exactly. If it doesn't exist (a typo, the app that
+#     provides it isn't running yet, the device is unplugged) or it
+#     disappears, the daemon stops and systemd retries every 3 seconds until
+#     the node is back. It never silently switches to another mic.
+#     `journalctl --user -u cassette` then shows "defined target not found".
+#   - A virtual mic that mixes in other sounds (a soundboard, for example)
+#     records those too. If an output you also record plays the same sounds,
+#     they end up in the clip twice, with a slight echo.
+#   - mic and output can't both be off.
+#
+#   On this machine:
+#     easyeffects_source   your voice after EasyEffects (gate, noise
+#                          removal, compressor): voice only
+#     pwsp-virtual-mic     exactly what Discord hears from you: voice plus
+#                          soundboard sounds
+#     alsa_input.usb-Kingston_HyperX_Quadcast_4110-00.analog-stereo
+#                          the raw QuadCast, before EasyEffects
+#
+mic = off
+
+
+# ---------------------------------------------------------------------------
+# output: an output (sink) whose sound to record
+# ---------------------------------------------------------------------------
+#   default   whatever plays through the default output, which is all your
+#             desktop audio; follows the default output if it changes
+#   off       don't record any output
+#   <node>    exactly this PipeWire sink. Point it at a sink that only one
+#             app plays into (a dedicated "Discord" sink, say) to record
+#             just that app.
+#
+#   Default: default
+#
+#   Gotchas:
+#   - A <node> is recorded exactly, with the same stop-and-retry behavior as
+#     mic.
+#   - Everything played through the output is recorded, including
+#     `cassette play` and cassette-trim playback when they play through it.
+#   - If another program reroutes streams on a sink (EasyEffects does this on
+#     the device it outputs to), naming that sink can make the recorder exit
+#     at random with "defined target not found". Use `default` for that sink.
+#
+#   On this machine:
+#     discord_sink   only Discord. pwsp plays soundboard sounds to the
+#                    headset, not through Discord, so they are never in it.
+#     default        everything you hear on the HyperX headset. Don't name
+#                    the HyperX sink itself: EasyEffects reroutes streams on
+#                    it and the recorder exits at random. `default` reaches
+#                    it reliably.
+#   With output = default, don't also use mic = pwsp-virtual-mic: soundboard
+#   sounds would be recorded twice, once from each.
+#
+output = discord_sink
+
+
+# ---------------------------------------------------------------------------
+# seconds: how much audio to keep
+# ---------------------------------------------------------------------------
+#   Any positive number; decimals are fine (12.5).
+#
+#   Default: 30
+#
+#   - A clip holds up to this much, less if the daemon started recently.
+#   - Memory: about 11 MB per minute for each recorded source.
+#   - Disk: about 11 MB per minute of clip. Clips are always 48 kHz 16-bit
+#     stereo WAV; the format can't be changed.
+#
+seconds = 30
+
+
+# ---------------------------------------------------------------------------
+# clips: where clips are saved
+# ---------------------------------------------------------------------------
+#   An absolute path, or one starting with ~/ . The folder is created, private
+#   to you (mode 700), when the first clip is saved; clips are mode 600.
+#
+#   Default: ~/.local/share/cassette/clips (or $XDG_DATA_HOME/cassette/clips)
+#
+#   - Changing it doesn't move clips that are already saved.
+#   - Clips are never deleted automatically.
+#   - Only files named clip-YYYYMMDD-HHMMSS.mmm.wav count as clips. Renamed
+#     files are ignored by play, list, cassette-trim and the tray.
+#   - Saving in cassette-trim overwrites the clip in place; the untrimmed
+#     audio is gone.
+#
+clips = ~/Audio/cassette
