@@ -318,6 +318,15 @@ hl.bind(mainMod .. " + SHIFT + Escape", hl.dsp.exec_cmd(lockscreen), desc("Sessi
 -- which would otherwise leave the desk with every display off.
 hl.bind(mainMod .. " + CTRL + Escape", hl.dsp.exec_cmd(streamDisp .. " stop"), desc("Session: Restore monitors after streaming"))
 
+-- Cassette, on bare F22/F20/F24 taken from the soundboard's plain bank. This
+-- layout sends XF86 keysyms for F20 and F22 (see highF in soundboard.lua).
+local cassetteClip = [[out=$(cassette clip 2>&1) && notify-send -a cassette "Clip saved" "$out" || notify-send -u critical -a cassette "Clip failed" "$out"]]
+local cassetteTrim = [[err=$(cassette-trim 2>&1 >/dev/null) || notify-send -u critical -a cassette "Trim failed" "$err"]]
+
+hl.bind("XF86TouchpadOn",   hl.dsp.exec_cmd(cassetteClip),    desc("Cassette: Save the last 30 seconds")) -- F22
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("cassette play"), desc("Cassette: Play the newest clip"))     -- F20
+hl.bind("F24",              hl.dsp.exec_cmd(cassetteTrim),    desc("Cassette: Trim the newest clip"))
+
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
@@ -340,6 +349,16 @@ hl.window_rule({
     float  = true,
     center = true,
     size   = { 1000, 700 },
+})
+
+-- Cassette trim editor
+hl.window_rule({
+    name  = "cassette-trim",
+    match = { class = "^(cassette-trim)$" },
+
+    float  = true,
+    center = true,
+    size   = { 960, 300 },
 })
 
 -- Mega
