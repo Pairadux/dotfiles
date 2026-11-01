@@ -323,9 +323,9 @@ hl.bind(mainMod .. " + CTRL + Escape", hl.dsp.exec_cmd(streamDisp .. " stop"), d
 local cassetteClip = [[out=$(cassette clip 2>&1) && notify-send -a cassette "Clip saved" "$out" || notify-send -u critical -a cassette "Clip failed" "$out"]]
 local cassetteTrim = [[err=$(cassette-trim 2>&1 >/dev/null) || notify-send -u critical -a cassette "Trim failed" "$err"]]
 
-hl.bind("XF86TouchpadOn",   hl.dsp.exec_cmd(cassetteClip),    desc("Cassette: Save the last 30 seconds")) -- F22
-hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("cassette play"), desc("Cassette: Play the newest clip"))     -- F20
-hl.bind("F24",              hl.dsp.exec_cmd(cassetteTrim),    desc("Cassette: Trim the newest clip"))
+hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(cassetteClip),    desc("Cassette: Save the last 30 seconds")) -- F20
+hl.bind("XF86TouchpadOn",   hl.dsp.exec_cmd(cassetteTrim),    desc("Cassette: Trim the newest clip"))     -- F22
+hl.bind("F24",              hl.dsp.exec_cmd("cassette play"), desc("Cassette: Play the newest clip"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
