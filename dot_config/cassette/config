@@ -146,8 +146,10 @@ seconds = 30
 #
 #   - Changing it doesn't move clips that are already saved.
 #   - Clips are never deleted automatically.
-#   - Only files named clip-YYYYMMDD-HHMMSS.mmm.wav count as clips. Renamed
-#     files are ignored by play, list, cassette-trim and the tray.
+#   - Only files named clip-YYYYMMDD-HHMMSS.mmm.wav count as clips, or with
+#     a name after the time, as cassette-trim names them:
+#     clip-YYYYMMDD-HHMMSS.mmm-airhorn.wav. Other files are ignored by play,
+#     list, cassette-trim and the tray.
 #   - Saving in cassette-trim overwrites the clip in place; the untrimmed
 #     audio is gone.
 #
