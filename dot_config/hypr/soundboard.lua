@@ -54,11 +54,11 @@ local plain = {
     F17 = "snore-mimimimimimi",
     F18 = "lobotomy",
     F19 = "let-her-go",
-    F21 = "please-bro",
     F23 = "redvid_io_tom_proudly_eats_his_diarrhea_hd",
-    -- F20, F22 and F24 belong to the cassette binds in hyprland.lua.
+    -- F20, F21, F22 and F24 belong to the cassette binds in hyprland.lua.
 
     -- UNBOUND: replace KEY with an F-key
+    -- KEY = "please-bro",
     -- KEY = "baby-laughing-meme",
     -- KEY = "prowler",
     -- KEY = "deg-deg-sussy",
