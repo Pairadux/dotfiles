@@ -325,7 +325,9 @@ local cassetteTrim = [[err=$(cassette-trim 2>&1 >/dev/null) || notify-send -u cr
 -- Played by pwsp, so the clip goes into Discord as well as the headset, and
 -- cassette itself is never involved. Clip names sort by time, so the last one
 -- is the newest. pwsp-cli exits 0 even when it fails; its reply says which.
-local cassettePlay = [[out=$(pwsp-cli action play "$(ls ~/Audio/cassette/clip-*.wav | tail -n1)" 2>&1); case $out in "true : "*) ;; *) notify-send -u critical -a cassette "Play failed" "$out" ;; esac]]
+-- --volume isn't in pwsp 1.16.5; it comes from the patched build in
+-- ~/.local/bin (arabianq/pipewire-soundpad#209).
+local cassettePlay = [[out=$(pwsp-cli action play --volume 4 "$(ls ~/Audio/cassette/clip-*.wav | tail -n1)" 2>&1); case $out in "true : "*) ;; *) notify-send -u critical -a cassette "Play failed" "$out" ;; esac]]
 
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(cassetteClip), desc("Cassette: Save the last 30 seconds")) -- F20
 hl.bind("XF86TouchpadOn",   hl.dsp.exec_cmd(cassetteTrim), desc("Cassette: Trim the newest clip"))     -- F22
