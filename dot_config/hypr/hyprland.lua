@@ -357,14 +357,16 @@ hl.window_rule({
     size   = { 1000, 700 },
 })
 
--- Cassette trim editor
+-- Cassette trim editor. It opens over games that grab the mouse, and the
+-- grab follows keyboard focus, so trim keeps focus until it closes.
 hl.window_rule({
     name  = "cassette-trim",
     match = { class = "^(cassette-trim)$" },
 
-    float  = true,
-    center = true,
-    size   = { 960, 300 },
+    float        = true,
+    center       = true,
+    size         = { 960, 300 },
+    stay_focused = true,
 })
 
 -- Mega
