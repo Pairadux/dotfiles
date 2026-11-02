@@ -322,16 +322,16 @@ hl.bind(mainMod .. " + CTRL + Escape", hl.dsp.exec_cmd(streamDisp .. " stop"), d
 -- layout sends XF86 keysyms for F20 and F22 (see highF in soundboard.lua).
 local cassetteClip = [[out=$(cassette clip 2>&1) && notify-send -a cassette "Clip saved" "$out" || notify-send -u critical -a cassette "Clip failed" "$out"]]
 local cassetteTrim = [[err=$(cassette-trim 2>&1 >/dev/null) || notify-send -u critical -a cassette "Trim failed" "$err"]]
--- Played by pwsp, so the clip goes into Discord as well as the headset, and
--- cassette itself is never involved. Clip names sort by time, so the last one
--- is the newest. pwsp-cli exits 0 even when it fails; its reply says which.
--- --volume isn't in pwsp 1.16.5; it comes from the patched build in
--- ~/.local/bin (arabianq/pipewire-soundpad#209).
-local cassettePlay = [[out=$(pwsp-cli action play --volume 4 "$(ls ~/Audio/cassette/clip-*.wav | tail -n1)" 2>&1); case $out in "true : "*) ;; *) notify-send -u critical -a cassette "Play failed" "$out" ;; esac]]
+-- Played by pwsp, so the clip goes into Discord as well as the headset.
+-- `cassette current` names the newest clip, or the one last clicked in the
+-- tray; if it fails, its error is the notification. pwsp-cli exits 0 even
+-- when it fails; its reply says which. --volume isn't in pwsp 1.16.5; it
+-- comes from the patched build in ~/.local/bin (arabianq/pipewire-soundpad#209).
+local cassettePlay = [[out=$(clip=$(cassette current 2>&1) || { echo "$clip"; exit; }; pwsp-cli action play --volume 4 "$clip" 2>&1); case $out in "true : "*) ;; *) notify-send -u critical -a cassette "Play failed" "$out" ;; esac]]
 
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd(cassetteClip), desc("Cassette: Save the last 30 seconds")) -- F20
-hl.bind("XF86TouchpadOn",   hl.dsp.exec_cmd(cassetteTrim), desc("Cassette: Trim the newest clip"))     -- F22
-hl.bind("F24",              hl.dsp.exec_cmd(cassettePlay), desc("Cassette: Play the newest clip into Discord"))
+hl.bind("XF86TouchpadOn",   hl.dsp.exec_cmd(cassetteTrim), desc("Cassette: Trim the current clip"))    -- F22
+hl.bind("F24",              hl.dsp.exec_cmd(cassettePlay), desc("Cassette: Play the current clip into Discord"))
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
