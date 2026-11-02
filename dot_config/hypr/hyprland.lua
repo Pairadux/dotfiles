@@ -369,6 +369,15 @@ hl.window_rule({
     stay_focused = true,
 })
 
+-- A new window gets no focus while a game has the pointer locked (Barony),
+-- so stay_focused never kicks in. Focus trim explicitly; that also warps the
+-- cursor into it.
+hl.on("window.open", function(w)
+    if w and w.class == "cassette-trim" then
+        hl.dispatch(hl.dsp.focus({ window = "address:" .. w.address }))
+    end
+end)
+
 -- Mega
 hl.window_rule({
     name  = "mega",
