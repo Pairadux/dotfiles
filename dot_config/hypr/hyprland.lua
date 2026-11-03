@@ -321,10 +321,11 @@ hl.bind(mainMod .. " + CTRL + Escape", hl.dsp.exec_cmd(streamDisp .. " stop"), d
 -- Cassette
 local cassetteClip = [[out=$(cassette clip 2>&1) && notify-send -a cassette "Clip saved" "$out" || notify-send -u critical -a cassette "Clip failed" "$out"]]
 local cassetteTrim = [[err=$(cassette-trim 2>&1 >/dev/null) || notify-send -u critical -a cassette "Trim failed" "$err"]]
+local cassetteList = [[err=$(cassette-clips 2>&1 >/dev/null) || notify-send -u critical -a cassette "Clip manager failed" "$err"]]
 local cassettePlay = [[out=$(clip=$(cassette current 2>&1) || { echo "$clip"; exit; }; pwsp-cli action play --volume 4 "$clip" 2>&1); case $out in "true : "*) ;; *) notify-send -u critical -a cassette "Play failed" "$out" ;; esac]]
 
 hl.bind("XF86AudioMicMute",   hl.dsp.exec_cmd(cassetteClip),       desc("Cassette: Save the last 30 seconds")) -- F20
-hl.bind("XF86TouchpadToggle", hl.dsp.exec_cmd(picker .. " clip"),  desc("Cassette: Pick the current clip"))    -- F21
+hl.bind("XF86TouchpadToggle", hl.dsp.exec_cmd(cassetteList),       desc("Cassette: Manage clips"))             -- F21
 hl.bind("XF86TouchpadOn",     hl.dsp.exec_cmd(cassetteTrim),       desc("Cassette: Trim the current clip"))    -- F22
 hl.bind("F24",                hl.dsp.exec_cmd(cassettePlay),       desc("Cassette: Play the current clip into Discord"))
 
@@ -364,11 +365,22 @@ hl.window_rule({
     stay_focused = true,
 })
 
+-- Cassette clip manager (F21). No stay_focused: the trim window it opens
+-- must take focus, and focus comes back to the list when trim closes.
+hl.window_rule({
+    name  = "cassette-clips",
+    match = { class = "^(cassette-clips)$" },
+
+    float  = true,
+    center = true,
+    size   = { 900, 480 },
+})
+
 -- A new window gets no focus while a game has the pointer locked (Barony),
--- so stay_focused never kicks in. Focus trim explicitly; that also warps the
--- cursor into it.
+-- so stay_focused never kicks in. Focus cassette's windows explicitly; that
+-- also warps the cursor into them.
 hl.on("window.open", function(w)
-    if w and w.class == "cassette-trim" then
+    if w and (w.class == "cassette-trim" or w.class == "cassette-clips") then
         hl.dispatch(hl.dsp.focus({ window = "address:" .. w.address }))
     end
 end)
