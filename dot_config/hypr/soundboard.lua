@@ -11,19 +11,20 @@
 --
 -- Two banks, both emitted as single keys by the Voyager, F1..F24 each:
 --   F<n>           (no modifier)
---   SUPER + F<n>
+--   ALT + F<n>
 --
--- No CTRL, SHIFT or ALT anywhere, deliberately. A bind only consumes its trigger
--- key -- modifier presses still reach the focused window, so a CTRL chord reads as
--- crouch in a game, SHIFT as sprint, ALT as lean. The modifier was never doing any
--- work here anyway: the Voyager sends the whole chord as one key, so a bare F-key
--- is just as unambiguous and leaks nothing.
+-- No CTRL or SHIFT anywhere, deliberately. A bind only consumes its trigger key --
+-- modifier presses still reach the focused window, so a CTRL chord reads as crouch
+-- in a game and SHIFT as sprint. ALT leaks the same way, reading as lean, so only
+-- the bare bank is silent. The modifier does no other work here: the Voyager sends
+-- the whole chord as one key, so a bare F-key is just as unambiguous.
 --
 -- The tradeoff is the other direction: Hyprland grabs these globally, so an
 -- assigned key is gone from every app. Known casualties if you assign them --
 -- F12 (Steam screenshot, still on its default here; also browser devtools),
 -- F11 (browser fullscreen), F5 (browser reload), F5/F9 (quicksave/quickload in
--- some games). F13..F24 have no such baggage; nothing claims them.
+-- some games), ALT + F4 (close window), ALT + backspace (delete word), ALT + period
+-- (shell's last argument). F13..F24 have no such baggage; nothing claims them.
 --
 -- Values are slot names from `pwsp-cli get hotkeys`. The sound each slot plays
 -- stays configured in pwsp; only the trigger lives here. Add a line to bind a key
@@ -32,8 +33,7 @@
 -- the slots' own key chords unset (`pwsp-cli action clear-hotkey-key "<slot>"`)
 -- so a press cannot fire twice.
 --
--- `hl` is a Hyprland global, so it needs no import; `mod` is passed in because
--- mainMod is a local in hyprland.lua.
+-- `hl` is a Hyprland global, so it needs no import.
 local plain = {
     F1 = "outro-song",
     F2 = "anime-ahh",
@@ -106,7 +106,10 @@ local plain = {
     -- KEY = "i-just-hit-the-jackpot",
 }
 
-local meta = {
+-- What the Voyager sends for the second bank, the thumb keys and the stop key.
+local mod = "ALT"
+
+local alt = {
     F1 = "smoke-detector-beep",
     F2 = "animatronic-in-door",
     F3 = "talking-ben-saying-ben",
@@ -145,6 +148,7 @@ local stopKey = "backspace"
 -- NoSymbol+N and the match short-circuits on the keysym half, so it never fires
 -- for a key that has a keysym at all (hyprwm/Hyprland#14819). These are the
 -- keysyms the compiled keymap actually emits, so the tables above stay readable.
+-- ALT does not shift the level of any key bound here, so both banks share them.
 local highF = {
     F13 = "XF86Tools",
     F14 = "XF86Launch5",
@@ -160,44 +164,34 @@ local highF = {
     F24 = "F24",
 }
 
--- FK23 and FK24 are typed PC_SHIFT_SUPER_LEVEL2 and PC_CONTROL_SUPER_LEVEL2, so
--- holding SUPER shifts them to a second level and a different keysym arrives.
-local highFSuper = {
-    F23 = "XF86Assistant",
-    F24 = "XF86TouchpadToggle",
-}
-
-local function resolve(key, mods)
-    if mods ~= "" and highFSuper[key] then
-        return highFSuper[key]
-    end
+local function resolve(key)
     return highF[key] or key
 end
 
---- Binds both banks and the stop key. Called from hyprland.lua, which owns
---- mainMod; `hl` is a Hyprland global and only exists at that point.
---- @param mod string
-local function setup(mod)
+--- Binds both banks and the stop key. Called from hyprland.lua; `hl` is a Hyprland
+--- global and only exists at that point.
+local function setup()
     local banks = {
         [""]  = plain,
-        [mod] = meta,
+        [mod] = alt,
     }
 
     for mods, slots in pairs(banks) do
         for key, slot in pairs(slots) do
-            local chord = mods ~= "" and (mods .. " + " .. resolve(key, mods)) or resolve(key, "")
+            local chord = mods ~= "" and (mods .. " + " .. resolve(key)) or resolve(key)
             hl.bind(chord, hl.dsp.exec_cmd('pwsp-cli action play-hotkey "' .. slot .. '"'))
         end
     end
 
-    hl.bind(mod .. " + " .. resolve(stopKey, mod), hl.dsp.exec_cmd("pwsp-cli action stop"))
+    hl.bind(mod .. " + " .. resolve(stopKey), hl.dsp.exec_cmd("pwsp-cli action stop"))
 end
 
 -- The banks are exported so the cheat sheet can draw the same tables Hyprland
 -- binds from, instead of re-parsing this file.
 return {
     plain = plain,
-    meta = meta,
+    alt = alt,
+    mod = mod,
     stopKey = stopKey,
     setup = setup,
 }

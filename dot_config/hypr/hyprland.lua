@@ -309,7 +309,7 @@ hl.bind(mainMod .. " + PRINT",         hl.dsp.exec_cmd("hyprshot -m window"), de
 hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"), desc("Screenshots: Region"))
 hl.bind(mainMod .. " + ALT + S", hl.dsp.exec_cmd("hyprshot -m region"), desc("Screenshots: Region"))
 
-require("soundboard").setup(mainMod)
+require("soundboard").setup()
 
 -- Cheat sheets: this section, and the soundboard banks drawn from the same tables.
 hl.bind(mainMod .. " + slash",         hl.dsp.exec_cmd(bindSheet),  desc("Help: Keybinds"))

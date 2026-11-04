@@ -22,6 +22,7 @@
 local here = arg[0]:match("^(.*)/[^/]*$") or "."
 package.path = here .. "/../?.lua;" .. package.path
 local board = require("soundboard")
+local PREFIX = board.mod .. " + "
 
 ---------------------
 ---- GEOMETRY -------
@@ -53,10 +54,10 @@ end
 
 -- Centres are measured from the top-left of the left half's first key.
 local THUMBS = {
-    { cx = 1031, cy = 790, w = KEY_W, h = KEY_H, rot = 30, key = "period", chord = "SUPER + ." },
-    { cx = 1165, cy = 912, w = KEY_W, h = KEY_H * 1.6, rot = 30, key = "bracketleft", chord = "SUPER + [" },
-    { cx = mirror(1031), cy = 790, w = KEY_W, h = KEY_H, rot = -30, key = "comma", chord = "SUPER + ," },
-    { cx = mirror(1165), cy = 912, w = KEY_W, h = KEY_H * 1.6, rot = -30, key = "bracketright", chord = "SUPER + ]" },
+    { cx = 1031, cy = 790, w = KEY_W, h = KEY_H, rot = 30, key = "period", chord = PREFIX .. "." },
+    { cx = 1165, cy = 912, w = KEY_W, h = KEY_H * 1.6, rot = 30, key = "bracketleft", chord = PREFIX .. "[" },
+    { cx = mirror(1031), cy = 790, w = KEY_W, h = KEY_H, rot = -30, key = "comma", chord = PREFIX .. "," },
+    { cx = mirror(1165), cy = 912, w = KEY_W, h = KEY_H * 1.6, rot = -30, key = "bracketright", chord = PREFIX .. "]" },
 }
 
 ---------------------
@@ -71,7 +72,7 @@ local FONT = "'Fira Sans','DejaVu Sans',sans-serif"
 
 local KINDS = {
     plain = { stroke = "#38bdf8", label = "#7dd3fc" },
-    meta  = { stroke = "#a78bfa", label = "#c4b5fd" },
+    alt   = { stroke = "#a78bfa", label = "#c4b5fd" },
     stop  = { stroke = "#4ade80", label = "#86efac" },
     dead  = { stroke = "#334155", label = MUTED },
 }
@@ -213,7 +214,7 @@ end
 ---------------------
 
 --- Every physical key, in board coordinates. A column carries one odd/even F-key
---- pair: the top two rows send it with SUPER, the bottom two send it bare.
+--- pair: the top two rows send it with ALT, the bottom two send it bare.
 --- @return table[]
 local function keys()
     local out = {}
@@ -222,8 +223,8 @@ local function keys()
         for col = 1, 6 do
             local first = (half - 1) * 12 + (col - 1) * 2 + 1
             local cells = {
-                { bank = board.meta, n = first, kind = "meta", prefix = "SUPER + " },
-                { bank = board.meta, n = first + 1, kind = "meta", prefix = "SUPER + " },
+                { bank = board.alt, n = first, kind = "alt", prefix = PREFIX },
+                { bank = board.alt, n = first + 1, kind = "alt", prefix = PREFIX },
                 { bank = board.plain, n = first, kind = "plain", prefix = "" },
                 { bank = board.plain, n = first + 1, kind = "plain", prefix = "" },
             }
@@ -239,13 +240,13 @@ local function keys()
                     slot = slot,
                     kind = cell.kind,
                 }
-                -- The meta bank stops at F22, so the last column's top two keys are
+                -- The ALT bank stops at F22, so the last column's top two keys are
                 -- the layer key and the stop key instead -- exactly as Oryx shows them.
-                if not slot and cell.kind == "meta" then
+                if not slot and cell.kind == "alt" then
                     if row == 1 then
                         k.chord, k.slot, k.kind = "Index", "layer key", "dead"
                     else
-                        k.chord, k.slot, k.kind = "SUPER + " .. board.stopKey, "stop playback", "stop"
+                        k.chord, k.slot, k.kind = PREFIX .. board.stopKey, "stop playback", "stop"
                     end
                 end
                 out[#out + 1] = k
@@ -256,7 +257,7 @@ local function keys()
     for _, t in ipairs(THUMBS) do
         out[#out + 1] = {
             cx = t.cx, cy = t.cy, w = t.w, h = t.h, rot = t.rot,
-            chord = t.chord, slot = board.meta[t.key], kind = "meta",
+            chord = t.chord, slot = board.alt[t.key], kind = "alt",
         }
     end
     return out
@@ -267,15 +268,15 @@ local function legend()
     local x, y = 6 * COL_PITCH + HALF_GAP / 2, 26
     local bound = 0
     for _ in pairs(board.plain) do bound = bound + 1 end
-    for _ in pairs(board.meta) do bound = bound + 1 end
+    for _ in pairs(board.alt) do bound = bound + 1 end
 
     text(x, y, "SOUNDBOARD", 52, NAME, { weight = 700, spacing = "3" })
     text(x, y + 38, bound .. " sounds bound \u{00b7} pwsp", 22, MUTED)
 
     local rows = {
         { kind = "plain", head = "F1 - F24", body = "bare F-key" },
-        { kind = "meta", head = "SUPER + F1 - F22", body = "and the four thumb keys" },
-        { kind = "stop", head = "SUPER + " .. board.stopKey, body = "stop playback" },
+        { kind = "alt", head = PREFIX .. "F1 - F22", body = "and the four thumb keys" },
+        { kind = "stop", head = PREFIX .. board.stopKey, body = "stop playback" },
     }
 
     -- One width for all three chips, set by the widest line so none of them clip.
@@ -303,7 +304,7 @@ end
 --- @return string[]
 local function unbound()
     local bound = {}
-    for _, bank in ipairs({ board.plain, board.meta }) do
+    for _, bank in ipairs({ board.plain, board.alt }) do
         for _, slot in pairs(bank) do bound[slot] = true end
     end
 
