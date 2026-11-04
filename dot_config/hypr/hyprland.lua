@@ -58,7 +58,7 @@ local terminal    = "ghostty"
 local fileManager = "ghostty -e yazi"
 local menu        = "rofi -show drun"
 local browser     = "zen-browser"
-local lockscreen  = "hyprlock"
+local lockscreen  = "~/.config/hypr/scripts/lock.sh"
 local pdfViewer   = "zathura"
 local noteTaker   = "~/.config/hypr/scripts/notetaker.sh"
 local picker      = "~/.config/hypr/scripts/picker.sh"
@@ -161,6 +161,8 @@ hl.config({
         disable_hyprland_logo     = true,
         on_focus_under_fullscreen = 2,
         focus_on_activate         = false,
+        -- Lets lock.sh hand a crashed hyprlock's lock to a new one.
+        allow_session_lock_restore = true,
     },
 
     input = {
