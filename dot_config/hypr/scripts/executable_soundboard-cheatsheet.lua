@@ -71,10 +71,11 @@ local MUTED = "#64748b"
 local FONT = "'Fira Sans','DejaVu Sans',sans-serif"
 
 local KINDS = {
-    plain = { stroke = "#38bdf8", label = "#7dd3fc" },
-    alt   = { stroke = "#a78bfa", label = "#c4b5fd" },
-    stop  = { stroke = "#4ade80", label = "#86efac" },
-    dead  = { stroke = "#334155", label = MUTED },
+    plain    = { stroke = "#38bdf8", label = "#7dd3fc" },
+    alt      = { stroke = "#a78bfa", label = "#c4b5fd" },
+    cassette = { stroke = "#fbbf24", label = "#fcd34d" },
+    stop     = { stroke = "#4ade80", label = "#86efac" },
+    dead     = { stroke = "#334155", label = MUTED },
 }
 
 ---------------------
@@ -248,6 +249,9 @@ local function keys()
                     else
                         k.chord, k.slot, k.kind = PREFIX .. board.stopKey, "stop playback", "stop"
                     end
+                elseif not slot then
+                    local job = board.cassette[name]
+                    k.slot, k.kind = job or "unassigned", job and "cassette" or "dead"
                 end
                 out[#out + 1] = k
             end
@@ -277,9 +281,10 @@ local function legend()
         { kind = "plain", head = "F1 - F24", body = "bare F-key" },
         { kind = "alt", head = PREFIX .. "F1 - F22", body = "and the four thumb keys" },
         { kind = "stop", head = PREFIX .. board.stopKey, body = "stop playback" },
+        { kind = "cassette", head = "Cassette", body = "clip controls" },
     }
 
-    -- One width for all three chips, set by the widest line so none of them clip.
+    -- One width for all the chips, set by the widest line so none of them clip.
     local chipW = 0
     for _, r in ipairs(rows) do
         chipW = math.max(chipW, width(r.head, 21), width(r.body, 18))

@@ -106,6 +106,15 @@ local plain = {
     -- KEY = "i-just-hit-the-jackpot",
 }
 
+-- Labels for the bare keys the cassette binds hold. Only the cheat sheet reads this;
+-- the binds themselves stay in hyprland.lua.
+local cassette = {
+    F20 = "save clip",
+    F21 = "clip list",
+    F22 = "trim clip",
+    F24 = "play clip",
+}
+
 -- What the Voyager sends for the second bank, the thumb keys and the stop key.
 local mod = "ALT"
 
@@ -191,6 +200,7 @@ end
 return {
     plain = plain,
     alt = alt,
+    cassette = cassette,
     mod = mod,
     stopKey = stopKey,
     setup = setup,
