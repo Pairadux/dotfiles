@@ -23,8 +23,8 @@
 -- assigned key is gone from every app. Known casualties if you assign them --
 -- F12 (Steam screenshot, still on its default here; also browser devtools),
 -- F11 (browser fullscreen), F5 (browser reload), F5/F9 (quicksave/quickload in
--- some games), ALT + F4 (close window), ALT + backspace (delete word), ALT + period
--- (shell's last argument). F13..F24 have no such baggage; nothing claims them.
+-- some games), ALT + F4 (close window), ALT + period (shell's last argument).
+-- F13..F24 have no such baggage; nothing claims them.
 --
 -- Values are slot names from `pwsp-cli get hotkeys`. The sound each slot plays
 -- stays configured in pwsp; only the trigger lives here. Add a line to bind a key
@@ -115,7 +115,7 @@ local cassette = {
     F24 = "play clip",
 }
 
--- What the Voyager sends for the second bank, the thumb keys and the stop key.
+-- What the Voyager sends for the second bank and the thumb keys.
 local mod = "ALT"
 
 local alt = {
@@ -147,8 +147,9 @@ local alt = {
     bracketright = "correct",
 }
 
--- Stops playback; lives outside the banks, so it costs no F-key slot.
-local stopKey = "backspace"
+-- Stops playback; lives outside the banks, so it costs no F-key slot. The Voyager
+-- sends this one with SUPER rather than the banks' modifier.
+local stopChord = "SUPER + backspace"
 
 
 -- This layout gives F13..F24 XF86* keysyms rather than F-key ones, and Hyprland's
@@ -192,7 +193,7 @@ local function setup()
         end
     end
 
-    hl.bind(mod .. " + " .. resolve(stopKey), hl.dsp.exec_cmd("pwsp-cli action stop"))
+    hl.bind(stopChord, hl.dsp.exec_cmd("pwsp-cli action stop"))
 end
 
 -- The banks are exported so the cheat sheet can draw the same tables Hyprland
@@ -202,6 +203,6 @@ return {
     alt = alt,
     cassette = cassette,
     mod = mod,
-    stopKey = stopKey,
+    stopChord = stopChord,
     setup = setup,
 }

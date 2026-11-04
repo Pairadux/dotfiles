@@ -247,7 +247,7 @@ local function keys()
                     if row == 1 then
                         k.chord, k.slot, k.kind = "Index", "layer key", "dead"
                     else
-                        k.chord, k.slot, k.kind = PREFIX .. board.stopKey, "stop playback", "stop"
+                        k.chord, k.slot, k.kind = board.stopChord, "stop playback", "stop"
                     end
                 elseif not slot then
                     local job = board.cassette[name]
@@ -280,7 +280,7 @@ local function legend()
     local rows = {
         { kind = "plain", head = "F1 - F24", body = "bare F-key" },
         { kind = "alt", head = PREFIX .. "F1 - F22", body = "and the four thumb keys" },
-        { kind = "stop", head = PREFIX .. board.stopKey, body = "stop playback" },
+        { kind = "stop", head = board.stopChord, body = "stop playback" },
         { kind = "cassette", head = "Cassette", body = "clip controls" },
     }
 
