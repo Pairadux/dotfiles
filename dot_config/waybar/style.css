@@ -59,14 +59,18 @@
    2) Bar & tooltip
    ------------------------------------------------------ */
 
+/* The slab lives on the box because GTK reports a window with an opaque
+   background as a fully opaque rectangle, ignoring its radius. Hyprland then
+   stops blending the surface and the corners punch holes in the wallpaper. */
 window#waybar {
-  background: @bg;
-  border: 2px solid @border;
-  border-radius: 10px;
+  background: transparent;
 }
 
 window#waybar>box {
-  padding: 5px;
+  background: @bg;
+  border: 2px solid @border;
+  border-radius: 10px;
+  padding: 3px;
 }
 
 /* Every module sits on its own pill. A drawer group gets one pill around the
