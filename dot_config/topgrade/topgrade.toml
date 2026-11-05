@@ -11,7 +11,9 @@ pre_sudo = true
 # Disable specific steps - same options as the command line flag
 # pnpm: no global packages, and pnpm refuses `root -g` while its global bin
 # dir is off PATH, so the step only ever fails.
-disable = ["gcloud", "self_update", "pnpm"]
+# tailscale: `tailscale update` refuses to run on Arch, and the system update
+# step already upgrades it through pacman.
+disable = ["gcloud", "self_update", "pnpm", "tailscale"]
 
 # Display the time in step titles (default: true)
 display_time = true
