@@ -172,7 +172,6 @@ mode     = "preferred"
 position = "0x0"
 scale    = 1.67
 role     = "primary"
-note     = "scale 2 is a starting value - tune against `hyprctl monitors` on the hardware"
 
 # ---------------------------------------------------------------------------
 # Fallback for a host with no block above: a conservative single-display
