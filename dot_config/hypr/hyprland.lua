@@ -192,14 +192,40 @@ for _, name in ipairs({ "zsa-technology-labs-voyager", "zsa-technology-labs-voya
     hl.device({ name = name, kb_options = "caps:capslock" })
 end
 
-hl.curve("myBezier", { type = "bezier", points = { { 0.05, 0.9 }, { 0.1, 1.05 } } })
+-- Motion is specified in DESIGN.md. Window open and window move must share a
+-- spring: Hyprland times a window making room with the same setting as one you
+-- move yourself, and different springs arrive apart, which reads as sloppy.
+-- Overshoot grows with travel, so only short-travel layer pop-ins get to bounce.
+hl.curve("spring_window",    { type = "spring", mass = 1, stiffness = 360, damping = 36 })
+hl.curve("spring_workspace", { type = "spring", mass = 1, stiffness = 320, damping = 36 })
+hl.curve("spring_layer",     { type = "spring", mass = 1, stiffness = 320, damping = 26 })
+hl.curve("fade", { type = "bezier", points = { { 0.5, 0.5 }, { 0.75, 1 } } })
+hl.curve("exit", { type = "bezier", points = { { 0.4, 0 }, { 1, 1 } } })
 
-hl.animation({ leaf = "windows",     enabled = true, speed = 7,  bezier = "myBezier" })
-hl.animation({ leaf = "windowsOut",  enabled = true, speed = 7,  bezier = "default", style = "popin 80%" })
-hl.animation({ leaf = "border",      enabled = true, speed = 10, bezier = "default" })
-hl.animation({ leaf = "borderangle", enabled = true, speed = 8,  bezier = "default" })
-hl.animation({ leaf = "fade",        enabled = true, speed = 7,  bezier = "default" })
-hl.animation({ leaf = "workspaces",  enabled = true, speed = 6,  bezier = "default" })
+-- speed is required even with a spring. For beziers it is ms / 100.
+hl.animation({ leaf = "windowsIn",     enabled = true, speed = 3,   spring = "spring_window", style = "slide" })
+hl.animation({ leaf = "windowsMove",   enabled = true, speed = 3,   spring = "spring_window" })
+hl.animation({ leaf = "windowsOut",    enabled = true, speed = 1.8, bezier = "exit", style = "popin 90%" })
+hl.animation({ leaf = "layersIn",      enabled = true, speed = 3,   spring = "spring_layer", style = "popin 92%" })
+hl.animation({ leaf = "layersOut",     enabled = true, speed = 1.8, bezier = "exit", style = "fade" })
+hl.animation({ leaf = "workspaces",    enabled = true, speed = 3,   spring = "spring_workspace", style = "slidefade 20%" })
+hl.animation({ leaf = "fade",          enabled = true, speed = 2.4, bezier = "fade" })
+-- Deliberately faster than the scale: a slower fade hides the motion.
+hl.animation({ leaf = "fadeIn",        enabled = true, speed = 1,   bezier = "fade" })
+hl.animation({ leaf = "fadeOut",       enabled = true, speed = 1.8, bezier = "fade" })
+hl.animation({ leaf = "fadeLayersIn",  enabled = true, speed = 2.4, bezier = "fade" })
+hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 1.8, bezier = "fade" })
+hl.animation({ leaf = "fadeSwitch",    enabled = true, speed = 1.8, bezier = "fade" })
+hl.animation({ leaf = "fadeShadow",    enabled = true, speed = 1.8, bezier = "fade" })
+hl.animation({ leaf = "fadePopups",    enabled = true, speed = 1.2, bezier = "fade" })
+hl.animation({ leaf = "border",        enabled = true, speed = 1.8, bezier = "fade" })
+hl.animation({ leaf = "borderangle",   enabled = true, speed = 8,   bezier = "default" })
+
+-- A new window slides in beside its neighbors. With nothing to slide beside, or
+-- when floating, sliding from a screen edge looks wrong, so those pop in instead.
+hl.window_rule({ name = "pop-first-window", match = { float = false, workspace = "w[t1]" }, animation = "popin 75%" })
+hl.window_rule({ name = "pop-floating",     match = { float = true }, animation = "popin 75%" })
+hl.layer_rule({ name = "notify-slide", match = { namespace = "^notifications$" }, animation = "slide right" })
 
 ---------------------
 ---- KEYBINDINGS ----
