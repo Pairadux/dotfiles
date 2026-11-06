@@ -1,4 +1,3 @@
-{{- $m := includeTemplate "machine" . | fromJson -}}
 # See dunst(5) for all configuration options
 
 [global]
@@ -15,13 +14,10 @@
     #
     # If this option is set to mouse or keyboard, the monitor option
     # will be ignored.
-    # Pin to this machine's primary display instead of chasing focus. `monitor`
-    # is only honoured when follow = none. dunst indexes Wayland outputs by
-    # advertisement order and rejects output names there, so this index is
-    # data rather than something derivable -- see dunst_monitor in
-    # .chezmoidata/machines.toml.
-    monitor = {{ $m.dunst_monitor }}
-    follow = none
+    # Show on the output last interacted with. A pinned `monitor` can't hold:
+    # dunst indexes Wayland outputs by advertisement order and rejects output
+    # names, and stream-display.sh swapping outputs can change that order.
+    follow = mouse
 
     ### Geometry ###
 
