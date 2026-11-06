@@ -26,24 +26,4 @@ configuration{
     kb-move-char-forward: "Control+f";
     kb-mode-complete: "Control+o";
 }
-@theme "~/.config/rofi/themes/tokyonight_big2.rasi"
-
-// Scale the imported theme up. Element/icon sizes are em-based so they follow
-// the font; window width is fixed in the theme so it's bumped here too.
-* {
-    font: "Monospace 12";
-}
-window {
-    width: 700;
-}
-
-// Distinguish the prompt from the input: render the prompt as a filled accent
-// "chip" so it reads as separate from the entry text (they share a color otherwise).
-prompt {
-    background-color: @hv;
-    text-color: @bg;
-    padding: 1px 8px;
-    border-radius: 4px;
-    margin: 0px 8px 0px 0px;
-    vertical-align: 0.5;
-}
+@theme "~/.config/rofi/themes/night.rasi"

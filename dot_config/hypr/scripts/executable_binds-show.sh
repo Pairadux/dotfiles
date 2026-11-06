@@ -14,10 +14,11 @@
 # with spaces is enough to line the columns up.
 #
 # The shared rofi theme is a launcher: 700px wide, seven rows. Here the point is
-# to see everything at once, so the sheet overrides it with two columns tall
-# enough to hold every row, filled top to bottom so a group reads down the page.
-# The columns split at the group boundary nearest the middle, with the left one
-# padded out, so no group is ever broken across the two.
+# to see everything at once, so the sheet overrides it with two columns of compact
+# rows, filled top to bottom so a group reads down the page. The columns split at
+# the group boundary nearest the middle, with the left one padded out, so no group
+# is ever broken across the two. On a monitor too small to hold every row, rofi
+# scrolls instead of running off the screen.
 
 source "$(dirname -- "$(readlink -f -- "$0")")/pickers/_common.sh"
 
@@ -97,6 +98,14 @@ left=("${entries[@]:0:split-1}")
 while (( ${#left[@]} < lines )); do left+=(""); done
 sheet=$(printf '%s\n' "${left[@]}" "${entries[@]:split}")
 
+# Logical height of the focused monitor, where a rotated one swaps its axes. Rows
+# are 20px at the theme's font, and 100px leaves room for the prompt and a margin.
+mon_h=$(hyprctl monitors -j | jq -r '.[] | select(.focused)
+    | (if .transform % 2 == 1 then .width else .height end) / .scale | floor')
+(( lines > (mon_h - 100) / 20 )) && lines=$(( (mon_h - 100) / 20 ))
+
 "${ROFI_DMENU[@]}" -markup-rows -no-custom -p " Keybinds" \
-    -theme-str "window { width: 1300px; } listview { columns: 2; lines: $lines; flow: vertical; }" \
+    -theme-str "window { width: calc(100% min 1300px); }
+        listview { columns: 2; lines: $lines; flow: vertical; spacing: 0px; }
+        element { padding: 0px 4px; border: 0px; }" \
     <<< "$sheet" > /dev/null

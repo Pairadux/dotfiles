@@ -1,0 +1,107 @@
+/* The launcher and every picker. Colors and shape come from tokens.rasi. Element
+   and icon sizes are em-based, so they follow the font. */
+@import "~/.config/rofi/tokens.rasi"
+
+* {
+    background-color: transparent;
+    text-color: @c-fg-dim;
+    spacing: 0;
+}
+
+window {
+    width: 700px;
+    location: center;
+    anchor: center;
+    padding: 8px;
+    background-color: @c-glass;
+    border: @t-border;
+    border-color: @c-focus;
+    border-radius: @t-radius-outer;
+    children: [ mainbox ];
+}
+
+mainbox {
+    spacing: 8px;
+    children: [ inputbar, message, listview ];
+}
+
+inputbar {
+    spacing: 8px;
+    children: [ prompt, entry, case-indicator ];
+}
+
+/* A filled chip, so the prompt reads as separate from the entry text. */
+prompt {
+    padding: 1px 8px;
+    background-color: @c-focus;
+    text-color: @c-on-accent;
+    border-radius: @t-radius-control;
+    vertical-align: 0.5;
+}
+
+entry {
+    text-color: @c-fg;
+    placeholder-color: @c-muted;
+    cursor: text;
+    vertical-align: 0.5;
+}
+
+case-indicator {
+    text-color: @c-muted;
+    vertical-align: 0.5;
+}
+
+message {
+    padding: 4px 8px;
+    background-color: @c-raised;
+    border-radius: @t-radius-control;
+}
+
+textbox {
+    text-color: @c-fg;
+}
+
+listview {
+    layout: vertical;
+    columns: 1;
+    lines: 7;
+    spacing: 2px;
+    dynamic: false;
+    scrollbar: false;
+}
+
+element {
+    padding: 4px 8px;
+    spacing: 8px;
+    border: 0px 0px 0px 3px;
+    border-color: transparent;
+    border-radius: @t-radius-control;
+    children: [ element-icon, element-text ];
+}
+
+element selected.normal,
+element selected.active {
+    background-color: @c-focus-tint;
+    border-color: @c-focus;
+    text-color: @c-fg;
+}
+
+element normal.urgent,
+element alternate.urgent,
+element selected.urgent {
+    text-color: @c-attention;
+}
+
+element normal.active,
+element alternate.active {
+    text-color: @c-info;
+}
+
+element-text {
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+
+element-icon {
+    size: 2.5em;
+}
