@@ -1,1 +1,13 @@
-{{- template "tokens.css" . -}}
+{{- template "tokens.css" . }}
+
+/* Shape, type and motion. GTK CSS has no numeric variables, so these are rules. */
+#inner-box {
+  border-radius: {{ .theme.shape.radius_outer }}px;
+  border-width: {{ .theme.shape.border }}px;
+}
+
+button {
+  font-family: "{{ .theme.font.bar }}", "{{ .theme.font.symbols }}", monospace;
+  border-radius: {{ .theme.shape.radius_nested }}px;
+  transition: background {{ .theme.motion.t1 }}ms ease, color {{ .theme.motion.t1 }}ms ease;
+}

@@ -1,19 +1,19 @@
-/* Tokyo Night (Night) — nwg-drawer */
-/* ~/.config/nwg-drawer/drawer.css */
+/* nwg-drawer. Colors, shape and type come from tokens.css. */
+
+@import url("tokens.css");
 
 * {
-    font-family: "FiraCode Nerd Font Mono", monospace;
     font-size: 13px;
-    color: #c0caf5;
+    color: @fg;
 }
 
 window {
-    background-color: rgba(26, 27, 38, 0.92);
-    color: #c0caf5;
+    background-color: @glass;
+    color: @fg;
 }
 
 entry {
-    background-color: rgba(22, 22, 30, 0.8);
+    background-color: @glass_raised;
 }
 
 button, image {
@@ -23,63 +23,60 @@ button, image {
 }
 
 button:hover {
-    background-color: rgba(122, 162, 247, 0.12);
+    background-color: @hover;
 }
 
 button:focus {
-    background-color: rgba(122, 162, 247, 0.18);
+    background-color: alpha(@focus, 0.18);
 }
 
 #category-button {
     margin: 0 10px 0 10px;
-    color: #a9b1d6;
+    color: @fg_dim;
 }
 
 #category-button:hover {
-    color: #7aa2f7;
-    background-color: rgba(122, 162, 247, 0.12);
+    color: @fg;
+    background-color: @hover;
 }
 
 #category-button:checked {
-    color: #7aa2f7;
-    border-bottom: 2px solid #7aa2f7;
+    color: @focus;
+    border-bottom: 2px solid @focus;
 }
 
 #pinned-box {
     padding-bottom: 5px;
-    border-bottom: 1px dotted #292e42;
+    border-bottom: 1px dotted @hover;
 }
 
 #files-box {
     padding: 5px;
-    border: 1px dotted #292e42;
-    border-radius: 8px;
+    border: 1px dotted @hover;
 }
 
 #math-label {
     font-weight: bold;
     font-size: 16px;
-    color: #7aa2f7;
+    color: @focus;
 }
 
 scrollbar slider {
-    background-color: #292e42;
-    border-radius: 4px;
+    background-color: @hover;
     min-width: 4px;
     min-height: 4px;
 }
 
 scrollbar slider:hover {
-    background-color: #7aa2f7;
+    background-color: @focus;
 }
 
 #power-bar button {
-    border-radius: 6px;
     padding: 6px 14px;
-    color: #a9b1d6;
+    color: @fg_dim;
 }
 
 #power-bar button:hover {
-    background-color: rgba(247, 118, 142, 0.15);
-    color: #f7768e;
+    background-color: @hover;
+    color: @fg;
 }

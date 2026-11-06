@@ -10,4 +10,4 @@
 @define-color {{ $k }} {{ $v }};
 {{ end -}}
 @define-color glass alpha({{ .theme.surface.base }}, {{ .theme.opacity.chrome }});
-@define-color glass_raised alpha({{ .theme.surface.raised }}, {{ .theme.opacity.chrome }});
+@define-color glass_raised alpha({{ .theme.surface.raised }}, {{ .theme.opacity.nested }});
