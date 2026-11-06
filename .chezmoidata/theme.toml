@@ -1,0 +1,101 @@
+# Design tokens: Tokyo Night Night, its semantic roles, shape, opacity, type and
+# motion. Each app reads them through a small generated token file.
+
+[theme.surface]
+sunken    = "#16161e"
+base      = "#1a1b26"
+raised    = "#24283b"
+hover     = "#292e42"
+selection = "#283457"
+
+[theme.text]
+fg     = "#c0caf5"
+fg_dim = "#a9b1d6"
+muted  = "#737aa2"
+
+[theme.role]
+focus     = "#bb9af7"
+error     = "#f7768e"
+attention = "#e0af68"
+success   = "#9ece6a"
+info      = "#7aa2f7"
+brand     = "#ff007c"
+on_accent = "#1a1b26"
+border    = "#565f89"
+
+[theme.shape]
+radius_outer   = 10
+radius_nested  = 7
+radius_control = 6
+gap_in         = 4
+gap_out        = 8
+border         = 2
+hairline       = 1
+
+# chrome_hex is chrome as an 8-bit alpha, for formats that take #RRGGBBAA.
+[theme.opacity]
+chrome     = 0.85
+chrome_hex = "d9"
+terminal   = 0.85
+
+# Times are milliseconds.
+[theme.motion]
+t1        = 120
+t2        = 180
+t3        = 240
+t4        = 300
+t_fast_in = 100
+cursor    = 200
+
+[theme.motion.spring_window]
+mass      = 1
+stiffness = 360
+damping   = 36
+
+[theme.motion.spring_workspace]
+mass      = 1
+stiffness = 320
+damping   = 36
+
+[theme.motion.spring_layer]
+mass      = 1
+stiffness = 320
+damping   = 26
+
+# mono and bar are the same family: Mono fits icons to one cell for terminals,
+# Propo gives each icon its own width for even spacing in bars.
+[theme.font]
+mono        = "FiraCode Nerd Font Mono"
+bar         = "FiraCode Nerd Font Propo"
+mono_italic = "VictorMono Nerd Font Mono"
+sans        = "Atkinson Hyperlegible Next"
+symbols     = "Symbols Nerd Font"
+cjk_sans    = "Noto Sans CJK JP"
+cjk_mono    = "Noto Sans Mono CJK JP"
+cjk_serif   = "Noto Serif CJK JP"
+
+[theme.cursor]
+name = "Bibata-Modern-Ice"
+size = 24
+
+[theme.icons]
+name = "Papirus-Dark"
+
+# shadow_alpha is about 60%. Selected per machine by `effects` in machines.toml.
+[theme.effects.full]
+shadow          = true
+shadow_range    = 14
+shadow_power    = 3
+shadow_alpha    = "99"
+blur_size       = 8
+blur_passes     = 2
+blur_brightness = 0.70
+
+[theme.effects.lean]
+shadow          = false
+shadow_range    = 14
+shadow_power    = 3
+shadow_alpha    = "99"
+blur_size       = 6
+blur_passes     = 1
+blur_brightness = 0.70

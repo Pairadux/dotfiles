@@ -43,6 +43,7 @@
 #   tray          true shows a system tray on the bar, and nm-applet's icon
 #                 in it replaces the bar's network module. Absent where
 #                 nm-applet would be the only tray item.
+#   effects       which [theme.effects] set applies: "full" or "lean".
 #
 # Monitor keys
 #   output     connector name as reported by `hyprctl monitors`.
@@ -94,6 +95,7 @@ laptop        = false
 vaapi_driver  = "radeonsi"
 wallpaper_dir = "Pictures/wallpapers"
 tray          = true
+effects       = "full"
 autostart = [
     "dbus",
     "lockscreen",
@@ -148,6 +150,7 @@ note      = "TEMP VERTICAL MONITOR"
 arch          = "aarch64"
 laptop        = true
 wallpaper_dir = "Pictures/wallpapers"
+effects       = "lean"
 # vaapi_driver deliberately unset: Asahi's GPU stack needs no LIBVA override,
 # and radeonsi would be actively wrong here.
 autostart = [
@@ -180,6 +183,7 @@ note     = "scale 2 is a starting value - tune against `hyprctl monitors` on the
 arch          = "unknown"
 laptop        = false
 wallpaper_dir = "Pictures/wallpapers"
+effects       = "lean"
 autostart = [
     "dbus",
     "nm-applet",

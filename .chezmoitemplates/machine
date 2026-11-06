@@ -18,6 +18,7 @@
      gametrak    gametrak autostarts here, so games.conf exists
      wallpapers  wallpaper library, relative to $HOME
      tray        the bar shows a system tray
+     effects     which [theme.effects] set applies, "lean" unless declared
      monitors    the raw ordered list, unchanged
 */ -}}
 {{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
@@ -42,6 +43,7 @@
       "gametrak"   (has "gametrak" $machine.autostart)
       "wallpapers" (dig "wallpaper_dir" "" $machine)
       "tray"      (dig "tray" false $machine)
+      "effects"   (dig "effects" "lean" $machine)
       "monitors"  $machine.monitors
       "autostart" $machine.autostart
       "commands"  .autostart_commands
