@@ -34,8 +34,8 @@ hairline       = 1
 
 # chrome_hex is chrome as an 8-bit alpha, for formats that take #RRGGBBAA.
 [theme.opacity]
-chrome     = 0.85
-chrome_hex = "d9"
+chrome     = 0.75
+chrome_hex = "bf"
 terminal   = 0.85
 
 # Times are milliseconds.
@@ -81,21 +81,21 @@ size = 24
 [theme.icons]
 name = "Papirus-Dark"
 
-# shadow_alpha is about 60%. Selected per machine by `effects` in machines.toml.
+# shadow_alpha is about 10%. Selected per machine by `effects` in machines.toml.
 [theme.effects.full]
 shadow          = true
-shadow_range    = 14
+shadow_range    = 4
 shadow_power    = 3
-shadow_alpha    = "99"
+shadow_alpha    = "1a"
 blur_size       = 8
 blur_passes     = 2
-blur_brightness = 0.70
+blur_brightness = 0.85
 
 [theme.effects.lean]
 shadow          = false
-shadow_range    = 14
+shadow_range    = 4
 shadow_power    = 3
-shadow_alpha    = "99"
+shadow_alpha    = "1a"
 blur_size       = 6
 blur_passes     = 1
-blur_brightness = 0.70
+blur_brightness = 0.85
