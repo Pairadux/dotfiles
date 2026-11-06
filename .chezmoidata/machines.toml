@@ -76,7 +76,6 @@ lockscreen      = "hyprlock"
 nm-applet       = "nm-applet"
 dunst           = "systemctl --user start dunst.service"
 hyprpaper       = "hyprpaper"
-hyprpanel       = "hyprpanel"
 waybar          = "waybar"
 cliphist-text   = "wl-paste --type text --watch cliphist store"
 cliphist-image  = "wl-paste --type image --watch cliphist store"
@@ -146,7 +145,6 @@ note      = "TEMP VERTICAL MONITOR"
 # single-head: only a "primary" role is declared, which switches off workspace
 # pinning, per-window monitor= fields and the split wallpaper path everywhere.
 #
-# hyprpanel is unavailable in the Alarm repos, so the bar here is waybar.
 # gametrak and mega-status are not packaged/needed, and the session does not
 # lock on start.
 # ---------------------------------------------------------------------------
