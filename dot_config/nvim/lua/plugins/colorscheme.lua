@@ -10,6 +10,7 @@ return {
         'folke/tokyonight.nvim',
         priority = 1500, -- Make sure to load this before all the other start plugins.
         config = function()
+            local tokens = require 'tokens'
             require('tokyonight').setup {
                 style = 'night',
                 transparent = false,
@@ -37,6 +38,12 @@ return {
                     highlights.EndOfBuffer = {
                         fg = colors.dark3,
                     }
+                    -- The terminal is translucent, so the stock comment and line
+                    -- number colors get too dim over a bright wallpaper.
+                    highlights.Comment = { fg = tokens.muted, italic = true }
+                    highlights.LineNr = { fg = tokens.border }
+                    highlights.LineNrAbove = { fg = tokens.border }
+                    highlights.LineNrBelow = { fg = tokens.border }
                 end,
             }
             vim.cmd.colorscheme 'tokyonight-night'
