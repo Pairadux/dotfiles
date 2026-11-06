@@ -44,6 +44,7 @@
 #                 in it replaces the bar's network module. Absent where
 #                 nm-applet would be the only tray item.
 #   effects       which [theme.effects] set applies: "full" or "lean".
+#   kana          the hostname in kana, shown on the bar.
 #
 # Monitor keys
 #   output     connector name as reported by `hyprctl monitors`.
@@ -96,6 +97,7 @@ vaapi_driver  = "radeonsi"
 wallpaper_dir = "Pictures/wallpapers"
 tray          = true
 effects       = "full"
+kana          = "むつ"
 autostart = [
     "dbus",
     "lockscreen",
@@ -151,6 +153,7 @@ arch          = "aarch64"
 laptop        = true
 wallpaper_dir = "Pictures/wallpapers"
 effects       = "lean"
+kana          = "ふじ"
 # vaapi_driver deliberately unset: Asahi's GPU stack needs no LIBVA override,
 # and radeonsi would be actively wrong here.
 autostart = [

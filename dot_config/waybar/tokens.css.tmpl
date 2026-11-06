@@ -1,1 +1,51 @@
-{{- template "tokens.css" . -}}
+{{- $m := includeTemplate "machine" . | fromJson -}}
+{{- $fx := index .theme.effects $m.effects -}}
+{{- template "tokens.css" . }}
+
+/* Shape, type and motion. GTK CSS has no numeric variables, so these are rules.
+   The inner radius is the outer radius minus the padding between them. Propo gives
+   each icon an advance as wide as its glyph; the plain Nerd Font gives every icon
+   one cell and lets it overflow, so GTK spaces icons by cell and the gaps come out
+   uneven. */
+* {
+  font-family: "{{ .theme.font.bar }}", "{{ .theme.font.symbols }}", monospace;
+}
+
+/* Room inside the surface for the islands' glow. */
+window#waybar > box {
+  padding: {{ .theme.shape.bar_glow_room }}px;
+}
+
+.modules-left,
+.modules-right,
+#mpris {
+  border-radius: {{ .theme.shape.radius_outer }}px;
+  border-width: {{ .theme.shape.border }}px;
+{{- if $fx.shadow }}
+  box-shadow: 0 0 3px alpha(@focus, 0.6);
+{{- end }}
+}
+
+#custom-power,
+#workspaces button {
+  border-radius: {{ .theme.shape.radius_nested }}px;
+  transition: color {{ .theme.motion.t1 }}ms ease, background {{ .theme.motion.t1 }}ms ease;
+}
+
+tooltip {
+  border-radius: {{ .theme.shape.radius_nested }}px;
+  border-width: {{ .theme.shape.hairline }}px;
+}
+
+tooltip label {
+  font-family: "{{ .theme.font.sans }}", "{{ .theme.font.symbols }}", sans-serif;
+}
+
+#tray menu {
+  border-radius: {{ .theme.shape.radius_nested }}px;
+  border-width: {{ .theme.shape.hairline }}px;
+}
+
+#tray menu menuitem {
+  border-radius: {{ sub .theme.shape.radius_nested 3 }}px;
+}

@@ -19,6 +19,7 @@
      wallpapers  wallpaper library, relative to $HOME
      tray        the bar shows a system tray
      effects     which [theme.effects] set applies, "lean" unless declared
+     kana        the hostname in kana, the hostname itself unless declared
      monitors    the raw ordered list, unchanged
 */ -}}
 {{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
@@ -44,6 +45,7 @@
       "wallpapers" (dig "wallpaper_dir" "" $machine)
       "tray"      (dig "tray" false $machine)
       "effects"   (dig "effects" "lean" $machine)
+      "kana"      (dig "kana" .chezmoi.hostname $machine)
       "monitors"  $machine.monitors
       "autostart" $machine.autostart
       "commands"  .autostart_commands

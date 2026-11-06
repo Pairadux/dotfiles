@@ -1,7 +1,6 @@
 {{- $m := includeTemplate "machine" . | fromJson -}}
-// waybar — the bar on every machine. Layout follows the hyprpanel bar it
-// replaced: power menu + workspaces on the left, the focused app in the middle,
-// status cluster on the right.
+// waybar: the bar on every machine. Power menu, workspaces and the focused app
+// on the left, media in the middle, status cluster on the right.
 //
 // Battery and backlight are emitted only on laptops, the tray only where a
 // machine asks for it, and workspace pinning only on a machine that actually
@@ -14,10 +13,13 @@
     "layer": "top",
     "position": "top",
     "fixed-center": true,
-    "margin-left": 10,
-    "margin-right": 10,
-    "margin-top": 7,
-    "margin-bottom": 0,
+    // The surface holds the islands plus room for their glow, so its margins are
+    // smaller by that room. The negative bottom margin keeps windows gap_out below
+    // the islands, not below the room.
+    "margin-left": {{ sub .theme.shape.gap_out .theme.shape.bar_glow_room }},
+    "margin-right": {{ sub .theme.shape.gap_out .theme.shape.bar_glow_room }},
+    "margin-top": {{ sub .theme.shape.gap_out .theme.shape.bar_glow_room }},
+    "margin-bottom": -{{ .theme.shape.bar_glow_room }},
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
@@ -45,15 +47,14 @@
     ],
 
     "custom/power": {
-        "format": "󰣇",
+        "format": "{{ $m.kana }}",
         "tooltip-format": "Power menu",
         "on-click": "pkill -x nwg-bar || nwg-bar -i 64"
     },
 
     "hyprland/workspaces": {
         "format": "{icon}",
-        // 1-10 keep the kanji numerals; the named workspaces reuse the same
-        // glyphs as hyprpanel's workspaceIconMap so muscle memory carries over.
+        // 1-10 are kanji numerals; the named workspaces are icons.
         "format-icons": {
             "1": "一",
             "2": "二",
@@ -139,7 +140,7 @@
     "group/volume": {
         "orientation": "inherit",
         "drawer": {
-            "transition-duration": 300,
+            "transition-duration": {{ .theme.motion.t4 }},
             "transition-left-to-right": false
         },
         "modules": [
@@ -190,7 +191,7 @@
     "group/brightness": {
         "orientation": "inherit",
         "drawer": {
-            "transition-duration": 300,
+            "transition-duration": {{ .theme.motion.t4 }},
             "transition-left-to-right": false
         },
         "modules": [
@@ -282,9 +283,9 @@
             "mode": "month",
             "on-scroll": 1,
             "format": {
-                "months": "<span color='#7aa2f7'><b>{}</b></span>",
-                "weekdays": "<span color='#e0af68'><b>{}</b></span>",
-                "today": "<span color='#f7768e'><b>{}</b></span>"
+                "months": "<span color='{{ .theme.text.fg }}'><b>{}</b></span>",
+                "weekdays": "<span color='{{ .theme.text.muted }}'><b>{}</b></span>",
+                "today": "<span color='{{ .theme.role.focus }}'><b>{}</b></span>"
             }
         },
         "actions": {

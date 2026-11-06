@@ -31,6 +31,7 @@ gap_in         = 4
 gap_out        = 8
 border         = 2
 hairline       = 1
+bar_glow_room  = 4
 
 # chrome_hex is chrome as an 8-bit alpha, for formats that take #RRGGBBAA.
 [theme.opacity]
