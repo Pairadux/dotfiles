@@ -4,8 +4,7 @@
 "
 " Reload after editing: <leader>vr  (or :source ~/.ideavimrc)
 "
-" Every :action ID here is UNVERIFIED until you confirm it. See the
-" checklist at the bottom of this file before trusting any of them.
+" The :action IDs here are unverified; the checklist at the bottom tracks them.
 " ============================================================================
 
 let mapleader = " "
@@ -23,9 +22,9 @@ set highlightedyank       " your vim.hl.on_yank autocmd
 set matchit               " % on keywords
 set commentary            " gcc / gc{motion} — Neovim gives you this built-in
 set which-key             " requires the "Which-Key" plugin from the marketplace
-set notimeout             " which-key wants this; overrides your timeoutlen=400
+set notimeout             " which-key needs this; overrides timeoutlen=400
 
-" Not enabled, but available if you want them back:
+" Available but not enabled:
 "   set sneak                " s{char}{char} — closest to flash's `s`
 "   set ReplaceWithRegister  " gr{motion} — pairs with losing flash's remote `r`
 "   set NERDTree             " makes the Project tool window j/k/o navigable
@@ -71,7 +70,7 @@ sethandler <C-c> n:vim
 sethandler <C-p> n:vim i:ide
 sethandler <C-\> n:vim
 
-" IntelliJ wins — its completion popup should behave normally
+" IntelliJ wins, so its completion popup behaves normally
 sethandler <C-n> i:ide
 sethandler <C-space> i:ide
 sethandler <C-s> i:ide
@@ -91,9 +90,9 @@ inoremap <C-k> <Up>
 inoremap <C-b> <Esc>^i
 inoremap <C-e> <Esc>$a
 
-" Your <Tab>/<S-Tab> insert-mode indent mappings are deliberately NOT ported.
+" Neovim's <Tab>/<S-Tab> insert-mode indent mappings are deliberately NOT ported.
 " IntelliJ owns Tab for completion acceptance, and blink's super-tab has no
-" equivalent here. Use <C-t>/<C-d> if you want the indent behaviour.
+" equivalent here. <C-t>/<C-d> provide the indent behaviour.
 
 
 " ============================================================================
@@ -116,7 +115,7 @@ nnoremap <C-c> :action CloseContent<CR>
 " Yank whole buffer
 nnoremap <leader>cc :%y+<CR>
 
-" Squeeze interior whitespace (your util.squeeze_interior_whitespace).
+" Squeeze interior whitespace (util.squeeze_interior_whitespace in Neovim).
 " Anchored so leading indentation survives.
 xnoremap gs :s/\v(\S)\zs\s+/ /g<CR>
 
@@ -167,7 +166,7 @@ nnoremap <leader>lf :action ReformatCode<CR>
 nnoremap <leader>lh :action ToggleInlayHintsGloballyAction<CR>
 nnoremap <leader>li :action InspectCode<CR>
 
-" gw — shadows core `gw` (format motion), same as your Neovim config does
+" gw — shadows core `gw` (format motion), same as the Neovim config does
 nnoremap gw :action ReformatCode<CR>
 
 " Diagnostics
@@ -179,8 +178,7 @@ nnoremap <leader>od :action ActivateProblemsViewToolWindow<CR>
 nnoremap ]] :action GotoNextElementUnderCaretUsage<CR>
 nnoremap [[ :action GotoPrevElementUnderCaretUsage<CR>
 
-" The rest of Neovim 0.12's built-in LSP defaults. You weren't sure you use
-" these — uncomment any that turn out to be muscle memory.
+" The rest of Neovim 0.12's built-in LSP defaults, unused so far:
 "   nnoremap grr :action FindUsages<CR>
 "   nnoremap gri :action GotoImplementation<CR>
 "   nnoremap grt :action GotoTypeDeclaration<CR>
@@ -257,7 +255,7 @@ let g:WhichKeyDesc_vim_reload = "<leader>vr Reload ideavimrc"
 
 
 " ============================================================================
-" NOT PORTED — recorded so you know these were decisions, not oversights
+" NOT PORTED — deliberate decisions, not oversights
 " ============================================================================
 "
 "   <leader>ol / <leader>om   Lazy / Mason — Settings > Plugins is the analogue
@@ -266,14 +264,14 @@ let g:WhichKeyDesc_vim_reload = "<leader>vr Reload ideavimrc"
 "   <leader>fm                markdown-scoped file picker — no scoped action
 "   ga / gA                   mini.align — nothing in IdeaVim or IntelliJ
 "   <leader>ib / <leader>it   comment rule / boxed title — use Live Templates
-"   s / S / r / R             flash.nvim — `set sneak` gets you s{char}{char};
+"   s / S / r / R             flash.nvim — `set sneak` gives s{char}{char};
 "                             treesitter select maps loosely to Opt+Up
 "                             (EditorSelectWord)
 "   markdown gj/gk/g0/g$      no ftplugin mechanism in IdeaVim
 "   terminal-mode maps        IntelliJ's terminal is a tool window, not a buffer
 "   <C-_>                     may not reach IdeaVim at all; <C-\> covers it
 "   <leader>a* Claude Code    the JetBrains plugin's action IDs are unknown —
-"                             run :actionlist claude and add them yourself
+"                             not added; :actionlist claude lists them
 "   Godot (gdscript LSP,
 "   <leader>ff filter,
 "   :GodotDocs)               staying in Neovim

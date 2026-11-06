@@ -2,7 +2,7 @@
 ---
 --- The banks are keyed by F-key because that is what the Voyager emits, but no
 --- F-key is printed on the board: the layout puts each one under an ordinary key.
---- Reading the file otherwise means translating F17 into K in your head. These
+--- Reading the file otherwise means mentally translating F17 into K. These
 --- hints render the physical cap beside each slot as virtual text, so they live
 --- outside the file -- nothing to go stale when a sound moves between slots, and
 --- nothing for `set-soundboard-items` to parse around.

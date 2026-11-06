@@ -74,7 +74,7 @@ function M.open()
     -- Create buffer
     local buf = vim.api.nvim_create_buf(false, true)
 
-    -- Set up highlight groups using your colorscheme's markdown colors
+    -- Highlight groups for headings and todo states
     local heading_colors = {
         [1] = '#7aa2f7', -- H1 - blue
         [2] = '#e0af68', -- H2 - yellow

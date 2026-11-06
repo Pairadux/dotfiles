@@ -1,4 +1,4 @@
 #!/bin/bash
-# Shared config for all pickers — source this, don't run it directly.
+# Shared config, sourced by every picker.
 
 ROFI_DMENU=(rofi -dmenu -i -matching fuzzy -theme-str 'element-icon { enabled: false; }')

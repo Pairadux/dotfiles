@@ -256,7 +256,7 @@ end
 
 --- Insert-mode <CR>. Continues the current item, carrying any text right of the
 --- cursor onto the new one. On an empty item it steps out a level instead, and
---- at the outermost level it drops the marker so you land back in prose.
+--- at the outermost level it drops the marker, leaving the cursor in prose.
 --- @return boolean handled
 function M.newline()
     local row, col = unpack(vim.api.nvim_win_get_cursor(0))

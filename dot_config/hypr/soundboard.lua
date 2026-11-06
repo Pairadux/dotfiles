@@ -20,18 +20,17 @@
 -- the whole chord as one key, so a bare F-key is just as unambiguous.
 --
 -- The tradeoff is the other direction: Hyprland grabs these globally, so an
--- assigned key is gone from every app. Known casualties if you assign them --
+-- assigned key is gone from every app. Known casualties if assigned --
 -- F12 (Steam screenshot, still on its default here; also browser devtools),
 -- F11 (browser fullscreen), F5 (browser reload), F5/F9 (quicksave/quickload in
 -- some games), ALT + F4 (close window), ALT + period (shell's last argument).
 -- F13..F24 have no such baggage; nothing claims them.
 --
 -- Values are slot names from `pwsp-cli get hotkeys`. The sound each slot plays
--- stays configured in pwsp; only the trigger lives here. Add a line to bind a key
--- -- an unassigned one is left alone, both to keep it available to apps and so a
--- stray press cannot fire play-hotkey against a slot that does not exist. Leave
--- the slots' own key chords unset (`pwsp-cli action clear-hotkey-key "<slot>"`)
--- so a press cannot fire twice.
+-- stays configured in pwsp; only the trigger lives here. An unassigned key is left
+-- alone, both to keep it available to apps and so a stray press cannot fire
+-- play-hotkey against a slot that does not exist. The slots' own key chords stay
+-- unset in pwsp, since a key bound in both would fire twice.
 --
 -- `hl` is a Hyprland global, so it needs no import.
 local plain = {

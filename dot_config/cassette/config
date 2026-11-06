@@ -10,20 +10,20 @@
 #   - Values are used literally: no quotes, no $VARIABLES, and no comment
 #     after a value (a `#` there becomes part of the value). Comments go on
 #     their own line.
-#   - Only a leading `~/` in `clips` is expanded, to your home folder.
+#   - Only a leading `~/` in `clips` is expanded, to the home folder.
 #   - A key that is left out or commented out uses its default.
 #   - Any mistake (unknown or misspelled key, empty value, bad number,
 #     relative path) makes every cassette program refuse to run and name
-#     the line. `cassette status` is a quick way to check.
+#     the line. `cassette status` reports the same errors.
 #
 # APPLYING CHANGES
-#   Nothing reloads by itself. After editing, restart both services:
+#   Nothing reloads by itself. Changes take effect when both services restart:
 #
 #     systemctl --user restart cassette cassette-tray
 #
 #   Restarting the daemon empties the buffer: the next clip only holds audio
-#   recorded since the restart. The same happens when you pause and resume
-#   from the tray.
+#   recorded since the restart. Pausing and resuming from the tray does the
+#   same.
 #
 # FINDING NODE NAMES (for mic and output)
 #   The node name is the second column of:
@@ -40,46 +40,45 @@
 #   plays soundboard sounds straight to the headset.
 #
 #   Current setup: only Discord is recorded (other people plus Discord's own
-#   sounds). Your voice and the soundboard are not; see `mic` below to add
-#   them. For this to work:
-#     - Discord's Output Device (User Settings > Voice & Video) must be
-#       "Discord". If it is set to Default, Discord bypasses discord_sink
+#   sounds). The mic and the soundboard are not (see `mic` below). This
+#   depends on:
+#     - Discord's Output Device (User Settings > Voice & Video) being
+#       "Discord". Set to Default, Discord bypasses discord_sink
 #       and clips are silent even though `cassette status` looks normal.
 #     - The "Discord" sink comes from
 #       ~/.config/pipewire/pipewire.conf.d/discord-sink.conf (in chezmoi).
-#       It only exists after PipeWire has restarted (log out and in once).
+#       It exists once PipeWire has restarted, such as at the next login.
 #
 #   The tray (left click) pauses by stopping the daemon. It stays paused
-#   until you resume, or until your next login, when the service starts
-#   again.
+#   until resumed, or until the next login, when the service starts again.
 
 
 # ---------------------------------------------------------------------------
 # mic: the microphone to record
 # ---------------------------------------------------------------------------
-#   default   the system's default input, following it if you change it
-#   off       don't record a microphone
+#   default   the system's default input, following any change to it
+#   off       no microphone is recorded
 #   <node>    exactly this PipeWire source, e.g. easyeffects_source
 #
 #   Default: default
 #
 #   Gotchas:
 #   - While a mic is recorded it stays open, so "mic in use" indicators stay
-#     on. Nothing is written to disk until you clip.
+#     on. Nothing is written to disk until a clip is saved.
 #   - A <node> is recorded exactly. If it doesn't exist (a typo, the app that
 #     provides it isn't running yet, the device is unplugged) or it
 #     disappears, the daemon stops and systemd retries every 3 seconds until
 #     the node is back. It never silently switches to another mic.
 #     `journalctl --user -u cassette` then shows "defined target not found".
 #   - A virtual mic that mixes in other sounds (a soundboard, for example)
-#     records those too. If an output you also record plays the same sounds,
-#     they end up in the clip twice, with a slight echo.
+#     records those too. If a recorded output plays the same sounds, they
+#     end up in the clip twice, with a slight echo.
 #   - mic and output can't both be off.
 #
 #   On this machine:
-#     easyeffects_source   your voice after EasyEffects (gate, noise
+#     easyeffects_source   voice after EasyEffects (gate, noise
 #                          removal, compressor): voice only
-#     pwsp-virtual-mic     exactly what Discord hears from you: voice plus
+#     pwsp-virtual-mic     exactly what Discord receives: voice plus
 #                          soundboard sounds
 #     alsa_input.usb-Kingston_HyperX_Quadcast_4110-00.analog-stereo
 #                          the raw QuadCast, before EasyEffects
@@ -90,12 +89,11 @@ mic = off
 # ---------------------------------------------------------------------------
 # output: an output (sink) whose sound to record
 # ---------------------------------------------------------------------------
-#   default   whatever plays through the default output, which is all your
+#   default   whatever plays through the default output, which is all
 #             desktop audio; follows the default output if it changes
-#   off       don't record any output
-#   <node>    exactly this PipeWire sink. Point it at a sink that only one
-#             app plays into (a dedicated "Discord" sink, say) to record
-#             just that app.
+#   off       no output is recorded
+#   <node>    exactly this PipeWire sink. A sink that only one app plays
+#             into (a dedicated "Discord" sink, say) records just that app.
 #
 #   Default: default
 #
@@ -106,17 +104,17 @@ mic = off
 #     `cassette play` and cassette-trim playback when they play through it.
 #   - If another program reroutes streams on a sink (EasyEffects does this on
 #     the device it outputs to), naming that sink can make the recorder exit
-#     at random with "defined target not found". Use `default` for that sink.
+#     at random with "defined target not found". `default` reaches that sink
+#     reliably.
 #
 #   On this machine:
 #     discord_sink   only Discord. pwsp plays soundboard sounds to the
 #                    headset, not through Discord, so they are never in it.
-#     default        everything you hear on the HyperX headset. Don't name
-#                    the HyperX sink itself: EasyEffects reroutes streams on
-#                    it and the recorder exits at random. `default` reaches
-#                    it reliably.
-#   With output = default, don't also use mic = pwsp-virtual-mic: soundboard
-#   sounds would be recorded twice, once from each.
+#     default        everything on the HyperX headset. Naming the HyperX sink
+#                    itself fails: EasyEffects reroutes streams on it and the
+#                    recorder exits at random. `default` reaches it reliably.
+#   output = default with mic = pwsp-virtual-mic records soundboard sounds
+#   twice, once from each.
 #
 output = discord_sink
 
@@ -139,8 +137,8 @@ seconds = 30
 # ---------------------------------------------------------------------------
 # clips: where clips are saved
 # ---------------------------------------------------------------------------
-#   An absolute path, or one starting with ~/ . The folder is created, private
-#   to you (mode 700), when the first clip is saved; clips are mode 600.
+#   An absolute path, or one starting with ~/ . The folder is created, mode
+#   700, when the first clip is saved; clips are mode 600.
 #
 #   Default: ~/.local/share/cassette/clips (or $XDG_DATA_HOME/cassette/clips)
 #
@@ -157,15 +155,15 @@ clips = ~/Audio/cassette
 
 
 # ---------------------------------------------------------------------------
-# preview: how much audio cassette-trim plays after you move the right edge
+# preview: how much audio cassette-trim plays after the right edge moves
 # ---------------------------------------------------------------------------
 #   A number of seconds, 0 or more; decimals are fine. 0 turns the preview
 #   off.
 #
 #   Default: 0.5
 #
-#   - Moving the right edge plays this much audio leading up to it, so you
-#     hear exactly where the cut lands. Moving the left edge always plays
+#   - Moving the right edge plays this much audio leading up to it, which
+#     shows exactly where the cut lands. Moving the left edge always plays
 #     the whole selection; this setting doesn't affect it.
 #   - Nothing plays while an edge is moving. Playback starts once the edge
 #     has stayed put for half a second, so several quick adjustments only

@@ -29,7 +29,7 @@ configuration{
 @theme "~/.config/rofi/themes/tokyonight_big2.rasi"
 
 // Scale the imported theme up. Element/icon sizes are em-based so they follow
-// the font; window width is fixed in the theme so it's bumped here too. Tune to taste.
+// the font; window width is fixed in the theme so it's bumped here too.
 * {
     font: "Monospace 12";
 }

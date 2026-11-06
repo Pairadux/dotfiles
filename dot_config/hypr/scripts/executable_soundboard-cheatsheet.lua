@@ -4,7 +4,7 @@
 --------------------------------
 
 -- Draws soundboard.lua as an SVG shaped like the Voyager, so a sound can be found
--- by reaching for where it sits under your hands rather than by reading a list.
+-- by where it sits under the hands rather than by reading a list.
 --
 -- The banks come from `require("soundboard")`, the same tables hyprland.lua binds,
 -- so the picture cannot drift from the keymap. Requiring it outside Hyprland is

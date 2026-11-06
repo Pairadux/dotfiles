@@ -6,11 +6,9 @@
 #   picker.sh              show a meta-picker of available pickers
 #   picker.sh <name>       run a specific picker directly
 #
-# Add new pickers by dropping scripts into the pickers/ directory.
-# Each script should be a self-contained rofi workflow.
+# Each picker is a self-contained rofi script in the pickers/ directory.
 #
 # Picker ideas for later:
-#   - wallpaper: dir of folders with top+bottom image variants, apply via hyprpaper
 #   - emoji: search + copy emoji/nerdfont glyphs via wl-copy
 #   - color: trigger hyprpicker, copy hex/rgb to clipboard
 #   - calc: rofi-calc plugin, result to clipboard
