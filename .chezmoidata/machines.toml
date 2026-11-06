@@ -44,7 +44,11 @@
 #                 in it replaces the bar's network module. Absent where
 #                 nm-applet would be the only tray item.
 #   effects       which [theme.effects] set applies: "full" or "lean".
-#   kana          the hostname in kana, shown on the bar.
+#   kana          the hostname in kana, shown on the bar and lock screen.
+#   neighbors     the kana on either side of this machine on the lock screen.
+#                 The three hosts form a loop, so each has the other two.
+#   lock_scale    lock screen size against a display 2560 wide, from the
+#                 primary display's logical width. Absent means 0.75.
 #
 # Monitor keys
 #   output     connector name as reported by `hyprctl monitors`.
@@ -98,6 +102,8 @@ wallpaper_dir = "Pictures/wallpapers"
 tray          = true
 effects       = "full"
 kana          = "むつ"
+neighbors     = ["ふじ", "ほくと"]
+lock_scale    = 1.0
 autostart = [
     "dbus",
     "lockscreen",
@@ -154,6 +160,8 @@ laptop        = true
 wallpaper_dir = "Pictures/wallpapers"
 effects       = "lean"
 kana          = "ふじ"
+neighbors     = ["ほくと", "むつ"]
+lock_scale    = 0.6
 # vaapi_driver deliberately unset: Asahi's GPU stack needs no LIBVA override,
 # and radeonsi would be actively wrong here.
 autostart = [

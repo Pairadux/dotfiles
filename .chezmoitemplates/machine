@@ -20,6 +20,8 @@
      tray        the bar shows a system tray
      effects     which [theme.effects] set applies, "lean" unless declared
      kana        the hostname in kana, the hostname itself unless declared
+     neighbors   kana beside this machine on the lock screen, empty unless declared
+     lock_scale  lock screen size against a display 2560 wide, 0.75 unless declared
      monitors    the raw ordered list, unchanged
 */ -}}
 {{- $machine := index .machines .chezmoi.hostname | default .fallback -}}
@@ -46,6 +48,8 @@
       "tray"      (dig "tray" false $machine)
       "effects"   (dig "effects" "lean" $machine)
       "kana"      (dig "kana" .chezmoi.hostname $machine)
+      "neighbors" (dig "neighbors" (list) $machine)
+      "lock_scale" (dig "lock_scale" 0.75 $machine)
       "monitors"  $machine.monitors
       "autostart" $machine.autostart
       "commands"  .autostart_commands

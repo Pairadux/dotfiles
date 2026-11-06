@@ -11,7 +11,7 @@ ${{ $k }} = rgb({{ trimPrefix "#" $v }})
 {{ end -}}
 $glass = rgba({{ trimPrefix "#" .theme.surface.base }}{{ .theme.opacity.chrome_hex }})
 $radius_outer = {{ .theme.shape.radius_outer }}
-$border = {{ .theme.shape.border }}
+$border_size = {{ .theme.shape.border }}
 $font_mono = {{ .theme.font.mono }}
 $font_bar = {{ .theme.font.bar }}
 $font_italic = {{ .theme.font.mono_italic }}

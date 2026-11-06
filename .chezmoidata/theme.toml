@@ -102,3 +102,8 @@ shadow_alpha    = "1a"
 blur_size       = 6
 blur_passes     = 1
 blur_brightness = 0.85
+
+# The brand mark. The katakana follows the pronunciation, pair-uh-dux.
+[theme.mark]
+latin = "PAIRADUX"
+kana  = "ペアラダックス"

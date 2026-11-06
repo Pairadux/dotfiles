@@ -2,17 +2,29 @@
 {{- /* While Sunshine streams, stream-display.sh swaps the desk for a single
        headless STREAM output that stands in for the primary display, so it
        gets the primary's lock screen too. hyprlock skips widgets for an
-       output that isn't connected. */ -}}
-{{- $primaries := list $m.primary "STREAM" -}}
+       output that isn't connected. Sizes are drawn for a display 2560 wide,
+       and each output scales them to its own width. */ -}}
+{{- $outputs := list (dict "name" $m.primary "scale" $m.lock_scale) (dict "name" "STREAM" "scale" 0.75) -}}
+{{- $mark := .theme.mark -}}
+{{- $dim := .theme.text.fg_dim | replace "#" "##" -}}
+{{- $line := .theme.role.focus | replace "#" "##" -}}
 source = ~/.config/hypr/hyprpaper-wallpaper.conf
-source = ~/.config/hypr/fonts.conf
+source = ~/.config/hypr/tokens.conf
 
-# TOKYO NIGHT PALETTE
-$fg       = rgb(192, 202, 245)    # #c0caf5  foreground (pale blue-white)
-$accent   = rgb(122, 162, 247)    # #7aa2f7  blue (input outline)
-$field_bg = rgba(26, 27, 38, 0.7) # #1a1b26  background (70% opacity, input fill)
-$check    = rgb(158, 206, 106)    # #9ece6a  green (auth in progress)
-$fail     = rgb(247, 118, 142)    # #f7768e  red (auth failed)
+$brightness = 0.55
+$text_shadow = rgba(000000d9)
+
+general {
+    hide_cursor = false
+}
+
+animations {
+    enabled = true
+    bezier = fade, 0.5, 0.5, 0.75, 1
+    animation = fadeIn, 1, {{ divf .theme.motion.t3 100 }}, fade
+    animation = fadeOut, 1, {{ divf .theme.motion.t3 100 }}, fade
+    animation = inputFieldDots, 1, {{ divf .theme.motion.t1 100 }}, fade
+}
 
 # BACKGROUND
 {{ if $m.multihead -}}
@@ -21,70 +33,121 @@ background {
     path = $wallpaper_top
     blur_passes = 3
     contrast = 0.8916
-    brightness = 0.8172
+    brightness = $brightness
     vibrancy = 0.1696
     vibrancy_darkness = 0.0
 }
 {{ end -}}
-{{ range $primaries -}}
+{{ range $outputs -}}
 background {
-    monitor = {{ . }}
+    monitor = {{ .name }}
     path = {{ if $m.multihead }}$wallpaper_bottom{{ else }}$wallpaper_main{{ end }}
     blur_passes = 3
     contrast = 0.8916
-    brightness = 0.8172
+    brightness = $brightness
     vibrancy = 0.1696
     vibrancy_darkness = 0.0
 }
-{{ end }}
-# GENERAL
-general {
-    hide_cursor = false
+{{ end -}}
+{{ range $outputs -}}
+{{- $s := .scale }}
+# WORDMARK
+label {
+    monitor = {{ .name }}
+    text = <span font_weight="800" letter_spacing="{{ mulf 132 $s 0.04 1024 | int }}">{{ $mark.latin }}</span>
+    color = $fg
+    font_family = $font_sans
+    font_size = {{ mulf 132 $s | int }}
+    shadow_passes = 2
+    shadow_size = 4
+    shadow_color = $brand
+    shadow_boost = 1.2
+    position = 0, {{ mulf 140 $s | int }}
+    halign = center
+    valign = center
 }
-{{ range $primaries }}
+
 # INPUT FIELD
 input-field {
-    monitor = {{ . }}
-    size = 250, 60
-    outline_thickness = 2
+    monitor = {{ .name }}
+    size = {{ mulf 480 $s | int }}, {{ mulf 88 $s | int }}
+    outline_thickness = $border_size
     dots_size = 0.2 # Scale of input-field height, 0.2 - 0.8
     dots_spacing = 0.2 # Scale of dots' absolute size, 0.0 - 1.0
     dots_center = true
-    outer_color = $accent
-    inner_color = $field_bg
+    outer_color = $focus
+    inner_color = $glass
     font_color = $fg
-    check_color = $check
-    fail_color = $fail
+    check_color = $success
+    fail_color = $error
+    capslock_color = $attention
     fade_on_empty = false
-    font_family = $font
-    placeholder_text = <span font_family="$font_italic"><i><span foreground="##a9b1d6">Input Password...</span></i></span>
-    hide_input = false
-    position = 0, -120
+    shadow_passes = 1
+    shadow_size = 4
+    shadow_color = $focus
+    shadow_boost = 1.0
+    rounding = $radius_outer
+    font_family = $font_italic
+    placeholder_text = <i><span foreground="{{ $dim }}">Input Password...</span></i>
+    position = 0, -{{ mulf 105 $s | int }}
     halign = center
     valign = center
 }
 
-# TIME
+# VERTICAL SIGN
+# The vert feature gives ッ its vertical form. A rotated label would set it too, but
+# hyprlock draws no shadow on one, and the sign needs its glow.
 label {
-    monitor = {{ . }}
-    text = cmd[update:1000] echo "$(date +"%-I:%M%p")"
-    color = $fg
-    font_size = 120
-    font_family = $font_bold
-    position = 0, 80
-    halign = center
-    valign = center
+    monitor = {{ .name }}
+    text = cmd[update:3600000] printf '<span font_features="vert" font_weight="700" line_height="0.76">{{ splitList "" $mark.kana | join "\\n" }}</span>'
+    text_align = center
+    color = $brand
+    font_family = $font_cjk
+    font_size = {{ mulf 84 $s | int }}
+    shadow_passes = 2
+    shadow_size = 5
+    shadow_color = $brand
+    shadow_boost = 1.3
+    position = -{{ mulf 130 $s | int }}, -{{ mulf 60 $s | int }}
+    halign = right
+    valign = top
 }
 
-# USER
+# DATE AND TIME
 label {
-    monitor = {{ . }}
-    text = Hi there, $USER
+    monitor = {{ .name }}
+    text = cmd[update:5000] ~/.config/hypr/scripts/lock-clock.sh
+    text_align = center
     color = $fg
-    font_size = 25
-    font_family = $font
-    position = 0, -40
-    halign = center
-    valign = center
+    font_family = $font_cjk
+    font_size = {{ mulf 34 $s | int }}
+    shadow_passes = 3
+    shadow_size = 8
+    shadow_color = $brand
+    shadow_boost = 1.6
+    position = {{ mulf 157 $s | int }}, -{{ mulf 80 $s | int }}
+    halign = left
+    valign = top
 }
+{{ if $m.neighbors -}}
+{{- $left := index $m.neighbors 0 -}}
+{{- $right := index $m.neighbors 1 -}}
+{{- $seg := printf `<span foreground="%s" font_family="%s" size="%dpt" rise="%dpt">` $line $.theme.font.mono (mulf 18 $s | int) (mulf 9 $s | int) -}}
+{{- $small := printf `<span foreground="%s" size="%dpt" font_weight="500">` $dim (mulf 25 $s | int) }}
+# ROUTE
+# Kana are one em wide, so padding the shorter neighbor keeps the name on the center line.
+label {
+    monitor = {{ .name }}
+    text = {{ $small }}{{ repeat (div (sub (len $right) (len $left)) 3 | max 0 | int) "　" }}{{ $left }}</span>  {{ $seg }}{{ repeat 18 "─" }}</span>  <span size="{{ mulf 45 $s | int }}pt" font_weight="700">{{ $m.kana }}</span>  {{ $seg }}{{ repeat 17 "─" }}▶</span>  {{ $small }}{{ $right }}{{ repeat (div (sub (len $left) (len $right)) 3 | max 0 | int) "　" }}</span>
+    color = $fg
+    font_family = $font_cjk
+    font_size = {{ mulf 25 $s | int }}
+    shadow_passes = 2
+    shadow_size = 6
+    shadow_color = $text_shadow
+    position = 0, {{ mulf 70 $s | int }}
+    halign = center
+    valign = bottom
+}
+{{ end -}}
 {{ end -}}
