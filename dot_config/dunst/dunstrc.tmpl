@@ -1,4 +1,6 @@
 # See dunst(5) for all configuration options
+# Colors, font, frame width, corner radius, offset and icon theme are set in
+# dunstrc.d/10-tokens.conf.
 
 [global]
     ### Display ###
@@ -21,19 +23,13 @@
 
     ### Geometry ###
 
-    # dynamic width from 0 to 300
-    # width = (0, 300)
-    # constant width of 300
-    width = 300
+    width = 340
 
     # The maximum height of a single notification, excluding the frame.
     height = (0, 300)
 
     # Position the notification in the top right corner
     origin = top-right
-
-    # Offset from the origin
-    offset = (10, 10)
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -58,7 +54,7 @@
     progress_bar_min_width = 150
 
     # Set the maximum width for the progress bar
-    progress_bar_max_width = 300
+    progress_bar_max_width = 340
 
     # Corner radius for the progress bar. 0 disables rounded corners.
     progress_bar_corner_radius = 0
@@ -98,13 +94,6 @@
     # Padding between text and icon.
     text_icon_padding = 0
 
-    # Defines width in pixels of frame around the notification window.
-    # Set to 0 to disable.
-    frame_width = 3
-
-    # Defines color of the frame around the notification window.
-    frame_color = "#aaaaaa"
-
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
     # of size frame_width will be drawn around each notification instead.
@@ -136,11 +125,9 @@
 
     ### Text ###
 
-    font = "JetBrainsMono Nerd Font 12"
-
-    # The spacing between lines.  If the height is smaller than the
-    # font height, it will get raised to the font height.
-    line_height = 0
+    # Extra pixels between lines. Fira Sans is 19 px per line at 15 px, so this
+    # gives 21 px, 1.40 times the font size.
+    line_height = 2
 
     # Possible values are:
     # full: Allow a small subset of html markup in notifications:
@@ -176,7 +163,7 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<b>%s</b>\n%b"
+    format = "<span font_desc='16px' weight='bold'>%s</span>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
@@ -212,11 +199,6 @@
     # Recursive icon lookup. You can set a single theme, instead of having to
     # define all lookup paths.
     enable_recursive_icon_lookup = true
-
-    # Set icon theme (only used for recursive icon lookup)
-    icon_theme = Papirus-Dark
-    # You can also set multiple icon themes, with the leftmost one being used first.
-    # icon_theme = "Adwaita, breeze"
 
     # Align icons left/right/top/off
     icon_position = left
@@ -258,19 +240,12 @@
     # Define the class of the windows spawned by dunst (X11 only)
     class = Dunst
 
-    # Define the corner radius of the notification window
-    # in pixel size. If the radius is 0, you have no rounded
-    # corners.
-    # The radius will be automatically lowered if it exceeds half of the
-    # notification height to avoid clipping text and/or icons.
-    corner_radius = 10
-
     # Define which corners to round when drawing the window. If the corner radius
     # is set to 0 this option will be ignored.
     #
     # Comma-separated list of the corners. The accepted corner values are bottom-right,
     # bottom-left, top-right, top-left, top, bottom, left, right or all.
-    corners = top-right
+    corners = all
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -331,28 +306,17 @@
 
 
 [urgency_low]
-    # IMPORTANT: colors have to be defined in quotation marks.
-    # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#16161e"
-    foreground = "#c0caf5"
-    frame_color = "#c0caf5"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#1a1b26"
-    foreground = "#c0caf5"
-    frame_color = "#c0caf5"
     timeout = 10
     override_pause_level = 30
     # Icon for notifications with normal urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "#292e42"
-    foreground = "#db4b4b"
-    frame_color = "#db4b4b"
     timeout = 0
     override_pause_level = 60
     # Icon for notifications with critical urgency, uncomment to enable
@@ -489,6 +453,5 @@
 [mpd-volume]
     stack_tag = "mpd-volume"
     history_ignore = yes
-    highlight = "#7aa2f7"
 
 # vim: ft=cfg
