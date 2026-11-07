@@ -1,0 +1,125 @@
+/*
+  Editor details on top of Minimal, rebuilt from the AnuPpuccin features in use. Colors
+  come from night-tokens.css. Minimal already styles the alternate checkboxes.
+*/
+
+/* The note's own title stays neutral, so the colored headings start below it. */
+body {
+  --inline-title-color: var(--text-normal);
+}
+
+/* Callouts: a tinted title above a dashed line. */
+.callout {
+  --callout-padding: 0;
+  --callout-border-width: 1px;
+  --callout-border-opacity: 0.4;
+  --callout-blend-mode: normal;
+  background-color: var(--background-secondary);
+}
+
+.callout > .callout-title {
+  padding: 8px;
+  background-color: color-mix(in srgb, var(--callout-color) 10%, transparent);
+}
+
+.callout > .callout-content {
+  padding: 8px;
+  border-top: 1px dashed color-mix(in srgb, var(--callout-color) 40%, transparent);
+}
+
+.callout-content > :first-child {
+  margin-top: 0;
+}
+
+.callout-content > :last-child {
+  margin-bottom: 0;
+}
+
+/* A divider under first-level headings. */
+.markdown-rendered h1,
+.HyperMD-header-1 {
+  padding-bottom: 2px;
+  border-bottom: var(--hr-thickness) solid var(--background-modifier-border);
+}
+
+/* The active line is a bar beside the text, with no fill. */
+.markdown-source-view .cm-active.cm-line:not(.HyperMD-codeblock)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -1.5rem;
+  width: 2px;
+  background-color: var(--background-modifier-border);
+}
+
+.markdown-source-view .cm-focused .cm-active.cm-line:not(.HyperMD-codeblock)::before {
+  background-color: var(--interactive-accent);
+}
+
+/* Line numbers in code blocks, in the editor only. */
+.HyperMD-codeblock-begin {
+  counter-reset: line-numbers;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-begin, .HyperMD-codeblock-end) {
+  position: relative;
+  padding-left: 5em;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock:not(.HyperMD-codeblock-begin, .HyperMD-codeblock-end)::before {
+  content: counter(line-numbers);
+  counter-increment: line-numbers;
+  position: absolute;
+  left: 0;
+  width: 3em;
+  height: 100%;
+  padding-right: 0.5em;
+  border-right: 1px solid var(--background-modifier-border);
+  color: var(--text-faint);
+  font-size: 0.8em;
+  text-align: right;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.cm-active.HyperMD-codeblock:not(.HyperMD-codeblock-begin, .HyperMD-codeblock-end)::before {
+  color: var(--text-accent);
+}
+
+/* Bullets change shape with depth: filled, hollow, square, hollow square. */
+div.el-ul > ul > li > ul > li > .list-bullet::after {
+  --list-bullet-border: 1px solid var(--list-marker-color);
+  width: calc(var(--list-bullet-size) - 1px);
+  height: calc(var(--list-bullet-size) - 1px);
+  background-color: transparent;
+}
+
+div.el-ul > ul > li > ul > li > ul > li > .list-bullet::after {
+  --list-bullet-radius: 0;
+  background-color: var(--list-marker-color);
+}
+
+div.el-ul > ul > li > ul > li > ul > li > ul > li > .list-bullet::after {
+  --list-bullet-radius: 0;
+  --list-bullet-border: 1px solid var(--list-marker-color);
+  width: calc(var(--list-bullet-size) - 1px);
+  height: calc(var(--list-bullet-size) - 1px);
+  background-color: transparent;
+}
+
+/* Tables have full borders and centered text, and sit centered when reading. */
+body {
+  --table-header-border-width: 1px;
+  --table-column-first-border-width: 1px;
+  --table-column-last-border-width: 1px;
+  --table-row-last-border-width: 1px;
+  --table-edge-cell-padding-first: 10px;
+  --table-edge-cell-padding-last: 10px;
+}
+
+.markdown-preview-view .markdown-preview-sizer {
+  --table-margin: auto;
+}
+
+:is(.markdown-rendered, .is-live-preview) table :is(th, td):not([align]) {
+  text-align: center;
+}
