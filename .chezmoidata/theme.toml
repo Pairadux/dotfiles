@@ -39,7 +39,7 @@ bar_glow_room  = 4
 chrome     = 0.75
 chrome_hex = "bf"
 nested     = 0.45
-terminal   = 0.85
+terminal   = 0.90
 
 # Times are milliseconds.
 [theme.motion]
