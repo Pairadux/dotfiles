@@ -28,6 +28,42 @@ local wide_header = [[
                ░░    ░░░░░              ░░░░░░         ▀▀░░░░              ░░░            ░░░░            ░          ░ 
                                                         ░░                                                             ]]
 
+-- The same art wrapped onto two lines: ペアラ over ダックス.
+local stacked_header = [[
+                     ▄▄▄   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄     ███████████          
+              ▄▄▄   █▀▀█▄  ███████████████    ▀▀▀▀▀▀▀▀▀▀▀░         
+            ▄█████▄ ▀███░░  ░░░░▄▄▄░░▄██▀░░ ▄▄▄▄▄▄▄▄▄▄▄▄▄░         
+           ███▀▀▀███▄░░░░       ███░███▀░░  ██████████████         
+         ▄███▀░░░▀████          ███░ ░░░░    ░░░░░░░░░███▀░        
+         ▀██░░░   ░▀███▄       ███▀░                ▄███▀░░        
+          ░░░       ░▀███    ▄███▀░░            ▄▄▄███▀░░░         
+                      ▀▀░░  ▀██▀▀░░            ▀███▀▀░░░           
+                       ░░    ░░░░░              ░░░░░░             
+                                                                   
+              ▄▄                        ▄▄▄                        
+     ▄███   ██▀█░                      ▄███░  ▄▄     ███████████▄  
+    ▄████▄▄▄██▄░░       ▄             ███████████    ▀▀▀▀▀▀▀▀███▀░ 
+  ▄███▀▀▀▀▀███▀░   ▄█▄ ███   ███   ▄▄███░░░░░███▀░    ░░░░░░███▀░░ 
+▄███▀░▄▄░░▄██▀░░   ▀██▄ █▀▀ ███░░ ▀███▀░░   ███▀░░        ▄███▀░░  
+▀█▀░░▀██████▀░░     ▀▀░░ ░░███▀░   ░░░░░  ▄███▀░░       ▄██████▄   
+ ░░░  ░█████▄░       ░░  ▄███░░░        ▄████░░░      ▄███▀░▀████▄ 
+    ▄▄███▀▀██░       ▄▄████▀░░      ▄▄████▀▀░░      ████▀░░░ ░▀███░
+  █████▀░░░░░░        ▀█▀░░░░        ▀█▀▀░░░░        ▀░░░░     ░▀░░
+   ▀▀░░░░              ░░░            ░░░░            ░          ░ 
+    ░░                                                             ]]
+
+-- Picks the largest header that fits. Each height is the art plus the 17 rows taken by padding,
+-- keys, and the startup line, since a dashboard taller than its window has to scroll.
+local function dashboard_header(win)
+    local width, height = vim.api.nvim_win_get_width(win), vim.api.nvim_win_get_height(win)
+    if width >= 119 and height >= 28 then
+        return wide_header
+    elseif width >= 67 and height >= 38 then
+        return stacked_header
+    end
+    return 'ペ ア ラ ダ ッ ク ス'
+end
+
 return {
     'folke/snacks.nvim',
     priority = 1000,
@@ -47,7 +83,18 @@ return {
                     { icon = '󰟾 ', key = 'M', desc = 'Mason', action = ':Mason', enabled = package.loaded.lazy ~= nil },
                     { icon = ' ', key = 'q', desc = 'Quit', action = ':qa' },
                 },
-                header = vim.o.columns >= 119 and wide_header or 'ペ ア ラ ダ ッ ク ス',
+            },
+            sections = {
+                -- A function rather than preset.header, so the header is picked again on every resize.
+                function(self)
+                    -- Shrinking leaves the window scrolled down, which would cut off the top of the header.
+                    vim.api.nvim_win_call(self.win, function()
+                        vim.fn.winrestview({ topline = 1 })
+                    end)
+                    return { header = dashboard_header(self.win), padding = 2 }
+                end,
+                { section = 'keys', gap = 1, padding = 1 },
+                { section = 'startup' },
             },
         },
         explorer = { enabled = false },
