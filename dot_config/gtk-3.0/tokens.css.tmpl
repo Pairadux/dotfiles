@@ -1,0 +1,11 @@
+{{- template "tokens.css" . }}
+
+{{ template "gtk-colors.css" . }}
+
+/* Shape. GTK CSS has no numeric variables, so these are rules. Floating windows use
+   Hyprland's radius, since Hyprland clips them to it. */
+decoration { border-radius: {{ .theme.shape.radius_outer }}px {{ .theme.shape.radius_outer }}px 0 0; }
+messagedialog.csd decoration { border-radius: {{ .theme.shape.radius_outer }}px; }
+.maximized decoration, .fullscreen decoration,
+.tiled decoration, .tiled-top decoration, .tiled-right decoration,
+.tiled-bottom decoration, .tiled-left decoration { border-radius: 0; }

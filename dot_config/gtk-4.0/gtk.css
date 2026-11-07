@@ -1,0 +1,5 @@
+/*
+  GTK4 and libadwaita overrides. Colors and shape come from tokens.css.
+*/
+
+@import url("tokens.css");

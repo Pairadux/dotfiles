@@ -1,0 +1,14 @@
+#!/bin/sh
+# Sets what GTK reads from gsettings under Wayland. Runs when this rendered file changes.
+set -eu
+
+interface=org.gnome.desktop.interface
+gsettings set $interface gtk-theme 'adw-gtk3-dark'
+gsettings set $interface color-scheme 'prefer-dark'
+gsettings set $interface icon-theme '{{ .theme.icons.name }}'
+gsettings set $interface cursor-theme '{{ .theme.cursor.name }}'
+gsettings set $interface cursor-size {{ .theme.cursor.size }}
+gsettings set $interface font-name '{{ .theme.font.sans }} 11'
+gsettings set $interface document-font-name '{{ .theme.font.sans }} 11'
+gsettings set $interface monospace-font-name '{{ .theme.font.mono }} 11'
+gsettings set org.gnome.desktop.wm.preferences button-layout ':close'

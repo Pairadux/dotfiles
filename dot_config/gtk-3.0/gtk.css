@@ -1,0 +1,8 @@
+/*
+  GTK3 overrides on top of adw-gtk3-dark. Colors and shape come from tokens.css.
+*/
+
+@import url("tokens.css");
+
+/* adw-gtk3 hardcodes white here, which is hard to read on the accent. */
+button.suggested-action { color: @on_accent; }
