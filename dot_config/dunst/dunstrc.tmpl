@@ -163,7 +163,8 @@
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
     # Markup is allowed
-    format = "<span font_desc='16px' weight='bold'>%s</span>\n%b"
+    # 12pt is 16px; see the font note in dunstrc.d/10-tokens.conf.
+    format = "<span font_desc='12' weight='bold'>%s</span>\n%b"
 
     # Alignment of message text.
     # Possible values are "left", "center" and "right".
