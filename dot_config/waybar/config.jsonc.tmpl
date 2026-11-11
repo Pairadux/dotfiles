@@ -34,6 +34,7 @@
         "mpris"
     ],
     "modules-right": [
+        "systemd-failed-units",
         "group/volume",
 {{ if $m.laptop }}        "group/brightness",
 {{ end }}        "network",
@@ -129,6 +130,12 @@
         "smooth-scrolling-threshold": 5,
         "on-scroll-up": "mpc -q volume +5",
         "on-scroll-down": "mpc -q volume -5"
+    },
+
+    // Hidden while nothing has failed. The default tooltip lists the failed
+    // units, system and user alike.
+    "systemd-failed-units": {
+        "format": "󰀦"
     },
 
     // Hovering a level icon slides its percentage out beside it, so the number

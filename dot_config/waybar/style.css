@@ -140,6 +140,7 @@ window#waybar.empty #window {
    5) Right cluster
    ------------------------------------------------------ */
 
+#systemd-failed-units,
 #pulseaudio,
 #backlight,
 #network,
@@ -175,6 +176,12 @@ window#waybar.empty #window {
 
 #tray menu menuitem:hover {
   background: @raised;
+}
+
+/* Only ever visible when something has failed. */
+#systemd-failed-units {
+  color: @error;
+  font-size: 17px;
 }
 
 #pulseaudio {
