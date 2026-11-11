@@ -155,6 +155,18 @@ window#waybar.empty #window {
   padding: 0 12px;
 }
 
+/* Symbolic tray icons take their color from here; pixmaps keep their own. An
+   icon is first drawn before its item joins #tray, so a rule scoped under #tray
+   would miss that draw. These carry no ancestor. */
+widget.active,
+widget.passive {
+  color: @fg_dim;
+}
+
+widget.needs-attention {
+  color: @attention;
+}
+
 #tray > .needs-attention {
   -gtk-icon-effect: highlight;
 }
