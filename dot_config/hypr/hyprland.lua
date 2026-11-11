@@ -241,6 +241,7 @@ hl.animation({ leaf = "fadeShadow",    enabled = true, speed = ds(m.t2),  bezier
 hl.animation({ leaf = "fadePopups",    enabled = true, speed = ds(m.t1),  bezier = "fade" })
 hl.animation({ leaf = "border",        enabled = true, speed = ds(m.t2),  bezier = "fade" })
 hl.animation({ leaf = "borderangle",   enabled = true, speed = 8,   bezier = "default" })
+hl.animation({ leaf = "zoomFactor",    enabled = true, speed = ds(m.t3),  bezier = "fade" })
 
 -- Tiled windows slide in beside their neighbors. A workspace's first window or a
 -- floating one has nothing to slide beside, so it pops in.
@@ -362,6 +363,15 @@ hl.bind("PRINT",                       hl.dsp.exec_cmd("hyprshot -m output"), de
 hl.bind(mainMod .. " + PRINT",         hl.dsp.exec_cmd("hyprshot -m window"), desc("Screenshots: Window"))
 hl.bind(mainMod .. " + SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m region"), desc("Screenshots: Region"))
 hl.bind(mainMod .. " + ALT + S", hl.dsp.exec_cmd("hyprshot -m region"), desc("Screenshots: Region"))
+
+-- Hyprland's own cursor zoom: the compositor magnifies around the cursor and
+-- pans once it reaches an edge, so no window opens for a rule to catch. A
+-- config reload drops back to 1x.
+local zoomFactor = 2
+hl.bind(mainMod .. " + SHIFT + Z", function()
+    local zoomed = hl.get_config("cursor.zoom_factor") > 1
+    hl.config({ cursor = { zoom_factor = zoomed and 1 or zoomFactor } })
+end, desc("Zoom: Toggle magnifier at the cursor"))
 
 require("soundboard").setup()
 
