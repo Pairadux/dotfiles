@@ -288,13 +288,16 @@
         //
         // An override freezes the icon, so these lose the state their own
         // icons show: Sunshine streaming or waiting on a PIN, gsr-ui recording
-        // or paused. Symbolic icons are left to style.css. Paths are absolute:
-        // 0.16.0 does not expand $HOME, whatever its man page says.
+        // or paused, Discord unread or in voice (connected, speaking, muted,
+        // deafened). Symbolic icons are left to style.css. Paths are absolute:
+        // 0.16.0 does not expand $HOME, whatever its man page says. Electron
+        // numbers its Id per launch, hence Discord's wildcard.
         "icons": {
             "nm-applet": false,
             "steam": "{{ .chezmoi.homeDir }}/.config/waybar/icons/steam.svg",
             "Sunshine": "{{ .chezmoi.homeDir }}/.config/waybar/icons/sunshine.svg",
-            "gpu-screen-recorder-ui": "{{ .chezmoi.homeDir }}/.config/waybar/icons/gsr-ui.svg"
+            "gpu-screen-recorder-ui": "{{ .chezmoi.homeDir }}/.config/waybar/icons/gsr-ui.svg",
+            "discord_status_icon_*": "{{ .chezmoi.homeDir }}/.config/waybar/icons/discord.svg"
         }
     },
 
