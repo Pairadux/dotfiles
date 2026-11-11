@@ -151,8 +151,12 @@ window#waybar.empty #window {
   padding: 0 12px;
 }
 
+/* App icons share a raised pill at the start of the cluster, set off from the
+   system status as the power pill is from the workspaces. */
 #tray {
-  padding: 0 12px;
+  background: @raised;
+  padding: 0 10px;
+  margin-right: 6px;
 }
 
 /* Symbolic tray icons take their color from here; pixmaps keep their own. An

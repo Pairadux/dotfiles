@@ -41,6 +41,10 @@ tooltip label {
   font-family: "{{ .theme.font.sans }}", "{{ .theme.font.symbols }}", sans-serif;
 }
 
+#tray {
+  border-radius: {{ .theme.shape.radius_nested }}px;
+}
+
 #tray menu {
   border-radius: {{ .theme.shape.radius_nested }}px;
   border-width: {{ .theme.shape.hairline }}px;

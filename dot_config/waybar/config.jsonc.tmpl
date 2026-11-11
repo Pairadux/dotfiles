@@ -33,15 +33,17 @@
     "modules-center": [
         "mpris"
     ],
+    // Apps' tray icons lead the cluster in a pill of their own, so the system
+    // status after them keeps one even rhythm.
     "modules-right": [
+        "tray",
         "systemd-failed-units",
         "group/volume",
 {{ if $m.laptop }}        "group/brightness",
 {{ end }}        "network",
         "bluetooth",
 {{ if $m.laptop }}        "battery",
-{{ end }}        "tray",
-        "clock"
+{{ end }}        "clock"
     ],
 
     "custom/power": {
@@ -277,10 +279,10 @@
         "interval": 30
     },
 {{ end }}
-    // Items sit as far apart as modules do: two of style.css's 12px paddings.
+    // Items sit a little closer than modules do, inside the tray's own pill.
     "tray": {
         "icon-size": 17,
-        "spacing": 24,
+        "spacing": 16,
         // nm-applet runs for its secret agent and VPN prompts, but its icon
         // would duplicate the network module.
         //
