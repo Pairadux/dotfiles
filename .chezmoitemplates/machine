@@ -17,7 +17,6 @@
                  per-window monitor= fields and split wallpapers
      gametrak    gametrak autostarts here, so games.conf exists
      wallpapers  wallpaper library, relative to $HOME
-     tray        the bar shows a system tray
      effects     which [theme.effects] set applies, "lean" unless declared
      kana        the hostname in kana, the hostname itself unless declared
      neighbors   kana beside this machine on the lock screen, empty unless declared
@@ -45,7 +44,6 @@
       "multihead" (and (hasKey $primary "output") (hasKey $secondary "output"))
       "gametrak"   (has "gametrak" $machine.autostart)
       "wallpapers" (dig "wallpaper_dir" "" $machine)
-      "tray"      (dig "tray" false $machine)
       "effects"   (dig "effects" "lean" $machine)
       "kana"      (dig "kana" .chezmoi.hostname $machine)
       "neighbors" (dig "neighbors" (list) $machine)

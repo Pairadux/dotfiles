@@ -2,9 +2,9 @@
 // waybar: the bar on every machine. Power menu, workspaces and the focused app
 // on the left, media in the middle, status cluster on the right.
 //
-// Battery and backlight are emitted only on laptops, the tray only where a
-// machine asks for it, and workspace pinning only on a machine that actually
-// has two displays. All of it comes from machines.toml.
+// Battery and backlight are emitted only on laptops, and workspace pinning
+// only on a machine that actually has two displays. Both come from
+// machines.toml. The tray hides itself while it has nothing to show.
 {
 {{- with dig "output" "" $m.external }}
     // The role-less extra display gets no bar.
@@ -40,8 +40,8 @@
 {{ end }}        "network",
         "bluetooth",
 {{ if $m.laptop }}        "battery",
-{{ end }}{{ if $m.tray }}        "tray",
-{{ end }}        "clock"
+{{ end }}        "tray",
+        "clock"
     ],
 
     "custom/power": {
@@ -276,7 +276,7 @@
         "tooltip-format": "{capacity}% — {timeTo}\nPower draw: {power}W",
         "interval": 30
     },
-{{ end }}{{ if $m.tray }}
+{{ end }}
     "tray": {
         "icon-size": 17,
         "spacing": 10,
@@ -286,7 +286,7 @@
             "nm-applet": false
         }
     },
-{{ end }}
+
     "clock": {
         "format": "{:%a %b %d  %I:%M %p}",
         "tooltip-format": "<tt>{calendar}</tt>",
