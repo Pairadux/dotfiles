@@ -40,9 +40,7 @@
 #                 <name>/ folder per wallpaper; see the wallpaper picker for the
 #                 slice layout a multi-monitor machine needs.
 #   monitors      ordered list of displays; see the monitor keys below.
-#   tray          true shows a system tray on the bar, and nm-applet's icon
-#                 in it replaces the bar's network module. Absent where
-#                 nm-applet would be the only tray item.
+#   tray          true shows a system tray on the bar.
 #   effects       which [theme.effects] set applies: "full" or "lean".
 #   kana          the hostname in kana, shown on the bar and lock screen.
 #   neighbors     the kana on either side of this machine on the lock screen.
