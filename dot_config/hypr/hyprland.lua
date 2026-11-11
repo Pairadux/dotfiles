@@ -367,7 +367,7 @@ hl.bind(mainMod .. " + ALT + S", hl.dsp.exec_cmd("hyprshot -m region"), desc("Sc
 -- Hyprland's own cursor zoom: the compositor magnifies around the cursor and
 -- pans once it reaches an edge, so no window opens for a rule to catch. A
 -- config reload drops back to 1x.
-local zoomFactor = 2
+local zoomFactor = 3
 hl.bind(mainMod .. " + SHIFT + Z", function()
     local zoomed = hl.get_config("cursor.zoom_factor") > 1
     hl.config({ cursor = { zoom_factor = zoomed and 1 or zoomFactor } })
