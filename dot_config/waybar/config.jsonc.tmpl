@@ -140,12 +140,14 @@
 
     // Hovering a level icon slides its percentage out beside it, so the number
     // is visible while scrolling. The drawer opens leftward so the icon stays
-    // put under the cursor on this right-aligned cluster.
+    // put under the cursor on this right-aligned cluster. The reveal waits a
+    // moment, so a cursor passing over the cluster doesn't flick it open.
     "group/volume": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": {{ .theme.motion.t4 }},
-            "transition-left-to-right": false
+            "transition-left-to-right": false,
+            "reveal-delay": 150
         },
         "modules": [
             "pulseaudio",

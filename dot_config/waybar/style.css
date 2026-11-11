@@ -193,6 +193,11 @@ window#waybar.empty #window {
   color: @muted;
 }
 
+/* The icon brightens while its drawer is open. Muted keeps its own color. */
+#volume.expanded #pulseaudio:not(.level):not(.muted) {
+  color: @fg;
+}
+
 #backlight {
   color: @fg_dim;
   font-size: 17px;
