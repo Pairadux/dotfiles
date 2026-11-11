@@ -151,10 +151,12 @@ window#waybar.empty #window {
   padding: 0 12px;
 }
 
-/* App icons share a raised pill at the start of the cluster, set off from the
-   system status as the power pill is from the workspaces. */
+/* App icons share a pill at the start of the cluster, set off from the system
+   status as the power pill is from the workspaces. A light tint rather than a
+   solid fill, so it lifts whatever wallpaper shows through the glass by the
+   same amount and reads alike everywhere. */
 #tray {
-  background: @raised;
+  background: alpha(@fg, 0.10);
   padding: 0 10px;
   margin-right: 6px;
 }
