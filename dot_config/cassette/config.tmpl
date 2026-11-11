@@ -172,3 +172,19 @@ clips = ~/Audio/cassette
 #     it started with.
 #
 preview = 0.5
+
+
+# ---------------------------------------------------------------------------
+# tray_recording, tray_paused, tray_broken: the tray icon's colors
+# ---------------------------------------------------------------------------
+#   #rrggbb. chezmoi fills these from the design tokens in
+#   .chezmoidata/theme.toml so the icon matches the bar: dim while it records
+#   as usual, muted while paused, the attention color when broken. The tray
+#   library can't mark the item as needing attention, so color is the only
+#   signal.
+#
+#   Default: #e5484d, #9a9eb0, #e0af68 (red, grey, amber)
+#
+tray_recording = {{ .theme.text.fg_dim }}
+tray_paused = {{ .theme.text.muted }}
+tray_broken = {{ .theme.role.attention }}
