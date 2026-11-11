@@ -282,8 +282,16 @@
         "spacing": 10,
         // nm-applet runs for its secret agent and VPN prompts, but its icon
         // would duplicate the network module.
+        //
+        // An override freezes the icon, so these lose the state their own
+        // icons show: Sunshine streaming or waiting on a PIN, gsr-ui recording
+        // or paused. Symbolic icons are left to style.css. Paths are absolute:
+        // 0.16.0 does not expand $HOME, whatever its man page says.
         "icons": {
-            "nm-applet": false
+            "nm-applet": false,
+            "steam": "{{ .chezmoi.homeDir }}/.config/waybar/icons/steam.svg",
+            "Sunshine": "{{ .chezmoi.homeDir }}/.config/waybar/icons/sunshine.svg",
+            "gpu-screen-recorder-ui": "{{ .chezmoi.homeDir }}/.config/waybar/icons/gsr-ui.svg"
         }
     },
 
