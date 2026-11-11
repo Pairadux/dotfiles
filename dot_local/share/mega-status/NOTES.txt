@@ -15,10 +15,14 @@ Shipped architecture
 - Parse: --output-cols=LOCALPATH,RUN_STATE,STATUS,ERROR --col-separator=,
   fed straight to csv.DictReader
 - Three states, worst-first precedence:
-    degraded (amber #E8A33D + "!")  ERROR != NO, RUN_STATE != Running,
-                                    mega-cmd-server absent, or open sync-issues
-    syncing  (white #FFFFFF)        STATUS in Syncing/Pending/Processing/NONE
-    synced   (muted brick #A6453F)  all Synced AND no sync issues
+    degraded (cloud + "!")      ERROR != NO, RUN_STATE != Running,
+                                mega-cmd-server absent, or open sync-issues
+    syncing  (cloud + arrows)   STATUS in Syncing/Pending/Processing/NONE
+    synced   (cloud + check)    all Synced AND no sync issues
+- Icons are -symbolic, so waybar draws them in the bar's colors (style.css):
+  dim at rest, attention color while degraded, which also sets the item's
+  status to NeedsAttention. The glyphs are MDI cloud icons from the Symbols
+  Nerd Font, like the rest of the bar.
 - Hover tooltip lists per-sync detail, e.g. "JD: synced / Notes: pending"
 - Read-only invariant: never writes ~/.megaCmd or sync folders, and never
   passes a mutating flag (-d/-p/-e, --enable-warning/--disable-warning)
@@ -29,7 +33,7 @@ The original plan used `mega-transfers --summary` and inferred "syncing" from
 NUM DOWNLOADS/UPLOADS > 0. Verified wrong by live test: uploading a 7.8 MB file
 made mega-sync report STATUS=Pending and *never* Syncing, i.e. zero in-flight
 transfers for the whole visible window. mega-transfers would have kept the icon
-red through the entire upload. mega-sync reports the engine's own state, exposes
+on "synced" through the entire upload. mega-sync reports the engine's own state, exposes
 ERROR/RUN_STATE for a real "needs attention" state, and parses as clean CSV.
 Cost ~10ms/call vs ~2ms — irrelevant at event rates.
 
@@ -49,14 +53,14 @@ mega-cmd-server is never auto-started
 /usr/bin/mega-sync is just `mega-exec sync "$@"`, and the mega-* client wrappers
 SPAWN mega-cmd-server when it is absent. So server liveness is confirmed by
 scanning /proc for comm == mega-cmd-server before any command runs. Server down
-=> amber cloud, zero commands invoked. A server you stopped stays stopped.
+=> degraded cloud, zero commands invoked. A server you stopped stays stopped.
 Recovery is still event-driven: a restarted server writes statecache, ringing
 the bell.
 
 Files
 -----
 - Code:    ~/.local/share/mega-status/mega_status.py
-- Icons:   ~/.local/share/mega-status/icons/{synced,syncing,degraded}.svg
+- Icons:   ~/.local/share/mega-status/icons/{synced,syncing,degraded}-symbolic.svg
 - Systemd: ~/.config/systemd/user/mega-status.service
 - All of the above are chezmoi-managed (since 2026-10-31): edit the sources
   under ~/.dotfiles/dot_local/share/mega-status/ and

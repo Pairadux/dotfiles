@@ -66,11 +66,16 @@ log = logging.getLogger(APP_ID)
 
 
 class State(enum.Enum):
-    """Display states. Values are icon basenames under ICON_DIR."""
+    """Display states. Each one's icon is <value>-symbolic.svg under ICON_DIR."""
 
     SYNCED = "synced"
     SYNCING = "syncing"
     DEGRADED = "degraded"
+
+    @property
+    def icon(self):
+        """Icon name. The -symbolic suffix lets the tray draw it in the bar's colors."""
+        return f"{self.value}-symbolic"
 
 
 LABELS = {
@@ -240,10 +245,13 @@ class MegaStatus:
 
         self._indicator = AppIndicator.Indicator.new(
             APP_ID,
-            State.SYNCED.value,
+            State.SYNCED.icon,
             AppIndicator.IndicatorCategory.APPLICATION_STATUS,
         )
         self._indicator.set_icon_theme_path(ICON_DIR)
+        self._indicator.set_attention_icon_full(
+            State.DEGRADED.icon, LABELS[State.DEGRADED]
+        )
         self._indicator.set_title("MEGA")
         self._indicator.set_menu(self._build_menu())
         self._indicator.set_status(AppIndicator.IndicatorStatus.ACTIVE)
@@ -337,9 +345,15 @@ class MegaStatus:
 
         label = LABELS[snapshot.state]
         if icon_changed:
-            self._indicator.set_icon_full(snapshot.state.value, label)
+            self._indicator.set_icon_full(snapshot.state.icon, label)
+            # Degraded is the one state that asks the tray for attention.
+            self._indicator.set_status(
+                AppIndicator.IndicatorStatus.ATTENTION
+                if snapshot.state is State.DEGRADED
+                else AppIndicator.IndicatorStatus.ACTIVE
+            )
             log.info("state -> %s", snapshot.state.value)
-        self._indicator.set_tooltip_full(snapshot.state.value, label, snapshot.detail)
+        self._indicator.set_tooltip_full(snapshot.state.icon, label, snapshot.detail)
         self._status_item.set_label(label)
         self._update_detail_items(snapshot.detail.splitlines())
 
