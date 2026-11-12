@@ -37,12 +37,14 @@ games:
       name: Minecraft
     - class: barony.x86_64
       name: Barony
+    - class: Carrion
+      name: CARRION
 settings:
     notifications: true
     log_sessions: true
     sessions_file: /home/pairadux/.local/share/gametrak/sessions.jsonl
     hyprland_conf: /home/pairadux/.config/gametrak/games.conf
     state_file: /home/pairadux/.local/state/gametrak/active.json
-    min_session_mins: 15
+    min_session_mins: 5
 logbook:
     enabled: true
