@@ -157,7 +157,9 @@ wallpaper_dir = "Pictures/wallpapers"
 effects       = "lean"
 kana          = "ふじ"
 neighbors     = ["ほくと", "むつ"]
-lock_scale    = 0.6
+# lock_scale sits above the 0.6 its logical width gives, so the text reads
+# comfortably at laptop distance.
+lock_scale    = 0.7
 # vaapi_driver deliberately unset: Asahi's GPU stack needs no LIBVA override,
 # and radeonsi would be actively wrong here.
 autostart = [
