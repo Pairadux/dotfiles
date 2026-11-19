@@ -56,6 +56,13 @@ use_sudo = true
 
 
 
+[pre_commands]
+# A failing pre-command aborts topgrade before any update step. This stops the run once
+# when a package held by IgnorePkg has a new repo version; rerunning continues.
+"Held packages" = "held-pkg-check"
+
+
+
 [commands]
 # Skips itself unless the last backup is older than 20h, so a re-run of topgrade
 # on the same day costs only a remote listing. Invoked by name rather than by

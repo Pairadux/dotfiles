@@ -7,6 +7,6 @@ OnFailure=notify-failure@%n.service
 
 [Service]
 Type=oneshot
-ExecStart=%h/.bin/held-pkg-check
+ExecStart=%h/.bin/held-pkg-check --notify
 Restart=on-failure
 RestartSec=10min
