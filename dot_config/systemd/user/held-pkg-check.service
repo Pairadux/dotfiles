@@ -1,0 +1,12 @@
+[Unit]
+Description=Notify when packages held by IgnorePkg get new versions
+# Retry through flaky network after resume, then say so
+StartLimitIntervalSec=1h
+StartLimitBurst=3
+OnFailure=notify-failure@%n.service
+
+[Service]
+Type=oneshot
+ExecStart=%h/.bin/held-pkg-check
+Restart=on-failure
+RestartSec=10min

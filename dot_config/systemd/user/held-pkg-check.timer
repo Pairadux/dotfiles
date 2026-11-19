@@ -1,0 +1,10 @@
+[Unit]
+Description=Daily check for new versions of held packages
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=1h
+
+[Install]
+WantedBy=timers.target
