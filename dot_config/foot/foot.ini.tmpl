@@ -1,0 +1,49 @@
+{{- /* Backup terminal: foot draws on the CPU, so it keeps working when the GPU stack breaks
+       ghostty. Mirrors ghostty's font, theme, padding and keybinds. */ -}}
+{{- $fontSize := 14 }}
+{{- if eq .chezmoi.hostname "fuji" }}
+{{-   $fontSize = 12 }}
+{{- end -}}
+[main]
+font={{ .theme.font.mono }}:size={{ $fontSize }}
+font-italic={{ .theme.font.mono_italic }}:style=Medium Italic:size={{ $fontSize }}
+font-bold-italic={{ .theme.font.mono_italic }}:style=Bold Oblique:size={{ $fontSize }}
+pad=0x2 center
+
+[scrollback]
+lines=10000
+
+[colors-dark]
+alpha={{ .theme.opacity.terminal }}
+alpha-mode=all
+background={{ .theme.surface.base | trimPrefix "#" }}
+foreground={{ .theme.text.fg | trimPrefix "#" }}
+selection-background={{ .theme.surface.selection | trimPrefix "#" }}
+selection-foreground={{ .theme.text.fg | trimPrefix "#" }}
+# ANSI palette from ghostty's bundled TokyoNight theme
+cursor=15161e c0caf5
+regular0=15161e
+regular1=f7768e
+regular2=9ece6a
+regular3=e0af68
+regular4=7aa2f7
+regular5=bb9af7
+regular6=7dcfff
+regular7=a9b1d6
+bright0=414868
+bright1=f7768e
+bright2=9ece6a
+bright3=e0af68
+bright4=7aa2f7
+bright5=bb9af7
+bright6=7dcfff
+bright7=c0caf5
+
+[text-bindings]
+# The same CSI u sequences ghostty sends for these keys
+\x1b[9;5u=Control+Tab
+\x1b[9;6u=Control+Shift+Tab
+\x1b[9;2u=Shift+Tab
+\x1b[13;2u=Shift+Return
+\x1b[13;5u=Control+Return
+\x1b[13;6u=Control+Shift+Return
