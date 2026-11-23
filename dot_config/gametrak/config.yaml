@@ -39,6 +39,7 @@ games:
       name: Barony
     - class: Carrion
       name: CARRION
+    - class: Parking Garage Rally Circuit
 settings:
     notifications: true
     log_sessions: true
@@ -46,5 +47,10 @@ settings:
     hyprland_conf: /home/pairadux/.config/gametrak/games.conf
     state_file: /home/pairadux/.local/state/gametrak/active.json
     min_session_mins: 5
+    source: auto
 logbook:
     enabled: true
+    url: https://logs.austingause.com
+    sheet: gaming
+    credentials_file: /home/pairadux/.config/gametrak/logbook-credentials.yaml
+    platform: PC
